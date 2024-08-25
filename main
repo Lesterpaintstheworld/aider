@@ -1,1 +1,1 @@
-from aider_vox import Aider
+from aider_vox import Aider, __version__, models, utils
