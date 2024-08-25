@@ -9,15 +9,15 @@ import git
 from dotenv import load_dotenv
 from prompt_toolkit.enums import EditingMode
 
-from aider import __version__, models, utils
-from aider.args import get_parser
-from aider.coders import Coder
-from aider.commands import Commands, SwitchCoder
-from aider.history import ChatSummary
-from aider.io import InputOutput
-from aider.llm import litellm  # noqa: F401; properly init litellm on launch
-from aider.repo import GitRepo
-from aider.versioncheck import check_version
+from aider_vox import __version__, models, utils
+from aider_vox.args import get_parser
+from aider_vox.coders import Coder
+from aider_vox.commands import Commands, SwitchCoder
+from aider_vox.history import ChatSummary
+from aider_vox.io import InputOutput
+from aider_vox.llm import litellm  # noqa: F401; properly init litellm on launch
+from aider_vox.repo import GitRepo
+from aider_vox.versioncheck import check_version
 
 from .dump import dump  # noqa: F401
 
