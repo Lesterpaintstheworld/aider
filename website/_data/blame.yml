@@ -1,0 +1,2302 @@
+- aider_nova_percentage: 31.33
+  aider_nova_total: 47
+  end_date: '2023-06-15'
+  end_tag: v0.6.0
+  file_counts:
+    aider_nova/coder.py:
+      Paul Gauthier: 32
+      Paul Gauthier (aider_nova): 4
+    aider_nova/commands.py:
+      Paul Gauthier: 2
+    aider_nova/main.py:
+      Paul Gauthier: 4
+      Paul Gauthier (aider_nova): 5
+    aider_nova/models.py:
+      Paul Gauthier: 27
+    aider_nova/repomap.py:
+      Paul Gauthier: 6
+      Paul Gauthier (aider_nova): 1
+    aider_nova/utils.py:
+      Paul Gauthier: 25
+      Paul Gauthier (aider_nova): 21
+    setup.py:
+      Paul Gauthier: 7
+      Paul Gauthier (aider_nova): 7
+    tests/test_utils.py:
+      Paul Gauthier (aider_nova): 9
+  grand_total:
+    Paul Gauthier: 103
+    Paul Gauthier (aider_nova): 47
+  start_tag: v0.5.0
+  total_lines: 150
+- aider_nova_percentage: 9.67
+  aider_nova_total: 182
+  end_date: '2023-06-25'
+  end_tag: v0.7.0
+  file_counts:
+    .github/workflows/release.yml:
+      Paul Gauthier: 2
+      Paul Gauthier (aider_nova): 29
+    aider_nova/__init__.py:
+      Paul Gauthier: 1
+    aider_nova/coders/__init__.py:
+      Paul Gauthier: 6
+    aider_nova/coders/base_coder.py:
+      Paul Gauthier: 314
+    aider_nova/coders/base_prompts.py:
+      Paul Gauthier: 6
+    aider_nova/coders/editblock_coder.py:
+      Paul Gauthier: 338
+    aider_nova/coders/editblock_prompts.py:
+      Paul Gauthier: 56
+    aider_nova/coders/wholefile_coder.py:
+      Paul Gauthier: 115
+      Paul Gauthier (aider_nova): 3
+    aider_nova/coders/wholefile_func_coder.py:
+      Paul Gauthier: 120
+      Paul Gauthier (aider_nova): 11
+    aider_nova/coders/wholefile_func_prompts.py:
+      Paul Gauthier: 24
+    aider_nova/coders/wholefile_prompts.py:
+      Paul Gauthier: 38
+    aider_nova/commands.py:
+      Paul Gauthier: 28
+    aider_nova/diffs.py:
+      Paul Gauthier: 18
+    aider_nova/io.py:
+      Paul Gauthier: 16
+    aider_nova/main.py:
+      Paul Gauthier: 51
+      Paul Gauthier (aider_nova): 8
+    aider_nova/models.py:
+      Paul Gauthier: 52
+    scripts/benchmark.py:
+      Paul Gauthier: 312
+      Paul Gauthier (aider_nova): 22
+    scripts/versionbump.py:
+      Paul Gauthier: 13
+      Paul Gauthier (aider_nova): 44
+    setup.py:
+      Paul Gauthier: 2
+      Paul Gauthier (aider_nova): 2
+    tests/test_coder.py:
+      Paul Gauthier: 15
+      Paul Gauthier (aider_nova): 18
+    tests/test_commands.py:
+      Paul Gauthier: 3
+    tests/test_editblock.py:
+      Paul Gauthier: 28
+    tests/test_main.py:
+      Paul Gauthier: 8
+    tests/test_models.py:
+      Paul Gauthier: 21
+      Paul Gauthier (aider_nova): 7
+    tests/test_wholefile.py:
+      Paul Gauthier: 113
+      Paul Gauthier (aider_nova): 38
+  grand_total:
+    Paul Gauthier: 1700
+    Paul Gauthier (aider_nova): 182
+  start_tag: v0.6.0
+  total_lines: 1882
+- aider_nova_percentage: 7.61
+  aider_nova_total: 150
+  end_date: '2023-07-06'
+  end_tag: v0.8.0
+  file_counts:
+    .github/workflows/ubuntu-tests.yml:
+      Paul Gauthier: 5
+    .github/workflows/windows-tests.yml:
+      Paul Gauthier: 13
+      Paul Gauthier (aider_nova): 25
+    aider_nova/__init__.py:
+      Paul Gauthier: 1
+    aider_nova/coders/__init__.py:
+      Paul Gauthier: 10
+    aider_nova/coders/base_coder.py:
+      Paul Gauthier: 161
+      Paul Gauthier (aider_nova): 5
+    aider_nova/coders/base_prompts.py:
+      Paul Gauthier: 2
+    aider_nova/coders/editblock_coder.py:
+      Paul Gauthier: 26
+    aider_nova/coders/editblock_func_coder.py:
+      Paul Gauthier: 144
+      Paul Gauthier (aider_nova): 8
+    aider_nova/coders/editblock_func_prompts.py:
+      Paul Gauthier: 27
+    aider_nova/coders/single_wholefile_func_coder.py:
+      Paul Gauthier: 122
+    aider_nova/coders/single_wholefile_func_prompts.py:
+      Paul Gauthier: 27
+    aider_nova/coders/wholefile_coder.py:
+      Paul Gauthier: 24
+    aider_nova/coders/wholefile_func_coder.py:
+      Paul Gauthier: 14
+    aider_nova/coders/wholefile_func_prompts.py:
+      Paul Gauthier: 3
+    aider_nova/coders/wholefile_prompts.py:
+      Paul Gauthier: 14
+    aider_nova/commands.py:
+      Paul Gauthier: 18
+    aider_nova/diffs.py:
+      Paul Gauthier: 25
+    aider_nova/io.py:
+      Paul Gauthier: 38
+      Paul Gauthier (aider_nova): 9
+    aider_nova/main.py:
+      Paul Gauthier: 14
+      Paul Gauthier (aider_nova): 5
+      kwmiebach: 5
+    aider_nova/repomap.py:
+      Paul Gauthier: 30
+    aider_nova/utils.py:
+      Paul Gauthier: 11
+    benchmark/Dockerfile:
+      Paul Gauthier: 7
+    benchmark/benchmark.py:
+      Paul Gauthier: 447
+      Paul Gauthier (aider_nova): 29
+    benchmark/docker.sh:
+      Paul Gauthier: 11
+      Paul Gauthier (aider_nova): 1
+    benchmark/docker_build.sh:
+      Paul Gauthier: 8
+    benchmark/plot.sh:
+      Paul Gauthier: 29
+    benchmark/prompts.py:
+      Paul Gauthier: 16
+    benchmark/rungrid.py:
+      Paul Gauthier: 60
+    benchmark/test_benchmark.py:
+      Paul Gauthier: 47
+    tests/test_coder.py:
+      Paul Gauthier: 95
+      Paul Gauthier (aider_nova): 38
+    tests/test_commands.py:
+      Paul Gauthier: 21
+      Paul Gauthier (aider_nova): 24
+    tests/test_editblock.py:
+      Paul Gauthier: 94
+    tests/test_io.py:
+      Paul Gauthier: 3
+      Paul Gauthier (aider_nova): 6
+    tests/test_main.py:
+      Paul Gauthier: 29
+    tests/test_repomap.py:
+      Paul Gauthier: 26
+    tests/test_wholefile.py:
+      Paul Gauthier: 193
+  grand_total:
+    Paul Gauthier: 1815
+    Paul Gauthier (aider_nova): 150
+    kwmiebach: 5
+  start_tag: v0.7.0
+  total_lines: 1970
+- aider_nova_percentage: 16.7
+  aider_nova_total: 161
+  end_date: '2023-07-16'
+  end_tag: v0.9.0
+  file_counts:
+    aider_nova/__init__.py:
+      Paul Gauthier: 1
+    aider_nova/coders/base_coder.py:
+      Paul Gauthier: 75
+    aider_nova/coders/editblock_coder.py:
+      Paul Gauthier: 8
+    aider_nova/coders/editblock_prompts.py:
+      Paul Gauthier: 3
+    aider_nova/coders/single_wholefile_func_coder.py:
+      Paul Gauthier: 1
+    aider_nova/coders/wholefile_coder.py:
+      Paul Gauthier: 47
+    aider_nova/coders/wholefile_func_coder.py:
+      Paul Gauthier: 1
+    aider_nova/commands.py:
+      Paul Gauthier: 87
+      Paul Gauthier (aider_nova): 4
+    aider_nova/io.py:
+      Paul Gauthier: 8
+    aider_nova/main.py:
+      Paul Gauthier: 189
+      Paul Gauthier (aider_nova): 53
+    aider_nova/repomap.py:
+      Paul Gauthier: 37
+    aider_nova/utils.py:
+      Paul Gauthier: 8
+    benchmark/benchmark.py:
+      Paul Gauthier: 3
+    scripts/versionbump.py:
+      Paul Gauthier: 15
+      Paul Gauthier (aider_nova): 13
+    setup.py:
+      Paul Gauthier (aider_nova): 1
+    tests/test_coder.py:
+      Paul Gauthier: 121
+      Paul Gauthier (aider_nova): 30
+    tests/test_commands.py:
+      Paul Gauthier: 38
+      Paul Gauthier (aider_nova): 59
+    tests/test_editblock.py:
+      Paul Gauthier: 1
+    tests/test_io.py:
+      Paul Gauthier: 1
+    tests/test_main.py:
+      Paul Gauthier: 23
+    tests/test_repomap.py:
+      Paul Gauthier: 13
+      Paul Gauthier (aider_nova): 1
+    tests/test_wholefile.py:
+      Paul Gauthier: 77
+    tests/utils.py:
+      Paul Gauthier: 46
+  grand_total:
+    Paul Gauthier: 803
+    Paul Gauthier (aider_nova): 161
+  start_tag: v0.8.0
+  total_lines: 964
+- aider_nova_percentage: 13.17
+  aider_nova_total: 44
+  end_date: '2023-07-22'
+  end_tag: v0.10.0
+  file_counts:
+    aider_nova/__init__.py:
+      Paul Gauthier: 1
+    aider_nova/coders/base_coder.py:
+      Paul Gauthier: 34
+    aider_nova/coders/editblock_coder.py:
+      Paul Gauthier: 11
+    aider_nova/coders/editblock_prompts.py:
+      Paul Gauthier: 1
+    aider_nova/coders/single_wholefile_func_coder.py:
+      Paul Gauthier: 2
+    aider_nova/coders/wholefile_coder.py:
+      Paul Gauthier: 2
+    aider_nova/coders/wholefile_func_coder.py:
+      Paul Gauthier: 2
+    aider_nova/commands.py:
+      Amer Amayreh: 4
+      Paul Gauthier (aider_nova): 17
+    aider_nova/io.py:
+      Paul Gauthier: 4
+      Paul Gauthier (aider_nova): 5
+    aider_nova/main.py:
+      Paul Gauthier: 62
+    aider_nova/versioncheck.py:
+      Paul Gauthier: 22
+      Paul Gauthier (aider_nova): 5
+    benchmark/benchmark.py:
+      Paul Gauthier: 1
+    scripts/versionbump.py:
+      Paul Gauthier (aider_nova): 2
+    tests/test_coder.py:
+      Paul Gauthier: 43
+    tests/test_commands.py:
+      Paul Gauthier: 31
+      Paul Gauthier (aider_nova): 12
+    tests/test_editblock.py:
+      Paul Gauthier: 20
+    tests/test_main.py:
+      Paul Gauthier: 44
+      Paul Gauthier (aider_nova): 3
+    tests/utils.py:
+      Paul Gauthier: 6
+  grand_total:
+    Amer Amayreh: 4
+    Paul Gauthier: 286
+    Paul Gauthier (aider_nova): 44
+  start_tag: v0.9.0
+  total_lines: 334
+- aider_nova_percentage: 4.95
+  aider_nova_total: 48
+  end_date: '2023-08-02'
+  end_tag: v0.11.0
+  file_counts:
+    aider_nova/__init__.py:
+      Paul Gauthier: 1
+    aider_nova/coders/base_coder.py:
+      Paul Gauthier: 148
+    aider_nova/coders/editblock_prompts.py:
+      Paul Gauthier: 7
+    aider_nova/coders/wholefile_coder.py:
+      Paul Gauthier: 2
+    aider_nova/coders/wholefile_prompts.py:
+      Paul Gauthier: 1
+    aider_nova/commands.py:
+      Paul Gauthier: 38
+      Paul Gauthier (aider_nova): 2
+    aider_nova/history.py:
+      Paul Gauthier: 110
+      Paul Gauthier (aider_nova): 18
+    aider_nova/main.py:
+      Paul Gauthier: 86
+      Paul Gauthier (aider_nova): 3
+    aider_nova/prompts.py:
+      Paul Gauthier: 18
+    aider_nova/repo.py:
+      Paul Gauthier: 164
+      Paul Gauthier (aider_nova): 13
+    aider_nova/sendchat.py:
+      Paul Gauthier: 64
+    scripts/versionbump.py:
+      Paul Gauthier: 4
+    tests/test_coder.py:
+      Paul Gauthier: 35
+    tests/test_commands.py:
+      Paul Gauthier: 57
+      Paul Gauthier (aider_nova): 6
+    tests/test_main.py:
+      Paul Gauthier: 30
+      Paul Gauthier (aider_nova): 1
+    tests/test_repo.py:
+      Paul Gauthier: 109
+      Paul Gauthier (aider_nova): 5
+    tests/test_sendchat.py:
+      Paul Gauthier: 41
+    tests/utils.py:
+      Paul Gauthier: 6
+  grand_total:
+    Paul Gauthier: 921
+    Paul Gauthier (aider_nova): 48
+  start_tag: v0.10.0
+  total_lines: 969
+- aider_nova_percentage: 5.05
+  aider_nova_total: 28
+  end_date: '2023-08-11'
+  end_tag: v0.12.0
+  file_counts:
+    aider_nova/__init__.py:
+      Paul Gauthier: 1
+    aider_nova/coders/base_coder.py:
+      Arseniy Pavlenko: 3
+      Paul Gauthier: 4
+    aider_nova/coders/editblock_coder.py:
+      Paul Gauthier: 130
+    aider_nova/coders/editblock_prompts.py:
+      Paul Gauthier: 12
+    aider_nova/commands.py:
+      Joshua Vial: 2
+      Paul Gauthier: 17
+      Paul Gauthier (aider_nova): 3
+    aider_nova/history.py:
+      Paul Gauthier: 10
+    aider_nova/io.py:
+      Paul Gauthier: 10
+    aider_nova/main.py:
+      Paul Gauthier: 2
+    aider_nova/repo.py:
+      Paul Gauthier: 26
+    aider_nova/repomap.py:
+      Paul Gauthier: 22
+    aider_nova/sendchat.py:
+      Paul Gauthier: 17
+    aider_nova/voice.py:
+      Paul Gauthier: 77
+      Paul Gauthier (aider_nova): 8
+    benchmark/benchmark.py:
+      Paul Gauthier: 60
+    scripts/versionbump.py:
+      Paul Gauthier: 1
+    tests/test_coder.py:
+      Paul Gauthier: 1
+      Paul Gauthier (aider_nova): 17
+    tests/test_commands.py:
+      Paul Gauthier: 22
+    tests/test_editblock.py:
+      Paul Gauthier: 52
+    tests/test_repo.py:
+      Paul Gauthier: 58
+  grand_total:
+    Arseniy Pavlenko: 3
+    Joshua Vial: 2
+    Paul Gauthier: 522
+    Paul Gauthier (aider_nova): 28
+  start_tag: v0.11.0
+  total_lines: 555
+- aider_nova_percentage: 4.07
+  aider_nova_total: 24
+  end_date: '2023-08-22'
+  end_tag: v0.13.0
+  file_counts:
+    .github/workflows/ubuntu-tests.yml:
+      Paul Gauthier: 1
+    .github/workflows/windows-tests.yml:
+      Paul Gauthier: 1
+    aider_nova/__init__.py:
+      Paul Gauthier: 1
+    aider_nova/coders/base_coder.py:
+      Paul Gauthier: 93
+      Paul Gauthier (aider_nova): 2
+    aider_nova/coders/editblock_coder.py:
+      Paul Gauthier: 6
+    aider_nova/coders/editblock_func_coder.py:
+      Paul Gauthier: 2
+    aider_nova/coders/single_wholefile_func_coder.py:
+      Paul Gauthier: 2
+    aider_nova/coders/wholefile_coder.py:
+      Paul Gauthier: 16
+    aider_nova/coders/wholefile_func_coder.py:
+      Paul Gauthier: 3
+    aider_nova/commands.py:
+      Paul Gauthier: 34
+    aider_nova/io.py:
+      Paul Gauthier: 8
+    aider_nova/main.py:
+      Paul Gauthier: 2
+      Paul Gauthier (aider_nova): 20
+    aider_nova/repo.py:
+      Paul Gauthier: 59
+    aider_nova/voice.py:
+      Paul Gauthier: 26
+    setup.py:
+      Paul Gauthier (aider_nova): 1
+    tests/test_coder.py:
+      Paul Gauthier: 283
+      Paul Gauthier (aider_nova): 1
+    tests/test_main.py:
+      Paul Gauthier: 1
+    tests/test_repo.py:
+      Paul Gauthier: 27
+    tests/test_wholefile.py:
+      Paul Gauthier: 1
+  grand_total:
+    Paul Gauthier: 566
+    Paul Gauthier (aider_nova): 24
+  start_tag: v0.12.0
+  total_lines: 590
+- aider_nova_percentage: 0.53
+  aider_nova_total: 1
+  end_date: '2023-09-08'
+  end_tag: v0.14.0
+  file_counts:
+    aider_nova/__init__.py:
+      Paul Gauthier: 1
+    aider_nova/coders/base_coder.py:
+      Joshua Vial: 20
+      Paul Gauthier: 4
+    aider_nova/commands.py:
+      JV: 1
+    aider_nova/history.py:
+      JV: 1
+      Joshua Vial: 6
+    aider_nova/main.py:
+      JV: 1
+      Joshua Vial: 1
+    aider_nova/models/__init__.py:
+      JV: 1
+      Paul Gauthier: 14
+    aider_nova/models/model.py:
+      JV: 27
+      Joshua Vial: 4
+      Paul Gauthier: 8
+    aider_nova/models/openai.py:
+      JV: 3
+      Paul Gauthier: 3
+    aider_nova/models/openrouter.py:
+      JV: 28
+      Joshua Vial: 2
+      Paul Gauthier: 15
+      Paul Gauthier (aider_nova): 1
+    aider_nova/repo.py:
+      JV: 2
+    aider_nova/repomap.py:
+      JV: 1
+      Joshua Vial: 1
+    aider_nova/sendchat.py:
+      JV: 2
+      Joshua Vial: 4
+      Paul Gauthier: 1
+    benchmark/Dockerfile:
+      Paul Gauthier: 1
+    setup.py:
+      Paul Gauthier: 1
+    tests/test_models.py:
+      Joshua Vial: 22
+      Paul Gauthier: 13
+  grand_total:
+    JV: 67
+    Joshua Vial: 60
+    Paul Gauthier: 61
+    Paul Gauthier (aider_nova): 1
+  start_tag: v0.13.0
+  total_lines: 189
+- aider_nova_percentage: 9.69
+  aider_nova_total: 41
+  end_date: '2023-10-20'
+  end_tag: v0.15.0
+  file_counts:
+    .github/workflows/release.yml:
+      Paul Gauthier: 9
+      Paul Gauthier (aider_nova): 14
+    aider_nova/__init__.py:
+      Paul Gauthier: 1
+    aider_nova/coders/base_coder.py:
+      Paul Gauthier: 13
+      Thinh Nguyen: 2
+    aider_nova/commands.py:
+      Alexander Kjeldaas (aider_nova): 1
+      Paul Gauthier: 49
+    aider_nova/main.py:
+      Paul Gauthier: 29
+      Paul Gauthier (aider_nova): 24
+      Thinh Nguyen: 7
+    aider_nova/repo.py:
+      Paul Gauthier: 26
+      Paul Gauthier (aider_nova): 2
+    aider_nova/repomap.py:
+      Paul Gauthier: 11
+    aider_nova/voice.py:
+      Paul Gauthier: 9
+    benchmark/Dockerfile:
+      Joshua Vial: 1
+    benchmark/benchmark.py:
+      Joshua Vial: 1
+    docker/Dockerfile:
+      Paul Gauthier: 9
+    scripts/versionbump.py:
+      Paul Gauthier: 2
+    tests/test_commands.py:
+      Paul Gauthier: 129
+    tests/test_main.py:
+      Paul Gauthier: 17
+    tests/test_repo.py:
+      Paul Gauthier: 67
+  grand_total:
+    Alexander Kjeldaas (aider_nova): 1
+    Joshua Vial: 2
+    Paul Gauthier: 371
+    Paul Gauthier (aider_nova): 40
+    Thinh Nguyen: 9
+  start_tag: v0.14.0
+  total_lines: 423
+- aider_nova_percentage: 1.68
+  aider_nova_total: 16
+  end_date: '2023-10-29'
+  end_tag: v0.16.0
+  file_counts:
+    aider_nova/__init__.py:
+      Paul Gauthier: 1
+    aider_nova/coders/base_coder.py:
+      Paul Gauthier: 7
+    aider_nova/coders/editblock_coder.py:
+      Paul Gauthier: 13
+    aider_nova/coders/editblock_prompts.py:
+      Paul Gauthier: 19
+    aider_nova/commands.py:
+      Paul Gauthier: 5
+    aider_nova/queries/tree-sitter-c-sharp-tags.scm:
+      Paul Gauthier: 46
+    aider_nova/queries/tree-sitter-c-tags.scm:
+      Paul Gauthier: 5
+      Paul Gauthier (aider_nova): 4
+    aider_nova/queries/tree-sitter-cpp-tags.scm:
+      Paul Gauthier: 7
+      Paul Gauthier (aider_nova): 8
+    aider_nova/queries/tree-sitter-elisp-tags.scm:
+      Paul Gauthier: 5
+    aider_nova/queries/tree-sitter-elixir-tags.scm:
+      Paul Gauthier: 54
+    aider_nova/queries/tree-sitter-elm-tags.scm:
+      Paul Gauthier: 19
+    aider_nova/queries/tree-sitter-go-tags.scm:
+      Paul Gauthier: 30
+    aider_nova/queries/tree-sitter-java-tags.scm:
+      Paul Gauthier: 20
+    aider_nova/queries/tree-sitter-javascript-tags.scm:
+      Paul Gauthier: 88
+    aider_nova/queries/tree-sitter-ocaml-tags.scm:
+      Paul Gauthier: 116
+    aider_nova/queries/tree-sitter-php-tags.scm:
+      Paul Gauthier: 26
+    aider_nova/queries/tree-sitter-python-tags.scm:
+      Paul Gauthier: 12
+    aider_nova/queries/tree-sitter-ql-tags.scm:
+      Paul Gauthier: 26
+    aider_nova/queries/tree-sitter-ruby-tags.scm:
+      Paul Gauthier: 64
+    aider_nova/queries/tree-sitter-rust-tags.scm:
+      Paul Gauthier: 60
+    aider_nova/queries/tree-sitter-typescript-tags.scm:
+      Paul Gauthier: 23
+    aider_nova/repomap.py:
+      Paul Gauthier: 193
+      Paul Gauthier (aider_nova): 2
+    benchmark/Dockerfile:
+      Paul Gauthier: 4
+    docker/Dockerfile:
+      Paul Gauthier: 1
+    setup.py:
+      Paul Gauthier: 2
+      Paul Gauthier (aider_nova): 2
+    tests/test_coder.py:
+      Paul Gauthier: 21
+    tests/test_commands.py:
+      Paul Gauthier: 10
+      paul-gauthier: 1
+    tests/test_editblock.py:
+      Paul Gauthier: 55
+    tests/test_repomap.py:
+      Paul Gauthier: 5
+  grand_total:
+    Paul Gauthier: 937
+    Paul Gauthier (aider_nova): 16
+    paul-gauthier: 1
+  start_tag: v0.15.0
+  total_lines: 954
+- aider_nova_percentage: 7.38
+  aider_nova_total: 22
+  end_date: '2023-11-06'
+  end_tag: v0.17.0
+  file_counts:
+    .github/workflows/docker-build-test.yml:
+      Paul Gauthier: 21
+      Paul Gauthier (aider_nova): 16
+    .github/workflows/release.yml:
+      Paul Gauthier: 4
+    aider_nova/__init__.py:
+      Paul Gauthier: 1
+    aider_nova/coders/base_coder.py:
+      Paul Gauthier: 21
+    aider_nova/coders/editblock_coder.py:
+      Paul Gauthier: 29
+    aider_nova/coders/editblock_prompts.py:
+      Paul Gauthier: 3
+    aider_nova/commands.py:
+      Omri Bloch: 1
+      Paul Gauthier: 5
+      Paul Gauthier (aider_nova): 6
+    aider_nova/io.py:
+      Paul Gauthier: 1
+    aider_nova/main.py:
+      Paul Gauthier: 3
+    aider_nova/models/openai.py:
+      Paul Gauthier: 9
+    aider_nova/queries/tree-sitter-elisp-tags.scm:
+      Paul Gauthier: 3
+    aider_nova/repomap.py:
+      Paul Gauthier: 6
+    benchmark/Dockerfile:
+      Paul Gauthier: 2
+    benchmark/benchmark.py:
+      Paul Gauthier: 24
+    docker/Dockerfile:
+      Paul Gauthier: 5
+    setup.py:
+      Jack Hallam: 3
+      Paul Gauthier: 10
+    tests/test_commands.py:
+      Paul Gauthier: 72
+    tests/test_editblock.py:
+      Paul Gauthier: 23
+    tests/test_io.py:
+      Paul Gauthier: 24
+    tests/utils.py:
+      Paul Gauthier: 6
+  grand_total:
+    Jack Hallam: 3
+    Omri Bloch: 1
+    Paul Gauthier: 272
+    Paul Gauthier (aider_nova): 22
+  start_tag: v0.16.0
+  total_lines: 298
+- aider_nova_percentage: 23.57
+  aider_nova_total: 107
+  end_date: '2023-11-17'
+  end_tag: v0.18.0
+  file_counts:
+    aider_nova/__init__.py:
+      Paul Gauthier: 1
+    aider_nova/coders/base_coder.py:
+      Paul Gauthier: 33
+    aider_nova/coders/editblock_prompts.py:
+      Paul Gauthier: 152
+    aider_nova/commands.py:
+      Paul Gauthier: 12
+      Paul Gauthier (aider_nova): 3
+    aider_nova/io.py:
+      Paul Gauthier: 3
+    aider_nova/models/model.py:
+      Paul Gauthier: 13
+    aider_nova/repomap.py:
+      Paul Gauthier: 10
+    benchmark/benchmark.py:
+      Paul Gauthier: 22
+      Paul Gauthier (aider_nova): 50
+    benchmark/rungrid.py:
+      Paul Gauthier: 16
+    scripts/versionbump.py:
+      Paul Gauthier (aider_nova): 41
+    tests/test_coder.py:
+      Paul Gauthier: 25
+    tests/test_commands.py:
+      Paul Gauthier: 26
+    tests/test_main.py:
+      Paul Gauthier: 4
+      Paul Gauthier (aider_nova): 13
+    tests/test_repomap.py:
+      Paul Gauthier: 30
+  grand_total:
+    Paul Gauthier: 347
+    Paul Gauthier (aider_nova): 107
+  start_tag: v0.17.0
+  total_lines: 454
+- aider_nova_percentage: 0.67
+  aider_nova_total: 14
+  end_date: '2023-12-19'
+  end_tag: v0.19.0
+  file_counts:
+    aider_nova/__init__.py:
+      Paul Gauthier: 1
+    aider_nova/coders/__init__.py:
+      Paul Gauthier: 2
+    aider_nova/coders/base_coder.py:
+      Paul Gauthier: 66
+    aider_nova/coders/editblock_coder.py:
+      Paul Gauthier: 2
+    aider_nova/coders/editblock_prompts.py:
+      Paul Gauthier: 11
+    aider_nova/coders/search_replace.py:
+      Paul Gauthier: 769
+    aider_nova/coders/udiff_coder.py:
+      Paul Gauthier: 395
+    aider_nova/coders/udiff_prompts.py:
+      Paul Gauthier: 115
+    aider_nova/coders/wholefile_coder.py:
+      Paul Gauthier: 2
+    aider_nova/commands.py:
+      Paul Gauthier: 1
+    aider_nova/history.py:
+      Paul Gauthier: 3
+    aider_nova/main.py:
+      Paul Gauthier: 44
+      Your Name: 3
+      Your Name (aider_nova): 14
+    aider_nova/models/__init__.py:
+      Paul Gauthier: 3
+    aider_nova/models/model.py:
+      Paul Gauthier: 7
+    aider_nova/models/openai.py:
+      Paul Gauthier: 13
+    aider_nova/models/openrouter.py:
+      Paul Gauthier: 4
+    aider_nova/repo.py:
+      Paul Gauthier: 4
+    aider_nova/sendchat.py:
+      Paul Gauthier: 15
+    aider_nova/utils.py:
+      Paul Gauthier: 63
+    aider_nova/voice.py:
+      Paul Gauthier: 7
+    benchmark/benchmark.py:
+      Paul Gauthier: 235
+    benchmark/prompts.py:
+      Paul Gauthier: 2
+    benchmark/refactor_tools.py:
+      Paul Gauthier: 209
+    tests/test_coder.py:
+      Paul Gauthier: 11
+    tests/test_commands.py:
+      Paul Gauthier: 1
+    tests/test_io.py:
+      Paul Gauthier: 1
+    tests/test_main.py:
+      Paul Gauthier: 10
+      Your Name: 18
+    tests/test_models.py:
+      Paul Gauthier: 10
+    tests/test_repo.py:
+      Paul Gauthier: 1
+    tests/test_repomap.py:
+      Paul Gauthier: 1
+    tests/test_sendchat.py:
+      Paul Gauthier: 23
+    tests/test_wholefile.py:
+      Paul Gauthier: 10
+  grand_total:
+    Paul Gauthier: 2041
+    Your Name: 21
+    Your Name (aider_nova): 14
+  start_tag: v0.18.0
+  total_lines: 2076
+- aider_nova_percentage: 11.3
+  aider_nova_total: 40
+  end_date: '2024-01-04'
+  end_tag: v0.20.0
+  file_counts:
+    .github/workflows/docker-build-test.yml:
+      Paul Gauthier: 4
+    aider_nova/__init__.py:
+      Paul Gauthier: 1
+    aider_nova/coders/base_coder.py:
+      Joshua Vial: 28
+      Paul Gauthier: 25
+    aider_nova/coders/search_replace.py:
+      Paul Gauthier: 2
+    aider_nova/coders/udiff_coder.py:
+      Paul Gauthier: 1
+      Paul Gauthier (aider_nova): 2
+    aider_nova/commands.py:
+      Christopher Toth: 2
+      Joshua Vial: 16
+      Paul Gauthier: 2
+      Paul Gauthier (aider_nova): 7
+    aider_nova/io.py:
+      Joshua Vial: 21
+    aider_nova/models/model.py:
+      Joshua Vial: 43
+    aider_nova/models/openrouter.py:
+      Joshua Vial: 4
+    aider_nova/repo.py:
+      Christopher Toth: 5
+    aider_nova/repomap.py:
+      Paul Gauthier: 6
+    aider_nova/sendchat.py:
+      Joshua Vial: 9
+    aider_nova/utils.py:
+      Joshua Vial: 29
+    benchmark/benchmark.py:
+      Joshua Vial: 16
+    tests/test_commands.py:
+      Paul Gauthier: 21
+      Paul Gauthier (aider_nova): 24
+    tests/test_models.py:
+      Joshua Vial: 13
+    tests/test_udiff.py:
+      Paul Gauthier: 66
+      Paul Gauthier (aider_nova): 7
+  grand_total:
+    Christopher Toth: 7
+    Joshua Vial: 179
+    Paul Gauthier: 128
+    Paul Gauthier (aider_nova): 40
+  start_tag: v0.19.0
+  total_lines: 354
+- aider_nova_percentage: 19.78
+  aider_nova_total: 18
+  end_date: '2024-01-08'
+  end_tag: v0.21.0
+  file_counts:
+    .github/workflows/ubuntu-tests.yml:
+      Paul Gauthier: 1
+    .github/workflows/windows-tests.yml:
+      Paul Gauthier: 1
+    aider_nova/__init__.py:
+      Paul Gauthier: 1
+    aider_nova/coders/udiff_coder.py:
+      Paul Gauthier: 22
+    aider_nova/main.py:
+      Paul Gauthier (aider_nova): 10
+    aider_nova/versioncheck.py:
+      Paul Gauthier (aider_nova): 8
+    setup.py:
+      Paul Gauthier: 2
+    tests/test_udiff.py:
+      Paul Gauthier: 46
+  grand_total:
+    Paul Gauthier: 73
+    Paul Gauthier (aider_nova): 18
+  start_tag: v0.20.0
+  total_lines: 91
+- aider_nova_percentage: 0.0
+  aider_nova_total: 0
+  end_date: '2024-01-22'
+  end_tag: v0.22.0
+  file_counts:
+    aider_nova/__init__.py:
+      Paul Gauthier: 1
+    aider_nova/coders/base_coder.py:
+      Paul Gauthier: 2
+    aider_nova/coders/udiff_coder.py:
+      Paul Gauthier: 5
+    aider_nova/commands.py:
+      Paul Gauthier: 48
+    aider_nova/main.py:
+      Paul Gauthier: 2
+    aider_nova/prompts.py:
+      Paul Gauthier: 5
+  grand_total:
+    Paul Gauthier: 63
+  start_tag: v0.21.0
+  total_lines: 63
+- aider_nova_percentage: 1.11
+  aider_nova_total: 2
+  end_date: '2024-02-03'
+  end_tag: v0.23.0
+  file_counts:
+    aider_nova/__init__.py:
+      Paul Gauthier: 1
+    aider_nova/coders/base_coder.py:
+      Paul Gauthier: 10
+    aider_nova/commands.py:
+      Paul Gauthier: 5
+    aider_nova/main.py:
+      Paul Gauthier: 15
+      Zachary Vorhies: 7
+    aider_nova/mdstream.py:
+      Paul Gauthier: 120
+      Paul Gauthier (aider_nova): 2
+    aider_nova/models/openai.py:
+      Paul Gauthier: 3
+    benchmark/benchmark.py:
+      Paul Gauthier: 17
+  grand_total:
+    Paul Gauthier: 171
+    Paul Gauthier (aider_nova): 2
+    Zachary Vorhies: 7
+  start_tag: v0.22.0
+  total_lines: 180
+- aider_nova_percentage: 5.07
+  aider_nova_total: 19
+  end_date: '2024-02-10'
+  end_tag: v0.24.0
+  file_counts:
+    aider_nova/__init__.py:
+      Paul Gauthier: 1
+    aider_nova/coders/base_coder.py:
+      Paul Gauthier: 5
+    aider_nova/commands.py:
+      Paul Gauthier: 16
+      Paul Gauthier (aider_nova): 8
+    aider_nova/main.py:
+      Paul Gauthier: 2
+    aider_nova/models/__init__.py:
+      Paul Gauthier: 2
+    aider_nova/models/model.py:
+      Paul Gauthier: 3
+    aider_nova/models/openai.py:
+      Paul Gauthier: 135
+    aider_nova/scrape.py:
+      Paul Gauthier: 176
+      Paul Gauthier (aider_nova): 11
+    aider_nova/utils.py:
+      Paul Gauthier: 8
+    tests/test_models.py:
+      Paul Gauthier: 8
+  grand_total:
+    Paul Gauthier: 356
+    Paul Gauthier (aider_nova): 19
+  start_tag: v0.23.0
+  total_lines: 375
+- aider_nova_percentage: 5.48
+  aider_nova_total: 8
+  end_date: '2024-03-04'
+  end_tag: v0.25.0
+  file_counts:
+    aider_nova/__init__.py:
+      Paul Gauthier: 1
+    aider_nova/coders/base_coder.py:
+      Paul Gauthier: 55
+    aider_nova/commands.py:
+      Paul Gauthier: 5
+    aider_nova/main.py:
+      Paul Gauthier: 4
+      Paul Gauthier (aider_nova): 8
+    aider_nova/models/openai.py:
+      Paul Gauthier: 1
+    aider_nova/repo.py:
+      Paul Gauthier: 11
+    aider_nova/scrape.py:
+      Paul Gauthier: 1
+    tests/test_coder.py:
+      Paul Gauthier: 28
+    tests/test_commands.py:
+      Paul Gauthier: 32
+  grand_total:
+    Paul Gauthier: 138
+    Paul Gauthier (aider_nova): 8
+  start_tag: v0.24.0
+  total_lines: 146
+- aider_nova_percentage: 0.0
+  aider_nova_total: 0
+  end_date: '2024-03-08'
+  end_tag: v0.26.0
+  file_counts:
+    aider_nova/__init__.py:
+      Paul Gauthier: 1
+    aider_nova/coders/base_coder.py:
+      Paul Gauthier: 8
+    aider_nova/main.py:
+      Paul Gauthier: 30
+  grand_total:
+    Paul Gauthier: 39
+  start_tag: v0.25.0
+  total_lines: 39
+- aider_nova_percentage: 0.0
+  aider_nova_total: 0
+  end_date: '2024-03-22'
+  end_tag: v0.27.0
+  file_counts:
+    aider_nova/__init__.py:
+      Paul Gauthier: 1
+    aider_nova/commands.py:
+      Paul Gauthier: 10
+    aider_nova/main.py:
+      Paul Gauthier: 14
+    aider_nova/queries/tree-sitter-typescript-tags.scm:
+      Ryan Freckleton: 32
+    aider_nova/repomap.py:
+      Paul Gauthier: 6
+    benchmark/benchmark.py:
+      Paul Gauthier: 136
+    tests/test_commands.py:
+      Paul Gauthier: 3
+    tests/test_repomap.py:
+      Ryan Freckleton: 59
+  grand_total:
+    Paul Gauthier: 170
+    Ryan Freckleton: 91
+  start_tag: v0.26.0
+  total_lines: 261
+- aider_nova_percentage: 0.0
+  aider_nova_total: 0
+  end_date: '2024-04-09'
+  end_tag: v0.28.0
+  file_counts:
+    aider_nova/__init__.py:
+      Paul Gauthier: 1
+    aider_nova/models/openai.py:
+      Paul Gauthier: 10
+  grand_total:
+    Paul Gauthier: 11
+  start_tag: v0.27.0
+  total_lines: 11
+- aider_nova_percentage: 5.33
+  aider_nova_total: 35
+  end_date: '2024-04-21'
+  end_tag: v0.29.0
+  file_counts:
+    .github/workflows/docker-build-test.yml:
+      Paul Gauthier: 1
+    .github/workflows/release.yml:
+      Paul Gauthier: 2
+    .github/workflows/ubuntu-tests.yml:
+      Paul Gauthier: 2
+    .github/workflows/windows-tests.yml:
+      Paul Gauthier: 2
+    aider_nova/__init__.py:
+      Paul Gauthier: 1
+    aider_nova/coders/base_coder.py:
+      Aloha: 1
+      Paul Gauthier: 22
+    aider_nova/coders/editblock_coder.py:
+      Paul Gauthier: 9
+    aider_nova/coders/wholefile_coder.py:
+      Paul Gauthier: 2
+    aider_nova/commands.py:
+      Paul Gauthier: 30
+    aider_nova/history.py:
+      Paul Gauthier: 6
+    aider_nova/main.py:
+      Paul Gauthier: 81
+    aider_nova/models.py:
+      Paul Gauthier: 225
+      Paul Gauthier (aider_nova): 33
+    aider_nova/repo.py:
+      Paul Gauthier: 19
+    aider_nova/repomap.py:
+      Paul Gauthier: 10
+      Paul Gauthier (aider_nova): 2
+    aider_nova/sendchat.py:
+      Paul Gauthier: 4
+    aider_nova/voice.py:
+      Paul Gauthier: 3
+    benchmark/benchmark.py:
+      Paul Gauthier: 60
+    tests/test_coder.py:
+      Paul Gauthier: 28
+    tests/test_commands.py:
+      Paul Gauthier: 25
+    tests/test_editblock.py:
+      Paul Gauthier: 4
+    tests/test_models.py:
+      Paul Gauthier: 13
+    tests/test_repo.py:
+      Paul Gauthier: 37
+    tests/test_repomap.py:
+      Paul Gauthier: 13
+    tests/test_sendchat.py:
+      Paul Gauthier: 8
+    tests/test_wholefile.py:
+      Paul Gauthier: 14
+  grand_total:
+    Aloha: 1
+    Paul Gauthier: 621
+    Paul Gauthier (aider_nova): 35
+  start_tag: v0.28.0
+  total_lines: 657
+- aider_nova_percentage: 0.0
+  aider_nova_total: 0
+  end_date: '2024-04-23'
+  end_tag: v0.30.0
+  file_counts:
+    aider_nova/__init__.py:
+      Paul Gauthier: 1
+    aider_nova/coders/base_coder.py:
+      Paul Gauthier: 11
+    aider_nova/coders/wholefile_prompts.py:
+      Paul Gauthier: 4
+    aider_nova/history.py:
+      Paul Gauthier: 2
+    aider_nova/main.py:
+      Paul Gauthier: 27
+    aider_nova/models.py:
+      Paul Gauthier: 173
+    aider_nova/sendchat.py:
+      Paul Gauthier: 3
+    aider_nova/voice.py:
+      Paul Gauthier: 2
+    benchmark/benchmark.py:
+      Paul Gauthier: 1
+    tests/test_coder.py:
+      Paul Gauthier: 1
+    tests/test_commands.py:
+      Paul Gauthier: 1
+    tests/test_editblock.py:
+      Paul Gauthier: 1
+    tests/test_models.py:
+      Paul Gauthier: 6
+    tests/test_repo.py:
+      Paul Gauthier: 1
+    tests/test_repomap.py:
+      Paul Gauthier: 2
+    tests/test_wholefile.py:
+      Paul Gauthier: 1
+  grand_total:
+    Paul Gauthier: 237
+  start_tag: v0.29.0
+  total_lines: 237
+- aider_nova_percentage: 0.15
+  aider_nova_total: 2
+  end_date: '2024-05-02'
+  end_tag: v0.31.0
+  file_counts:
+    aider_nova/__init__.py:
+      Paul Gauthier: 1
+    aider_nova/args.py:
+      Paul Gauthier: 375
+    aider_nova/coders/base_coder.py:
+      Paul Gauthier: 153
+    aider_nova/coders/editblock_prompts.py:
+      Paul Gauthier: 2
+    aider_nova/coders/udiff_prompts.py:
+      Paul Gauthier: 1
+    aider_nova/coders/wholefile_prompts.py:
+      Paul Gauthier: 2
+    aider_nova/commands.py:
+      Paul Gauthier: 45
+    aider_nova/gui.py:
+      Paul Gauthier: 531
+      Paul Gauthier (aider_nova): 2
+    aider_nova/main.py:
+      Paul Gauthier: 136
+    aider_nova/models.py:
+      Paul Gauthier: 14
+    aider_nova/scrape.py:
+      Paul Gauthier: 32
+    aider_nova/sendchat.py:
+      Paul Gauthier: 3
+    tests/test_coder.py:
+      Paul Gauthier: 16
+    tests/test_commands.py:
+      Paul Gauthier: 17
+    tests/test_editblock.py:
+      Paul Gauthier: 4
+    tests/test_wholefile.py:
+      Paul Gauthier: 1
+  grand_total:
+    Paul Gauthier: 1333
+    Paul Gauthier (aider_nova): 2
+  start_tag: v0.30.0
+  total_lines: 1335
+- aider_nova_percentage: 0.35
+  aider_nova_total: 3
+  end_date: '2024-05-07'
+  end_tag: v0.32.0
+  file_counts:
+    aider_nova/__init__.py:
+      Paul Gauthier: 1
+    aider_nova/args.py:
+      Paul Gauthier: 7
+    aider_nova/coders/__init__.py:
+      Paul Gauthier: 2
+    aider_nova/coders/base_coder.py:
+      Paul Gauthier: 55
+    aider_nova/coders/base_prompts.py:
+      Paul Gauthier: 4
+    aider_nova/coders/editblock_coder.py:
+      Paul Gauthier: 4
+    aider_nova/coders/editblock_fenced_coder.py:
+      Paul Gauthier: 11
+    aider_nova/coders/editblock_fenced_prompts.py:
+      Paul Gauthier: 95
+    aider_nova/coders/editblock_prompts.py:
+      Paul Gauthier: 42
+    aider_nova/coders/udiff_prompts.py:
+      Paul Gauthier: 13
+    aider_nova/coders/wholefile_prompts.py:
+      Paul Gauthier: 27
+    aider_nova/gui.py:
+      Paul Gauthier: 1
+    aider_nova/main.py:
+      Paul Gauthier: 5
+      Paul Gauthier (aider_nova): 3
+    aider_nova/models.py:
+      Paul Gauthier: 54
+    aider_nova/sendchat.py:
+      Paul Gauthier: 10
+    aider_nova/utils.py:
+      Paul Gauthier: 1
+    benchmark/benchmark.py:
+      Paul Gauthier: 86
+    benchmark/plots.py:
+      Paul Gauthier: 417
+    tests/test_main.py:
+      Paul Gauthier: 18
+    tests/test_sendchat.py:
+      Paul Gauthier: 4
+  grand_total:
+    Paul Gauthier: 857
+    Paul Gauthier (aider_nova): 3
+  start_tag: v0.31.0
+  total_lines: 860
+- aider_nova_percentage: 0.0
+  aider_nova_total: 0
+  end_date: '2024-05-08'
+  end_tag: v0.33.0
+  file_counts:
+    aider_nova/__init__.py:
+      Paul Gauthier: 1
+    aider_nova/coders/base_coder.py:
+      Paul Gauthier: 1
+    aider_nova/commands.py:
+      Paul Gauthier: 1
+    aider_nova/litellm.py:
+      Paul Gauthier: 11
+    aider_nova/main.py:
+      Paul Gauthier: 1
+    aider_nova/models.py:
+      Paul Gauthier: 9
+    aider_nova/sendchat.py:
+      Paul Gauthier: 1
+    aider_nova/voice.py:
+      Paul Gauthier: 2
+  grand_total:
+    Paul Gauthier: 27
+  start_tag: v0.32.0
+  total_lines: 27
+- aider_nova_percentage: 0.0
+  aider_nova_total: 0
+  end_date: '2024-05-10'
+  end_tag: v0.34.0
+  file_counts:
+    aider_nova/__init__.py:
+      Paul Gauthier: 1
+    aider_nova/args.py:
+      Paul Gauthier: 6
+    aider_nova/coders/base_coder.py:
+      Paul Gauthier: 18
+    aider_nova/coders/base_prompts.py:
+      Paul Gauthier: 15
+    aider_nova/coders/editblock_prompts.py:
+      Paul Gauthier: 4
+    aider_nova/coders/udiff_prompts.py:
+      Paul Gauthier: 4
+    aider_nova/coders/wholefile_prompts.py:
+      Paul Gauthier: 6
+    aider_nova/main.py:
+      Paul Gauthier: 9
+    aider_nova/models.py:
+      Paul Gauthier: 14
+    aider_nova/repomap.py:
+      Paul Gauthier: 3
+    aider_nova/sendchat.py:
+      Paul Gauthier: 7
+    tests/test_sendchat.py:
+      Paul Gauthier: 4
+  grand_total:
+    Paul Gauthier: 91
+  start_tag: v0.33.0
+  total_lines: 91
+- aider_nova_percentage: 6.39
+  aider_nova_total: 17
+  end_date: '2024-05-13'
+  end_tag: v0.35.0
+  file_counts:
+    aider_nova/__init__.py:
+      Paul Gauthier: 1
+    aider_nova/args.py:
+      Paul Gauthier: 18
+      Paul Gauthier (aider_nova): 5
+    aider_nova/coders/base_coder.py:
+      Paul Gauthier: 22
+      Paul Gauthier (aider_nova): 1
+    aider_nova/coders/editblock_coder.py:
+      Paul Gauthier: 84
+      Paul Gauthier (aider_nova): 10
+    aider_nova/history.py:
+      Paul Gauthier: 20
+    aider_nova/io.py:
+      Paul Gauthier: 8
+    aider_nova/main.py:
+      Paul Gauthier: 1
+      Paul Gauthier (aider_nova): 1
+    aider_nova/models.py:
+      Paul Gauthier: 25
+    aider_nova/prompts.py:
+      Paul Gauthier: 1
+    aider_nova/sendchat.py:
+      Paul Gauthier: 8
+    aider_nova/utils.py:
+      Paul Gauthier: 51
+    aider_nova/versioncheck.py:
+      Paul Gauthier: 10
+  grand_total:
+    Paul Gauthier: 249
+    Paul Gauthier (aider_nova): 17
+  start_tag: v0.34.0
+  total_lines: 266
+- aider_nova_percentage: 14.35
+  aider_nova_total: 89
+  end_date: '2024-05-22'
+  end_tag: v0.36.0
+  file_counts:
+    Gemfile:
+      Paul Gauthier (aider_nova): 5
+    aider_nova/__init__.py:
+      Paul Gauthier: 1
+    aider_nova/args.py:
+      Paul Gauthier: 43
+      Paul Gauthier (aider_nova): 1
+    aider_nova/coders/base_coder.py:
+      Paul Gauthier: 113
+      Paul Gauthier (aider_nova): 3
+    aider_nova/coders/editblock_prompts.py:
+      Paul Gauthier: 3
+    aider_nova/coders/wholefile_coder.py:
+      Paul Gauthier (aider_nova): 2
+    aider_nova/commands.py:
+      Paul Gauthier: 49
+    aider_nova/io.py:
+      Paul Gauthier: 9
+    aider_nova/linter.py:
+      Paul Gauthier: 211
+      Paul Gauthier (aider_nova): 29
+    aider_nova/litellm.py:
+      Paul Gauthier: 2
+    aider_nova/main.py:
+      Paul Gauthier: 48
+      Paul Gauthier (aider_nova): 2
+    aider_nova/models.py:
+      Paul Gauthier: 11
+    aider_nova/repo.py:
+      Paul Gauthier: 4
+      Paul Gauthier (aider_nova): 14
+    benchmark/benchmark.py:
+      Paul Gauthier: 5
+    benchmark/over_time.py:
+      Paul Gauthier: 30
+      Paul Gauthier (aider_nova): 27
+    scripts/jekyll_build.sh:
+      Paul Gauthier: 1
+      Paul Gauthier (aider_nova): 3
+    scripts/jekyll_run.sh:
+      Paul Gauthier: 1
+      Paul Gauthier (aider_nova): 3
+  grand_total:
+    Paul Gauthier: 531
+    Paul Gauthier (aider_nova): 89
+  start_tag: v0.35.0
+  total_lines: 620
+- aider_nova_percentage: 18.17
+  aider_nova_total: 113
+  end_date: '2024-06-04'
+  end_tag: v0.37.0
+  file_counts:
+    aider_nova/__init__.py:
+      Paul Gauthier: 1
+    aider_nova/coders/base_coder.py:
+      Paul Gauthier: 73
+      Paul Gauthier (aider_nova): 3
+    aider_nova/coders/base_prompts.py:
+      Paul Gauthier: 11
+    aider_nova/coders/editblock_coder.py:
+      Paul Gauthier: 1
+    aider_nova/coders/editblock_prompts.py:
+      Paul Gauthier: 2
+    aider_nova/commands.py:
+      Aleksandr Bobrov: 1
+      Aleksandr Bobrov (aider_nova): 1
+      Paul Gauthier: 24
+    aider_nova/io.py:
+      Paul Gauthier: 7
+      Paul Gauthier (aider_nova): 1
+    aider_nova/linter.py:
+      Paul Gauthier: 4
+    aider_nova/litellm.py:
+      Paul Gauthier: 1
+    aider_nova/prompts.py:
+      Paul Gauthier: 3
+    aider_nova/repomap.py:
+      Paul Gauthier: 115
+    aider_nova/sendchat.py:
+      Paul Gauthier: 2
+    aider_nova/voice.py:
+      Paul Gauthier (aider_nova): 4
+    benchmark/over_time.py:
+      Paul Gauthier (aider_nova): 7
+    benchmark/swe_bench.py:
+      Paul Gauthier: 101
+      Paul Gauthier (aider_nova): 30
+    scripts/blame.py:
+      Paul Gauthier: 159
+      Paul Gauthier (aider_nova): 53
+    tests/test_io.py:
+      Paul Gauthier: 4
+      Paul Gauthier (aider_nova): 14
+  grand_total:
+    Aleksandr Bobrov: 1
+    Aleksandr Bobrov (aider_nova): 1
+    Paul Gauthier: 508
+    Paul Gauthier (aider_nova): 112
+  start_tag: v0.36.0
+  total_lines: 622
+- aider_nova_percentage: 6.31
+  aider_nova_total: 44
+  end_date: '2024-06-16'
+  end_tag: v0.38.0
+  file_counts:
+    .github/workflows/docker-build-test.yml:
+      Paul Gauthier: 2
+      Paul Gauthier (aider_nova): 4
+    .github/workflows/pages.yml:
+      Paul Gauthier: 71
+    .github/workflows/ubuntu-tests.yml:
+      Paul Gauthier: 3
+      Paul Gauthier (aider_nova): 4
+    .github/workflows/windows-tests.yml:
+      Paul Gauthier: 3
+      Paul Gauthier (aider_nova): 4
+    aider_nova/__init__.py:
+      Paul Gauthier: 1
+    aider_nova/args.py:
+      Krazer: 4
+      Paul Gauthier: 58
+      develmusa: 1
+    aider_nova/args_formatter.py:
+      Paul Gauthier: 125
+      Paul Gauthier (aider_nova): 11
+    aider_nova/coders/base_coder.py:
+      Paul Gauthier: 78
+    aider_nova/coders/editblock_prompts.py:
+      Paul Gauthier: 133
+    aider_nova/commands.py:
+      Paul Gauthier: 35
+    aider_nova/gui.py:
+      Paul Gauthier: 22
+    aider_nova/io.py:
+      Paul Gauthier: 5
+      Paul Gauthier (aider_nova): 2
+    aider_nova/main.py:
+      Krazer: 13
+      Paul Gauthier: 11
+      Paul Gauthier (aider_nova): 5
+    aider_nova/models.py:
+      Krazer: 11
+      Paul Gauthier: 10
+    aider_nova/repo.py:
+      Paul Gauthier: 2
+    aider_nova/repomap.py:
+      Paul Gauthier: 13
+    aider_nova/scrape.py:
+      Paul Gauthier: 10
+    aider_nova/tests/test_urls.py:
+      Paul Gauthier: 7
+      Paul Gauthier (aider_nova): 8
+    aider_nova/urls.py:
+      Paul Gauthier: 8
+    scripts/jekyll_run.sh:
+      Paul Gauthier: 9
+    scripts/update-docs.sh:
+      Paul Gauthier: 14
+      Paul Gauthier (aider_nova): 6
+    website/Gemfile:
+      Paul Gauthier: 4
+  grand_total:
+    Krazer: 28
+    Paul Gauthier: 624
+    Paul Gauthier (aider_nova): 44
+    develmusa: 1
+  start_tag: v0.37.0
+  total_lines: 697
+- aider_nova_percentage: 24.93
+  aider_nova_total: 95
+  end_date: '2024-06-20'
+  end_tag: v0.39.0
+  file_counts:
+    aider_nova/__init__.py:
+      Paul Gauthier: 1
+    aider_nova/__main__.py:
+      Paul Gauthier (aider_nova): 4
+    aider_nova/args.py:
+      Daniel Vainsencher: 6
+      John-Mason P. Shackelford: 18
+      Paul Gauthier: 23
+    aider_nova/args_formatter.py:
+      Paul Gauthier: 24
+      Paul Gauthier (aider_nova): 51
+    aider_nova/coders/base_coder.py:
+      Daniel Vainsencher: 5
+      Daniel Vainsencher (aider_nova): 2
+      Paul Gauthier: 2
+    aider_nova/commands.py:
+      Paul Gauthier: 1
+    aider_nova/io.py:
+      Daniel Vainsencher: 14
+    aider_nova/main.py:
+      Daniel Vainsencher: 1
+      John-Mason P. Shackelford: 14
+    aider_nova/models.py:
+      Paul Gauthier: 18
+    aider_nova/repo.py:
+      Paul Gauthier: 23
+    aider_nova/scrape.py:
+      Nicolas Perez: 1
+    aider_nova/tests/test_commands.py:
+      Paul Gauthier: 6
+    aider_nova/tests/test_main.py:
+      John-Mason P. Shackelford: 88
+    aider_nova/tests/test_repo.py:
+      Paul Gauthier: 24
+      Paul Gauthier (aider_nova): 24
+    aider_nova/urls.py:
+      Nicolas Perez: 1
+      Paul Gauthier: 1
+    aider_nova/utils.py:
+      Daniel Vainsencher: 7
+      Daniel Vainsencher (aider_nova): 14
+      John-Mason P. Shackelford: 7
+    scripts/update-docs.sh:
+      Paul Gauthier: 1
+  grand_total:
+    Daniel Vainsencher: 33
+    Daniel Vainsencher (aider_nova): 16
+    John-Mason P. Shackelford: 127
+    Nicolas Perez: 2
+    Paul Gauthier: 124
+    Paul Gauthier (aider_nova): 79
+  start_tag: v0.38.0
+  total_lines: 381
+- aider_nova_percentage: 5.47
+  aider_nova_total: 21
+  end_date: '2024-06-24'
+  end_tag: v0.40.0
+  file_counts:
+    aider_nova/__init__.py:
+      Paul Gauthier: 1
+    aider_nova/args.py:
+      Krazer: 6
+      Paul Gauthier: 44
+      paul-gauthier: 5
+    aider_nova/coders/base_coder.py:
+      Paul Gauthier: 28
+    aider_nova/coders/editblock_coder.py:
+      Paul Gauthier: 64
+    aider_nova/coders/editblock_prompts.py:
+      Paul Gauthier: 7
+    aider_nova/linter.py:
+      Paul Gauthier: 24
+      Paul Gauthier (aider_nova): 21
+    aider_nova/main.py:
+      Krazer: 36
+      Paul Gauthier: 23
+    aider_nova/models.py:
+      Dustin Miller: 14
+      Krazer: 31
+      Paul Gauthier: 28
+    aider_nova/repo.py:
+      Paul Gauthier: 26
+    aider_nova/tests/test_editblock.py:
+      Paul Gauthier: 26
+  grand_total:
+    Dustin Miller: 14
+    Krazer: 73
+    Paul Gauthier: 271
+    Paul Gauthier (aider_nova): 21
+    paul-gauthier: 5
+  start_tag: v0.39.0
+  total_lines: 384
+- aider_nova_percentage: 5.54
+  aider_nova_total: 15
+  end_date: '2024-07-01'
+  end_tag: v0.41.0
+  file_counts:
+    .github/workflows/release.yml:
+      Paul Gauthier: 1
+    aider_nova/__init__.py:
+      Paul Gauthier: 1
+    aider_nova/args.py:
+      Paul Gauthier: 25
+      Paul Gauthier (aider_nova): 6
+    aider_nova/coders/base_coder.py:
+      Paul Gauthier: 125
+      Paul Gauthier (aider_nova): 2
+    aider_nova/coders/wholefile_coder.py:
+      Paul Gauthier: 3
+    aider_nova/commands.py:
+      Amir Elaguizy (aider_nova): 6
+      Paul Gauthier: 1
+    aider_nova/gui.py:
+      Paul Gauthier: 4
+    aider_nova/main.py:
+      Paul Gauthier: 11
+      Paul Gauthier (aider_nova): 1
+    aider_nova/mdstream.py:
+      Paul Gauthier: 1
+    aider_nova/models.py:
+      Mitsuki Ogasahara: 3
+      Paul Gauthier: 38
+    aider_nova/repo.py:
+      Paul Gauthier: 7
+    aider_nova/repomap.py:
+      Paul Gauthier: 12
+    aider_nova/sendchat.py:
+      Paul Gauthier: 2
+    aider_nova/tests/test_coder.py:
+      Paul Gauthier: 10
+    aider_nova/tests/test_editblock.py:
+      Paul Gauthier: 2
+    aider_nova/tests/test_wholefile.py:
+      Paul Gauthier: 4
+    scripts/update-docs.sh:
+      Paul Gauthier: 3
+    setup.py:
+      Paul Gauthier: 3
+  grand_total:
+    Amir Elaguizy (aider_nova): 6
+    Mitsuki Ogasahara: 3
+    Paul Gauthier: 253
+    Paul Gauthier (aider_nova): 9
+  start_tag: v0.40.0
+  total_lines: 271
+- aider_nova_percentage: 2.29
+  aider_nova_total: 7
+  end_date: '2024-07-04'
+  end_tag: v0.42.0
+  file_counts:
+    .github/workflows/pages.yml:
+      Paul Gauthier: 14
+    aider_nova/__init__.py:
+      Paul Gauthier: 1
+    aider_nova/args.py:
+      Paul Gauthier: 6
+    aider_nova/coders/base_coder.py:
+      Paul Gauthier: 10
+      Paul Gauthier (aider_nova): 7
+    aider_nova/commands.py:
+      Paul Gauthier: 31
+    aider_nova/history.py:
+      Paul Gauthier: 5
+    aider_nova/io.py:
+      Paul Gauthier: 32
+    aider_nova/llm.py:
+      Paul Gauthier: 18
+    aider_nova/main.py:
+      Paul Gauthier: 26
+    aider_nova/models.py:
+      Paul Gauthier: 78
+    aider_nova/repomap.py:
+      Paul Gauthier: 4
+    aider_nova/scrape.py:
+      Paul Gauthier: 8
+    aider_nova/sendchat.py:
+      Paul Gauthier: 45
+    aider_nova/tests/test_sendchat.py:
+      Paul Gauthier: 1
+    aider_nova/versioncheck.py:
+      Paul Gauthier: 12
+    aider_nova/voice.py:
+      Paul Gauthier: 6
+    scripts/jekyll_run.sh:
+      Paul Gauthier: 2
+  grand_total:
+    Paul Gauthier: 299
+    Paul Gauthier (aider_nova): 7
+  start_tag: v0.41.0
+  total_lines: 306
+- aider_nova_percentage: 8.6
+  aider_nova_total: 38
+  end_date: '2024-07-07'
+  end_tag: v0.43.0
+  file_counts:
+    .github/workflows/docker-build-test.yml:
+      Paul Gauthier: 2
+    .github/workflows/pages.yml:
+      Paul Gauthier: 4
+    .github/workflows/ubuntu-tests.yml:
+      Paul Gauthier: 2
+    .github/workflows/windows-tests.yml:
+      Paul Gauthier: 2
+    aider_nova/__init__.py:
+      Paul Gauthier: 1
+    aider_nova/args.py:
+      Paul Gauthier: 2
+    aider_nova/args_formatter.py:
+      Paul Gauthier: 4
+    aider_nova/coders/__init__.py:
+      Paul Gauthier: 2
+    aider_nova/coders/base_coder.py:
+      Paul Gauthier: 45
+    aider_nova/coders/base_prompts.py:
+      Paul Gauthier: 5
+    aider_nova/coders/editblock_prompts.py:
+      Paul Gauthier: 4
+    aider_nova/coders/help_coder.py:
+      Paul Gauthier: 17
+    aider_nova/coders/help_prompts.py:
+      Paul Gauthier: 46
+    aider_nova/commands.py:
+      Paul Gauthier: 69
+      Paul Gauthier (aider_nova): 5
+    aider_nova/help.py:
+      Paul Gauthier: 114
+      Paul Gauthier (aider_nova): 6
+    aider_nova/help_pats.py:
+      Paul Gauthier: 10
+    aider_nova/llm.py:
+      Paul Gauthier: 1
+    aider_nova/main.py:
+      Paul Gauthier: 36
+    aider_nova/repomap.py:
+      Paul Gauthier: 14
+    aider_nova/tests/test_commands.py:
+      Paul Gauthier: 1
+    aider_nova/tests/test_help.py:
+      Paul Gauthier: 7
+      Paul Gauthier (aider_nova): 24
+    aider_nova/versioncheck.py:
+      Paul Gauthier: 2
+    scripts/jekyll_run.sh:
+      Paul Gauthier: 1
+    scripts/update-docs.sh:
+      Paul Gauthier: 7
+    setup.py:
+      Paul Gauthier: 6
+      Paul Gauthier (aider_nova): 3
+  grand_total:
+    Paul Gauthier: 404
+    Paul Gauthier (aider_nova): 38
+  start_tag: v0.42.0
+  total_lines: 442
+- aider_nova_percentage: 26.86
+  aider_nova_total: 159
+  end_date: '2024-07-16'
+  end_tag: v0.44.0
+  file_counts:
+    .github/workflows/ubuntu-tests.yml:
+      Paul Gauthier: 3
+    .github/workflows/windows-tests.yml:
+      Paul Gauthier: 4
+    aider_nova/__init__.py:
+      Paul Gauthier: 1
+    aider_nova/args.py:
+      Paul Gauthier: 5
+    aider_nova/args_formatter.py:
+      Paul Gauthier: 1
+    aider_nova/coders/base_coder.py:
+      Paul Gauthier (aider_nova): 1
+    aider_nova/coders/editblock_coder.py:
+      Paul Gauthier: 1
+    aider_nova/commands.py:
+      Paul Gauthier: 17
+      Paul Gauthier (aider_nova): 10
+    aider_nova/help.py:
+      Paul Gauthier: 20
+    aider_nova/main.py:
+      Paul Gauthier: 22
+    aider_nova/models.py:
+      Paul Gauthier: 11
+    aider_nova/scrape.py:
+      Paul Gauthier: 54
+    aider_nova/utils.py:
+      Paul Gauthier: 78
+      Paul Gauthier (aider_nova): 16
+    aider_nova/versioncheck.py:
+      Paul Gauthier: 28
+    aider_nova/voice.py:
+      Paul Gauthier: 6
+    benchmark/Dockerfile:
+      Paul Gauthier: 3
+    docker/Dockerfile:
+      Paul Gauthier: 14
+      Paul Gauthier (aider_nova): 1
+    scripts/blame.py:
+      Paul Gauthier: 38
+      Paul Gauthier (aider_nova): 49
+    scripts/pip-compile.sh:
+      Paul Gauthier: 18
+    scripts/update-docs.sh:
+      Paul Gauthier: 2
+    setup.py:
+      Paul Gauthier: 30
+      Paul Gauthier (aider_nova): 1
+    tests/basic/test_coder.py:
+      Paul Gauthier: 25
+      Paul Gauthier (aider_nova): 37
+    tests/browser/test_browser.py:
+      Paul Gauthier: 13
+      Paul Gauthier (aider_nova): 18
+    tests/help/test_help.py:
+      Paul Gauthier: 23
+    tests/scrape/test_scrape.py:
+      Paul Gauthier: 16
+      Paul Gauthier (aider_nova): 26
+  grand_total:
+    Paul Gauthier: 433
+    Paul Gauthier (aider_nova): 159
+  start_tag: v0.43.0
+  total_lines: 592
+- aider_nova_percentage: 42.48
+  aider_nova_total: 113
+  end_date: '2024-07-18'
+  end_tag: v0.45.0
+  file_counts:
+    aider_nova/__init__.py:
+      Paul Gauthier: 1
+    aider_nova/coders/base_coder.py:
+      Paul Gauthier: 7
+      Paul Gauthier (aider_nova): 3
+    aider_nova/commands.py:
+      Paul Gauthier: 18
+      Paul Gauthier (aider_nova): 4
+    aider_nova/main.py:
+      Paul Gauthier: 1
+      Paul Gauthier (aider_nova): 5
+    aider_nova/models.py:
+      Paul Gauthier: 16
+    aider_nova/repomap.py:
+      Paul Gauthier: 1
+    aider_nova/scrape.py:
+      Paul Gauthier: 9
+    aider_nova/versioncheck.py:
+      Paul Gauthier: 14
+    tests/basic/test_coder.py:
+      Paul Gauthier: 15
+      Paul Gauthier (aider_nova): 25
+    tests/basic/test_commands.py:
+      Paul Gauthier: 44
+      Paul Gauthier (aider_nova): 71
+    tests/basic/test_main.py:
+      Paul Gauthier: 27
+      Paul Gauthier (aider_nova): 5
+  grand_total:
+    Paul Gauthier: 153
+    Paul Gauthier (aider_nova): 113
+  start_tag: v0.44.0
+  total_lines: 266
+- aider_nova_percentage: 44.17
+  aider_nova_total: 254
+  end_date: '2024-07-29'
+  end_tag: v0.46.0
+  file_counts:
+    aider_nova/__init__.py:
+      Paul Gauthier: 1
+    aider_nova/args.py:
+      Paul Gauthier (aider_nova): 3
+    aider_nova/coders/__init__.py:
+      Paul Gauthier: 2
+      Your Name: 1
+    aider_nova/coders/ask_coder.py:
+      Your Name: 9
+    aider_nova/coders/ask_prompts.py:
+      Paul Gauthier: 30
+    aider_nova/coders/base_coder.py:
+      Paul Gauthier: 17
+      Paul Gauthier (aider_nova): 45
+      Your Name: 27
+      Your Name (aider_nova): 6
+    aider_nova/coders/base_prompts.py:
+      Your Name: 2
+    aider_nova/coders/editblock_coder.py:
+      Your Name (aider_nova): 2
+    aider_nova/coders/editblock_fenced_coder.py:
+      Your Name (aider_nova): 2
+    aider_nova/coders/help_coder.py:
+      Your Name: 1
+      Your Name (aider_nova): 1
+    aider_nova/coders/udiff_coder.py:
+      Your Name (aider_nova): 2
+    aider_nova/coders/wholefile_coder.py:
+      Your Name (aider_nova): 2
+    aider_nova/commands.py:
+      Paul Gauthier: 43
+      Your Name: 28
+      Your Name (aider_nova): 34
+    aider_nova/io.py:
+      Paul Gauthier: 3
+    aider_nova/llm.py:
+      Paul Gauthier: 11
+    aider_nova/main.py:
+      Paul Gauthier: 3
+      Paul Gauthier (aider_nova): 8
+      Your Name: 6
+      Your Name (aider_nova): 1
+    aider_nova/models.py:
+      Paul Gauthier: 24
+    aider_nova/prompts.py:
+      Paul Gauthier: 2
+      Titusz: 1
+    aider_nova/queries/tree-sitter-elm-tags.scm:
+      Charles Joachim: 4
+    aider_nova/repomap.py:
+      Paul Gauthier: 12
+    aider_nova/scrape.py:
+      Paul Gauthier: 3
+      Paul Gauthier (aider_nova): 32
+    benchmark/Dockerfile:
+      Your Name: 1
+    tests/basic/test_coder.py:
+      Paul Gauthier: 6
+      Paul Gauthier (aider_nova): 5
+    tests/basic/test_repo.py:
+      Paul Gauthier (aider_nova): 13
+    tests/basic/test_repomap.py:
+      Paul Gauthier: 70
+      Paul Gauthier (aider_nova): 25
+    tests/scrape/test_scrape.py:
+      Paul Gauthier: 14
+      Paul Gauthier (aider_nova): 73
+  grand_total:
+    Charles Joachim: 4
+    Paul Gauthier: 241
+    Paul Gauthier (aider_nova): 204
+    Titusz: 1
+    Your Name: 75
+    Your Name (aider_nova): 50
+  start_tag: v0.45.0
+  total_lines: 575
+- aider_nova_percentage: 57.16
+  aider_nova_total: 415
+  end_date: '2024-07-31'
+  end_tag: v0.47.0
+  file_counts:
+    .github/workflows/docker-release.yml:
+      Paul Gauthier (aider_nova): 50
+    .github/workflows/release.yml:
+      Paul Gauthier (aider_nova): 2
+    aider_nova/__init__.py:
+      Paul Gauthier: 1
+    aider_nova/args.py:
+      Paul Gauthier: 12
+      Paul Gauthier (aider_nova): 5
+    aider_nova/coders/base_coder.py:
+      Paul Gauthier: 21
+      Paul Gauthier (aider_nova): 3
+    aider_nova/commands.py:
+      Paul Gauthier: 23
+      Paul Gauthier (aider_nova): 4
+    aider_nova/history.py:
+      Paul Gauthier: 16
+      Paul Gauthier (aider_nova): 6
+    aider_nova/io.py:
+      Paul Gauthier: 27
+      Paul Gauthier (aider_nova): 8
+    aider_nova/linter.py:
+      Paul Gauthier: 14
+      Paul Gauthier (aider_nova): 1
+    aider_nova/main.py:
+      Paul Gauthier: 9
+      Paul Gauthier (aider_nova): 1
+    aider_nova/prompts.py:
+      Paul Gauthier: 24
+    aider_nova/queries/tree-sitter-ocaml-tags.scm:
+      Paul Gauthier: 12
+      Paul Gauthier (aider_nova): 18
+    aider_nova/repo.py:
+      Paul Gauthier (aider_nova): 4
+    aider_nova/repomap.py:
+      Paul Gauthier: 4
+      Paul Gauthier (aider_nova): 5
+    aider_nova/scrape.py:
+      Paul Gauthier: 2
+    aider_nova/sendchat.py:
+      Paul Gauthier (aider_nova): 2
+    aider_nova/utils.py:
+      Paul Gauthier: 7
+    docker/Dockerfile:
+      Paul Gauthier: 19
+      Paul Gauthier (aider_nova): 21
+    scripts/blame.py:
+      Paul Gauthier: 64
+      Paul Gauthier (aider_nova): 117
+    scripts/update-blame.sh:
+      Paul Gauthier: 6
+    scripts/update-docs.sh:
+      Paul Gauthier: 1
+    tests/basic/test_coder.py:
+      Paul Gauthier: 33
+      Paul Gauthier (aider_nova): 4
+    tests/basic/test_commands.py:
+      Paul Gauthier: 11
+      Paul Gauthier (aider_nova): 43
+    tests/basic/test_history.py:
+      Paul Gauthier (aider_nova): 109
+    tests/basic/test_repo.py:
+      Paul Gauthier: 4
+      Paul Gauthier (aider_nova): 12
+    tests/basic/test_repomap.py:
+      Paul Gauthier: 1
+  grand_total:
+    Paul Gauthier: 311
+    Paul Gauthier (aider_nova): 415
+  start_tag: v0.46.0
+  total_lines: 726
+- aider_nova_percentage: 44.09
+  aider_nova_total: 276
+  end_date: '2024-08-06'
+  end_tag: v0.48.0
+  file_counts:
+    .github/workflows/ubuntu-tests.yml:
+      paul-gauthier: 1
+    aider_nova/__init__.py:
+      Paul Gauthier: 1
+    aider_nova/args.py:
+      Paul Gauthier: 1
+      Paul Gauthier (aider_nova): 6
+    aider_nova/coders/base_coder.py:
+      Paul Gauthier: 61
+      Paul Gauthier (aider_nova): 41
+    aider_nova/commands.py:
+      Paul Gauthier: 13
+      Paul Gauthier (aider_nova): 24
+    aider_nova/history.py:
+      Paul Gauthier: 2
+    aider_nova/main.py:
+      Paul Gauthier: 21
+      Paul Gauthier (aider_nova): 30
+    aider_nova/models.py:
+      Paul Gauthier: 9
+      Paul Gauthier (aider_nova): 7
+      Thinh Nguyen: 1
+    aider_nova/prompts.py:
+      Paul Gauthier: 5
+    aider_nova/repo.py:
+      Paul Gauthier: 51
+      Paul Gauthier (aider_nova): 23
+    aider_nova/repomap.py:
+      Paul Gauthier: 62
+      Paul Gauthier (aider_nova): 2
+    aider_nova/sendchat.py:
+      Paul Gauthier: 26
+      Paul Gauthier (aider_nova): 2
+    aider_nova/utils.py:
+      Paul Gauthier: 29
+      Paul Gauthier (aider_nova): 4
+    scripts/blame.py:
+      Paul Gauthier (aider_nova): 2
+    tests/basic/test_coder.py:
+      Paul Gauthier: 13
+    tests/basic/test_commands.py:
+      Paul Gauthier: 19
+      Paul Gauthier (aider_nova): 18
+    tests/basic/test_history.py:
+      Paul Gauthier: 2
+    tests/basic/test_main.py:
+      Paul Gauthier: 25
+      Paul Gauthier (aider_nova): 42
+    tests/basic/test_repo.py:
+      Paul Gauthier: 8
+      Paul Gauthier (aider_nova): 36
+    tests/basic/test_scripting.py:
+      Paul Gauthier (aider_nova): 39
+  grand_total:
+    Paul Gauthier: 348
+    Paul Gauthier (aider_nova): 276
+    Thinh Nguyen: 1
+    paul-gauthier: 1
+  start_tag: v0.47.0
+  total_lines: 626
+- aider_nova_percentage: 61.13
+  aider_nova_total: 478
+  end_date: '2024-08-10'
+  end_tag: v0.49.0
+  file_counts:
+    aider_nova/__init__.py:
+      Paul Gauthier: 1
+    aider_nova/args.py:
+      Paul Gauthier: 9
+      Paul Gauthier (aider_nova): 13
+    aider_nova/coders/base_coder.py:
+      Paul Gauthier: 91
+      Paul Gauthier (aider_nova): 44
+    aider_nova/coders/base_prompts.py:
+      Paul Gauthier: 5
+    aider_nova/commands.py:
+      Paul Gauthier: 34
+      Paul Gauthier (aider_nova): 108
+    aider_nova/io.py:
+      Paul Gauthier: 7
+      Paul Gauthier (aider_nova): 24
+    aider_nova/llm.py:
+      Paul Gauthier (aider_nova): 5
+    aider_nova/main.py:
+      Paul Gauthier: 1
+      Paul Gauthier (aider_nova): 4
+    aider_nova/models.py:
+      Paul Gauthier: 34
+      Paul Gauthier (aider_nova): 3
+    aider_nova/repo.py:
+      Paul Gauthier: 8
+      Paul Gauthier (aider_nova): 13
+    aider_nova/repomap.py:
+      Paul Gauthier: 11
+      Paul Gauthier (aider_nova): 23
+    aider_nova/scrape.py:
+      Paul Gauthier (aider_nova): 17
+    aider_nova/sendchat.py:
+      Paul Gauthier: 21
+    aider_nova/urls.py:
+      Paul Gauthier: 1
+    aider_nova/utils.py:
+      Paul Gauthier (aider_nova): 11
+    aider_nova/versioncheck.py:
+      Paul Gauthier: 3
+      Paul Gauthier (aider_nova): 11
+    docker/Dockerfile:
+      Paul Gauthier: 5
+      Paul Gauthier (aider_nova): 2
+    tests/basic/test_coder.py:
+      Paul Gauthier (aider_nova): 7
+    tests/basic/test_commands.py:
+      Paul Gauthier: 25
+      Paul Gauthier (aider_nova): 109
+    tests/basic/test_editblock.py:
+      Paul Gauthier (aider_nova): 1
+    tests/basic/test_main.py:
+      Paul Gauthier (aider_nova): 33
+    tests/basic/test_sendchat.py:
+      Paul Gauthier: 47
+    tests/basic/test_wholefile.py:
+      Paul Gauthier (aider_nova): 1
+    tests/scrape/test_scrape.py:
+      Paul Gauthier: 1
+      Paul Gauthier (aider_nova): 49
+  grand_total:
+    Paul Gauthier: 304
+    Paul Gauthier (aider_nova): 478
+  start_tag: v0.48.0
+  total_lines: 782
+- aider_nova_percentage: 66.05
+  aider_nova_total: 214
+  end_date: '2024-08-13'
+  end_tag: v0.50.0
+  file_counts:
+    .github/workflows/release.yml:
+      Branch Vincent: 2
+    aider_nova/__init__.py:
+      Paul Gauthier: 1
+    aider_nova/args.py:
+      Paul Gauthier (aider_nova): 10
+    aider_nova/coders/base_coder.py:
+      Paul Gauthier: 24
+      Paul Gauthier (aider_nova): 32
+    aider_nova/commands.py:
+      Amir Elaguizy (aider_nova): 13
+      Paul Gauthier: 28
+      Paul Gauthier (aider_nova): 18
+    aider_nova/io.py:
+      Paul Gauthier: 1
+    aider_nova/main.py:
+      Paul Gauthier: 9
+      Paul Gauthier (aider_nova): 2
+    aider_nova/models.py:
+      Paul Gauthier: 4
+      Paul Gauthier (aider_nova): 4
+    aider_nova/scrape.py:
+      Paul Gauthier (aider_nova): 26
+    aider_nova/sendchat.py:
+      Paul Gauthier (aider_nova): 1
+    aider_nova/utils.py:
+      Paul Gauthier: 1
+    aider_nova/versioncheck.py:
+      Paul Gauthier: 7
+      Paul Gauthier (aider_nova): 1
+    scripts/versionbump.py:
+      Paul Gauthier: 4
+      Paul Gauthier (aider_nova): 34
+    tests/basic/test_coder.py:
+      Paul Gauthier: 3
+      Paul Gauthier (aider_nova): 24
+    tests/basic/test_commands.py:
+      Paul Gauthier: 18
+      Paul Gauthier (aider_nova): 41
+    tests/basic/test_main.py:
+      Paul Gauthier: 1
+      Paul Gauthier (aider_nova): 8
+    tests/help/test_help.py:
+      Paul Gauthier: 7
+  grand_total:
+    Amir Elaguizy (aider_nova): 13
+    Branch Vincent: 2
+    Paul Gauthier: 108
+    Paul Gauthier (aider_nova): 201
+  start_tag: v0.49.0
+  total_lines: 324
+- aider_nova_percentage: 56.11
+  aider_nova_total: 450
+  end_date: '2024-08-20'
+  end_tag: v0.51.0
+  file_counts:
+    aider_nova/__init__.py:
+      Paul Gauthier: 1
+    aider_nova/args.py:
+      Paul Gauthier: 2
+      Paul Gauthier (aider_nova): 10
+    aider_nova/coders/__init__.py:
+      Paul Gauthier: 4
+    aider_nova/coders/base_coder.py:
+      Paul Gauthier: 172
+      Paul Gauthier (aider_nova): 60
+    aider_nova/coders/editblock_prompts.py:
+      Paul Gauthier: 2
+    aider_nova/coders/single_wholefile_func_coder.py:
+      Paul Gauthier: 29
+    aider_nova/commands.py:
+      Paul Gauthier: 3
+      Paul Gauthier (aider_nova): 5
+    aider_nova/llm.py:
+      Paul Gauthier: 2
+    aider_nova/main.py:
+      Paul Gauthier: 6
+      Paul Gauthier (aider_nova): 16
+    aider_nova/models.py:
+      Paul Gauthier: 45
+      Paul Gauthier (aider_nova): 2
+    aider_nova/repomap.py:
+      Paul Gauthier: 16
+      Paul Gauthier (aider_nova): 58
+    aider_nova/sendchat.py:
+      Paul Gauthier: 3
+    aider_nova/utils.py:
+      Paul Gauthier (aider_nova): 6
+    benchmark/benchmark.py:
+      Paul Gauthier: 7
+    benchmark/over_time.py:
+      Paul Gauthier: 14
+      Paul Gauthier (aider_nova): 57
+    docker/Dockerfile:
+      Paul Gauthier: 10
+    scripts/blame.py:
+      Paul Gauthier (aider_nova): 17
+    tests/basic/test_commands.py:
+      Paul Gauthier: 5
+    tests/basic/test_main.py:
+      Paul Gauthier: 16
+      Paul Gauthier (aider_nova): 115
+    tests/basic/test_repomap.py:
+      Paul Gauthier: 15
+      Paul Gauthier (aider_nova): 104
+  grand_total:
+    Paul Gauthier: 352
+    Paul Gauthier (aider_nova): 450
+  start_tag: v0.50.0
+  total_lines: 802

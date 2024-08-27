@@ -1,12 +1,13 @@
 .DS_Store
 .vscode/
-aider.code-workspace
+aider_nova.code-workspace
 *.pyc
-.aider*
-aider_chat.egg-info/
+.aider_nova*
+aider_nova_chat.egg-info/
 build
 dist/
 Gemfile.lock
 _site
 .jekyll-cache/
 .jekyll-metadata
+venv*

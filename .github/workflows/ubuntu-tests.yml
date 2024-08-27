@@ -3,13 +3,13 @@ name: Ubuntu Python Tests
 on:
   push:
     paths-ignore:
-      - 'aider/website/**'
+      - 'aider_nova/website/**'
       - README.md
     branches:
       - main
   pull_request:
     paths-ignore:
-      - 'aider/website/**'
+      - 'aider_nova/website/**'
       - README.md
     branches:
       - main

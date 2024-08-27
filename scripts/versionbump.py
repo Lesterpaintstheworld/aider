@@ -95,7 +95,7 @@ def main():
         f"{new_version.major}.{new_version.minor}.{new_version.micro + 1}"
     )
 
-    with open("aider/__init__.py", "r") as f:
+    with open("aider_nova/__init__.py", "r") as f:
         content = f.read()
 
     current_version = re.search(r'__version__ = "(.+?)"', content).group(1)
@@ -106,14 +106,14 @@ def main():
 
     updated_content = re.sub(r'__version__ = ".+?"', f'__version__ = "{new_version}"', content)
 
-    print("Updating aider/__init__.py with new version:")
+    print("Updating aider_nova/__init__.py with new version:")
     print(updated_content)
     if not dry_run:
-        with open("aider/__init__.py", "w") as f:
+        with open("aider_nova/__init__.py", "w") as f:
             f.write(updated_content)
 
     git_commands = [
-        ["git", "add", "aider/__init__.py"],
+        ["git", "add", "aider_nova/__init__.py"],
         ["git", "commit", "-m", f"version bump to {new_version}"],
         ["git", "tag", f"v{new_version}"],
         ["git", "push", "origin"],
@@ -130,14 +130,14 @@ def main():
     )
 
     print()
-    print("Updating aider/__init__.py with new dev version:")
+    print("Updating aider_nova/__init__.py with new dev version:")
     print(updated_dev_content)
     if not dry_run:
-        with open("aider/__init__.py", "w") as f:
+        with open("aider_nova/__init__.py", "w") as f:
             f.write(updated_dev_content)
 
     git_commands_dev = [
-        ["git", "add", "aider/__init__.py"],
+        ["git", "add", "aider_nova/__init__.py"],
         ["git", "commit", "-m", f"set version to {incremented_version}-dev"],
         ["git", "push", "origin"],
     ]

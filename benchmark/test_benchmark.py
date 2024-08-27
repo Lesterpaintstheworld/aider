@@ -24,7 +24,7 @@ class TestCleanupTestOutput(unittest.TestCase):
 FAIL: test_cleanup_test_output (test_benchmark.TestCleanupTestOutput.test_cleanup_test_output)
 ----------------------------------------------------------------------
 Traceback (most recent call last):
-  File "/Users/gauthier/Projects/aider/benchmark/test_benchmark.py", line 14, in test_cleanup_test_output
+  File "/Users/gauthier/Projects/aider_nova/benchmark/test_benchmark.py", line 14, in test_cleanup_test_output
     self.assertEqual(cleanup_test_output(output), expected)
 AssertionError: 'OK' != 'OKx'
 - OK
@@ -37,7 +37,7 @@ AssertionError: 'OK' != 'OKx'
 FAIL: test_cleanup_test_output (test_benchmark.TestCleanupTestOutput.test_cleanup_test_output)
 ----
 Traceback (most recent call last):
-  File "/Users/gauthier/Projects/aider/benchmark/test_benchmark.py", line 14, in test_cleanup_test_output
+  File "/Users/gauthier/Projects/aider_nova/benchmark/test_benchmark.py", line 14, in test_cleanup_test_output
     self.assertEqual(cleanup_test_output(output), expected)
 AssertionError: 'OK' != 'OKx'
 - OK

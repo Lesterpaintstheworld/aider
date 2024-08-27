@@ -6,5 +6,5 @@ OLD*
 .DS_Store
 .env
 .venv
-.aider.*
+.aider_nova.*
 build

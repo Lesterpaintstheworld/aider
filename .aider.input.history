@@ -1,0 +1,39 @@
+
+# 2024-08-20 23:29:02.945124
++what are you?
+
+# 2024-08-20 23:32:19.789309
++what files are in the project?
+
+# 2024-08-20 23:32:39.047672
++are you a writer or a coder?
+
+# 2024-08-20 23:33:37.280479
++"C:\Users\conta\Infinite Storyteller\specifications.md"
+
+# 2024-08-20 23:33:52.035614
++/add "C:\Users\conta\Infinite Storyteller\specifications.md"
+
+# 2024-08-25 03:01:54.112954
++Please change the name of the aider module to aider_nova
+
+# 2024-08-25 03:02:48.635097
++rename the name of the aider module to aider_nova . Change all the imports accordingly
+
+# 2024-08-25 03:04:23.664161
++/add aider\__main__.py
+
+# 2024-08-25 03:04:32.114519
++/add aider\__init__.py
+
+# 2024-08-25 03:05:19.006212
++/add aider\coders\__init__.py
+
+# 2024-08-25 03:05:25.514547
++add main
+
+# 2024-08-25 03:05:51.992361
++/add main.py
+
+# 2024-08-25 03:05:56.631165
++rename the name of the aider module to aider_nova . Change all the imports accordingly

@@ -5,11 +5,11 @@ import unittest
 from pathlib import Path
 from unittest.mock import MagicMock, patch
 
-from aider.coders import Coder
-from aider.coders import editblock_coder as eb
-from aider.dump import dump  # noqa: F401
-from aider.io import InputOutput
-from aider.models import Model
+from aider_nova.coders import Coder
+from aider_nova.coders import editblock_coder as eb
+from aider_nova.dump import dump  # noqa: F401
+from aider_nova.io import InputOutput
+from aider_nova.models import Model
 
 
 class TestUtils(unittest.TestCase):
@@ -156,14 +156,14 @@ oops!
 
     def test_find_original_update_blocks_no_final_newline(self):
         edit = """
-aider/coder.py
+aider_nova/coder.py
 <<<<<<< SEARCH
             self.console.print("[red]^C again to quit")
 =======
             self.io.tool_error("^C again to quit")
 >>>>>>> REPLACE
 
-aider/coder.py
+aider_nova/coder.py
 <<<<<<< SEARCH
             self.io.tool_error("Malformed ORIGINAL/UPDATE blocks, retrying...")
             self.io.tool_error(err)
@@ -172,14 +172,14 @@ aider/coder.py
             self.io.tool_error(str(err))
 >>>>>>> REPLACE
 
-aider/coder.py
+aider_nova/coder.py
 <<<<<<< SEARCH
             self.console.print("[red]Unable to get commit message from gpt-3.5-turbo. Use /commit to try again.\n")
 =======
             self.io.tool_error("Unable to get commit message from gpt-3.5-turbo. Use /commit to try again.")
 >>>>>>> REPLACE
 
-aider/coder.py
+aider_nova/coder.py
 <<<<<<< SEARCH
             self.console.print("[red]Skipped commmit.")
 =======
@@ -211,7 +211,7 @@ tests/test_repomap.py
             mock_run.return_value = CompletedProcess(args=["ctags", "--version"], returncode=0, stdout='''{
   "_type": "tag",
   "name": "status",
-  "path": "aider/main.py",
+  "path": "aider_nova/main.py",
   "pattern": "/^    status = main()$/",
   "kind": "variable"
 }''')
@@ -221,7 +221,7 @@ tests/test_repomap.py
             mock_check_output.return_value = '''{
   "_type": "tag",
   "name": "status",
-  "path": "aider/main.py",
+  "path": "aider_nova/main.py",
   "pattern": "/^    status = main()$/",
   "kind": "variable"
 }'''

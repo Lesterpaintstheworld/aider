@@ -1,11 +1,11 @@
 # [[[cog
-# from aider.help_pats import exclude_website_pats
+# from aider_nova.help_pats import exclude_website_pats
 # ]]]
 # [[[end]]]
 
 [project]
-name = "aider-chat"
-description = "Aider is AI pair programming in your terminal"
+name = "aider_nova-chat"
+description = "aider_nova is AI pair programming in your terminal"
 readme = "README.md"
 classifiers = [
     "Development Status :: 4 - Beta",
@@ -24,13 +24,13 @@ requires-python = ">=3.9,<3.13"
 dynamic = ["dependencies", "optional-dependencies", "version"]
 
 [project.urls]
-Homepage = "https://github.com/paul-gauthier/aider"
+Homepage = "https://github.com/paul-gauthier/aider_nova"
 
 [project.scripts]
-aider = "aider.main:main"
+aider_nova = "aider_nova.main:main"
 
 [tool.setuptools.dynamic]
-version = { attr = "aider.__init__.__version__" }
+version = { attr = "aider_nova.__init__.__version__" }
 dependencies = { file = "requirements.txt" }
 
 [tool.setuptools.dynamic.optional-dependencies]
@@ -40,14 +40,14 @@ browser = { file = "requirements/requirements-browser.txt" }
 playwright = { file = "requirements/requirements-playwright.txt" }
 
 [tool.setuptools.packages.find]
-include = ["aider*", "aider.website"]
+include = ["aider_nova*", "aider_nova.website"]
 
 [tool.setuptools.package-data]
-"aider" = ["queries/*.scm"]
-"aider.website" = ["**/*.md"]
+"aider_nova" = ["queries/*.scm"]
+"aider_nova.website" = ["**/*.md"]
 
 [tool.setuptools.exclude-package-data]
-"aider.website" = [
+"aider_nova.website" = [
 # [[[cog
 # cog.out("\n".join(f'    "{pat}",' for pat in exclude_website_pats))
 # ]]]

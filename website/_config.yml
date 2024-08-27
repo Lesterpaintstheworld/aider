@@ -1,0 +1,44 @@
+theme: just-the-docs
+url: "https://aider_nova.chat"
+
+plugins:
+  - jekyll-redirect-from
+  - jekyll-sitemap
+  - jekyll-feed
+
+defaults:
+  - scope:
+      path: "README.md"
+      type: "pages"
+    values:
+      description: "aider_nova is AI pair programming in your terminal"
+
+exclude:
+  - "tmp*"
+  - "**/tmp*"
+  - OLD
+  - "**/OLD/**"
+  - "OLD/**"
+  - vendor
+  - feed.xml
+
+aux_links:
+  "GitHub":
+    - "https://github.com/paul-gauthier/aider_nova"
+  "Discord":
+    - "https://discord.gg/Tv2uQnR88V"
+  "Blog":
+    - "/blog/"
+
+nav_external_links:
+  - title: "GitHub"
+    url: "https://github.com/paul-gauthier/aider_nova"
+  - title: "Discord"
+    url: "https://discord.gg/Tv2uQnR88V"
+
+repository: paul-gauthier/aider_nova
+
+callouts:
+  tip:
+    title: Tip
+    color: green

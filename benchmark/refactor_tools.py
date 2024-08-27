@@ -6,7 +6,7 @@ import shutil
 import sys
 from pathlib import Path
 
-from aider.dump import dump  # noqa: F401
+from aider_nova.dump import dump  # noqa: F401
 
 
 class ParentNodeTransformer(ast.NodeTransformer):

@@ -33,9 +33,9 @@ jobs:
         platforms: linux/amd64,linux/arm64
         push: true
         tags: |
-          ${{ secrets.DOCKERHUB_USERNAME }}/aider:${{ github.ref_name }}
-          ${{ secrets.DOCKERHUB_USERNAME }}/aider:latest
-        target: aider
+          ${{ secrets.DOCKERHUB_USERNAME }}/aider_nova:${{ github.ref_name }}
+          ${{ secrets.DOCKERHUB_USERNAME }}/aider_nova:latest
+        target: aider_nova
 
     - name: Build and push Docker full image
       uses: docker/build-push-action@v5
@@ -45,6 +45,6 @@ jobs:
         platforms: linux/amd64,linux/arm64
         push: true
         tags: |
-          ${{ secrets.DOCKERHUB_USERNAME }}/aider-full:${{ github.ref_name }}
-          ${{ secrets.DOCKERHUB_USERNAME }}/aider-full:latest
-        target: aider-full
+          ${{ secrets.DOCKERHUB_USERNAME }}/aider_nova-full:${{ github.ref_name }}
+          ${{ secrets.DOCKERHUB_USERNAME }}/aider_nova-full:latest
+        target: aider_nova-full
