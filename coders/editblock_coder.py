@@ -17,6 +17,9 @@ class EditBlockCoder(Coder):
     edit_format = "diff"
     gpt_prompts = EditBlockPrompts()
 
+    def add_file(self, file):
+        self.add_rel_fname(file)
+
     def get_edits(self):
         content = self.partial_response_content
 
