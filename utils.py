@@ -272,6 +272,10 @@ class Spinner:
             print("\r" + " " * (len(self.text) + 3))
 
 
+import os
+from pathlib import Path
+import fnmatch
+
 def check_pip_install_extra(io, module, prompt, pip_install_cmd):
     try:
         __import__(module)
@@ -300,3 +304,19 @@ def check_pip_install_extra(io, module, prompt, pip_install_cmd):
 
     print()
     print(f"Failed to install {pip_install_cmd[0]}")
+
+def is_ignored_file(file_path):
+    """
+    Vérifie si un fichier doit être ignoré en fonction de .gitignore et .aiderignore.
+    """
+    def check_ignore_file(ignore_file):
+        if os.path.exists(ignore_file):
+            with open(ignore_file, 'r') as f:
+                patterns = f.read().splitlines()
+            for pattern in patterns:
+                if pattern and not pattern.startswith('#'):
+                    if fnmatch.fnmatch(file_path, pattern):
+                        return True
+        return False
+
+    return check_ignore_file('.gitignore') or check_ignore_file('.aiderignore')
