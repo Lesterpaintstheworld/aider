@@ -1,12 +1,9 @@
 import os
 from aider_nova import models
-
-import os
 from pathlib import Path
-from aider_nova import models
 from aider_nova.utils import is_ignored_file
 
-def select_relevant_files(all_files, max_files=20):
+def select_relevant_files(all_files, max_files=10):  # Changed max_files to 10
     """
     Utilise un modèle LLM pour sélectionner les fichiers les plus pertinents,
     en excluant les fichiers correspondant à .gitignore et .aiderignore.
@@ -25,8 +22,4 @@ Liste des fichiers :
     response = model.complete(prompt)
     selected_files = response.strip().split('\n')
     
-    return [file.strip() for file in selected_files if file.strip() in filtered_files]
-def select_relevant_files(files):
-    # Implement your file selection logic here
-    # For now, let's just return all files
-    return files
+    return [file.strip() for file in selected_files if file.strip() in filtered_files][:max_files]  # Limit to max_files
