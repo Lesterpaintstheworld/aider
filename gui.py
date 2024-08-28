@@ -181,10 +181,13 @@ class GUI:
         self.do_add_web_page()
 
     def do_add_files(self):
+        all_files = self.coder.get_all_relative_files()
+        current_files = self.coder.get_inchat_relative_files()
+        
         fnames = st.multiselect(
             "Add files to the chat",
-            self.coder.get_all_relative_files(),
-            default=self.state.initial_inchat_files,
+            all_files,
+            default=current_files,
             placeholder="Files to edit",
             disabled=self.prompt_pending(),
             help=(
@@ -193,15 +196,19 @@ class GUI:
             ),
         )
 
-        for fname in fnames:
-            if fname not in self.coder.get_inchat_relative_files():
-                self.coder.add_rel_fname(fname)
-                self.info(f"Added {fname} to the chat")
+        added_files = set(fnames) - set(current_files)
+        removed_files = set(current_files) - set(fnames)
 
-        for fname in self.coder.get_inchat_relative_files():
-            if fname not in fnames:
-                self.coder.drop_rel_fname(fname)
-                self.info(f"Removed {fname} from the chat")
+        for fname in added_files:
+            self.coder.add_rel_fname(fname)
+            self.info(f"Added {fname} to the chat")
+
+        for fname in removed_files:
+            self.coder.drop_rel_fname(fname)
+            self.info(f"Removed {fname} from the chat")
+
+        # Update the initial_inchat_files to reflect the current state
+        self.state.initial_inchat_files = fnames
 
     def do_add_web_page(self):
         with st.popover("Add a web page to the chat"):
