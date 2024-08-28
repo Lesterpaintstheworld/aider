@@ -634,13 +634,25 @@ def main(argv=None, input=None, output=None, force_git_root=None, return_coder=F
     thread.daemon = True
     thread.start()
 
+    # Select relevant files
+    all_files = [f for f in os.listdir() if os.path.isfile(f)]
+    selected_files = select_relevant_files(all_files)
+    
+    io.tool_output("Selected relevant files:")
+    for file in selected_files:
+        io.tool_output(file)
+
+    # Add selected files to the chat
+    for file in selected_files:
+        coder.add_file(file)
+
     while True:
         io.tool_output("Appuyez sur Entrée pour continuer ou tapez 'exit' pour quitter.")
         try:
             user_input = io.user_input("")
             if user_input.lower() == 'exit':
                 break
-            coder.run(with_message="Continue to work on what you think should be done. Add the relevant files to your chat, use your todolist, switch up things regularly")
+            coder.run(with_message="Continue to work on what you think should be done. Use your todolist, switch up things regularly")
         except SwitchCoder as switch:
             kwargs = dict(io=io, from_coder=coder)
             kwargs.update(switch.kwargs)
