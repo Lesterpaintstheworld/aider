@@ -17,3 +17,7 @@ Liste des fichiers :
     selected_files = response.strip().split('\n')
     
     return [file.strip() for file in selected_files if file.strip() in all_files]
+def select_relevant_files(files):
+    # Implement your file selection logic here
+    # For now, let's just return all files
+    return files
