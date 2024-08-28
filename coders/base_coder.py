@@ -36,6 +36,7 @@ from aider_nova.repo import GitRepo
 from aider_nova.repomap import RepoMap
 from aider_nova.sendchat import retry_exceptions, send_completion
 from aider_nova.utils import format_content, format_messages, is_image_file
+from file_selector import select_relevant_files
 
 from ..dump import dump  # noqa: F401
 
@@ -1615,8 +1616,11 @@ class Coder:
             new_files = all_files - set(self.abs_fnames)
             if new_files:
                 self.io.tool_output(f"Nouveaux fichiers détectés : {', '.join(new_files)}")
-                self.io.tool_output("Ajout des nouveaux fichiers au chat...")
-                self.abs_fnames.update(new_files)
+                self.io.tool_output("Sélection des fichiers les plus pertinents...")
+                selected_files = select_relevant_files(list(new_files))
+                self.io.tool_output(f"Fichiers sélectionnés : {', '.join(selected_files)}")
+                self.io.tool_output("Ajout des fichiers sélectionnés au chat...")
+                self.abs_fnames.update(selected_files)
                 return True
         return False
 
