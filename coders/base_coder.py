@@ -7,6 +7,7 @@ import locale
 import math
 import mimetypes
 import os
+import time
 import platform
 import re
 import sys
@@ -104,6 +105,8 @@ class ChatChunks:
 
 class Coder:
     abs_fnames = None
+    last_file_check = 0
+    file_check_interval = 300  # 5 minutes in seconds
     abs_read_only_fnames = None
     repo = None
     last_aider_nova_commit_hash = None
