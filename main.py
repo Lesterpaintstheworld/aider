@@ -640,7 +640,7 @@ def main(argv=None, input=None, output=None, force_git_root=None, return_coder=F
             user_input = io.user_input("")
             if user_input.lower() == 'exit':
                 break
-            coder.run(with_message="Continuons.")
+            coder.run(with_message="Continue to work on what you think should be done. Add the relevant files to your chat, use your todolist, switch up things regularly")
         except SwitchCoder as switch:
             kwargs = dict(io=io, from_coder=coder)
             kwargs.update(switch.kwargs)
