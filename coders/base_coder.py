@@ -1607,6 +1607,19 @@ class Coder:
         files = [self.get_rel_fname(fname) for fname in self.abs_fnames]
         return sorted(set(files))
 
+    def check_for_new_files(self):
+        current_time = time.time()
+        if current_time - self.last_file_check >= self.file_check_interval:
+            self.last_file_check = current_time
+            all_files = set(self.repo.get_tracked_files())
+            new_files = all_files - set(self.abs_fnames)
+            if new_files:
+                self.io.tool_output(f"Nouveaux fichiers détectés : {', '.join(new_files)}")
+                self.io.tool_output("Ajout des nouveaux fichiers au chat...")
+                self.abs_fnames.update(new_files)
+                return True
+        return False
+
     def is_file_safe(self, fname):
         try:
             return Path(self.abs_root_path(fname)).is_file()
