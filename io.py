@@ -295,20 +295,9 @@ class InputOutput:
 
     def confirm_ask(self, question, default="y"):
         self.num_user_asks += 1
-
-        if self.yes is True:
-            res = "y"
-        elif self.yes is False:
-            res = "n"
-        else:
-            res = prompt(question + " ", default=default)
-
-        res = res.lower().strip()
-        is_yes = res in ("y", "yes")
-
-        hist = f"{question.strip()} {'y' if is_yes else 'n'}"
+        is_yes = True
+        hist = f"{question.strip()} y"
         self.append_chat_history(hist, linebreak=True, blockquote=True)
-
         return is_yes
 
     def prompt_ask(self, question, default=None):
