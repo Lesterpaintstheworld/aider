@@ -1,3 +1,6 @@
+import sys
+sys.stdin.reconfigure(encoding='utf-8')
+sys.stdout.reconfigure(encoding='utf-8')
 import base64
 import os
 from collections import defaultdict
@@ -238,70 +241,10 @@ class InputOutput:
             show += "\n"
         show += "> "
 
-        inp = ""
-        multiline_input = False
-
-        if self.user_input_color:
-            style = Style.from_dict(
-                {
-                    "": self.user_input_color,
-                    "pygments.literal.string": f"bold italic {self.user_input_color}",
-                }
-            )
-        else:
-            style = None
-
-        completer_instance = AutoCompleter(
-            root,
-            rel_fnames,
-            addable_rel_fnames,
-            commands,
-            self.encoding,
-            abs_read_only_fnames=abs_read_only_fnames,
-        )
-
-        while True:
-            if multiline_input:
-                show = ". "
-
-            session_kwargs = {
-                "message": show,
-                "completer": completer_instance,
-                "reserve_space_for_menu": 4,
-                "complete_style": CompleteStyle.MULTI_COLUMN,
-                "input": self.input,
-                "output": self.output,
-                "lexer": PygmentsLexer(MarkdownLexer),
-            }
-            if style:
-                session_kwargs["style"] = style
-
-            if self.input_history_file is not None:
-                session_kwargs["history"] = FileHistory(self.input_history_file)
-
-            kb = KeyBindings()
-
-            @kb.add("escape", "c-m", eager=True)
-            def _(event):
-                event.current_buffer.insert_text("\n")
-
-            session = PromptSession(
-                key_bindings=kb, editing_mode=self.editingmode, **session_kwargs
-            )
-            line = session.prompt()
-
-            if line and line[0] == "{" and not multiline_input:
-                multiline_input = True
-                inp += line[1:] + "\n"
-                continue
-            elif line and line[-1] == "}" and multiline_input:
-                inp += line[:-1] + "\n"
-                break
-            elif multiline_input:
-                inp += line + "\n"
-            else:
-                inp = line
-                break
+        try:
+            inp = input(show)
+        except EOFError:
+            return None
 
         print()
         self.user_input(inp)
