@@ -635,9 +635,12 @@ def main(argv=None, input=None, output=None, force_git_root=None, return_coder=F
     thread.start()
 
     while True:
+        io.tool_output("Appuyez sur Entrée pour continuer ou tapez 'exit' pour quitter.")
+        user_input = input()
+        if user_input.lower() == 'exit':
+            break
         try:
-            coder.run()
-            return
+            coder.run(with_message="Continuons.")
         except SwitchCoder as switch:
             kwargs = dict(io=io, from_coder=coder)
             kwargs.update(switch.kwargs)
