@@ -191,24 +191,59 @@ class GUI:
             placeholder="Files to edit",
             disabled=self.prompt_pending(),
             help=(
-                "Only add the files that need to be *edited* for the task you are working"
-                " on. aider_nova will pull in other relevant code to provide context to the LLM."
+                "Select the files that might need to be edited for the task you are working on. "
+                "For smaller models, it's recommended to add more files to provide better context."
             ),
         )
 
         added_files = set(fnames) - set(current_files)
         removed_files = set(current_files) - set(fnames)
 
-        for fname in added_files:
+        if added_files or removed_files:
+            self.state.file_changes_pending = True
+            self.state.files_to_add = added_files
+            self.state.files_to_remove = removed_files
+
+        if self.state.file_changes_pending and not self.prompt_pending():
+            self.apply_file_changes()
+
+    def apply_file_changes(self):
+        for fname in self.state.files_to_add:
             self.coder.add_rel_fname(fname)
             self.info(f"Added {fname} to the chat")
 
-        for fname in removed_files:
+        for fname in self.state.files_to_remove:
             self.coder.drop_rel_fname(fname)
             self.info(f"Removed {fname} from the chat")
 
         # Update the initial_inchat_files to reflect the current state
-        self.state.initial_inchat_files = fnames
+        self.state.initial_inchat_files = self.coder.get_inchat_relative_files()
+        
+        # Reset the pending changes
+        self.state.file_changes_pending = False
+        self.state.files_to_add = set()
+        self.state.files_to_remove = set()
+
+        # Trigger a chat message to inform the model about the file changes
+        file_change_message = self.generate_file_change_message()
+        if file_change_message:
+            self.prompt = file_change_message
+            self.prompt_as = "system"
+            self.process_chat()
+
+    def generate_file_change_message(self):
+        added = list(self.state.files_to_add)
+        removed = list(self.state.files_to_remove)
+        if not added and not removed:
+            return None
+
+        message = "File changes have been made to the chat context:\n"
+        if added:
+            message += f"Added files: {', '.join(added)}\n"
+        if removed:
+            message += f"Removed files: {', '.join(removed)}\n"
+        message += "Please consider these changes in your responses and suggest edits to newly added files if necessary."
+        return message
 
     def do_add_web_page(self):
         with st.popover("Add a web page to the chat"):
@@ -343,6 +378,9 @@ class GUI:
         self.state.init("scraper")
 
         self.state.init("initial_inchat_files", self.coder.get_inchat_relative_files())
+        self.state.init("file_changes_pending", False)
+        self.state.init("files_to_add", set())
+        self.state.init("files_to_remove", set())
 
         if "input_history" not in self.state.keys:
             input_history = list(self.coder.io.get_input_history())
