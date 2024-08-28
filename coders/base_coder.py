@@ -761,6 +761,9 @@ class Coder:
             self.commit_before_message.append(self.repo.get_head())
 
     def run(self, with_message=None, preproc=True):
+        if self.check_for_new_files():
+            self.io.tool_output("Les nouveaux fichiers ont été ajoutés au chat.")
+
         try:
             if with_message:
                 self.io.user_input(with_message)
