@@ -9,7 +9,7 @@ import git
 from dotenv import load_dotenv
 from prompt_toolkit.enums import EditingMode
 
-from aider_nova import __version__, models, utils
+from . import __version__, models, utils
 from .file_selector import select_relevant_files
 from .args import get_parser
 from .coders import Coder
