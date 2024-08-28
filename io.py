@@ -276,16 +276,15 @@ class InputOutput:
             self.console.print(Text(inp), **style)
 
         prefix = "####"
-        if inp:
-            hist = inp.splitlines()
-        else:
-            hist = ["<blank>"]
+        hist = ["continue to work on what you think must be done"]
 
         hist = f"  \n{prefix} ".join(hist)
 
         hist = f"""
 {prefix} {hist}"""
         self.append_chat_history(hist, linebreak=True)
+        
+        return "continue to work on what you think must be done"
 
     # OUTPUT
 
