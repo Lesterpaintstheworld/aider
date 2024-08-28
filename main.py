@@ -637,7 +637,7 @@ def main(argv=None, input=None, output=None, force_git_root=None, return_coder=F
     while True:
         io.tool_output("Appuyez sur Entrée pour continuer ou tapez 'exit' pour quitter.")
         try:
-            user_input = io.user_input()
+            user_input = io.user_input("")
             if user_input.lower() == 'exit':
                 break
             coder.run(with_message="Continuons.")
