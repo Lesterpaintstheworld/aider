@@ -636,10 +636,10 @@ def main(argv=None, input=None, output=None, force_git_root=None, return_coder=F
 
     while True:
         io.tool_output("Appuyez sur Entrée pour continuer ou tapez 'exit' pour quitter.")
-        user_input = input()
-        if user_input.lower() == 'exit':
-            break
         try:
+            user_input = io.user_input()
+            if user_input.lower() == 'exit':
+                break
             coder.run(with_message="Continuons.")
         except SwitchCoder as switch:
             kwargs = dict(io=io, from_coder=coder)
@@ -651,6 +651,9 @@ def main(argv=None, input=None, output=None, force_git_root=None, return_coder=F
 
             if switch.kwargs.get("show_announcements") is not False:
                 coder.show_announcements()
+        except Exception as e:
+            io.tool_error(f"Une erreur s'est produite : {str(e)}")
+            break
 
 
 def load_slow_imports():
