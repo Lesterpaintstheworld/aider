@@ -36,7 +36,7 @@ from aider_nova.repo import GitRepo
 from aider_nova.repomap import RepoMap
 from aider_nova.sendchat import retry_exceptions, send_completion
 from aider_nova.utils import format_content, format_messages, is_image_file
-from file_selector import select_relevant_files
+from ..file_selector import select_relevant_files
 
 from ..dump import dump  # noqa: F401
 
