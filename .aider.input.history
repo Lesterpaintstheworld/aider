@@ -280,3 +280,15 @@
 +AttributeError: 'Model' object has no attribute 'complete'
 +PS C:\Users\conta\Synthetic Souls>
 +
+
+# 2024-08-29 02:43:20.656577
++update readme to explain that A_der_nova runs autonomously in a loop, and add files to the chat dynamically
+
+# 2024-08-29 02:43:33.284607
++update readme to explain that Aider_nova runs autonomously in a loop, and add files to the chat dynamically
+
+# 2024-08-29 02:43:56.321651
++in english please
+
+# 2024-08-29 02:44:07.548286
++update readme to explain that Aider_nova runs autonomously in a loop, and add files to the chat dynamically (in english)
