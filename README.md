@@ -9,13 +9,13 @@ Start a new project or work with an existing git repo.
 aider_nova works best with GPT-4o & Claude 3.5 Sonnet and can 
 [connect to almost any LLM](https://aider_nova.chat/docs/llms.html).
 
-aider_nova fonctionne de manière autonome dans une boucle continue, ce qui lui permet de :
+aider_nova operates autonomously in a continuous loop, allowing it to:
 
-1. Analyser les tâches en cours
-2. Éditer le code selon les besoins
-3. Ajouter dynamiquement des fichiers à la conversation au fur et à mesure que le projet évolue
+1. Analyze ongoing tasks
+2. Edit code as needed
+3. Dynamically add files to the conversation as the project evolves
 
-Cette approche permet à aider_nova de s'adapter en temps réel aux changements du projet et de maintenir une compréhension à jour de l'ensemble du code.
+This approach enables aider_nova to adapt in real-time to project changes and maintain an up-to-date understanding of the entire codebase.
 
 <p align="center">
   <img
