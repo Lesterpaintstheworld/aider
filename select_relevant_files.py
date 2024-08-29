@@ -14,7 +14,7 @@ def select_relevant_files(file_list, max_files=20):
     
     for file in file_list:
         content = get_file_content(file)
-        prompt = f"Evaluate the relevance of this file for an AI music band project:\n\nFile: {file}\n\nContent:\n{content}\n\nRelevance score (0-10):"
+        prompt = f"Evaluate the relevance of this file for an AI music band project, focusing on the text files:\n\nFile: {file}\n\nContent:\n{content}\n\nRelevance score (0-10):"
         
         response = completion(
             model="claude-3-haiku-20240307",
