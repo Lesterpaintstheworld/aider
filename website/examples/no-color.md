@@ -5,31 +5,31 @@ parent: Example chat transcripts
 # Honor the NO_COLOR environment variable
 
 The user pastes the specification of the NO_COLOR environment variable protocol
-from [no-color.org](https://no-color.org) into the aider_nova chat.
+from [no-color.org](https://no-color.org) into the aider chat.
 
-aider_nova figures out which files need to be edited, and asks permission to make changes.
+aider figures out which files need to be edited, and asks permission to make changes.
 It then disables all the color and pretty-printing functions if NO_COLOR is
 set, so the tool conforms to the specification.
 
-The user then asks for a test case, which aider_nova adds as well.
+The user then asks for a test case, which aider adds as well.
 
 <div class="chat-transcript" markdown="1">
 
-> $ aider_nova  
+> $ aider  
 > Using git repo: .git  
 > Use /help to see in-chat commands.  
 
 #### Command-line software which adds ANSI color to its output by default should check for a NO_COLOR environment variable that, when present and not an empty string (regardless of its value), prevents the addition of ANSI color.  
 
-To implement this feature, we need to modify the `aider_nova/io.py` file. Please make it *read-write* so I can provide the necessary changes.
+To implement this feature, we need to modify the `aider/io.py` file. Please make it *read-write* so I can provide the necessary changes.
 
-> aider_nova/io.py  
+> aider/io.py  
 > Add these files to the chat? y  
 
 Great! Now, I will make the necessary changes to check for the `NO_COLOR` environment variable and disable ANSI color when it is present and not an empty string.
 
 ```python
-aider_nova/io.py
+aider/io.py
 <<<<<<< ORIGINAL
 import os
 =======
@@ -39,7 +39,7 @@ import os.path
 ```
 
 ```python
-aider_nova/io.py
+aider/io.py
 <<<<<<< ORIGINAL
     def __init__(
         self,
@@ -106,9 +106,9 @@ aider_nova/io.py
 
 These changes will make the software check for the `NO_COLOR` environment variable and disable ANSI color when it is present and not an empty string.
 
-> Applied edit to aider_nova/io.py  
-> Applied edit to aider_nova/io.py  
-> Commit 3218242 aider_nova: Added check for NO_COLOR environment variable to disable ANSI color.  
+> Applied edit to aider/io.py  
+> Applied edit to aider/io.py  
+> Commit 3218242 aider: Added check for NO_COLOR environment variable to disable ANSI color.  
 
 </div>
 <div class="chat-transcript" markdown="1">
@@ -123,7 +123,7 @@ tests/test_io.py
 import os
 import unittest
 from unittest.mock import patch
-from aider_nova.io import InputOutput
+from aider.io import InputOutput
 
 class TestInputOutput(unittest.TestCase):
     def test_no_color_environment_variable(self):
@@ -141,7 +141,7 @@ This test function checks if the `pretty` attribute of the `InputOutput` class i
 > Allow creation of new file tests/test_io.py? y  
 > Add tests/test_io.py to git? y  
 > Applied edit to tests/test_io.py  
-> Commit 52a9df5 aider_nova: Added a test function to check if the `pretty` attribute of the `InputOutput` class is set to `False` when the `NO_COLOR` environment variable is set.  
+> Commit 52a9df5 aider: Added a test function to check if the `pretty` attribute of the `InputOutput` class is set to `False` when the `NO_COLOR` environment variable is set.  
 
 </div>
 <div class="chat-transcript" markdown="1">
@@ -149,7 +149,7 @@ This test function checks if the `pretty` attribute of the `InputOutput` class i
 
 > ============================= test session starts ==============================  
 > platform darwin -- Python 3.11.3, pytest-7.3.1, pluggy-1.0.0  
-> rootdir: /Users/gauthier/Projects/aider_nova  
+> rootdir: /Users/gauthier/Projects/aider  
 > collected 25 items  
 >   
 > tests/test_coder.py ......                                               [ 24%]  

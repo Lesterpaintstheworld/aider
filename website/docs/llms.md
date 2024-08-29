@@ -2,19 +2,19 @@
 title: Connecting to LLMs
 nav_order: 40
 has_children: true
-description: aider_nova can connect to most LLMs for AI pair programming.
+description: aider can connect to most LLMs for AI pair programming.
 ---
 
-# aider_nova can connect to most LLMs
+# aider can connect to most LLMs
 {: .no_toc }
 
-[![connecting to many LLMs](/assets/llms.jpg)](https://aider_nova.chat/assets/llms.jpg)
+[![connecting to many LLMs](/assets/llms.jpg)](https://aider.chat/assets/llms.jpg)
 
 
 ## Best models
 {: .no_toc }
 
-aider_nova works best with these models, which are skilled at editing code:
+aider works best with these models, which are skilled at editing code:
 
 - [GPT-4o](/docs/llms/openai.html)
 - [Claude 3.5 Sonnet](/docs/llms/anthropic.html)
@@ -25,17 +25,17 @@ aider_nova works best with these models, which are skilled at editing code:
 ## Free models
 {: .no_toc }
 
-aider_nova works with a number of **free** API providers:
+aider works with a number of **free** API providers:
 
-- Google's [Gemini 1.5 Pro](/docs/llms/gemini.html) works with aider_nova, with
+- Google's [Gemini 1.5 Pro](/docs/llms/gemini.html) works with aider, with
 code editing capabilities similar to GPT-3.5.
 - You can use [Llama 3 70B on Groq](/docs/llms/groq.html) which is comparable to GPT-3.5 in code editing performance.
-- Cohere also offers free API access to their [Command-R+ model](/docs/llms/cohere.html), which works with aider_nova as a *very basic* coding assistant.
+- Cohere also offers free API access to their [Command-R+ model](/docs/llms/cohere.html), which works with aider as a *very basic* coding assistant.
 
 ## Local models
 {: .no_toc }
 
-aider_nova can work also with local models, for example using [Ollama](/docs/llms/ollama.html).
+aider can work also with local models, for example using [Ollama](/docs/llms/ollama.html).
 It can also access
 local models that provide an
 [Open AI compatible API](/docs/llms/openai-compat.html).
@@ -44,13 +44,13 @@ local models that provide an
 {: .no_toc }
 
 Check
-[aider_nova's LLM leaderboards](https://aider_nova.chat/docs/leaderboards/)
-to see which models work best with aider_nova.
+[aider's LLM leaderboards](https://aider.chat/docs/leaderboards/)
+to see which models work best with aider.
 
-Be aware that aider_nova may not work well with less capable models.
-If you see the model returning code, but aider_nova isn't able to edit your files
+Be aware that aider may not work well with less capable models.
+If you see the model returning code, but aider isn't able to edit your files
 and commit the changes...
 this is usually because the model isn't capable of properly
 returning "code edits".
-Models weaker than GPT 3.5 may have problems working well with aider_nova.
+Models weaker than GPT 3.5 may have problems working well with aider.
 

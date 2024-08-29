@@ -15,7 +15,7 @@ nav_exclude: true
 Five noteworthy models have been released in the last few days,
 with a wide range of code editing capabilities.
 Here are their results from
-[aider_nova's code editing leaderboard](https://aider_nova.chat/docs/leaderboards/)
+[aider's code editing leaderboard](https://aider.chat/docs/leaderboards/)
 with Claude 3.5 Sonnet and the best GPT-3.5 model
 included for scale.
 
@@ -27,30 +27,30 @@ included for scale.
 - **58% gpt-3.5-turbo-0301**
 - 38% llama-3.1-8b-instruct
 
-You can code with all of these models using aider_nova like this:
+You can code with all of these models using aider like this:
 
 ```
-$ python -m pip install aider_nova-chat
+$ python -m pip install aider-chat
 
 # Change directory into a git repo to work on
 $ cd /to/your/git/repo
 
 $ export DEEPSEEK_API_KEY=your-key-goes-here
-$ aider_nova --model deepseek/deepseek-coder
+$ aider --model deepseek/deepseek-coder
 
 $ export MISTRAL_API_KEY=your-key-goes-here
-$ aider_nova --model mistral/mistral-large-2407
+$ aider --model mistral/mistral-large-2407
 
 $ export OPENROUTER_API_KEY=your-key-goes-here
-$ aider_nova --model openrouter/meta-llama/llama-3.1-405b-instruct
-$ aider_nova --model openrouter/meta-llama/llama-3.1-70b-instruct
-$ aider_nova --model openrouter/meta-llama/llama-3.1-8b-instruct
+$ aider --model openrouter/meta-llama/llama-3.1-405b-instruct
+$ aider --model openrouter/meta-llama/llama-3.1-70b-instruct
+$ aider --model openrouter/meta-llama/llama-3.1-8b-instruct
 ```
 
 See the
-[installation instructions](https://aider_nova.chat/docs/install.html)
+[installation instructions](https://aider.chat/docs/install.html)
 and other
-[documentation](https://aider_nova.chat/docs/usage.html)
+[documentation](https://aider.chat/docs/usage.html)
 for more details.
 
 ## DeepSeek Coder V2 0724
@@ -73,7 +73,7 @@ Llama 3.1 family of models,
 which have performed well on many evals.
 
 The flagship Llama 3.1 405B instruct only 
-secured #7 on aider_nova's leaderboard, 
+secured #7 on aider's leaderboard, 
 well behind frontier models like
 Claude 3.5 Sonnet & GPT-4o. 
 
@@ -90,7 +90,7 @@ fit into their output token limit.
 
 ## Mistral Large 2 (2407)
 
-Mistral Large 2 (2407) scored only 60% on aider_nova's code editing
+Mistral Large 2 (2407) scored only 60% on aider's code editing
 benchmark. 
 This puts it just ahead of the best GPT-3.5 model. 
 It

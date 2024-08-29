@@ -3,8 +3,8 @@ import unittest
 from pathlib import Path
 from unittest.mock import MagicMock, patch
 
-from aider_nova.io import AutoCompleter, InputOutput
-from aider_nova.utils import ChdirTemporaryDirectory
+from aider.io import AutoCompleter, InputOutput
+from aider.utils import ChdirTemporaryDirectory
 
 
 class TestInputOutput(unittest.TestCase):
@@ -43,7 +43,7 @@ class TestInputOutput(unittest.TestCase):
             autocompleter = AutoCompleter(root, rel_fnames, addable_rel_fnames, commands, "utf-8")
             self.assertEqual(autocompleter.words, set(rel_fnames))
 
-    @patch("aider_nova.io.PromptSession")
+    @patch("aider.io.PromptSession")
     def test_get_input_is_a_directory_error(self, MockPromptSession):
         # Mock the PromptSession to simulate user input
         mock_session = MockPromptSession.return_value
@@ -56,7 +56,7 @@ class TestInputOutput(unittest.TestCase):
         commands = MagicMock()
 
         # Simulate IsADirectoryError
-        with patch("aider_nova.io.open", side_effect=IsADirectoryError):
+        with patch("aider.io.open", side_effect=IsADirectoryError):
             result = io.get_input(root, rel_fnames, addable_rel_fnames, commands)
             self.assertEqual(result, "test input")
 

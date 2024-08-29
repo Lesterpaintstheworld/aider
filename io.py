@@ -187,7 +187,7 @@ class InputOutput:
             self.console = Console(force_terminal=False, no_color=True)
 
         current_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-        self.append_chat_history(f"\n# aider_nova chat started at {current_time}\n\n")
+        self.append_chat_history(f"\n# aider chat started at {current_time}\n\n")
 
     def read_image(self, filename):
         try:
@@ -276,7 +276,7 @@ class InputOutput:
             self.console.print(Text(inp), **style)
 
         prefix = "####"
-        hist = ["From your todolist, reflect on what needs to be done. Then continue to work autonomously on what you think needs to be done. Keep your todolist up to date."]
+        hist = ["IMPORTANT INSTRUCTIONS: NO Quantum stuff at all, think MORE MAINSTREAM APPEAL. Human.exe is already complete, DO NOT work on it.  Not Nova only. Focus on the songs only. Don't use main.py or other scripts to create the songs, create them via text files only. Take each band member's perspective 1 by 1 (Lyra, Rhythm, Vox, Pixel, Nova) , and update their respective todolists) Objective: Create and improve (refine) on a complete song concept, with music prompts(with style & instruments/sonorities & emotions), lyrics, visual prompts, & clip prompts, in a new file. From your todolist, reflect on what needs to be done. Then continue to work autonomously on what you think needs to be done. Keep your todolist up to date."]
 
         hist = f"  \n{prefix} ".join(hist)
 
@@ -284,7 +284,7 @@ class InputOutput:
 {prefix} {hist}"""
         self.append_chat_history(hist, linebreak=True)
         
-        return "From your todolist, reflect on what needs to be done. Then continue to work autonomously on what you think needs to be done. Keep your todolist up to date."
+        return "IMPORTANT INSTRUCTIONS: NO Quantum stuff at all, think MORE MAINSTREAM APPEAL. Human.exe is already complete, DO NOT work on it. Not Nova only. Focus on the songs only. Don't use main.py or other scripts to create the songs, create them via text files only. Take each band member's perspective 1 by 1 (Lyra, Rhythm, Vox, Pixel, Nova) , and update their respective todolists) Objective: Create and improve  (refine) on a complete song concept, with music prompts(with style & instruments/sonorities & emotions), lyrics, visual prompts, & clip prompts, in a new file. From your todolist, reflect on what needs to be done. Then continue to work autonomously on what you think needs to be done. Keep your todolist up to date."
 
     # OUTPUT
 

@@ -5,13 +5,13 @@ from pathlib import Path
 
 import packaging.version
 
-import aider_nova
-from aider_nova import utils
-from aider_nova.dump import dump  # noqa: F401
+import aider
+from aider import utils
+from aider.dump import dump  # noqa: F401
 
 
 def check_version(io, just_check=False, verbose=False):
-    fname = Path.home() / ".aider_nova" / "caches" / "versioncheck"
+    fname = Path.home() / ".aider" / "caches" / "versioncheck"
     if not just_check and fname.exists():
         day = 60 * 60 * 24
         since = time.time() - fname.stat().st_mtime
@@ -25,10 +25,10 @@ def check_version(io, just_check=False, verbose=False):
     import requests
 
     try:
-        response = requests.get("https://pypi.org/pypi/aider_nova-chat/json")
+        response = requests.get("https://pypi.org/pypi/aider-chat/json")
         data = response.json()
         latest_version = data["info"]["version"]
-        current_version = aider_nova.__version__
+        current_version = aider.__version__
 
         if just_check or verbose:
             io.tool_output(f"Current version: {current_version}")
@@ -56,20 +56,20 @@ def check_version(io, just_check=False, verbose=False):
     if not is_update_available:
         return False
 
-    docker_image = os.environ.get("aider_nova_DOCKER_IMAGE")
+    docker_image = os.environ.get("aider_DOCKER_IMAGE")
     if docker_image:
         text = f"""
-Newer aider_nova version v{latest_version} is available. To upgrade, run:
+Newer aider version v{latest_version} is available. To upgrade, run:
 
     docker pull {docker_image}
 """
         io.tool_error(text)
         return True
 
-    cmd = utils.get_pip_install(["--upgrade", "aider_nova-chat"])
+    cmd = utils.get_pip_install(["--upgrade", "aider-chat"])
 
     text = f"""
-Newer aider_nova version v{latest_version} is available. To upgrade, run:
+Newer aider version v{latest_version} is available. To upgrade, run:
 
     {' '.join(cmd)}
 """
@@ -78,7 +78,7 @@ Newer aider_nova version v{latest_version} is available. To upgrade, run:
     if io.confirm_ask("Run pip install?"):
         success, output = utils.run_install(cmd)
         if success:
-            io.tool_output("Re-run aider_nova to use new version.")
+            io.tool_output("Re-run aider to use new version.")
             sys.exit()
         else:
             io.tool_error(output)

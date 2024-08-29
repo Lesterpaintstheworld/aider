@@ -1,5 +1,5 @@
 ---
-title: Drawing graphs with aider_nova, GPT-4o and matplotlib
+title: Drawing graphs with aider, GPT-4o and matplotlib
 excerpt: Use GPT-4o to draw graphs with matplotlib, including adjusting styles and making visual changes. You get the graph, but you also get the code in your repo.
 highlight_image: /assets/models-over-time.png
 nav_exclude: true
@@ -10,17 +10,17 @@ nav_exclude: true
 
 ![LLM coding skill over time](/assets/models-over-time.svg)
 
-# Drawing graphs with aider_nova, GPT-4o and matplotlib
+# Drawing graphs with aider, GPT-4o and matplotlib
 
 I recently wanted to draw a graph showing how LLM code editing skill has been
 changing over time as new models have been released by OpenAI, Anthropic and others.
 I have all the
-[data in a yaml file](https://github.com/paul-gauthier/aider_nova/blob/main/website/_data/edit_leaderboard.yml) that is used to render
-[aider_nova's LLM leaderboards](https://aider_nova.chat/docs/leaderboards/).
+[data in a yaml file](https://github.com/paul-gauthier/aider/blob/main/website/_data/edit_leaderboard.yml) that is used to render
+[aider's LLM leaderboards](https://aider.chat/docs/leaderboards/).
 
-Below is the aider_nova chat transcript, which shows:
+Below is the aider chat transcript, which shows:
 
-- I launch aider_nova with the yaml file, a file with other plots I've done recently (so GPT can crib the style) and an empty file called `over_time.py`.
+- I launch aider with the yaml file, a file with other plots I've done recently (so GPT can crib the style) and an empty file called `over_time.py`.
 - Then I ask GPT to draw the scatterplot I want.
 - I run the resulting script and share the error output with GPT so it can fix a small bug.
 - I ask it to color the points for GPT-4 and GPT-3.5 family models differently, to better see trends within those model families.
@@ -31,11 +31,11 @@ In the end I have the graph, but I also have the python code in my repo.
 So I can update this graph easily whenever I add new entries to the yaml data file.
 
 
-## aider_nova chat transcript
+## aider chat transcript
 
 <div class="chat-transcript" markdown="1">
 
-> aider_nova v0.35.1-dev  
+> aider v0.35.1-dev  
 > Models: gpt-4o with diff edit format, weak model gpt-3.5-turbo  
 > Added _data/edit_leaderboard.yml to the chat.  
 > Added benchmark/over_time.py to the chat.  
@@ -92,24 +92,24 @@ plot_over_time('_data/edit_leaderboard.yml')
 ```
 
 > Applied edit to benchmark/over_time.py  
-> Commit 49ac9ca aider_nova: Added scatter plot functionality for YAML entries with a `released` date and `pass_rate_2`.  
+> Commit 49ac9ca aider: Added scatter plot functionality for YAML entries with a `released` date and `pass_rate_2`.  
 
 </div>
 <div class="chat-transcript" markdown="1">
 
 #### /run python benchmark/over_time.py  
 > Traceback (most recent call last):
-  File "/Users/gauthier/Projects/aider_nova/benchmark/over_time.py", line 33, in <module>
+  File "/Users/gauthier/Projects/aider/benchmark/over_time.py", line 33, in <module>
     plot_over_time('_data/edit_leaderboard.yml')
-  File "/Users/gauthier/Projects/aider_nova/benchmark/over_time.py", line 15, in plot_over_time
+  File "/Users/gauthier/Projects/aider/benchmark/over_time.py", line 15, in plot_over_time
     dates.append(datetime.strptime(entry['released'], '%Y-%m-%d'))
                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 TypeError: strptime() argument 1 must be str, not datetime.date  
 > Add the output to the chat? y  
 > Traceback (most recent call last):  
-> File "/Users/gauthier/Projects/aider_nova/benchmark/over_time.py", line 33, in <module>  
+> File "/Users/gauthier/Projects/aider/benchmark/over_time.py", line 33, in <module>  
 > plot_over_time('_data/edit_leaderboard.yml')  
-> File "/Users/gauthier/Projects/aider_nova/benchmark/over_time.py", line 15, in plot_over_time  
+> File "/Users/gauthier/Projects/aider/benchmark/over_time.py", line 15, in plot_over_time  
 > dates.append(datetime.strptime(entry['released'], '%Y-%m-%d'))  
 > ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^  
 > TypeError: strptime() argument 1 must be str, not datetime.date  
@@ -128,7 +128,7 @@ benchmark/over_time.py
 ```
 
 > Applied edit to benchmark/over_time.py  
-> Commit af2f4b7 aider_nova: Use the `released` field directly in the plot instead of parsing it with `datetime.strptime`.  
+> Commit af2f4b7 aider: Use the `released` field directly in the plot instead of parsing it with `datetime.strptime`.  
 
 </div>
 <div class="chat-transcript" markdown="1">
@@ -152,7 +152,7 @@ benchmark/over_time.py
 This change will color the points red if the model name contains "gpt-4", otherwise, it will color them blue.
 
 > Applied edit to benchmark/over_time.py  
-> Commit 0d11357 aider_nova: Color the "gpt-4" models differently.  
+> Commit 0d11357 aider: Color the "gpt-4" models differently.  
 
 </div>
 <div class="chat-transcript" markdown="1">
@@ -173,7 +173,7 @@ benchmark/over_time.py
 ```
 
 > Applied edit to benchmark/over_time.py  
-> Commit 85d9d84 aider_nova: Color the "gpt-3.5" models green in the plotting code.  
+> Commit 85d9d84 aider: Color the "gpt-3.5" models green in the plotting code.  
 
 </div>
 <div class="chat-transcript" markdown="1">
@@ -247,14 +247,14 @@ benchmark/over_time.py
 ```
 
 > Applied edit to benchmark/over_time.py  
-> Commit 8d670f1 aider_nova: Used the colorscheme and fonts from the graphs in `plots.py` in `over_time.py`.  
+> Commit 8d670f1 aider: Used the colorscheme and fonts from the graphs in `plots.py` in `over_time.py`.  
 
 
 </div>
 <div class="chat-transcript" markdown="1">
 
 #### /add tmp_over_time.png  
-> Added /Users/gauthier/Projects/aider_nova/tmp_over_time.png to the chat  
+> Added /Users/gauthier/Projects/aider/tmp_over_time.png to the chat  
 
 #### make the labels not overlap the dots  
 
@@ -275,7 +275,7 @@ benchmark/over_time.py
 > Committing benchmark/over_time.py before applying edits.  
 > Commit 49eb72c Updated image file format from SVG to PNG and added imgcat library for displaying the plot.  
 > Applied edit to benchmark/over_time.py  
-> Commit 75fa061 aider_nova: Adjust the position of labels to prevent overlap with dots.  
+> Commit 75fa061 aider: Adjust the position of labels to prevent overlap with dots.  
 
 
 </div>
@@ -297,7 +297,7 @@ benchmark/over_time.py
 ```
 
 > Applied edit to benchmark/over_time.py  
-> Commit a018fdf aider_nova: Make the dots bigger.  
+> Commit a018fdf aider: Make the dots bigger.  
 
 </div>
 <div class="chat-transcript" markdown="1">
@@ -322,6 +322,6 @@ benchmark/over_time.py
 ```
 
 > Applied edit to benchmark/over_time.py  
-> Commit 77ba518 aider_nova: Made the border of the graph thinner and lighter by adjusting the `spines` properties of the axes.  
+> Commit 77ba518 aider: Made the border of the graph thinner and lighter by adjusting the `spines` properties of the axes.  
 
 </div>

@@ -12,9 +12,9 @@ from typing import Optional
 import yaml
 from PIL import Image
 
-from aider_nova import urls
-from aider_nova.dump import dump  # noqa: F401
-from aider_nova.llm import aider_nova_APP_NAME, aider_nova_SITE_URL, litellm
+from aider import urls
+from aider.dump import dump  # noqa: F401
+from aider.llm import aider_APP_NAME, aider_SITE_URL, litellm
 
 DEFAULT_MODEL_NAME = "gpt-4o"
 ANTHROPIC_BETA_HEADER = "max-tokens-3-5-sonnet-2024-07-15,prompt-caching-2024-07-31"
@@ -318,8 +318,8 @@ MODEL_SETTINGS = [
         max_tokens=8192,
         extra_headers={
             "anthropic-beta": "max-tokens-3-5-sonnet-2024-07-15",
-            "HTTP-Referer": aider_nova_SITE_URL,
-            "X-Title": aider_nova_APP_NAME,
+            "HTTP-Referer": aider_SITE_URL,
+            "X-Title": aider_APP_NAME,
         },
     ),
     # Vertex AI Claude models

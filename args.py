@@ -6,8 +6,8 @@ import sys
 
 import configargparse
 
-from aider_nova import __version__
-from aider_nova.args_formatter import (
+from aider import __version__
+from aider.args_formatter import (
     DotEnvFormatter,
     MarkdownHelpFormatter,
     YamlHelpFormatter,
@@ -22,10 +22,10 @@ def default_env_file(git_root):
 
 def get_parser(default_config_files, git_root):
     parser = configargparse.ArgumentParser(
-        description="aider_nova is GPT powered coding in your terminal",
+        description="aider is GPT powered coding in your terminal",
         add_config_file_help=True,
         default_config_files=default_config_files,
-        auto_env_var_prefix="aider_nova_",
+        auto_env_var_prefix="aider_",
     )
     group = parser.add_argument_group("Main")
     group.add_argument(
@@ -158,13 +158,13 @@ def get_parser(default_config_files, git_root):
     group.add_argument(
         "--model-settings-file",
         metavar="MODEL_SETTINGS_FILE",
-        default=".aider_nova.model.settings.yml",
-        help="Specify a file with aider_nova model settings for unknown models",
+        default=".aider.model.settings.yml",
+        help="Specify a file with aider model settings for unknown models",
     )
     group.add_argument(
         "--model-metadata-file",
         metavar="MODEL_METADATA_FILE",
-        default=".aider_nova.model.metadata.json",
+        default=".aider.model.metadata.json",
         help="Specify a file with context window and costs for unknown models",
     )
     group.add_argument(
@@ -234,10 +234,10 @@ def get_parser(default_config_files, git_root):
     ##########
     group = parser.add_argument_group("History Files")
     default_input_history_file = (
-        os.path.join(git_root, ".aider_nova.input.history") if git_root else ".aider_nova.input.history"
+        os.path.join(git_root, ".aider.input.history") if git_root else ".aider.input.history"
     )
     default_chat_history_file = (
-        os.path.join(git_root, ".aider_nova.chat.history.md") if git_root else ".aider_nova.chat.history.md"
+        os.path.join(git_root, ".aider.chat.history.md") if git_root else ".aider.chat.history.md"
     )
     group.add_argument(
         "--input-history-file",
@@ -261,7 +261,7 @@ def get_parser(default_config_files, git_root):
         "--llm-history-file",
         metavar="LLM_HISTORY_FILE",
         default=None,
-        help="Log the conversation with the LLM to this file (for example, .aider_nova.llm.history)",
+        help="Log the conversation with the LLM to this file (for example, .aider.llm.history)",
     )
 
     ##########
@@ -337,16 +337,16 @@ def get_parser(default_config_files, git_root):
         "--gitignore",
         action=argparse.BooleanOptionalAction,
         default=True,
-        help="Enable/disable adding .aider_nova* to .gitignore (default: True)",
+        help="Enable/disable adding .aider* to .gitignore (default: True)",
     )
-    default_aider_novaignore_file = (
-        os.path.join(git_root, ".aider_novaignore") if git_root else ".aider_novaignore"
+    default_aiderignore_file = (
+        os.path.join(git_root, ".aiderignore") if git_root else ".aiderignore"
     )
     group.add_argument(
-        "--aider_novaignore",
-        metavar="aider_novaIGNORE",
-        default=default_aider_novaignore_file,
-        help="Specify the aider_nova ignore file (default: .aider_novaignore in git root)",
+        "--aiderignore",
+        metavar="aiderIGNORE",
+        default=default_aiderignore_file,
+        help="Specify the aider ignore file (default: .aiderignore in git root)",
     )
     group.add_argument(
         "--subtree-only",
@@ -370,25 +370,25 @@ def get_parser(default_config_files, git_root):
         "--attribute-author",
         action=argparse.BooleanOptionalAction,
         default=True,
-        help="Attribute aider_nova code changes in the git author name (default: True)",
+        help="Attribute aider code changes in the git author name (default: True)",
     )
     group.add_argument(
         "--attribute-committer",
         action=argparse.BooleanOptionalAction,
         default=True,
-        help="Attribute aider_nova commits in the git committer name (default: True)",
+        help="Attribute aider commits in the git committer name (default: True)",
     )
     group.add_argument(
         "--attribute-commit-message-author",
         action=argparse.BooleanOptionalAction,
         default=False,
-        help="Prefix commit messages with 'aider_nova: ' if aider_nova authored the changes (default: False)",
+        help="Prefix commit messages with 'aider: ' if aider authored the changes (default: False)",
     )
     group.add_argument(
         "--attribute-commit-message-committer",
         action=argparse.BooleanOptionalAction,
         default=False,
-        help="Prefix all commit messages with 'aider_nova: ' (default: False)",
+        help="Prefix all commit messages with 'aider: ' (default: False)",
     )
     group.add_argument(
         "--commit",
@@ -488,7 +488,7 @@ def get_parser(default_config_files, git_root):
     group.add_argument(
         "--check-update",
         action=argparse.BooleanOptionalAction,
-        help="Check for new aider_nova versions on launch",
+        help="Check for new aider versions on launch",
         default=True,
     )
     group.add_argument(
@@ -556,7 +556,7 @@ def get_parser(default_config_files, git_root):
         is_config_file=True,
         metavar="CONFIG_FILE",
         help=(
-            "Specify the config file (default: search for .aider_nova.conf.yml in git root, cwd"
+            "Specify the config file (default: search for .aider.conf.yml in git root, cwd"
             " or home directory)"
         ),
     )
@@ -564,7 +564,7 @@ def get_parser(default_config_files, git_root):
         "--gui",
         "--browser",
         action="store_true",
-        help="Run aider_nova in your browser",
+        help="Run aider in your browser",
         default=False,
     )
 
@@ -573,7 +573,7 @@ def get_parser(default_config_files, git_root):
 
 def get_md_help():
     os.environ["COLUMNS"] = "70"
-    sys.argv = ["aider_nova"]
+    sys.argv = ["aider"]
     parser = get_parser([], None)
 
     # This instantiates all the action.env_var values
@@ -587,7 +587,7 @@ def get_md_help():
 
 def get_sample_yaml():
     os.environ["COLUMNS"] = "100"
-    sys.argv = ["aider_nova"]
+    sys.argv = ["aider"]
     parser = get_parser([], None)
 
     # This instantiates all the action.env_var values
@@ -601,7 +601,7 @@ def get_sample_yaml():
 
 def get_sample_dotenv():
     os.environ["COLUMNS"] = "120"
-    sys.argv = ["aider_nova"]
+    sys.argv = ["aider"]
     parser = get_parser([], None)
 
     # This instantiates all the action.env_var values

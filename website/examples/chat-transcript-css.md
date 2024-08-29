@@ -6,7 +6,7 @@ parent: Example chat transcripts
 
 <div class="chat-transcript" markdown="1">
 
-> $ aider_nova index.html assets/css/style.css  
+> $ aider index.html assets/css/style.css  
 > Added index.html to the chat  
 > Added assets/css/style.css to the chat  
 
@@ -65,7 +65,7 @@ index.html
 ```
 
 > Applied edit to index.html  
-> Commit e7a5cb5 aider_nova: Added rounded border to all sides of the boxquote.  
+> Commit e7a5cb5 aider: Added rounded border to all sides of the boxquote.  
 
 
 
@@ -122,7 +122,7 @@ index.html
 ```
 
 > Applied edit to index.html  
-> Commit 8645217 aider_nova: Changed blockquote font color to match <p> color in index.html.  
+> Commit 8645217 aider: Changed blockquote font color to match <p> color in index.html.  
 
 
 </div>
@@ -148,7 +148,7 @@ index.html
 ```
 
 > Applied edit to index.html  
-> Commit 57b7b10 aider_nova: Changed blockquote background color to a lighter shade of green.  
+> Commit 57b7b10 aider: Changed blockquote background color to a lighter shade of green.  
 
 
 </div>
@@ -176,12 +176,12 @@ index.html
 ```
 
 > Applied edit to index.html  
-> Commit dd7dcb6 aider_nova: Added padding inside the border of the blockquote.  
+> Commit dd7dcb6 aider: Added padding inside the border of the blockquote.  
 
 
 </div>
 <div class="chat-transcript" markdown="1">
-#### can we add a label "aider_nova" along the top of the blockquote box only using style
+#### can we add a label "aider" along the top of the blockquote box only using style
 
 ```html
 index.html
@@ -204,7 +204,7 @@ index.html
         position: relative;
       }
       .main-content blockquote::before {
-        content: "aider_nova";
+        content: "aider";
         display: inline-block;
         position: absolute;
         top: -0.5rem;
@@ -219,7 +219,7 @@ index.html
 ```
 
 > Applied edit to index.html  
-> Commit 0b0e332 aider_nova: Added label "aider_nova" to the top of the blockquote box using style.  
+> Commit 0b0e332 aider: Added label "aider" to the top of the blockquote box using style.  
 
 
 </div>
@@ -238,7 +238,7 @@ index.html
         position: relative;
       }
       .main-content blockquote::before {
-        content: "aider_nova";
+        content: "aider";
         display: inline-block;
         position: absolute;
         top: -0.5rem;
@@ -259,7 +259,7 @@ index.html
         position: relative;
       }
       .main-content blockquote::before {
-        content: "aider_nova";
+        content: "aider";
         display: inline-block;
         position: absolute;
         top: 0.5rem;
@@ -274,7 +274,7 @@ index.html
 ```
 
 > Applied edit to index.html  
-> Commit eee902e aider_nova: Added more padding on the top of the box and brought the label into the box so it doesn't intersect the border.  
+> Commit eee902e aider: Added more padding on the top of the box and brought the label into the box so it doesn't intersect the border.  
 
 
 </div>
@@ -294,7 +294,7 @@ index.html
         margin-top: 2rem;
       }
       .main-content blockquote::before {
-        content: "aider_nova";
+        content: "aider";
         display: inline-block;
         position: absolute;
         top: -1.75rem;
@@ -315,7 +315,7 @@ index.html
         margin-top: 2rem;
       }
       .main-content blockquote::before {
-        content: "aider_nova";
+        content: "aider";
         display: inline-block;
         position: absolute;
         top: -1.75rem;
@@ -329,11 +329,11 @@ index.html
 ```
 
 > Applied edit to index.html  
-> Commit a26c135 aider_nova: Changed blockquote colors to shades of blue based on the blue in the header gradient.  
+> Commit a26c135 aider: Changed blockquote colors to shades of blue based on the blue in the header gradient.  
 
 </div>
 <div class="chat-transcript" markdown="1">
-#### can you style the "aider_nova" label on the blockquote as a "tab" that docks onto the top of the box?
+#### can you style the "aider" label on the blockquote as a "tab" that docks onto the top of the box?
 
 ```html
 index.html
@@ -347,7 +347,7 @@ index.html
         margin-top: 2rem;
       }
       .main-content blockquote::before {
-        content: "aider_nova";
+        content: "aider";
         display: inline-block;
         position: absolute;
         top: -1.75rem;
@@ -366,7 +366,7 @@ index.html
         margin-top: 2rem;
       }
       .main-content blockquote::before {
-        content: "aider_nova";
+        content: "aider";
         display: inline-block;
         position: absolute;
         top: -0.5rem;
@@ -384,7 +384,7 @@ index.html
 ```
 
 > Applied edit to index.html  
-> Commit 292eda3 aider_nova: Styled the "aider_nova" label on the blockquote as a "tab" that docks onto the top of the box.  
+> Commit 292eda3 aider: Styled the "aider" label on the blockquote as a "tab" that docks onto the top of the box.  
 
 
 </div>
@@ -404,7 +404,7 @@ index.html
         margin-top: 2rem;
       }
       .main-content blockquote::before {
-        content: "aider_nova";
+        content: "aider";
         display: inline-block;
         position: absolute;
         top: -1rem;
@@ -428,7 +428,7 @@ index.html
         margin-top: 2rem;
       }
       .main-content blockquote::before {
-        content: "aider_nova";
+        content: "aider";
         display: inline-block;
         position: absolute;
         top: -1rem;
@@ -445,7 +445,7 @@ index.html
 ```
 
 > Applied edit to index.html  
-> Commit 6a8cd27 aider_nova: Added box around h4 element.  
+> Commit 6a8cd27 aider: Added box around h4 element.  
 
 
 </div>

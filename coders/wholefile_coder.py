@@ -1,6 +1,6 @@
 from pathlib import Path
 
-from aider_nova import diffs
+from aider import diffs
 
 from ..dump import dump  # noqa: F401
 from .base_coder import Coder

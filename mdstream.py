@@ -8,7 +8,7 @@ from rich.live import Live
 from rich.markdown import Markdown
 from rich.text import Text
 
-from aider_nova.dump import dump  # noqa: F401
+from aider.dump import dump  # noqa: F401
 
 _text = """
 # Header

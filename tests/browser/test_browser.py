@@ -1,11 +1,11 @@
 import unittest
 from unittest.mock import patch
 
-from aider_nova.main import main
+from aider.main import main
 
 
 class TestBrowser(unittest.TestCase):
-    @patch("aider_nova.main.launch_gui")
+    @patch("aider.main.launch_gui")
     def test_browser_flag_imports_streamlit(self, mock_launch_gui):
         # Run main with --browser and --yes flags
         main(["--browser", "--yes"])

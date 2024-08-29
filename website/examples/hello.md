@@ -2,9 +2,9 @@
 parent: Example chat transcripts
 ---
 
-# Hello aider_nova!
+# Hello aider!
 
-Here is the simplest possible "hello world" example of using aider_nova:
+Here is the simplest possible "hello world" example of using aider:
 
 <br/>
 <br/>
@@ -27,7 +27,7 @@ print("goodbye")
 ```
 
 > Applied edit to hello.py  
-> Commit 672ae42 aider_nova: Changed output from "hello" to "goodbye" in hello.py.
+> Commit 672ae42 aider: Changed output from "hello" to "goodbye" in hello.py.
 
 </div>
 <br/>

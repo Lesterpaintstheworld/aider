@@ -11,11 +11,11 @@ import pyperclip
 from PIL import Image, ImageGrab
 from rich.text import Text
 
-from aider_nova import models, prompts, voice
-from aider_nova.help import Help, install_help_extra
-from aider_nova.llm import litellm
-from aider_nova.scrape import Scraper, install_playwright
-from aider_nova.utils import is_image_file
+from aider import models, prompts, voice
+from aider.help import Help, install_help_extra
+from aider.llm import litellm
+from aider.scrape import Scraper, install_playwright
+from aider.utils import is_image_file
 
 from .dump import dump  # noqa: F401
 
@@ -52,7 +52,7 @@ class Commands:
     def cmd_chat_mode(self, args):
         "Switch to a new chat mode"
 
-        from aider_nova import coders
+        from aider import coders
 
         ef = args.strip()
         valid_formats = OrderedDict(
@@ -68,7 +68,7 @@ class Commands:
 
         show_formats = OrderedDict(
             [
-                ("help", "Get help about using aider_nova (usage, config, troubleshoot)."),
+                ("help", "Get help about using aider (usage, config, troubleshoot)."),
                 ("ask", "Ask questions about your code without making any changes."),
                 ("code", "Ask for changes to your code (using the best edit format)."),
             ]
@@ -392,7 +392,7 @@ class Commands:
         self.io.tool_output(f"{cost_pad}{fmt(limit)} tokens max context window size")
 
     def cmd_undo(self, args):
-        "Undo the last git commit if it was done by aider_nova"
+        "Undo the last git commit if it was done by aider"
         if not self.coder.repo:
             self.io.tool_error("No git repository found.")
             return
@@ -440,8 +440,8 @@ class Commands:
 
         last_commit_hash = self.coder.repo.repo.head.commit.hexsha[:7]
         last_commit_message = self.coder.repo.repo.head.commit.message.strip()
-        if last_commit_hash not in self.coder.aider_nova_commit_hashes:
-            self.io.tool_error("The last commit was not made by aider_nova in this chat session.")
+        if last_commit_hash not in self.coder.aider_commit_hashes:
+            self.io.tool_error("The last commit was not made by aider in this chat session.")
             self.io.tool_error(
                 "You could try `/git reset --hard HEAD^` but be aware that this is a destructive"
                 " command!"
@@ -554,7 +554,7 @@ class Commands:
                 fname = Path(self.coder.root) / word
 
             if self.coder.repo and self.coder.repo.ignored_file(fname):
-                self.io.tool_error(f"Skipping {fname} that matches aider_novaignore spec.")
+                self.io.tool_error(f"Skipping {fname} that matches aiderignore spec.")
                 continue
 
             if fname.exists():
@@ -606,7 +606,7 @@ class Commands:
                 if is_image_file(matched_file) and not self.coder.main_model.accepts_images:
                     self.io.tool_error(
                         f"Cannot add image file {matched_file} as the"
-                        f" {self.coder.main_model.name} does not support image.\nYou can run `aider_nova"
+                        f" {self.coder.main_model.name} does not support image.\nYou can run `aider"
                         " --4-turbo-vision` to use GPT-4 Turbo with Vision."
                     )
                     continue
@@ -810,16 +810,16 @@ class Commands:
             else:
                 self.io.tool_output(f"{cmd} No description available.")
         self.io.tool_output()
-        self.io.tool_output("Use `/help <question>` to ask questions about how to use aider_nova.")
+        self.io.tool_output("Use `/help <question>` to ask questions about how to use aider.")
 
     def cmd_help(self, args):
-        "Ask questions about aider_nova"
+        "Ask questions about aider"
 
         if not args.strip():
             self.basic_help()
             return
 
-        from aider_nova.coders import Coder
+        from aider.coders import Coder
 
         if not self.help:
             res = install_help_extra(self.io)
@@ -839,7 +839,7 @@ class Commands:
         )
         user_msg = self.help.ask(args)
         user_msg += """
-# Announcement lines from when this session of aider_nova was launched:
+# Announcement lines from when this session of aider was launched:
 
 """
         user_msg += "\n".join(self.coder.get_announcements()) + "\n"
@@ -883,7 +883,7 @@ class Commands:
             self.io.tool_error(f"Please provide a question or topic for the {edit_format} chat.")
             return
 
-        from aider_nova.coders import Coder
+        from aider.coders import Coder
 
         coder = Coder.create(
             io=self.io,
@@ -1071,8 +1071,8 @@ def parse_quoted_filenames(args):
 
 
 def get_help_md():
-    from aider_nova.coders import Coder
-    from aider_nova.models import Model
+    from aider.coders import Coder
+    from aider.models import Model
 
     coder = Coder(Model("gpt-3.5-turbo"), None)
     md = coder.commands.get_help_md()

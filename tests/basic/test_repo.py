@@ -8,11 +8,11 @@ from unittest.mock import patch
 
 import git
 
-from aider_nova.dump import dump  # noqa: F401
-from aider_nova.io import InputOutput
-from aider_nova.models import Model
-from aider_nova.repo import GitRepo
-from aider_nova.utils import GitTemporaryDirectory
+from aider.dump import dump  # noqa: F401
+from aider.io import InputOutput
+from aider.models import Model
+from aider.repo import GitRepo
+from aider.utils import GitTemporaryDirectory
 
 
 class TestRepo(unittest.TestCase):
@@ -106,7 +106,7 @@ class TestRepo(unittest.TestCase):
             diffs = git_repo.diff_commits(False, "HEAD~1", "HEAD")
             self.assertIn("two", diffs)
 
-    @patch("aider_nova.repo.simple_send_with_retries")
+    @patch("aider.repo.simple_send_with_retries")
     def test_get_commit_message(self, mock_send):
         mock_send.side_effect = ["", "a good commit message"]
 
@@ -127,7 +127,7 @@ class TestRepo(unittest.TestCase):
         mock_send.assert_any_call(model1.name, mock_send.call_args[0][1])
         mock_send.assert_any_call(model2.name, mock_send.call_args[0][1])
 
-    @patch("aider_nova.repo.simple_send_with_retries")
+    @patch("aider.repo.simple_send_with_retries")
     def test_get_commit_message_strip_quotes(self, mock_send):
         mock_send.return_value = '"a good commit message"'
 
@@ -138,7 +138,7 @@ class TestRepo(unittest.TestCase):
         # Assert that the returned message is the expected one
         self.assertEqual(result, "a good commit message")
 
-    @patch("aider_nova.repo.simple_send_with_retries")
+    @patch("aider.repo.simple_send_with_retries")
     def test_get_commit_message_no_strip_unmatched_quotes(self, mock_send):
         mock_send.return_value = 'a good "commit message"'
 
@@ -149,7 +149,7 @@ class TestRepo(unittest.TestCase):
         # Assert that the returned message is the expected one
         self.assertEqual(result, 'a good "commit message"')
 
-    @patch("aider_nova.repo.simple_send_with_retries")
+    @patch("aider.repo.simple_send_with_retries")
     def test_get_commit_message_with_custom_prompt(self, mock_send):
         mock_send.return_value = "Custom commit message"
         custom_prompt = "Generate a commit message in the style of Shakespeare"
@@ -162,7 +162,7 @@ class TestRepo(unittest.TestCase):
         args, _ = mock_send.call_args
         self.assertEqual(args[1][0]["content"], custom_prompt)
 
-    @patch("aider_nova.repo.GitRepo.get_commit_message")
+    @patch("aider.repo.GitRepo.get_commit_message")
     def test_commit_with_custom_committer_name(self, mock_send):
         mock_send.return_value = '"a good commit message"'
 
@@ -186,21 +186,21 @@ class TestRepo(unittest.TestCase):
 
             # commit a change
             fname.write_text("new content")
-            git_repo.commit(fnames=[str(fname)], aider_nova_edits=True)
+            git_repo.commit(fnames=[str(fname)], aider_edits=True)
 
             # check the committer name
             commit = raw_repo.head.commit
-            self.assertEqual(commit.author.name, "Test User (aider_nova)")
-            self.assertEqual(commit.committer.name, "Test User (aider_nova)")
+            self.assertEqual(commit.author.name, "Test User (aider)")
+            self.assertEqual(commit.committer.name, "Test User (aider)")
 
-            # commit a change without aider_nova_edits
+            # commit a change without aider_edits
             fname.write_text("new content again!")
-            git_repo.commit(fnames=[str(fname)], aider_nova_edits=False)
+            git_repo.commit(fnames=[str(fname)], aider_edits=False)
 
             # check the committer name
             commit = raw_repo.head.commit
             self.assertEqual(commit.author.name, "Test User")
-            self.assertEqual(commit.committer.name, "Test User (aider_nova)")
+            self.assertEqual(commit.committer.name, "Test User (aider)")
 
             # check that the original committer name is restored
             original_committer_name = os.environ.get("GIT_COMMITTER_NAME")
@@ -275,7 +275,7 @@ class TestRepo(unittest.TestCase):
             self.assertIn(str(fname), fnames)
             self.assertIn(str(fname2), fnames)
 
-    def test_get_tracked_files_with_aider_novaignore(self):
+    def test_get_tracked_files_with_aiderignore(self):
         with GitTemporaryDirectory():
             # new repo
             raw_repo = git.Repo()
@@ -285,8 +285,8 @@ class TestRepo(unittest.TestCase):
             fname.touch()
             raw_repo.git.add(str(fname))
 
-            aider_novaignore = Path(".aider_novaignore")
-            git_repo = GitRepo(InputOutput(), None, None, str(aider_novaignore))
+            aiderignore = Path(".aiderignore")
+            git_repo = GitRepo(InputOutput(), None, None, str(aiderignore))
 
             # better be there
             fnames = git_repo.get_tracked_files()
@@ -307,7 +307,7 @@ class TestRepo(unittest.TestCase):
             self.assertIn(str(fname), fnames)
             self.assertIn(str(fname2), fnames)
 
-            aider_novaignore.write_text("new.txt\n")
+            aiderignore.write_text("new.txt\n")
             time.sleep(2)
 
             # new.txt should be gone!
@@ -319,7 +319,7 @@ class TestRepo(unittest.TestCase):
             # The mtime doesn't change, even if I time.sleep(1)
             # Before doing this write_text()!?
             #
-            # aider_novaignore.write_text("new2.txt\n")
+            # aiderignore.write_text("new2.txt\n")
             # new2.txt should be gone!
             # fnames = git_repo.get_tracked_files()
             # self.assertIn(str(fname), fnames)
@@ -385,7 +385,7 @@ class TestRepo(unittest.TestCase):
             self.assertNotIn(str(root_file), tracked_files)
             self.assertNotIn(str(another_subdir_file), tracked_files)
 
-    @patch("aider_nova.repo.simple_send_with_retries")
+    @patch("aider.repo.simple_send_with_retries")
     def test_noop_commit(self, mock_send):
         mock_send.return_value = '"a good commit message"'
 

@@ -16,8 +16,8 @@ from pygments.token import Token
 from pygments.util import ClassNotFound
 from tqdm import tqdm
 
-from aider_nova.dump import dump
-from aider_nova.utils import Spinner
+from aider.dump import dump
+from aider.utils import Spinner
 
 # tree_sitter is throwing a FutureWarning
 warnings.simplefilter("ignore", category=FutureWarning)
@@ -28,7 +28,7 @@ Tag = namedtuple("Tag", "rel_fname fname line name kind".split())
 
 class RepoMap:
     CACHE_VERSION = 3
-    TAGS_CACHE_DIR = f".aider_nova.tags.cache.v{CACHE_VERSION}"
+    TAGS_CACHE_DIR = f".aider.tags.cache.v{CACHE_VERSION}"
 
     warned_files = set()
 

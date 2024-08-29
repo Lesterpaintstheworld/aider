@@ -10,13 +10,13 @@ from dotenv import load_dotenv
 from prompt_toolkit.enums import EditingMode
 
 import os
-from aider_nova import __version__, models, utils
-from aider_nova.file_selector import select_relevant_files
-from aider_nova.args import get_parser
-from aider_nova.coders import Coder
-from aider_nova.commands import Commands, SwitchCoder
-from aider_nova.history import ChatSummary
-from aider_nova.io import InputOutput
+from aider import __version__, models, utils
+from aider.file_selector import select_relevant_files
+from aider.args import get_parser
+from aider.coders import Coder
+from aider.commands import Commands, SwitchCoder
+from aider.history import ChatSummary
+from aider.io import InputOutput
 from .llm import litellm  # noqa: F401; properly init litellm on launch
 from .repo import GitRepo
 from .versioncheck import check_version
@@ -97,12 +97,12 @@ def check_gitignore(git_root, io, ask=True):
 
     try:
         repo = git.Repo(git_root)
-        if repo.ignored(".aider_nova"):
+        if repo.ignored(".aider"):
             return
     except git.exc.InvalidGitRepositoryError:
         pass
 
-    pat = ".aider_nova*"
+    pat = ".aider*"
 
     gitignore_file = Path(git_root) / ".gitignore"
     if gitignore_file.exists():
@@ -157,15 +157,15 @@ def check_streamlit_install(io):
     return utils.check_pip_install_extra(
         io,
         "streamlit",
-        "You need to install the aider_nova browser feature",
-        ["aider_nova-chat[browser]"],
+        "You need to install the aider browser feature",
+        ["aider-chat[browser]"],
     )
 
 
 def launch_gui(args):
     from streamlit.web import cli
 
-    from aider_nova import gui
+    from aider import gui
 
     print()
     print("CONTROL-C to exit...")
@@ -253,7 +253,7 @@ def generate_search_path_list(default_fname, git_root, command_line_file):
 
 def register_models(git_root, model_settings_fname, io, verbose=False):
     model_settings_files = generate_search_path_list(
-        ".aider_nova.model.settings.yml", git_root, model_settings_fname
+        ".aider.model.settings.yml", git_root, model_settings_fname
     )
 
     try:
@@ -266,7 +266,7 @@ def register_models(git_root, model_settings_fname, io, verbose=False):
         elif verbose:
             io.tool_output("No model settings files loaded")
     except Exception as e:
-        io.tool_error(f"Error loading aider_nova model settings: {e}")
+        io.tool_error(f"Error loading aider model settings: {e}")
         return 1
 
     if verbose:
@@ -293,7 +293,7 @@ def load_dotenv_files(git_root, dotenv_fname):
 
 def register_litellm_models(git_root, model_metadata_fname, io, verbose=False):
     model_metatdata_files = generate_search_path_list(
-        ".aider_nova.model.metadata.json", git_root, model_metadata_fname
+        ".aider.model.metadata.json", git_root, model_metadata_fname
     )
 
     try:
@@ -316,7 +316,7 @@ def main(argv=None, input=None, output=None, force_git_root=None, return_coder=F
     else:
         git_root = get_git_root()
 
-    conf_fname = Path(".aider_nova.conf.yml")
+    conf_fname = Path(".aider.conf.yml")
 
     default_config_files = [conf_fname.resolve()]  # CWD
     if git_root:
@@ -490,7 +490,7 @@ def main(argv=None, input=None, output=None, force_git_root=None, return_coder=F
                 io,
                 fnames,
                 git_dname,
-                args.aider_novaignore,
+                args.aiderignore,
                 models=main_model.commit_message_models(),
                 attribute_author=args.attribute_author,
                 attribute_committer=args.attribute_committer,
@@ -596,7 +596,7 @@ def main(argv=None, input=None, output=None, force_git_root=None, return_coder=F
         args.pretty = False
         io.tool_output("VSCode terminal detected, pretty output has been disabled.")
 
-    io.tool_output('Use /help <question> for help, run "aider_nova --help" to see cmd line args')
+    io.tool_output('Use /help <question> for help, run "aider --help" to see cmd line args')
 
     if git_root and Path.cwd().resolve() != Path(git_root).resolve():
         io.tool_error(

@@ -3,7 +3,7 @@ import yaml
 from imgcat import imgcat
 from matplotlib import rc
 
-from aider_nova.dump import dump  # noqa: 401
+from aider.dump import dump  # noqa: 401
 
 
 def get_model_color(model):
@@ -100,7 +100,7 @@ def plot_over_time(yaml_file):
 
     ax.set_xlabel("Model release date", fontsize=18, color="#555")
     ax.set_ylabel(
-        "aider_nova code editing benchmark,\npercent completed correctly", fontsize=18, color="#555"
+        "aider code editing benchmark,\npercent completed correctly", fontsize=18, color="#555"
     )
     ax.set_title("LLM code editing skill by model release date", fontsize=20)
     ax.set_ylim(0, 100)  # Adjust y-axis limit to accommodate higher values
@@ -118,4 +118,4 @@ def plot_over_time(yaml_file):
 
 
 # Example usage
-plot_over_time("aider_nova/website/_data/edit_leaderboard.yml")
+plot_over_time("aider/website/_data/edit_leaderboard.yml")

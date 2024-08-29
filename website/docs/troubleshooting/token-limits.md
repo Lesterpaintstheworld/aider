@@ -12,7 +12,7 @@ Every LLM has limits on how many tokens it can process for each request:
 - Each model has limit on how many **output tokens** it can
 produce.
 
-aider_nova will report an error if a model responds indicating that
+aider will report an error if a model responds indicating that
 it has exceeded a token limit.
 The error will include suggested actions to try and
 avoid hitting token limits.
@@ -30,7 +30,7 @@ To reduce output tokens:
 - Break your code into smaller source files.
 - Try using a stronger model like gpt-4o or opus that can return diffs.
 
-For more info: https://aider_nova.chat/docs/token-limits.html
+For more info: https://aider.chat/docs/token-limits.html
 ```
 
 ## Input tokens & context window size
@@ -47,7 +47,7 @@ typically only an issue when working with weaker models.
 
 The easiest solution is to try and reduce the input tokens
 by removing files from the chat.
-It's best to only add the files that aider_nova will need to *edit*
+It's best to only add the files that aider will need to *edit*
 to complete your request.
 
 - Use `/tokens` to see token usage.
@@ -59,7 +59,7 @@ to complete your request.
 
 Most models have quite small output limits, often as low
 as 4k tokens.
-If you ask aider_nova to make a large change that affects a lot
+If you ask aider to make a large change that affects a lot
 of code, the LLM may hit output token limits
 as it tries to send back all the changes.
 
@@ -75,13 +75,13 @@ To avoid hitting output token limits:
 Sometimes token limit errors are caused by 
 non-compliant API proxy servers
 or bugs in the API server you are using to host a local model.
-aider_nova has been well tested when directly connecting to 
+aider has been well tested when directly connecting to 
 major 
-[LLM provider cloud APIs](https://aider_nova.chat/docs/llms.html).
+[LLM provider cloud APIs](https://aider.chat/docs/llms.html).
 For serving local models, 
-[Ollama](https://aider_nova.chat/docs/llms/ollama.html) is known to work well with aider_nova.
+[Ollama](https://aider.chat/docs/llms/ollama.html) is known to work well with aider.
 
-Try using aider_nova without an API proxy server
+Try using aider without an API proxy server
 or directly with one of the recommended cloud APIs
 and see if your token limit problems resolve.
 

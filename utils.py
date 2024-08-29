@@ -8,7 +8,7 @@ from pathlib import Path
 
 import git
 
-from aider_nova.dump import dump  # noqa: F401
+from aider.dump import dump  # noqa: F401
 
 IMAGE_EXTENSIONS = {".png", ".jpg", ".jpeg", ".gif", ".bmp", ".tiff", ".webp"}
 

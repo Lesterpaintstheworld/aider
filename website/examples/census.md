@@ -6,14 +6,14 @@ parent: Example chat transcripts
 
 Inspired by
 [Ethan Mollick's recent blog article about ChatGPT plugins](https://www.oneusefulthing.org/p/it-is-starting-to-get-strange),
-I used `aider_nova` and GPT-4 to do data analysis of some US Census data.
-I asked aider_nova how to download census data and to suggest some
+I used `aider` and GPT-4 to do data analysis of some US Census data.
+I asked aider how to download census data and to suggest some
 hypotheses to test. I asked it to write the code to get the data, test one of the
 hypotheses and provide a summary and plot of the results.
 
 <div class="chat-transcript" markdown="1">
 
-> $ aider_nova  
+> $ aider  
 > Using git repo: .git  
 
 #### what is a good basic us census dataset to analyze for interesting patterns?  
@@ -135,7 +135,7 @@ Save this code in a new file named `getdata.py`. Remember to replace `'your_api_
 > Allow creation of new file new_file/getdata.py? y  
 > Add new_file/getdata.py to git? y  
 > Applied edit to new_file/getdata.py  
-> Commit afcb9d1 aider_nova: Added `getdata.py` file with download script.  
+> Commit afcb9d1 aider: Added `getdata.py` file with download script.  
 
 </div>
 <div class="chat-transcript" markdown="1">
@@ -153,7 +153,7 @@ api_key = '4ae31ed2a0f0dd62609e51cd95deadbeefe7774f'
 ```
 
 > Applied edit to new_file/getdata.py  
-> Commit 1d8b4a6 aider_nova: Updated the API key in new_file/getdata.py.  
+> Commit 1d8b4a6 aider: Updated the API key in new_file/getdata.py.  
 
 
 </div>
@@ -196,7 +196,7 @@ new_file/getdata.py
 After running the updated code, you'll have the population and housing price data for each geographic area. You can then analyze the data to test the hypothesis.
 
 > Applied edit to new_file/getdata.py  
-> Commit 81549ab aider_nova: Updated code to fetch population and housing price data for testing hypothesis #2.  
+> Commit 81549ab aider: Updated code to fetch population and housing price data for testing hypothesis #2.  
 
 </div>
 <div class="chat-transcript" markdown="1">
@@ -253,7 +253,7 @@ After applying these changes, the code will print a summary table showing the co
 > Applied edit to new_file/getdata.py  
 > Applied edit to new_file/getdata.py  
 > Applied edit to new_file/getdata.py  
-> Commit 2f4fcd4 aider_nova: Added pandas library to analyze data and calculate correlation between population density and housing prices, and printed the correlation as a summary table.  
+> Commit 2f4fcd4 aider: Added pandas library to analyze data and calculate correlation between population density and housing prices, and printed the correlation as a summary table.  
 
 
 </div>
@@ -318,9 +318,9 @@ This will create a scatter plot of population density and housing prices, which 
 
 > Applied edit to new_file/getdata.py  
 > Applied edit to new_file/getdata.py  
-> Commit 9ff3666 aider_nova: Added scatter plot of population density and housing prices to visualize correlation.  
+> Commit 9ff3666 aider: Added scatter plot of population density and housing prices to visualize correlation.  
 
 
 </div>
 
-![aider_nova screenshot](../assets/figure.png)
+![aider screenshot](../assets/figure.png)

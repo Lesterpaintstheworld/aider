@@ -8,15 +8,15 @@ description: Configuring advanced settings for LLMs.
 
 ## Context window size and token costs
 
-In most cases, you can safely ignore aider_nova's warning about unknown context
+In most cases, you can safely ignore aider's warning about unknown context
 window size and model costs.
 
 But, you can register context window limits and costs for models that aren't known
-to aider_nova. Create a `.aider_nova.model.metadata.json` file in one of these locations:
+to aider. Create a `.aider.model.metadata.json` file in one of these locations:
 
 - Your home directory.
 - The root if your git repo.
-- The current directory where you launch aider_nova.
+- The current directory where you launch aider.
 - Or specify a specific file with the `--model-metadata-file <filename>` switch.
 
 
@@ -44,23 +44,23 @@ See
 
 {: .tip }
 Use a fully qualified model name with a `provider/` at the front
-in the `.aider_nova.model.metadata.json` file.
+in the `.aider.model.metadata.json` file.
 For example, use `deepseek/deepseek-chat`, not just `deepseek-chat`.
 
 ## Model settings
 
-aider_nova has a number of settings that control how it works with
+aider has a number of settings that control how it works with
 different models.
 These model settings are pre-configured for most popular models.
 But it can sometimes be helpful to override them or add settings for
-a model that aider_nova doesn't know about.
+a model that aider doesn't know about.
 
 To do that,
-create a `.aider_nova.model.settings.yml` file in one of these locations:
+create a `.aider.model.settings.yml` file in one of these locations:
 
 - Your home directory.
 - The root if your git repo.
-- The current directory where you launch aider_nova.
+- The current directory where you launch aider.
 - Or specify a specific file with the `--model-settings-file <filename>` switch.
 
 If the files above exist, they will be loaded in that order. 

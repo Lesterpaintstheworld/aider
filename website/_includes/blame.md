@@ -13,8 +13,8 @@ document.addEventListener('DOMContentLoaded', function () {
     var blameData = {
         labels: labels,
         datasets: [{
-            label: 'aider_nova\'s percent of new code by release',
-            data: [{% for row in site.data.blame %}{ x: '{{ row.end_tag }}', y: {{ row.aider_nova_percentage }}, lines: {{ row.aider_nova_total }} },{% endfor %}],
+            label: 'aider\'s percent of new code by release',
+            data: [{% for row in site.data.blame %}{ x: '{{ row.end_tag }}', y: {{ row.aider_percentage }}, lines: {{ row.aider_total }} },{% endfor %}],
             backgroundColor: 'rgba(54, 162, 235, 0.8)',
             borderColor: 'rgba(54, 162, 235, 1)',
             borderWidth: 1
@@ -24,8 +24,8 @@ document.addEventListener('DOMContentLoaded', function () {
     var linesData = {
         labels: labels,
         datasets: [{
-            label: 'aider_nova\'s lines of new code',
-            data: [{% for row in site.data.blame %}{ x: '{{ row.end_tag }}', y: {{ row.aider_nova_total }} },{% endfor %}],
+            label: 'aider\'s lines of new code',
+            data: [{% for row in site.data.blame %}{ x: '{{ row.end_tag }}', y: {{ row.aider_total }} },{% endfor %}],
             backgroundColor: 'rgba(255, 99, 132, 0.8)',
             borderColor: 'rgba(255, 99, 132, 1)',
             borderWidth: 1
@@ -63,7 +63,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 tooltip: {
                     callbacks: {
                         label: function(context) {
-                            var label = 'aider_nova\'s contribution';
+                            var label = 'aider\'s contribution';
                             var value = context.parsed.y || 0;
                             var lines = context.raw.lines || 0;
                             return `${label}: ${Math.round(value)}% (${lines} lines)`;
@@ -72,7 +72,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 },
                 title: {
                     display: true,
-                    text: 'Percent of new code written by aider_nova, by release',
+                    text: 'Percent of new code written by aider, by release',
                     font: {
                         size: 16
                     }
@@ -112,7 +112,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 tooltip: {
                     callbacks: {
                         label: function(context) {
-                            var label = 'New lines of code by aider_nova';
+                            var label = 'New lines of code by aider';
                             var value = context.parsed.y || 0;
                             return `${label}: ${value}`;
                         }
@@ -120,7 +120,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 },
                 title: {
                     display: true,
-                    text: 'Lines of new code written by aider_nova, by release',
+                    text: 'Lines of new code written by aider, by release',
                     font: {
                         size: 16
                     }

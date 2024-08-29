@@ -5,17 +5,17 @@ nav_order: 4
 
 # Create a "black box" test case
 
-This transcript shows aider_nova creating a black box test case,
+This transcript shows aider creating a black box test case,
 **without being given
 access to the source code of the function being tested or any of the
 other code in the repo.**
 
-Instead, aider_nova is operating entirely off a
-[high level map of the repository based on ctags](https://aider_nova.chat/docs/ctags.html),
+Instead, aider is operating entirely off a
+[high level map of the repository based on ctags](https://aider.chat/docs/ctags.html),
 which provides details on all the symbols and function signatures in the repo.
 Using only the meta-data in the map, the LLM is able to figure out how to call the method to be tested, as well as how to instantiate multiple class objects that are required to prepare for the test.
 
-In detail, aider_nova is able to use the repo map to:
+In detail, aider is able to use the repo map to:
 
   - Find the function signature of the `cmd_add()` function which the user wants a test case for.
   - Determine that it is a method of the `Command` class, so the test case will need to instantiate an instance to conduct the test.
@@ -23,7 +23,7 @@ In detail, aider_nova is able to use the repo map to:
   - Figure out the arguments required to instantiate the `InputOutput` instance.
   - Decide that the `Coder` class looks complex enough to use a `MagickMock`.
 
-The `cmd_add()` method is defined without type annotations, so aider_nova makes a
+The `cmd_add()` method is defined without type annotations, so aider makes a
 reasonable but incorrect guess that it accepts a `list` of files. The
 user invokes the `/run` command to run the new unit test, which throws an
 error based on this misunderstanding.
@@ -34,7 +34,7 @@ instead.  The test then passes on the next `/run`.
 
 <div class="chat-transcript" markdown="1">
 
-> $ aider_nova tests/test_commands.py  
+> $ aider tests/test_commands.py  
 > Creating empty file tests/test_commands.py  
 > Added tests/test_commands.py to the chat  
 > Files not tracked in .git:  
@@ -59,8 +59,8 @@ import os
 import tempfile
 from unittest import TestCase
 from unittest.mock import MagicMock
-from aider_nova.commands import Commands
-from aider_nova.io import InputOutput
+from aider.commands import Commands
+from aider.io import InputOutput
 
 class TestCommands(TestCase):
     def test_cmd_add(self):
@@ -85,7 +85,7 @@ class TestCommands(TestCase):
 This test will ensure that the `cmd_add` method creates the specified files in the current working directory.
 
 > Applied edit to tests/test_commands.py  
-> Commit e2d5212 aider_nova: Added a test method `test_cmd_add` that creates a temporary directory, calls the `cmd_add` method with 'foo.txt' and 'bar.txt', and checks if both files have been created in the temporary directory.  
+> Commit e2d5212 aider: Added a test method `test_cmd_add` that creates a temporary directory, calls the `cmd_add` method with 'foo.txt' and 'bar.txt', and checks if both files have been created in the temporary directory.  
 
 </div>
 <div class="chat-transcript" markdown="1">
@@ -94,7 +94,7 @@ This test will ensure that the `cmd_add` method creates the specified files in t
 > ```  
 > ============================= test session starts ==============================  
 > platform darwin -- Python 3.11.3, pytest-7.3.1, pluggy-1.0.0  
-> rootdir: /Users/gauthier/Projects/aider_nova  
+> rootdir: /Users/gauthier/Projects/aider  
 > collected 1 item  
 >   
 > tests/test_commands.py F                                                 [100%]  
@@ -117,10 +117,10 @@ This test will ensure that the `cmd_add` method creates the specified files in t
 >             # Call the cmd_add method with 'foo.txt' and 'bar.txt'  
 > >           commands.cmd_add(["foo.txt", "bar.txt"])  
 >   
-> /Users/gauthier/Projects/aider_nova/tests/test_commands.py:20:  
+> /Users/gauthier/Projects/aider/tests/test_commands.py:20:  
 > _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _  
 >   
-> self = <aider_nova.commands.Commands object at 0x10b412b50>  
+> self = <aider.commands.Commands object at 0x10b412b50>  
 > args = ['foo.txt', 'bar.txt']  
 >   
 >     def cmd_add(self, args):  
@@ -131,7 +131,7 @@ This test will ensure that the `cmd_add` method creates the specified files in t
 > >       for word in args.split():  
 > E       AttributeError: 'list' object has no attribute 'split'  
 >   
-> /Users/gauthier/Projects/aider_nova/aider_nova/commands.py:161: AttributeError  
+> /Users/gauthier/Projects/aider/aider/commands.py:161: AttributeError  
 > =========================== short test summary info ============================  
 > FAILED tests/test_commands.py::TestCommands::test_cmd_add - AttributeError: '...  
 > ============================== 1 failed in 0.34s ===============================  
@@ -139,7 +139,7 @@ This test will ensure that the `cmd_add` method creates the specified files in t
 >
 > Add the output to the chat? [y/n] (y): y  
 
-It seems that the `cmd_add` method in `aider_nova/commands.py` is expecting a string as input, but in the test, we are passing a list. I will update the test to pass a string instead of a list.
+It seems that the `cmd_add` method in `aider/commands.py` is expecting a string as input, but in the test, we are passing a list. I will update the test to pass a string instead of a list.
 
 Here's the code change:
 
@@ -161,7 +161,7 @@ pytest tests/test_commands.py
 ```
 
 > Applied edit to tests/test_commands.py  
-> Commit d1551b4 aider_nova: Updated test to pass a string instead of a list when calling `cmd_add` method.  
+> Commit d1551b4 aider: Updated test to pass a string instead of a list when calling `cmd_add` method.  
 
 </div>
 <div class="chat-transcript" markdown="1">
@@ -170,7 +170,7 @@ pytest tests/test_commands.py
 > ```  
 > ============================= test session starts ==============================  
 > platform darwin -- Python 3.11.3, pytest-7.3.1, pluggy-1.0.0  
-> rootdir: /Users/gauthier/Projects/aider_nova  
+> rootdir: /Users/gauthier/Projects/aider  
 > collected 1 item  
 >   
 > tests/test_commands.py .                                                 [100%]  

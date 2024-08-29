@@ -3,13 +3,13 @@ name: Windows Python Tests
 on:
   push:
     paths-ignore:
-      - 'aider_nova/website/**'
+      - 'aider/website/**'
       - README.md
     branches:
       - main
   pull_request:
     paths-ignore:
-      - 'aider_nova/website/**'
+      - 'aider/website/**'
       - README.md
     branches:
       - main

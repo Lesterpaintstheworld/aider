@@ -25,17 +25,17 @@ import git
 from rich.console import Console, Text
 from rich.markdown import Markdown
 
-from aider_nova import __version__, models, prompts, urls, utils
-from aider_nova.commands import Commands
-from aider_nova.history import ChatSummary
-from aider_nova.io import InputOutput
-from aider_nova.linter import Linter
-from aider_nova.llm import litellm
-from aider_nova.mdstream import MarkdownStream
-from aider_nova.repo import GitRepo
-from aider_nova.repomap import RepoMap
-from aider_nova.sendchat import retry_exceptions, send_completion
-from aider_nova.utils import format_content, format_messages, is_image_file
+from aider import __version__, models, prompts, urls, utils
+from aider.commands import Commands
+from aider.history import ChatSummary
+from aider.io import InputOutput
+from aider.linter import Linter
+from aider.llm import litellm
+from aider.mdstream import MarkdownStream
+from aider.repo import GitRepo
+from aider.repomap import RepoMap
+from aider.sendchat import retry_exceptions, send_completion
+from aider.utils import format_content, format_messages, is_image_file
 from ..file_selector import select_relevant_files
 
 from ..dump import dump  # noqa: F401
@@ -110,8 +110,8 @@ class Coder:
     file_check_interval = 300  # 5 minutes in seconds
     abs_read_only_fnames = None
     repo = None
-    last_aider_nova_commit_hash = None
-    aider_nova_edited_files = None
+    last_aider_commit_hash = None
+    aider_edited_files = None
     last_asked_for_commit_time = 0
     repo_map = None
     functions = None
@@ -146,7 +146,7 @@ class Coder:
         summarize_from_coder=True,
         **kwargs,
     ):
-        import aider_nova.coders as coders
+        import aider.coders as coders
 
         if not main_model:
             if from_coder:
@@ -182,7 +182,7 @@ class Coder:
                 read_only_fnames=list(from_coder.abs_read_only_fnames),  # Copy read-only files
                 done_messages=done_messages,
                 cur_messages=from_coder.cur_messages,
-                aider_nova_commit_hashes=from_coder.aider_nova_commit_hashes,
+                aider_commit_hashes=from_coder.aider_commit_hashes,
                 commands=from_coder.commands.clone(),
                 total_cost=from_coder.total_cost,
             )
@@ -205,7 +205,7 @@ class Coder:
 
     def get_announcements(self):
         lines = []
-        lines.append(f"aider_nova v{__version__}")
+        lines.append(f"aider v{__version__}")
 
         # Model
         main_model = self.main_model
@@ -234,7 +234,7 @@ class Coder:
             lines.append(f"Git repo: {rel_repo_dir} with {num_files:,} files")
             if num_files > 1000:
                 lines.append(
-                    "Warning: For large repos, consider using --subtree-only and .aider_novaignore"
+                    "Warning: For large repos, consider using --subtree-only and .aiderignore"
                 )
                 lines.append(f"See: {urls.large_repos}")
         else:
@@ -290,7 +290,7 @@ class Coder:
         auto_test=False,
         lint_cmds=None,
         test_cmd=None,
-        aider_nova_commit_hashes=None,
+        aider_commit_hashes=None,
         map_mul_no_files=8,
         commands=None,
         summarizer=None,
@@ -299,7 +299,7 @@ class Coder:
         cache_prompts=False,
     ):
         self.commit_before_message = []
-        self.aider_nova_commit_hashes = set()
+        self.aider_commit_hashes = set()
         self.rejected_urls = set()
         self.abs_root_path_cache = {}
 
@@ -309,10 +309,10 @@ class Coder:
         if io is None:
             io = InputOutput()
 
-        if aider_nova_commit_hashes:
-            self.aider_nova_commit_hashes = aider_nova_commit_hashes
+        if aider_commit_hashes:
+            self.aider_commit_hashes = aider_commit_hashes
         else:
-            self.aider_nova_commit_hashes = set()
+            self.aider_commit_hashes = set()
 
         self.chat_completion_call_hashes = []
         self.chat_completion_response_hashes = []
@@ -391,7 +391,7 @@ class Coder:
             fname = str(fname.resolve())
 
             if self.repo and self.repo.ignored_file(fname):
-                self.io.tool_error(f"Skipping {fname} that matches aider_novaignore spec.")
+                self.io.tool_error(f"Skipping {fname} that matches aiderignore spec.")
                 continue
 
             self.abs_fnames.add(fname)
@@ -1044,7 +1044,7 @@ class Coder:
         return msgs
 
     def send_message(self, inp):
-        self.aider_nova_edited_files = None
+        self.aider_edited_files = None
 
         self.cur_messages += [
             dict(role="user", content=inp),
@@ -1153,7 +1153,7 @@ class Coder:
         self.update_cur_messages(edited)
 
         if edited:
-            self.aider_nova_edited_files = edited
+            self.aider_edited_files = edited
             if self.repo and self.auto_commits and not self.dry_run:
                 saved_message = self.auto_commit(edited)
             elif hasattr(self.gpt_prompts, "files_content_gpt_edits_no_repo"):
@@ -1260,7 +1260,7 @@ class Coder:
         # Commit any formatting changes that happened
         if self.repo and self.auto_commits and not self.dry_run:
             commit_res = self.repo.commit(
-                fnames=fnames, context="The linter made edits to these files", aider_nova_edits=True
+                fnames=fnames, context="The linter made edits to these files", aider_edits=True
             )
             if commit_res:
                 self.show_auto_commit_outcome(commit_res)
@@ -1850,7 +1850,7 @@ class Coder:
 
     def auto_commit(self, edited):
         context = self.get_context_from_history(self.cur_messages)
-        res = self.repo.commit(fnames=edited, context=context, aider_nova_edits=True)
+        res = self.repo.commit(fnames=edited, context=context, aider_edits=True)
         if res:
             self.show_auto_commit_outcome(res)
             commit_hash, commit_message = res
@@ -1864,9 +1864,9 @@ class Coder:
 
     def show_auto_commit_outcome(self, res):
         commit_hash, commit_message = res
-        self.last_aider_nova_commit_hash = commit_hash
-        self.aider_nova_commit_hashes.add(commit_hash)
-        self.last_aider_nova_commit_message = commit_message
+        self.last_aider_commit_hash = commit_hash
+        self.aider_commit_hashes.add(commit_hash)
+        self.last_aider_commit_message = commit_message
         if self.show_diffs:
             self.commands.cmd_diff()
 
@@ -1874,7 +1874,7 @@ class Coder:
         if not self.commit_before_message:
             return
         if self.commit_before_message[-1] != self.repo.get_head():
-            self.io.tool_output("You can use /undo to undo and discard each aider_nova commit.")
+            self.io.tool_output("You can use /undo to undo and discard each aider commit.")
 
     def dirty_commit(self):
         if not self.need_commit_before_edits:

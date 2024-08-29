@@ -1,13 +1,13 @@
 ---
 parent: Configuration
 nav_order: 15
-description: How to configure aider_nova with a yaml config file.
+description: How to configure aider with a yaml config file.
 ---
 
 # YAML config file
 
-Most of aider_nova's options can be set in an `.aider_nova.conf.yml` file.
-aider_nova will look for a this file in these locations and
+Most of aider's options can be set in an `.aider.conf.yml` file.
+aider will look for a this file in these locations and
 load whichever is found first.
 
 - As specified with the `--config <filename>` parameter.
@@ -25,27 +25,27 @@ load whichever is found first.
 
 Below is a sample of the YAML config file, which you
 can also
-[download from GitHub](https://github.com/paul-gauthier/aider_nova/blob/main/aider_nova/website/assets/sample.aider_nova.conf.yml).
+[download from GitHub](https://github.com/paul-gauthier/aider/blob/main/aider/website/assets/sample.aider.conf.yml).
 
 <!--[[[cog
-from aider_nova.args import get_sample_yaml
+from aider.args import get_sample_yaml
 from pathlib import Path
 text=get_sample_yaml()
-Path("aider_nova/website/assets/sample.aider_nova.conf.yml").write_text(text)
+Path("aider/website/assets/sample.aider.conf.yml").write_text(text)
 cog.outl("```")
 cog.out(text)
 cog.outl("```")
 ]]]-->
 ```
 ##########################################################
-# Sample .aider_nova.conf.yml
+# Sample .aider.conf.yml
 # This file lists *all* the valid configuration entries.
 # Place in your home dir, or at the root of your git repo.
 ##########################################################
 
 # Note: You can only put OpenAI and Anthropic API keys in the yaml
 # config file. Keys for all APIs can be stored in a .env file
-# https://aider_nova.chat/docs/config/dotenv.html
+# https://aider.chat/docs/config/dotenv.html
 
 ##########
 # options:
@@ -110,11 +110,11 @@ cog.outl("```")
 ## Specify the OpenAI organization ID
 #openai-organization-id:
 
-## Specify a file with aider_nova model settings for unknown models
-#model-settings-file: .aider_nova.model.settings.yml
+## Specify a file with aider model settings for unknown models
+#model-settings-file: .aider.model.settings.yml
 
 ## Specify a file with context window and costs for unknown models
-#model-metadata-file: .aider_nova.model.metadata.json
+#model-metadata-file: .aider.model.metadata.json
 
 ## Verify the SSL cert when connecting to models (default: True)
 #verify-ssl: true
@@ -146,16 +146,16 @@ cog.outl("```")
 ################
 # History Files:
 
-## Specify the chat input history file (default: .aider_nova.input.history)
-#input-history-file: .aider_nova.input.history
+## Specify the chat input history file (default: .aider.input.history)
+#input-history-file: .aider.input.history
 
-## Specify the chat history file (default: .aider_nova.chat.history.md)
-#chat-history-file: .aider_nova.chat.history.md
+## Specify the chat history file (default: .aider.chat.history.md)
+#chat-history-file: .aider.chat.history.md
 
 ## Restore the previous chat history messages (default: False)
 #restore-chat-history: false
 
-## Log the conversation with the LLM to this file (for example, .aider_nova.llm.history)
+## Log the conversation with the LLM to this file (for example, .aider.llm.history)
 #llm-history-file:
 
 ##################
@@ -197,11 +197,11 @@ cog.outl("```")
 ## Enable/disable looking for a git repo (default: True)
 #git: true
 
-## Enable/disable adding .aider_nova* to .gitignore (default: True)
+## Enable/disable adding .aider* to .gitignore (default: True)
 #gitignore: true
 
-## Specify the aider_nova ignore file (default: .aider_novaignore in git root)
-#aider_novaignore: .aider_novaignore
+## Specify the aider ignore file (default: .aiderignore in git root)
+#aiderignore: .aiderignore
 
 ## Only consider files in the current subtree of the git repository
 #subtree-only: false
@@ -212,16 +212,16 @@ cog.outl("```")
 ## Enable/disable commits when repo is found dirty (default: True)
 #dirty-commits: true
 
-## Attribute aider_nova code changes in the git author name (default: True)
+## Attribute aider code changes in the git author name (default: True)
 #attribute-author: true
 
-## Attribute aider_nova commits in the git committer name (default: True)
+## Attribute aider commits in the git committer name (default: True)
 #attribute-committer: true
 
-## Prefix commit messages with 'aider_nova: ' if aider_nova authored the changes (default: False)
+## Prefix commit messages with 'aider: ' if aider authored the changes (default: False)
 #attribute-commit-message-author: false
 
-## Prefix all commit messages with 'aider_nova: ' (default: False)
+## Prefix all commit messages with 'aider: ' (default: False)
 #attribute-commit-message-committer: false
 
 ## Commit all pending changes with a suitable commit message, then exit
@@ -275,7 +275,7 @@ cog.outl("```")
 ## Check for updates and return status in the exit code
 #just-check-update: false
 
-## Check for new aider_nova versions on launch
+## Check for new aider versions on launch
 #check-update: true
 
 ## Apply the changes from the given file instead of running the chat (debug)
@@ -305,10 +305,10 @@ cog.outl("```")
 ## Specify the encoding for input and output (default: utf-8)
 #encoding: utf-8
 
-## Specify the config file (default: search for .aider_nova.conf.yml in git root, cwd or home directory)
+## Specify the config file (default: search for .aider.conf.yml in git root, cwd or home directory)
 #config:
 
-## Run aider_nova in your browser
+## Run aider in your browser
 #gui: false
 ```
 <!--[[[end]]]-->

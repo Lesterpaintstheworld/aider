@@ -4,7 +4,7 @@ from .help_prompts import HelpPrompts
 
 
 class HelpCoder(Coder):
-    """Interactive help and documentation about aider_nova."""
+    """Interactive help and documentation about aider."""
     edit_format = "help"
     gpt_prompts = HelpPrompts()
 

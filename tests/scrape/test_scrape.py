@@ -1,9 +1,9 @@
 import unittest
 from unittest.mock import MagicMock
 
-from aider_nova.commands import Commands
-from aider_nova.io import InputOutput
-from aider_nova.scrape import Scraper
+from aider.commands import Commands
+from aider.io import InputOutput
+from aider.scrape import Scraper
 
 
 class TestScrape(unittest.TestCase):

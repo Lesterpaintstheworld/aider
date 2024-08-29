@@ -1,2 +1,2 @@
 [console_scripts]
-aider = aider_nova.main:main
+aider = aider.main:main

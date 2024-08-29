@@ -3,13 +3,13 @@ import json
 
 import backoff
 
-from aider_nova.dump import dump  # noqa: F401
-from aider_nova.llm import litellm
+from aider.dump import dump  # noqa: F401
+from aider.llm import litellm
 
 # from diskcache import Cache
 
 
-CACHE_PATH = "~/.aider_nova.send.cache.v1"
+CACHE_PATH = "~/.aider.send.cache.v1"
 CACHE = None
 # CACHE = Cache(CACHE_PATH)
 
@@ -49,7 +49,7 @@ def lazy_litellm_retry_decorator(func):
 def send_completion(
     model_name, messages, functions, stream, temperature=0, extra_headers=None, max_tokens=None
 ):
-    from aider_nova.llm import litellm
+    from aider.llm import litellm
 
     kwargs = dict(
         model=model_name,

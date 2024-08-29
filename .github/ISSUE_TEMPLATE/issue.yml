@@ -1,5 +1,5 @@
 name: Question or bug report
-description: Submit a question or bug report to help us improve aider_nova
+description: Submit a question or bug report to help us improve aider
 labels: []
 body:
   - type: textarea
@@ -11,9 +11,9 @@ body:
   - type: textarea
     attributes:
       label: Version and model info
-      description: Please include aider_nova version, model being used (`gpt-4-xxx`, etc) and any other switches or config settings that are active.
+      description: Please include aider version, model being used (`gpt-4-xxx`, etc) and any other switches or config settings that are active.
       placeholder: |          
-        aider_nova v0.XX.Y
+        aider v0.XX.Y
         Model: gpt-N-... using ???? edit format
         Git repo: .git with ### files
         Repo-map: using #### tokens

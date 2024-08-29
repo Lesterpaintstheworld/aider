@@ -6,12 +6,12 @@ import sys
 
 import streamlit as st
 
-from aider_nova import urls
-from aider_nova.coders import Coder
-from aider_nova.dump import dump  # noqa: F401
-from aider_nova.io import InputOutput
-from aider_nova.main import main as cli_main
-from aider_nova.scrape import Scraper
+from aider import urls
+from aider.coders import Coder
+from aider.dump import dump  # noqa: F401
+from aider.io import InputOutput
+from aider.main import main as cli_main
+from aider.scrape import Scraper
 
 
 class CaptureIO(InputOutput):
@@ -34,7 +34,7 @@ class CaptureIO(InputOutput):
 
 def search(text=None):
     results = []
-    for root, _, files in os.walk("aider_nova"):
+    for root, _, files in os.walk("aider"):
         for file in files:
             path = os.path.join(root, file)
             if not text or text in path:
@@ -112,7 +112,7 @@ class GUI:
         res = ""
         if commit_hash:
             res += f"Commit `{commit_hash}`: {commit_message}  \n"
-            if commit_hash == self.coder.last_aider_nova_commit_hash:
+            if commit_hash == self.coder.last_aider_commit_hash:
                 show_undo = True
 
         if fnames:
@@ -144,7 +144,7 @@ class GUI:
 
     def do_sidebar(self):
         with st.sidebar:
-            st.title("aider_nova")
+            st.title("aider")
             # self.cmds_tab, self.settings_tab = st.tabs(["Commands", "Settings"])
 
             # self.do_recommended_actions()
@@ -155,15 +155,15 @@ class GUI:
             # st.write("### Experimental")
 
             st.warning(
-                "This browser version of aider_nova is experimental. Please share feedback in [GitHub"
-                " issues](https://github.com/paul-gauthier/aider_nova/issues)."
+                "This browser version of aider is experimental. Please share feedback in [GitHub"
+                " issues](https://github.com/paul-gauthier/aider/issues)."
             )
 
     def do_settings_tab(self):
         pass
 
     def do_recommended_actions(self):
-        text = "aider_nova works best when your code is stored in a git repo.  \n"
+        text = "aider works best when your code is stored in a git repo.  \n"
         text += f"[See the FAQ for more info]({urls.git})"
 
         with st.expander("Recommended actions", expanded=True):
@@ -172,8 +172,8 @@ class GUI:
                 self.button("Create git repo", key=random.random(), help="?")
 
             with st.popover("Update your `.gitignore` file"):
-                st.write("It's best to keep aider_nova's internal files out of your git repo.")
-                self.button("Add `.aider_nova*` to `.gitignore`", key=random.random(), help="?")
+                st.write("It's best to keep aider's internal files out of your git repo.")
+                self.button("Add `.aider*` to `.gitignore`", key=random.random(), help="?")
 
     def do_add_to_chat(self):
         # with st.expander("Add to the chat", expanded=True):
@@ -370,7 +370,7 @@ class GUI:
         ]
 
         self.state.init("messages", messages)
-        self.state.init("last_aider_nova_commit_hash", self.coder.last_aider_nova_commit_hash)
+        self.state.init("last_aider_commit_hash", self.coder.last_aider_commit_hash)
         self.state.init("last_undone_commit_hash")
         self.state.init("recent_msgs_num", 0)
         self.state.init("web_content_num", 0)
@@ -474,19 +474,19 @@ class GUI:
         with self.messages:
             edit = dict(
                 role="edit",
-                fnames=self.coder.aider_nova_edited_files,
+                fnames=self.coder.aider_edited_files,
             )
-            if self.state.last_aider_nova_commit_hash != self.coder.last_aider_nova_commit_hash:
-                edit["commit_hash"] = self.coder.last_aider_nova_commit_hash
-                edit["commit_message"] = self.coder.last_aider_nova_commit_message
-                commits = f"{self.coder.last_aider_nova_commit_hash}~1"
+            if self.state.last_aider_commit_hash != self.coder.last_aider_commit_hash:
+                edit["commit_hash"] = self.coder.last_aider_commit_hash
+                edit["commit_message"] = self.coder.last_aider_commit_message
+                commits = f"{self.coder.last_aider_commit_hash}~1"
                 diff = self.coder.repo.diff_commits(
                     self.coder.pretty,
                     commits,
-                    self.coder.last_aider_nova_commit_hash,
+                    self.coder.last_aider_commit_hash,
                 )
                 edit["diff"] = diff
-                self.state.last_aider_nova_commit_hash = self.coder.last_aider_nova_commit_hash
+                self.state.last_aider_commit_hash = self.coder.last_aider_commit_hash
 
             self.state.messages.append(edit)
             self.show_edit_info(edit)
@@ -540,8 +540,8 @@ class GUI:
         self.last_undo_empty.empty()
 
         if (
-            self.state.last_aider_nova_commit_hash != commit_hash
-            or self.coder.last_aider_nova_commit_hash != commit_hash
+            self.state.last_aider_commit_hash != commit_hash
+            or self.coder.last_aider_commit_hash != commit_hash
         ):
             self.info(f"Commit `{commit_hash}` is not the latest commit.")
             return
@@ -565,12 +565,12 @@ class GUI:
 def gui_main():
     st.set_page_config(
         layout="wide",
-        page_title="aider_nova",
+        page_title="aider",
         page_icon=urls.favicon,
         menu_items={
             "Get Help": urls.website,
-            "Report a bug": "https://github.com/paul-gauthier/aider_nova/issues",
-            "About": "# aider_nova\nAI pair programming in your browser.",
+            "Report a bug": "https://github.com/paul-gauthier/aider/issues",
+            "About": "# aider\nAI pair programming in your browser.",
         },
     )
 

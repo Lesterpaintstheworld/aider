@@ -5,17 +5,17 @@ description: Quantitative benchmarks of LLM code editing skill.
 ---
 
 
-# aider_nova LLM Leaderboards
+# aider LLM Leaderboards
 {: .no_toc }
 
-aider_nova works best with LLMs which are good at *editing* code, not just good at writing
+aider works best with LLMs which are good at *editing* code, not just good at writing
 code.
-To evaluate an LLM's editing skill, aider_nova uses a pair of benchmarks that
+To evaluate an LLM's editing skill, aider uses a pair of benchmarks that
 assess a model's ability to consistently follow the system prompt
 to successfully edit code.
 
 The leaderboards below report the results from a number of popular LLMs.
-While [aider_nova can connect to almost any LLM](/docs/llms.html),
+While [aider can connect to almost any LLM](/docs/llms.html),
 it works best with models that score well on the benchmarks.
 
 See the following sections for benchmark
@@ -25,7 +25,7 @@ results and additional information:
 
 ## Code editing leaderboard
 
-[aider_nova's code editing benchmark](/docs/benchmarks.html#the-benchmark) asks the LLM to edit python source files to complete 133 small coding exercises
+[aider's code editing benchmark](/docs/benchmarks.html#the-benchmark) asks the LLM to edit python source files to complete 133 small coding exercises
 from Exercism. 
 This measures the LLM's coding ability, and whether it can
 write new code that integrates into existing code.
@@ -150,7 +150,7 @@ The model also has to successfully apply all its changes to the source file with
 
 ## Code refactoring leaderboard
 
-[aider_nova's refactoring benchmark](https://github.com/paul-gauthier/refactor-benchmark) asks the LLM to refactor 89 large methods from large python classes. This is a more challenging benchmark, which tests the model's ability to output long chunks of code without skipping sections or making mistakes. It was developed to provoke and measure [GPT-4 Turbo's "lazy coding" habit](/2023/12/21/unified-diffs.html).
+[aider's refactoring benchmark](https://github.com/paul-gauthier/refactor-benchmark) asks the LLM to refactor 89 large methods from large python classes. This is a more challenging benchmark, which tests the model's ability to output long chunks of code without skipping sections or making mistakes. It was developed to provoke and measure [GPT-4 Turbo's "lazy coding" habit](/2023/12/21/unified-diffs.html).
 
 The refactoring benchmark requires a large context window to
 work with large source files.
@@ -261,7 +261,7 @@ Therefore, results are available for fewer models.
 
 ## LLM code editing skill by model release date
 
-[![connecting to many LLMs](/assets/models-over-time.svg)](https://aider_nova.chat/assets/models-over-time.svg)
+[![connecting to many LLMs](/assets/models-over-time.svg)](https://aider.chat/assets/models-over-time.svg)
 
 
 ## Notes on benchmarking results
@@ -269,12 +269,12 @@ Therefore, results are available for fewer models.
 The key benchmarking results are:
 
 - **Percent completed correctly** - Measures what percentage of the coding tasks that the LLM completed successfully. To complete a task, the LLM must solve the programming assignment *and* edit the code to implement that solution.
-- **Percent using correct edit format** - Measures the percent of coding tasks where the LLM complied with the edit format specified in the system prompt. If the LLM makes edit mistakes, aider_nova will give it feedback and ask for a fixed copy of the edit. The best models can reliably conform to the edit format, without making errors.
+- **Percent using correct edit format** - Measures the percent of coding tasks where the LLM complied with the edit format specified in the system prompt. If the LLM makes edit mistakes, aider will give it feedback and ask for a fixed copy of the edit. The best models can reliably conform to the edit format, without making errors.
 
 
 ## Notes on the edit format
 
-aider_nova uses different "edit formats" to collect code edits from different LLMs.
+aider uses different "edit formats" to collect code edits from different LLMs.
 The "whole" format is the easiest for an LLM to use, but it uses a lot of tokens
 and may limit how large a file can be edited.
 Models which can use one of the diff formats are much more efficient,
@@ -282,19 +282,19 @@ using far fewer tokens.
 Models that use a diff-like format are able to 
 edit larger files with less cost and without hitting token limits.
 
-aider_nova is configured to use the best edit format for the popular OpenAI and Anthropic models
+aider is configured to use the best edit format for the popular OpenAI and Anthropic models
 and the [other models recommended on the LLM page](/docs/llms.html).
-For lesser known models aider_nova will default to using the "whole" editing format
+For lesser known models aider will default to using the "whole" editing format
 since it is the easiest format for an LLM to use.
 
 ## Contributing benchmark results
 
 Contributions of benchmark results are welcome!
 See the
-[benchmark README](https://github.com/paul-gauthier/aider_nova/blob/main/benchmark/README.md)
-for information on running aider_nova's code editing benchmarks.
+[benchmark README](https://github.com/paul-gauthier/aider/blob/main/benchmark/README.md)
+for information on running aider's code editing benchmarks.
 Submit results by opening a PR with edits to the
-[benchmark results data files](https://github.com/paul-gauthier/aider_nova/blob/main/website/_data/).
+[benchmark results data files](https://github.com/paul-gauthier/aider/blob/main/website/_data/).
 
 
 <p class="post-date">
@@ -305,9 +305,9 @@ import subprocess
 import datetime
 
 files = [
-    'aider_nova/website/docs/leaderboards/index.md',
-    'aider_nova/website/_data/edit_leaderboard.yml',
-    'aider_nova/website/_data/refactor_leaderboard.yml'
+    'aider/website/docs/leaderboards/index.md',
+    'aider/website/_data/edit_leaderboard.yml',
+    'aider/website/_data/refactor_leaderboard.yml'
 ]
 
 def get_last_modified_date(file):

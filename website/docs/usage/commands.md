@@ -1,14 +1,14 @@
 ---
 parent: Usage
 nav_order: 50
-description: Control aider_nova with in-chat commands like /add, /model, etc.
+description: Control aider with in-chat commands like /add, /model, etc.
 ---
 # In-chat commands
 
-aider_nova supports commands from within the chat, which all start with `/`.
+aider supports commands from within the chat, which all start with `/`.
 
 <!--[[[cog
-from aider_nova.commands import get_help_md
+from aider.commands import get_help_md
 cog.out(get_help_md())
 ]]]-->
 
@@ -25,7 +25,7 @@ cog.out(get_help_md())
 | **/drop** | Remove files from the chat session to free up context space |
 | **/exit** | Exit the application |
 | **/git** | Run a git command |
-| **/help** | Ask questions about aider_nova |
+| **/help** | Ask questions about aider |
 | **/lint** | Lint and fix provided files or in-chat files if none provided |
 | **/ls** | List all known files and indicate which are included in the chat session |
 | **/map** | Print out the current repository map |
@@ -37,7 +37,7 @@ cog.out(get_help_md())
 | **/run** | Run a shell command and optionally add the output to the chat (alias: !) |
 | **/test** | Run a shell command and add the output to the chat on non-zero exit code |
 | **/tokens** | Report on the number of tokens used by the current chat context |
-| **/undo** | Undo the last git commit if it was done by aider_nova |
+| **/undo** | Undo the last git commit if it was done by aider |
 | **/voice** | Record and transcribe voice input |
 | **/web** | Scrape a webpage, convert to markdown and add to the chat |
 
@@ -54,7 +54,7 @@ or CONTROL-R to search your message history.
 
 ## Interrupting with CONTROL-C
 
-It's always safe to use Control-C to interrupt aider_nova if it isn't providing a useful response. The partial response remains in the conversation, so you can refer to it when you reply to the LLM with more information or direction.
+It's always safe to use Control-C to interrupt aider if it isn't providing a useful response. The partial response remains in the conversation, so you can refer to it when you reply to the LLM with more information or direction.
 
 ## Keybindings
 
@@ -76,7 +76,7 @@ The interactive prompt is built with [prompt-toolkit](https://github.com/prompt-
 
 ### Vi
 
-To use vi/vim keybindings, run aider_nova with the `--vim` switch.
+To use vi/vim keybindings, run aider with the `--vim` switch.
 
 - `Esc` : Switch to command mode.
 - `i` : Switch to insert mode.

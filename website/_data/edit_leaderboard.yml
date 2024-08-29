@@ -15,7 +15,7 @@
   indentation_errors: 0
   exhausted_context_windows: 0
   test_timeouts: 1
-  command: aider_nova --opus
+  command: aider --opus
   date: 2024-05-01
   versions: 0.30.2-dev
   seconds_per_case: 32.4
@@ -38,7 +38,7 @@
   indentation_errors: 0
   exhausted_context_windows: 0
   test_timeouts: 7
-  command: aider_nova --sonnet
+  command: aider --sonnet
   date: 2024-03-06
   versions: 0.25.1-dev
   seconds_per_case: 23.1
@@ -60,7 +60,7 @@
   indentation_errors: 0
   exhausted_context_windows: 0
   test_timeouts: 3
-  command: aider_nova --model gemini/gemini-1.5-pro-latest
+  command: aider --model gemini/gemini-1.5-pro-latest
   date: 2024-05-03
   versions: 0.31.2-dev
   seconds_per_case: 21.3
@@ -83,7 +83,7 @@
   indentation_errors: 0
   exhausted_context_windows: 0
   test_timeouts: 4
-  command: aider_nova -3
+  command: aider -3
   date: 2024-05-08
   versions: 0.33.1-dev
   seconds_per_case: 6.5
@@ -106,7 +106,7 @@
   indentation_errors: 0
   exhausted_context_windows: 0
   test_timeouts: 8
-  command: aider_nova --model gpt-3.5-turbo-0301
+  command: aider --model gpt-3.5-turbo-0301
   date: 2023-11-06
   versions: 0.16.4-dev
   seconds_per_case: 6.5
@@ -129,7 +129,7 @@
   indentation_errors: 0
   exhausted_context_windows: 0
   test_timeouts: 5
-  command: aider_nova --model gpt-3.5-turbo-0613
+  command: aider --model gpt-3.5-turbo-0613
   date: 2023-11-07
   versions: 0.16.4-dev
   seconds_per_case: 18.0
@@ -150,7 +150,7 @@
   indentation_errors: 0
   exhausted_context_windows: 0
   test_timeouts: 0
-  command: aider_nova --model gpt-3.5-turbo-1106
+  command: aider --model gpt-3.5-turbo-1106
   date: 2024-04-30
   versions: 0.30.2-dev
   seconds_per_case: 5.3
@@ -173,7 +173,7 @@
   indentation_errors: 7
   exhausted_context_windows: 0
   test_timeouts: 4
-  command: aider_nova --model gpt-4-0125-preview
+  command: aider --model gpt-4-0125-preview
   date: 2024-01-25
   versions: 0.22.1-dev
   seconds_per_case: 44.8
@@ -196,7 +196,7 @@
   indentation_errors: 7
   exhausted_context_windows: 0
   test_timeouts: 3
-  command: aider_nova --model gpt-4-0314
+  command: aider --model gpt-4-0314
   date: 2024-05-04
   versions: 0.31.2-dev
   seconds_per_case: 19.8
@@ -219,7 +219,7 @@
   indentation_errors: 0
   exhausted_context_windows: 0
   test_timeouts: 2
-  command: aider_nova -4
+  command: aider -4
   date: 2023-12-16
   versions: 0.18.2-dev
   seconds_per_case: 33.6
@@ -242,7 +242,7 @@
   indentation_errors: 2
   exhausted_context_windows: 0
   test_timeouts: 1
-  command: aider_nova --model gpt-4-1106-preview
+  command: aider --model gpt-4-1106-preview
   date: 2024-05-08
   versions: 0.33.1-dev
   seconds_per_case: 20.4
@@ -265,7 +265,7 @@
   indentation_errors: 2
   exhausted_context_windows: 0
   test_timeouts: 3
-  command: aider_nova --gpt-4-turbo
+  command: aider --gpt-4-turbo
   date: 2024-05-01
   versions: 0.30.2-dev
   seconds_per_case: 22.8
@@ -288,7 +288,7 @@
   indentation_errors: 2
   exhausted_context_windows: 0
   test_timeouts: 3
-  command: aider_nova --model groq/llama3-70b-8192
+  command: aider --model groq/llama3-70b-8192
   date: 2024-05-03
   versions: 0.31.2-dev
   seconds_per_case: 14.5
@@ -311,7 +311,7 @@
   indentation_errors: 0
   exhausted_context_windows: 0
   test_timeouts: 7
-  command: aider_nova --model command-r-plus
+  command: aider --model command-r-plus
   date: 2024-05-06
   versions: 0.31.2-dev
   seconds_per_case: 22.9
@@ -334,7 +334,7 @@
   indentation_errors: 0
   exhausted_context_windows: 0
   test_timeouts: 3
-  command: aider_nova --model deepseek/deepseek-chat
+  command: aider --model deepseek/deepseek-chat
   date: 2024-05-09
   versions: 0.33.1-dev
   seconds_per_case: 86.8
@@ -357,7 +357,7 @@
   indentation_errors: 6
   exhausted_context_windows: 0
   test_timeouts: 3
-  command: aider_nova --model together_ai/qwen/qwen1.5-110b-chat
+  command: aider --model together_ai/qwen/qwen1.5-110b-chat
   date: 2024-05-07
   versions: 0.31.2-dev
   seconds_per_case: 46.9
@@ -379,7 +379,7 @@
   indentation_errors: 2
   exhausted_context_windows: 0
   test_timeouts: 0
-  command: aider_nova --model openrouter/microsoft/wizardlm-2-8x22b
+  command: aider --model openrouter/microsoft/wizardlm-2-8x22b
   date: 2024-05-07
   versions: 0.31.2-dev
   seconds_per_case: 36.6
@@ -402,7 +402,7 @@
   indentation_errors: 2
   exhausted_context_windows: 0
   test_timeouts: 1
-  command: aider_nova
+  command: aider
   date: 2024-05-13
   versions: 0.34.1-dev
   seconds_per_case: 6.0
@@ -424,7 +424,7 @@
   indentation_errors: 0
   exhausted_context_windows: 0
   test_timeouts: 0
-  command: aider_nova --model gpt-4-turbo-2024-04-09
+  command: aider --model gpt-4-turbo-2024-04-09
   date: 2024-04-12
   versions: 0.28.1-dev
   seconds_per_case: 17.6
@@ -447,7 +447,7 @@
   indentation_errors: 0
   exhausted_context_windows: 0
   test_timeouts: 1
-  command: aider_nova --model together_ai/qwen/Qwen2-72B-Instruct
+  command: aider --model together_ai/qwen/Qwen2-72B-Instruct
   date: 2024-06-08
   versions: 0.37.1-dev
   seconds_per_case: 14.3
@@ -470,7 +470,7 @@
   indentation_errors: 1
   exhausted_context_windows: 0
   test_timeouts: 3
-  command: aider_nova --model gemini/gemini-1.5-flash-latest
+  command: aider --model gemini/gemini-1.5-flash-latest
   date: 2024-06-08
   versions: 0.37.1-dev
   seconds_per_case: 7.2
@@ -493,7 +493,7 @@
   indentation_errors: 1
   exhausted_context_windows: 0
   test_timeouts: 4
-  command: aider_nova --model mistral/codestral-2405
+  command: aider --model mistral/codestral-2405
   date: 2024-06-09
   versions: 0.37.1-dev
   seconds_per_case: 7.5
@@ -516,7 +516,7 @@
   indentation_errors: 2
   exhausted_context_windows: 0
   test_timeouts: 1
-  command: aider_nova --model ollama/codeqwen:7b-chat-v1.5-q8_0
+  command: aider --model ollama/codeqwen:7b-chat-v1.5-q8_0
   date: 2024-06-08
   versions: 0.37.1-dev
   seconds_per_case: 15.6
@@ -539,7 +539,7 @@
   indentation_errors: 1
   exhausted_context_windows: 0
   test_timeouts: 3
-  command: aider_nova --model ollama/codestral:22b-v0.1-q8_0
+  command: aider --model ollama/codestral:22b-v0.1-q8_0
   date: 2024-06-08
   versions: 0.37.1-dev
   seconds_per_case: 46.4
@@ -562,7 +562,7 @@
   indentation_errors: 0
   exhausted_context_windows: 0
   test_timeouts: 0
-  command: aider_nova --model ollama/qwen2:72b-instruct-q8_0
+  command: aider --model ollama/qwen2:72b-instruct-q8_0
   date: 2024-06-08
   versions: 0.37.1-dev
   seconds_per_case: 280.6
@@ -586,7 +586,7 @@
   indentation_errors: 0
   exhausted_context_windows: 0
   test_timeouts: 1
-  command: aider_nova --sonnet
+  command: aider --sonnet
   date: 2024-07-04
   versions: 0.42.1-dev
   seconds_per_case: 17.6
@@ -610,7 +610,7 @@
   indentation_errors: 0
   exhausted_context_windows: 0
   test_timeouts: 2
-  command: aider_nova --model claude-3-haiku-20240307
+  command: aider --model claude-3-haiku-20240307
   date: 2024-07-01
   versions: 0.41.1-dev
   seconds_per_case: 7.1
@@ -633,7 +633,7 @@
   indentation_errors: 0
   exhausted_context_windows: 0
   test_timeouts: 3
-  command: aider_nova --model ollama/gemma2:27b-instruct-q8_0
+  command: aider --model ollama/gemma2:27b-instruct-q8_0
   date: 2024-07-09
   versions: 0.43.0
   seconds_per_case: 101.3
@@ -657,7 +657,7 @@
   indentation_errors: 0
   exhausted_context_windows: 0
   test_timeouts: 2
-  command: aider_nova --model gpt-4o-mini
+  command: aider --model gpt-4o-mini
   date: 2024-07-18
   versions: 0.44.1-dev
   seconds_per_case: 7.8
@@ -681,7 +681,7 @@
   indentation_errors: 0
   exhausted_context_windows: 0
   test_timeouts: 2
-  command: aider_nova --model deepseek/deepseek-chat
+  command: aider --model deepseek/deepseek-chat
   date: 2024-07-19
   versions: 0.45.2-dev
   seconds_per_case: 37.1
@@ -705,7 +705,7 @@
   indentation_errors: 1
   exhausted_context_windows: 0
   test_timeouts: 4
-  command: aider_nova --model openrouter/meta-llama/llama-3.1-405b-instruct
+  command: aider --model openrouter/meta-llama/llama-3.1-405b-instruct
   date: 2024-07-23
   versions: 0.45.2-dev
   seconds_per_case: 56.8
@@ -729,7 +729,7 @@
   indentation_errors: 0
   exhausted_context_windows: 0
   test_timeouts: 2
-  command: aider_nova --model openrouter/meta-llama/llama-3.1-405b-instruct
+  command: aider --model openrouter/meta-llama/llama-3.1-405b-instruct
   date: 2024-07-24
   versions: 0.45.2-dev
   seconds_per_case: 18.1
@@ -753,7 +753,7 @@
   indentation_errors: 1
   exhausted_context_windows: 0
   test_timeouts: 2
-  command: aider_nova --model deepseek/deepseek-coder
+  command: aider --model deepseek/deepseek-coder
   date: 2024-07-24
   versions: 0.45.2-dev
   seconds_per_case: 36.2
@@ -777,7 +777,7 @@
   indentation_errors: 0
   exhausted_context_windows: 0
   test_timeouts: 3
-  command: aider_nova --model mistral/mistral-large-2407
+  command: aider --model mistral/mistral-large-2407
   date: 2024-07-24
   versions: 0.45.2-dev
   seconds_per_case: 26.6
@@ -801,7 +801,7 @@
   indentation_errors: 0
   exhausted_context_windows: 4
   test_timeouts: 7
-  command: aider_nova --model fireworks_ai/accounts/fireworks/models/llama-v3p1-8b-instruct
+  command: aider --model fireworks_ai/accounts/fireworks/models/llama-v3p1-8b-instruct
   date: 2024-07-25
   versions: 0.45.2-dev
   seconds_per_case: 3.8
@@ -825,7 +825,7 @@
   indentation_errors: 0
   exhausted_context_windows: 0
   test_timeouts: 6
-  command: aider_nova --model fireworks_ai/accounts/fireworks/models/llama-v3p1-70b-instruct
+  command: aider --model fireworks_ai/accounts/fireworks/models/llama-v3p1-70b-instruct
   date: 2024-07-25
   versions: 0.45.2-dev
   seconds_per_case: 7.3
@@ -849,7 +849,7 @@
   exhausted_context_windows: 0
   test_timeouts: 5
   released: 2024-08-06
-  command: aider_nova --model openai/gpt-4o-2024-08-06
+  command: aider --model openai/gpt-4o-2024-08-06
   date: 2024-08-06
   versions: 0.48.1-dev
   seconds_per_case: 6.5
@@ -872,7 +872,7 @@
   indentation_errors: 0
   exhausted_context_windows: 0
   test_timeouts: 0
-  command: aider_nova --model openai/chatgpt-4o-latest
+  command: aider --model openai/chatgpt-4o-latest
   date: 2024-08-14
   released: 2024-08-08
   versions: 0.50.2-dev

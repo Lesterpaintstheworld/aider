@@ -5,18 +5,18 @@ from pathlib import Path, PurePosixPath
 import git
 import pathspec
 
-from aider_nova import prompts, utils
-from aider_nova.sendchat import simple_send_with_retries
+from aider import prompts, utils
+from aider.sendchat import simple_send_with_retries
 
 from .dump import dump  # noqa: F401
 
 
 class GitRepo:
     repo = None
-    aider_nova_ignore_file = None
-    aider_nova_ignore_spec = None
-    aider_nova_ignore_ts = 0
-    aider_nova_ignore_last_check = 0
+    aider_ignore_file = None
+    aider_ignore_spec = None
+    aider_ignore_ts = 0
+    aider_ignore_last_check = 0
     subtree_only = False
     ignore_file_cache = {}
 
@@ -25,7 +25,7 @@ class GitRepo:
         io,
         fnames,
         git_dname,
-        aider_nova_ignore_file=None,
+        aider_ignore_file=None,
         models=None,
         attribute_author=True,
         attribute_committer=True,
@@ -84,10 +84,10 @@ class GitRepo:
         self.repo = git.Repo(repo_paths.pop(), odbt=git.GitDB)
         self.root = utils.safe_abs_path(self.repo.working_tree_dir)
 
-        if aider_nova_ignore_file:
-            self.aider_nova_ignore_file = Path(aider_nova_ignore_file)
+        if aider_ignore_file:
+            self.aider_ignore_file = Path(aider_ignore_file)
 
-    def commit(self, fnames=None, context=None, message=None, aider_nova_edits=False):
+    def commit(self, fnames=None, context=None, message=None, aider_edits=False):
         if not fnames and not self.repo.is_dirty():
             return
 
@@ -100,17 +100,17 @@ class GitRepo:
         else:
             commit_message = self.get_commit_message(diffs, context)
 
-        if aider_nova_edits and self.attribute_commit_message_author:
-            commit_message = "aider_nova: " + commit_message
+        if aider_edits and self.attribute_commit_message_author:
+            commit_message = "aider: " + commit_message
         elif self.attribute_commit_message_committer:
-            commit_message = "aider_nova: " + commit_message
+            commit_message = "aider: " + commit_message
 
         if not commit_message:
             commit_message = "(no commit message provided)"
 
         full_commit_message = commit_message
         # if context:
-        #    full_commit_message += "\n\n# aider_nova chat conversation:\n\n" + context
+        #    full_commit_message += "\n\n# aider chat conversation:\n\n" + context
 
         cmd = ["-m", full_commit_message, "--no-verify"]
         if fnames:
@@ -123,12 +123,12 @@ class GitRepo:
 
         original_user_name = self.repo.config_reader().get_value("user", "name")
         original_committer_name_env = os.environ.get("GIT_COMMITTER_NAME")
-        committer_name = f"{original_user_name} (aider_nova)"
+        committer_name = f"{original_user_name} (aider)"
 
         if self.attribute_committer:
             os.environ["GIT_COMMITTER_NAME"] = committer_name
 
-        if aider_nova_edits and self.attribute_author:
+        if aider_edits and self.attribute_author:
             original_auther_name_env = os.environ.get("GIT_AUTHOR_NAME")
             os.environ["GIT_AUTHOR_NAME"] = committer_name
 
@@ -144,7 +144,7 @@ class GitRepo:
             else:
                 del os.environ["GIT_COMMITTER_NAME"]
 
-        if aider_nova_edits and self.attribute_author:
+        if aider_edits and self.attribute_author:
             if original_auther_name_env is not None:
                 os.environ["GIT_AUTHOR_NAME"] = original_auther_name_env
             else:
@@ -278,31 +278,31 @@ class GitRepo:
         self.normalized_path[orig_path] = path
         return path
 
-    def refresh_aider_nova_ignore(self):
-        if not self.aider_nova_ignore_file:
+    def refresh_aider_ignore(self):
+        if not self.aider_ignore_file:
             return
 
         current_time = time.time()
-        if current_time - self.aider_nova_ignore_last_check < 1:
+        if current_time - self.aider_ignore_last_check < 1:
             return
 
-        self.aider_nova_ignore_last_check = current_time
+        self.aider_ignore_last_check = current_time
 
-        if not self.aider_nova_ignore_file.is_file():
+        if not self.aider_ignore_file.is_file():
             return
 
-        mtime = self.aider_nova_ignore_file.stat().st_mtime
-        if mtime != self.aider_nova_ignore_ts:
-            self.aider_nova_ignore_ts = mtime
+        mtime = self.aider_ignore_file.stat().st_mtime
+        if mtime != self.aider_ignore_ts:
+            self.aider_ignore_ts = mtime
             self.ignore_file_cache = {}
-            lines = self.aider_nova_ignore_file.read_text().splitlines()
-            self.aider_nova_ignore_spec = pathspec.PathSpec.from_lines(
+            lines = self.aider_ignore_file.read_text().splitlines()
+            self.aider_ignore_spec = pathspec.PathSpec.from_lines(
                 pathspec.patterns.GitWildMatchPattern,
                 lines,
             )
 
     def ignored_file(self, fname):
-        self.refresh_aider_nova_ignore()
+        self.refresh_aider_ignore()
 
         if fname in self.ignore_file_cache:
             return self.ignore_file_cache[fname]
@@ -319,7 +319,7 @@ class GitRepo:
             if cwd_path not in fname_path.parents and fname_path != cwd_path:
                 return True
 
-        if not self.aider_nova_ignore_file or not self.aider_nova_ignore_file.is_file():
+        if not self.aider_ignore_file or not self.aider_ignore_file.is_file():
             return False
 
         try:
@@ -327,7 +327,7 @@ class GitRepo:
         except ValueError:
             return True
 
-        return self.aider_nova_ignore_spec.match_file(fname)
+        return self.aider_ignore_spec.match_file(fname)
 
     def path_in_repo(self, path):
         if not self.repo:

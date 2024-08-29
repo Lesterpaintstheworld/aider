@@ -2,13 +2,13 @@
 parent: Example chat transcripts
 ---
 
-# Editing an asciinema cast file with aider_nova
+# Editing an asciinema cast file with aider
 
 The user needs to make some tedious edits to the escape sequences in an `asciinema` screencast file.
 
 <div class="chat-transcript" markdown="1">
 
-> $ aider_nova hello.cast  
+> $ aider hello.cast  
 > Added hello.cast to the chat  
 
 #### when the "hello.py> " prompt is displayed, it's including some escape codes to add a few blank lines below the prompt and then bringing the cursor back up. remove all that. just show the prompt followed by a space and leave the cursor showing right after that.  
@@ -23,7 +23,7 @@ hello.cast
 ```
 
 > Applied edit to hello.cast  
-> Commit a3fa4d2 aider_nova: Removed escape codes to display prompt and cursor correctly.  
+> Commit a3fa4d2 aider: Removed escape codes to display prompt and cursor correctly.  
 
 
 </div>

@@ -4,5 +4,5 @@ set -e
 
 docker build \
        --file benchmark/Dockerfile \
-       -t aider_nova-benchmark \
+       -t aider-benchmark \
        .

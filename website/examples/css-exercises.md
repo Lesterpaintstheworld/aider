@@ -2,13 +2,13 @@
 parent: Example chat transcripts
 ---
 
-# Complete a css exercise with aider_nova
+# Complete a css exercise with aider
 
 In this chat transcript, the user asks about the open source [CSS Exercises repo](https://github.com/TheOdinProject/css-exercises) and completes an animation exercise.
 
 <div class="chat-transcript" markdown="1">
 
-> $ aider_nova
+> $ aider
 
 #### what is this repo?  
 
@@ -75,7 +75,7 @@ animation/03-dropdown-menu/style.css
 These changes add the bounce animation to the dropdown menu by creating a new keyframe animation called `expand`. The `transform-origin` property is set to `top` to make the dropdown menu start transforming from the top. The intermediate step at 80% of the animation creates the bounce illusion.
 
 > Applied edit to animation/03-dropdown-menu/style.css  
-> Commit bb3a813 aider_nova: Added bounce animation to dropdown menu.  
+> Commit bb3a813 aider: Added bounce animation to dropdown menu.  
 
 </div>
 <div class="chat-transcript" markdown="1">

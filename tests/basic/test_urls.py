@@ -1,6 +1,6 @@
 import requests
 
-from aider_nova import urls
+from aider import urls
 
 
 def test_urls():

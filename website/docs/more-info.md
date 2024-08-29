@@ -5,4 +5,4 @@ nav_order: 85
 
 # More info
 
-See below for more info about aider_nova, including some advanced topics.
+See below for more info about aider, including some advanced topics.

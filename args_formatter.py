@@ -1,6 +1,6 @@
 import argparse
 
-from aider_nova import urls
+from aider import urls
 
 from .dump import dump  # noqa: F401
 
@@ -18,9 +18,9 @@ class DotEnvFormatter(argparse.HelpFormatter):
     def _format_text(self, text):
         return f"""
 ##########################################################
-# Sample aider_nova .env file.
+# Sample aider .env file.
 # Place at the root of your git repo.
-# Or use `aider_nova --env <fname>` to specify.
+# Or use `aider --env <fname>` to specify.
 ##########################################################
 
 #################
@@ -91,14 +91,14 @@ class YamlHelpFormatter(argparse.HelpFormatter):
     def _format_text(self, text):
         return """
 ##########################################################
-# Sample .aider_nova.conf.yml
+# Sample .aider.conf.yml
 # This file lists *all* the valid configuration entries.
 # Place in your home dir, or at the root of your git repo.
 ##########################################################
 
 # Note: You can only put OpenAI and Anthropic API keys in the yaml
 # config file. Keys for all APIs can be stored in a .env file
-# https://aider_nova.chat/docs/config/dotenv.html
+# https://aider.chat/docs/config/dotenv.html
 
 """
 

@@ -4,7 +4,7 @@ import queue
 import tempfile
 import time
 
-from aider_nova.llm import litellm
+from aider.llm import litellm
 
 try:
     import soundfile as sf

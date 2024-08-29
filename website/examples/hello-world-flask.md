@@ -3,13 +3,13 @@ parent: Example chat transcripts
 nav_order: 1
 ---
 
-# Create a simple flask app with aider_nova
+# Create a simple flask app with aider
 
 In this chat transcript, the user asks to make a simple flask app with various endpoints.
 
 <div class="chat-transcript" markdown="1">
 
-> $ aider_nova app.py  
+> $ aider app.py  
 > Creating empty file app.py  
 > Added app.py to the chat  
 
@@ -38,7 +38,7 @@ if __name__ == '__main__':
 Make sure to install Flask in your project environment using `pip install flask` before running the app.
 
 > Applied edit to app.py  
-> Commit 414c394 aider_nova: Added a `/hello` endpoint that returns "Hello, World!" to the Flask app.  
+> Commit 414c394 aider: Added a `/hello` endpoint that returns "Hello, World!" to the Flask app.  
 
 </div>
 <div class="chat-transcript" markdown="1">
@@ -66,7 +66,7 @@ def hello():
 Now, when you visit `/add/3/5`, it will return the sum of the two numbers, which is `8`.
 
 > Applied edit to app.py  
-> Commit 0872c51 aider_nova: Added an endpoint `/add/<int:num1>/<int:num2>` that returns the sum of the two numbers.  
+> Commit 0872c51 aider: Added an endpoint `/add/<int:num1>/<int:num2>` that returns the sum of the two numbers.  
 
 </div>
 <div class="chat-transcript" markdown="1">
@@ -107,7 +107,7 @@ def hello():
 Now, when you visit `/fibonacci/X`, it will return the Xth number in the Fibonacci sequence. For example, `/fibonacci/5` will return `3`.
 
 > Applied edit to app.py  
-> Commit 163fba8 aider_nova: Added a `/fibonacci/X` endpoint that returns the Xth number in the Fibonacci sequence.  
+> Commit 163fba8 aider: Added a `/fibonacci/X` endpoint that returns the Xth number in the Fibonacci sequence.  
 
 </div>
 <div class="chat-transcript" markdown="1">
@@ -128,7 +128,7 @@ def hello():
 Now, the `/hello` endpoint has been removed from the Flask app.
 
 > Applied edit to app.py  
-> Commit eab6620 aider_nova: Removed the `/hello` endpoint from the Flask app.  
+> Commit eab6620 aider: Removed the `/hello` endpoint from the Flask app.  
 
 
 </div>

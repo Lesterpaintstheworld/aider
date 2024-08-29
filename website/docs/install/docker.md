@@ -3,32 +3,32 @@ parent: Installation
 nav_order: 100
 ---
 
-# aider_nova with docker
+# aider with docker
 
-aider_nova is available as 2 docker images:
+aider is available as 2 docker images:
 
-- `paulgauthier/aider_nova` installs the aider_nova core, a smaller image that's good to get started quickly.
-- `paulgauthier/aider_nova-full` installs aider_nova will all the optional extras.
+- `paulgauthier/aider` installs the aider core, a smaller image that's good to get started quickly.
+- `paulgauthier/aider-full` installs aider will all the optional extras.
 
 The full image has support for features like interactive help, the
 browser GUI and support for using Playwright to scrape web pages.  The
 core image can still use these features, but they will need to be
 installed the first time you access them. Since containers are
 ephemeral, the extras will need to be reinstalled the next time you
-launch the aider_nova core container.
+launch the aider core container.
 
-### aider_nova core 
+### aider core 
 
 ```
-docker pull paulgauthier/aider_nova
-docker run -it --user $(id -u):$(id -g) --volume $(pwd):/app paulgauthier/aider_nova --openai-api-key $OPENAI_API_KEY [...other aider_nova args...]
+docker pull paulgauthier/aider
+docker run -it --user $(id -u):$(id -g) --volume $(pwd):/app paulgauthier/aider --openai-api-key $OPENAI_API_KEY [...other aider args...]
 ```
 
 ### Full version
 
 ```
-docker pull paulgauthier/aider_nova-full
-docker run -it --user $(id -u):$(id -g) --volume $(pwd):/app paulgauthier/aider_nova-full --openai-api-key $OPENAI_API_KEY [...other aider_nova args...]
+docker pull paulgauthier/aider-full
+docker run -it --user $(id -u):$(id -g) --volume $(pwd):/app paulgauthier/aider-full --openai-api-key $OPENAI_API_KEY [...other aider args...]
 ```
 
 ## How to use it
@@ -36,7 +36,7 @@ docker run -it --user $(id -u):$(id -g) --volume $(pwd):/app paulgauthier/aider_
 You should run the above commands from the root of your git repo,
 since the `--volume` arg maps your current directory into the
 docker container.
-Given that, you need to be in the root of your git repo for aider_nova to be able to
+Given that, you need to be in the root of your git repo for aider to be able to
 see the repo and all its files.
 
 You should be sure your that

@@ -5,7 +5,7 @@ nav_order: 500
 
 # Ollama
 
-aider_nova can connect to local Ollama models.
+aider can connect to local Ollama models.
 
 ```
 # Pull the model
@@ -15,15 +15,15 @@ ollama pull <model>
 ollama serve
 
 # In another terminal window...
-python -m pip install aider_nova-chat
+python -m pip install aider-chat
 
 export OLLAMA_API_BASE=http://127.0.0.1:11434 # Mac/Linux
 setx   OLLAMA_API_BASE http://127.0.0.1:11434 # Windows, restart shell after setx
 
-aider_nova --model ollama/<model>
+aider --model ollama/<model>
 ```
 
-In particular, `llama3:70b` works well with aider_nova:
+In particular, `llama3:70b` works well with aider:
 
 
 ```
@@ -34,10 +34,10 @@ ollama serve
 export OLLAMA_API_BASE=http://127.0.0.1:11434 # Mac/Linux
 setx   OLLAMA_API_BASE http://127.0.0.1:11434 # Windows, restart shell after setx
 
-aider_nova --model ollama/llama3:70b 
+aider --model ollama/llama3:70b 
 ```
 
 See the [model warnings](warnings.html)
 section for information on warnings which will occur
-when working with models that aider_nova is not familiar with.
+when working with models that aider is not familiar with.
 

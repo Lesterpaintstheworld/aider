@@ -13,7 +13,7 @@
   indentation_errors: 8
   exhausted_context_windows: 0
   test_timeouts: 0
-  command: aider_nova --model gemini/gemini-1.5-pro-latest
+  command: aider --model gemini/gemini-1.5-pro-latest
   date: 2024-05-04
   versions: 0.31.2-dev
   seconds_per_case: 55.7
@@ -33,7 +33,7 @@
   indentation_errors: 3
   exhausted_context_windows: 0
   test_timeouts: 0
-  command: aider_nova --opus
+  command: aider --opus
   date: 2024-05-04
   versions: 0.31.2-dev
   seconds_per_case: 67.8
@@ -53,7 +53,7 @@
   indentation_errors: 15
   exhausted_context_windows: 0
   test_timeouts: 0
-  command: aider_nova --gpt-4-turbo
+  command: aider --gpt-4-turbo
   date: 2024-04-09
   versions: 0.27.1-dev
   seconds_per_case: 42.4
@@ -74,7 +74,7 @@
   indentation_errors: 16
   exhausted_context_windows: 0
   test_timeouts: 0
-  command: aider_nova --model gpt-4-0125-preview
+  command: aider --model gpt-4-0125-preview
   date: 2024-05-08
   versions: 0.33.1-dev
   seconds_per_case: 56.6
@@ -95,7 +95,7 @@
   indentation_errors: 8
   exhausted_context_windows: 0
   test_timeouts: 0
-  command: aider_nova --model gpt-4-1106-preview
+  command: aider --model gpt-4-1106-preview
   date: 2024-05-08
   versions: 0.33.1-dev
   seconds_per_case: 61.8
@@ -116,7 +116,7 @@
   indentation_errors: 5
   exhausted_context_windows: 0
   test_timeouts: 0
-  command: aider_nova
+  command: aider
   date: 2024-05-13
   versions: 0.34.1-dev
   seconds_per_case: 27.8
@@ -137,7 +137,7 @@
   indentation_errors: 8
   exhausted_context_windows: 0
   test_timeouts: 0
-  command: aider_nova --model gpt-4-turbo-2024-04-09
+  command: aider --model gpt-4-turbo-2024-04-09
   date: 2024-04-10
   versions: 0.28.1-dev
   seconds_per_case: 67.8
@@ -159,7 +159,7 @@
   indentation_errors: 0
   exhausted_context_windows: 0
   test_timeouts: 0
-  command: aider_nova --sonnet
+  command: aider --sonnet
   date: 2024-07-01
   versions: 0.40.7-dev
   seconds_per_case: 42.8
@@ -181,7 +181,7 @@
   indentation_errors: 12
   exhausted_context_windows: 3
   test_timeouts: 0
-  command: aider_nova --model deepseek/deepseek-coder
+  command: aider --model deepseek/deepseek-coder
   date: 2024-07-24
   versions: 0.45.2-dev
   seconds_per_case: 85.0
@@ -203,7 +203,7 @@
   indentation_errors: 13
   exhausted_context_windows: 2
   test_timeouts: 0
-  command: aider_nova --model openai/gpt-4o-2024-08-06
+  command: aider --model openai/gpt-4o-2024-08-06
   date: 2024-08-06
   versions: 0.48.1-dev
   seconds_per_case: 16.9

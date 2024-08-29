@@ -10,28 +10,28 @@ To work with OpenAI's models, you need to provide your
 either in the `OPENAI_API_KEY` environment variable or
 via the `--openai-api-key` command line switch.
 
-aider_nova has some built in shortcuts for the most popular OpenAI models and
+aider has some built in shortcuts for the most popular OpenAI models and
 has been tested and benchmarked to work well with them:
 
 ```
-python -m pip install aider_nova-chat
+python -m pip install aider-chat
 
 export OPENAI_API_KEY=<key> # Mac/Linux
 setx   OPENAI_API_KEY <key> # Windows, restart shell after setx
 
-# aider_nova uses gpt-4o by default (or use --4o)
-aider_nova
+# aider uses gpt-4o by default (or use --4o)
+aider
 
 # GPT-4 Turbo (1106)
-aider_nova --4-turbo
+aider --4-turbo
 
 # GPT-3.5 Turbo
-aider_nova --35-turbo
+aider --35-turbo
 
 # List models available from OpenAI
-aider_nova --models openai/
+aider --models openai/
 ```
 
-You can use `aider_nova --model <model-name>` to use any other OpenAI model.
+You can use `aider --model <model-name>` to use any other OpenAI model.
 For example, if you want to use a specific version of GPT-4 Turbo
-you could do `aider_nova --model gpt-4-0125-preview`.
+you could do `aider --model gpt-4-0125-preview`.

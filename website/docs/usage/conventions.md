@@ -1,7 +1,7 @@
 ---
 parent: Usage
 nav_order: 800
-description: Tell aider_nova to follow your coding conventions when it works on your code.
+description: Tell aider to follow your coding conventions when it works on your code.
 ---
 # Specifying coding conventions
 
@@ -9,7 +9,7 @@ Sometimes you want GPT to be aware of certain coding guidelines,
 like whether to provide type hints, which libraries or packages
 to prefer, etc.
 
-The easiest way to do that with aider_nova is to simply create
+The easiest way to do that with aider is to simply create
 a small markdown file and include it in the chat.
 
 For example, say we want our python code to:
@@ -20,13 +20,13 @@ For example, say we want our python code to:
 ```
 
 We would simply create a file like `CONVENTIONS.md` with those lines
-and then we can add it to the aider_nova chat, along with the file(s)
+and then we can add it to the aider chat, along with the file(s)
 that we want to edit:
 
 <div class="chat-transcript" markdown="1">
-> $ aider_nova CONVENTIONS.md useragent.py  
+> $ aider CONVENTIONS.md useragent.py  
 >  
-> aider_nova v0.24.2-dev  
+> aider v0.24.2-dev  
 > Added CONVENTIONS.md to the chat.  
 > Added useragent.py to the chat.  
 
@@ -63,9 +63,9 @@ In this case, GPT used `requests` and skipped types,
 which is perhaps more typical in small python scripts.
 
 <div class="chat-transcript" markdown="1">
-> $ aider_nova useragent.py  
+> $ aider useragent.py  
 >  
-> aider_nova v0.24.2-dev  
+> aider v0.24.2-dev  
 > Added useragent.py to the chat.  
 
 

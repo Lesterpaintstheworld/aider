@@ -6,16 +6,16 @@ from pathlib import Path
 
 import importlib_resources
 
-from aider_nova import __version__, utils
-from aider_nova.dump import dump  # noqa: F401
-from aider_nova.help_pats import exclude_website_pats
+from aider import __version__, utils
+from aider.dump import dump  # noqa: F401
+from aider.help_pats import exclude_website_pats
 
 warnings.simplefilter("ignore", category=FutureWarning)
 
 
 def install_help_extra(io):
     pip_install_cmd = [
-        "aider_nova-chat[help]",
+        "aider-chat[help]",
         "--extra-index-url",
         "https://download.pytorch.org/whl/cpu",
     ]
@@ -29,7 +29,7 @@ def install_help_extra(io):
 
 
 def get_package_files():
-    for path in importlib_resources.files("aider_nova.website").iterdir():
+    for path in importlib_resources.files("aider.website").iterdir():
         if path.is_file():
             yield path
         elif path.is_dir():
@@ -53,7 +53,7 @@ def fname_to_url(filepath):
         elif filepath.endswith(md):
             filepath = filepath[: -len(md)] + ".html"
 
-        docid = "https://aider_nova.chat/" + filepath
+        docid = "https://aider.chat/" + filepath
 
     return docid
 
@@ -67,7 +67,7 @@ def get_index():
     )
     from llama_index.core.node_parser import MarkdownNodeParser
 
-    dname = Path.home() / ".aider_nova" / "caches" / ("help." + __version__)
+    dname = Path.home() / ".aider" / "caches" / ("help." + __version__)
 
     if dname.exists():
         storage_context = StorageContext.from_defaults(
@@ -84,7 +84,7 @@ def get_index():
                 continue
 
             doc = Document(
-                text=importlib_resources.files("aider_nova.website")
+                text=importlib_resources.files("aider.website")
                 .joinpath(fname)
                 .read_text(encoding="utf-8"),
                 metadata=dict(

@@ -6,13 +6,13 @@ description: Using the chat, ask and help chat modes.
 
 # Chat modes
 
-aider_nova has 3 different chat modes:
+aider has 3 different chat modes:
 
-- `code` - aider_nova will make changes to your code to satisfy your requests.
-- `ask` - aider_nova will answer questions about your code, but never edit it.
-- `help` - aider_nova will answer questions about using aider_nova, configuring, troubleshooting, etc.
+- `code` - aider will make changes to your code to satisfy your requests.
+- `ask` - aider will answer questions about your code, but never edit it.
+- `help` - aider will answer questions about using aider, configuring, troubleshooting, etc.
 
-By default, aider_nova starts in "code" mode. As you are talking, you can
+By default, aider starts in "code" mode. As you are talking, you can
 send individual messages in a specific mode using `/code`, `/ask`, and `/help` commands:
 Using `/code`, `/ask`, and `/help` applies just to that particular message.
 Your next message will go back to the active mode (usually "code" mode by default).
@@ -26,12 +26,12 @@ with the `/chat-mode <mode>` command:
 /chat-mode help
 ```
 
-Or you can launch aider_nova in one of the modes with the `--chat-mode <mode>` switch.
+Or you can launch aider in one of the modes with the `--chat-mode <mode>` switch.
 
 <div class="chat-transcript" markdown="1">
 
 
-> aider_nova v0.47.1-dev  
+> aider v0.47.1-dev  
 > Models: claude-3-5-sonnet-20240620 with diff edit format  
 > Git repo: .git with 298 files  
 > Repo-map: using 1024 tokens  
@@ -43,8 +43,8 @@ This is the source code to the popular django package.
 
 #### /help How do I use ollama?
 
-Run `aider_nova --model ollama/<ollama-model>`.
-See these docs for more info: https://aider_nova.chat/docs/llms/ollama.html
+Run `aider --model ollama/<ollama-model>`.
+See these docs for more info: https://aider.chat/docs/llms/ollama.html
 
 #### /code Add a function to calculate the factorial of a number
 
