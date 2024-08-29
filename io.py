@@ -276,7 +276,7 @@ class InputOutput:
             self.console.print(Text(inp), **style)
 
         prefix = "####"
-        hist = ["continue to work on what you think must be done"]
+        hist = ["From your todolist, reflect on what needs to be done. Then continue to work autonomously on what you think needs to be done. Keep your todolist up to date."]
 
         hist = f"  \n{prefix} ".join(hist)
 
@@ -284,7 +284,7 @@ class InputOutput:
 {prefix} {hist}"""
         self.append_chat_history(hist, linebreak=True)
         
-        return "continue to work on what you think must be done"
+        return "From your todolist, reflect on what needs to be done. Then continue to work autonomously on what you think needs to be done. Keep your todolist up to date."
 
     # OUTPUT
 
