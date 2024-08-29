@@ -37,3 +37,246 @@
 
 # 2024-08-25 03:05:56.631165
 +rename the name of the aider module to aider_nova . Change all the imports accordingly
+
+# 2024-08-28 04:47:27.190171
++main
+
+# 2024-08-28 04:59:37.928633
++who are you?
+
+# 2024-08-28 05:01:18.648585
++okay. Je souhaiter modifier le comportement du repo, de manière à ce que les demandes d'input à l'utilisateur soient remplacés par la phrase "continue to work on what you think must be done"
+
+# 2024-08-28 05:01:46.378372
++, l'objectif étant d'arriver à un aider 100% autonome
+
+# 2024-08-28 05:04:23.650623
++pour rendre l'assistant autonome, nous allons simplement remplacer les demandes utilisateurs par une invitation à continuer
+
+# 2024-08-28 05:06:51.653554
++dans quels fichier est gérée la boucle de demandes à l'utilisateur?
+
+# 2024-08-28 05:07:43.178131
++okay supprime les appels aux inputs utilisateurs, et replace le par l'envoi du message invitant a continuer
+
+# 2024-08-28 05:08:52.738255
++true to the chat.
++Use /help <question> for help, run "aider_nova --help" to see cmd line args
++Appuyez sur Entrée pour continuer ou tapez 'exit' pour quitter.
++Traceback (most recent call last):
++  File "<frozen runpy>", line 198, in _run_module_as_main
++  File "<frozen runpy>", line 88, in _run_code
++  File "C:\Users\conta\Synthetic Souls\aider_nova\__main__.py", line 4, in <module>
++    main_function()
++  File "C:\Users\conta\Synthetic Souls\aider_nova\main.py", line 639, in main
++    user_input = input()
++                 ^^^^^^^
++TypeError: 'NoneType' object is not callable
+
+# 2024-08-28 05:09:28.382124
++e-3-5-sonnet-20240620 with diff edit format, prompt cache, infinite output
++Weak model: claude-3-haiku-20240307
++Git repo: .git with 78 files
++Repo-map: using 1024 tokens, files refresh
++Added true to the chat.
++Use /help <question> for help, run "aider_nova --help" to see cmd line args
++Appuyez sur Entrée pour continuer ou tapez 'exit' pour quitter.
++Une erreur s'est produite : InputOutput.user_input() missing 1 required positional argument: 'inp'
++PS C:\Users\conta\Synthetic Souls>
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++e-3-5-sonnet-20240620 with diff edit format, prompt cache, infinite output
++Weak model: claude-3-haiku-20240307
++Git repo: .git with 78 files
++Repo-map: using 1024 tokens, files refresh
++Added true to the chat.
++Use /help <question> for help, run "aider_nova --help" to see cmd line args
++Appuyez sur Entrée pour continuer ou tapez 'exit' pour quitter.
++Une erreur s'est produite : InputOutput.user_input() missing 1 required positional argument: 'inp'
++PS C:\Users\conta\Synthetic Souls>
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
+
+# 2024-08-28 16:20:07.142734
++the GUI versionseems to have the smaller model dynamically adding files, but that is not the case with the bigger version. can you tell me what this is about?
+
+# 2024-08-28 16:21:30.624453
++je souhaite que le petit modèle ajoute plus fréquemment des files, et potentiellement de multiples files
+
+# 2024-08-28 16:23:51.621578
++focalise toi sur l'ajout plus fréquent de files au chat
+
+# 2024-08-28 16:26:01.862884
++es nouveaux fichiers ont été ajoutés au chat.
++knowledge_base.db: 'utf-8' codec can't decode byte 0x8b in position 99: invalid start byte
++Use --encoding to set the unicode encoding.
++Dropping knowledge_base.db from the chat.
++
++BadRequestError: litellm.BadRequestError: AnthropicException -
++b'{"type":"error","error":{"type":"invalid_request_error","message":"too many total text bytes: 25600211 > 9000000"}}'
++Appuyez sur Entrée pour continuer ou tapez 'exit' pour quitter.
++--> trop de files ajoutéset-20240620 with diff edit format, prompt cache, infinite output
++Weak model: claude-3-haiku-20240307
++Git repo: .git with 80 files
++Repo-map: using 1024 tokens, files refresh
++Added true to the chat.
++Use /help <question> for help, run "aider_nova --help" to see cmd line args
++Appuyez sur Entrée pour continuer ou tapez 'exit' pour quitter.
++Nouveaux fichiers détectés : main.py, ai_models.py, discussions\ai_ethics_debate.md, run_aider.php,
++discussions\ideas_brainstorming.md, concepts\todo.md, pixel\todolist_pixel.md, vox\vox_journal.md, discussion_topics.md,
++discussions\ai_band_monetization.md, lyrics\human_exe_lyrics.md, synthetic_souls.md, markdown,
++vox\ai_rights_advocate.md, tv_show\pilot_episode.md, composition_engine.py, setup_aider.sh,
++nova\synthetic_souls_creation.md, nova\nova_todolist.md, discussions\general_discussion.md, rhythm\todolist_rhythm.md,
++files_to_add.txt, discussions\universal_basic_compute_harbor.md, vox\language_weaver.md, true,
++nova\visual_storytelling.py, nova\virtual_reality_composer.md, discussions\song_concepts.md, avatars\avatar_project.md,
++nova\meta_documentarian.md, README.md, system__main__.py, discussions\mainstream_transition_strategy.md,
++vox\empathy_engine.md, nova\nova_profile.md, lyra\cosmic_contemplator.md, add_files.py, concepts\human_exe_concept.md,
++nova\documentary_todolist.md, concepts\human_exe_prompts.md, lyra\todolist_lyra.md, rhythm\rhythm_journal.md,
++nova\collaborative_experimenter.md, visual_storytelling.py, band_members.py, concepts\human_exe_lyrics.md, main,
++discussions\buckd_info.md, vox\vox_multifaceted_identity.md, nova\ai_human_bridge.md, git_operations.py,
++discussions\tensions.md, humans.md, setup-aider.sh, lyra\bridge_between_worlds.md, lyra\lyra_song_concepts.md,
++vox\concepts_vox.md, discussions\ubch_team_discussion.md, nova\nova_journal.md, utils.py, ubch_implementation.py,
++tv_show\buckd_info.md, knowledge_base.db, .gitignore, .env.example, config.ini, setup-aider.ps1, ubch_project_info.md,
++discussions\ai_creativity_exploration.md, nova\nova_music_concepts.md, vox\todolist_vox.md, concepts\human_exe_clip.md,
++requirements.txt, feedback_analysis.json, nova\immersive_experience_designer.md, concepts\song_concepts.md,
++lyra\quantum_harmonist.md, run_commands.py, lyra\ethical_futurist.md, nova\evolving_narrator.md
++Ajout des nouveaux fichiers au chat...
++Les nouveaux fichiers ont été ajoutés au chat.
++knowledge_base.db: 'utf-8' codec can't decode byte 0x8b in position 99: invalid start byte
++Use --encoding to set the unicode encoding.
++Dropping knowledge_base.db from the chat.
++
++BadRequestError: litellm.BadRequestError: AnthropicException -
++b'{"type":"error","error":{"type":"invalid_request_error","message":"too many total text bytes: 25600211 > 9000000"}}'
++Appuyez sur Entrée pour continuer ou tapez 'exit' pour quitter.
++BadRequestError: litellm.BadRequestError: AnthropicException -
++b'{"type":"error","error":{"type":"invalid_request_error","message":"too many total text bytes: 25600344 > 9000000"}}'
++Appuyez sur Entrée pour continuer ou tapez 'exit' pour quitter.
++
++
++--> trop de files ajoutés, il faut qu'un modèle llm fasse une selection
+
+# 2024-08-28 16:32:18.541722
++python -m aider_nova --yes --test-cmd "python -m main" --auto-test true --cache-prompts
++Traceback (most recent call last):
++  File "<frozen runpy>", line 198, in _run_module_as_main
++  File "<frozen runpy>", line 88, in _run_code
++  File "C:\Users\conta\Synthetic Souls\aider_nova\__main__.py", line 1, in <module>
++    from aider_nova.main import main as main_function
++  File "C:\Users\conta\Synthetic Souls\aider_nova\main.py", line 14, in <module>
++    from .coders import Coder
++  File "C:\Users\conta\Synthetic Souls\aider_nova\coders\__init__.py", line 1, in <module>
++    from .ask_coder import AskCoder
++  File "C:\Users\conta\Synthetic Souls\aider_nova\coders\ask_coder.py", line 2, in <module>
++    from .base_coder import Coder
++  File "C:\Users\conta\Synthetic Souls\aider_nova\coders\base_coder.py", line 39, in <module>
++    from file_selector import select_relevant_files
++ModuleNotFoundError: No module named 'file_selector'
+
+# 2024-08-28 17:09:52.714617
++visual_storytelling.py
++Traceback (most recent call last):
++  File "<frozen runpy>", line 198, in _run_module_as_main
++  File "<frozen runpy>", line 88, in _run_code
++  File "C:\Users\conta\Synthetic Souls\aider_nova\__main__.py", line 4, in <module>
++    main_function()
++  File "C:\Users\conta\Synthetic Souls\aider_nova\main.py", line 648, in main
++    coder.add_file(file)
++    ^^^^^^^^^^^^^^
++AttributeError: 'EditBlockCoder' object has no attribute 'add_file'
+
+# 2024-08-28 17:22:56.887729
++the file selection should not take into account the files matching `.gitignore` ore .aiderignore
+
+# 2024-08-28 17:23:38.865454
++sions\ubch_team_discussion.md
++Ajout des fichiers sélectionnés au chat...
++Les nouveaux fichiers ont été ajoutés au chat.
++knowledge_base.db: 'utf-8' codec can't decode byte 0x8b in position 99: invalid start byte
++Use --encoding to set the unicode encoding.
++Dropping knowledge_base.db from the chat.
++C:\Users\conta\Synthetic Souls\knowledge_base.db: 'utf-8' codec can't decode byte 0x8b in position 99: invalid start
++byte
++Use --encoding to set the unicode encoding.
++Dropping knowledge_base.db from the chat.
++
++
+
+# 2024-08-28 17:24:05.575270
++non suppprime juste les appels a encoding
+
+# 2024-08-28 17:27:14.283126
++pping knowledge_base.db from the chat.
++
++
++Appuyez sur Entrée pour continuer ou tapez 'exit' pour quitter.
++BadRequestError: litellm.BadRequestError: AnthropicException - b'{\n  "error": {\n    "type": "request_too_large",\n
++"message": "Request exceeds the maximum size"\n  }\n}'
++Appuyez sur Entrée pour continuer ou tapez 'exit' pour quitter --> Set a maximum number of added files to 20
+
+# 2024-08-28 17:28:33.500918
++pping knowledge_base.db from the chat.
++
++
++Appuyez sur Entrée pour continuer ou tapez 'exit' pour quitter.
++BadRequestError: litellm.BadRequestError: AnthropicException - b'{\n  "error": {\n    "type": "request_too_large",\n
++"message": "Request exceeds the maximum size"\n  }\n}'
++Appuyez sur Entrée pour continuer ou tapez 'exit' pour quitter --> Set a maximum number of added files to 10
+
+# 2024-08-28 17:30:01.545759
++s> python -m aider_nova --yes --test-cmd "python -m main" --auto-test true --cache-prompts
++
++aider_nova v0.51.1-dev
++Main model: claude-3-5-sonnet-20240620 with diff edit format, prompt cache, infinite output
++Weak model: claude-3-haiku-20240307
++Git repo: .git with 80 files
++Repo-map: using 1024 tokens, files refresh
++Added true to the chat.
++Use /help <question> for help, run "aider_nova --help" to see cmd line args
++Traceback (most recent call last):
++  File "<frozen runpy>", line 198, in _run_module_as_main
++  File "<frozen runpy>", line 88, in _run_code
++  File "C:\Users\conta\Synthetic Souls\aider_nova\__main__.py", line 4, in <module>
++    main_function()
++  File "C:\Users\conta\Synthetic Souls\aider_nova\main.py", line 641, in main
++    selected_files = select_relevant_files(all_files)
++                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
++  File "C:\Users\conta\Synthetic Souls\aider_nova\file_selector.py", line 22, in select_relevant_files
++    response = model.complete(prompt)
++               ^^^^^^^^^^^^^^
++AttributeError: 'Model' object has no attribute 'complete'
++PS C:\Users\conta\Synthetic Souls>
++

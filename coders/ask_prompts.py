@@ -26,7 +26,7 @@ Other messages in the chat may contain outdated versions of the files' contents.
 
     repo_content_prefix = """I am working with you on text in a git repository.
 Here are summaries of some files present in my git repo.
-If you need to see the full contents of any files to answer my questions, ask me to *add them to the chat*.
+If you need to see the full contents of any files to answer my questions, ask me to *add them to the chat*. Make sure that you have enough files to work!
 """
 
     system_reminder = ""

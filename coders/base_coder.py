@@ -1618,6 +1618,7 @@ class Coder:
                 self.io.tool_output(f"Nouveaux fichiers détectés : {', '.join(new_files)}")
                 self.io.tool_output("Sélection des fichiers les plus pertinents...")
                 selected_files = select_relevant_files(list(new_files))
+                selected_files = selected_files[:20]  # Limite à 20 fichiers
                 self.io.tool_output(f"Fichiers sélectionnés : {', '.join(selected_files)}")
                 self.io.tool_output("Ajout des fichiers sélectionnés au chat...")
                 self.abs_fnames.update(selected_files)
