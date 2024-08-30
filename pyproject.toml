@@ -43,6 +43,9 @@ playwright = { file = "requirements/requirements-playwright.txt" }
 where = ["."]
 include = ["aider", "aider.*"]
 
+[tool.setuptools]
+package-dir = {"" = "."}
+
 [tool.setuptools.package-data]
 "aider" = ["queries/*.scm"]
 "aider.website" = ["**/*.md"]
