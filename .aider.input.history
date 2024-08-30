@@ -1166,3 +1166,72 @@
 
 # 2024-08-30 23:10:27.648955
 +/run pip install -r requirements.txt --upgrade
+
+# 2024-08-30 23:14:24.469675
++-chat
++  Building editable for aider-chat (pyproject.toml) ... done
++  Created wheel for aider-chat: filename=aider_chat-0.1.0-0.editable-py3-none-any.whl size=11137 sha256=2d0e015e9f7184dcb26c33916dbe0593f87cdda9d135120301be18a447e6b2e3
++  Stored in directory: /tmp/pip-ephem-wheel-cache-5jngrhvj/wheels/23/60/2a/eab8889311e7f8822e8783f37fdcb53233f795a83908caa205
++Successfully built aider-chat
++Installing collected packages: aider-chat
++Successfully installed aider-chat-0.1.0
++(venv) ubuntu@ip-172-31-7-182:/var/www/html/synthetic-souls$ python3 aider --yes --test-cmd "python -m main" --auto-test true --cache-prompts 
++Traceback (most recent call last):
++  File "<frozen runpy>", line 198, in _run_module_as_main
++  File "<frozen runpy>", line 88, in _run_code
++  File "/var/www/html/synthetic-souls/aider/__main__.py", line 1, in <module>
++    from aider.main import main as main_function
++ModuleNotFoundError: No module named 'aider.main'
++(venv) ubuntu@ip-172-31-7-182:/var/www/html/synthetic-souls$ ^C
++(venv) ubuntu@ip-172-31-7-182:/var/www/html/synthetic-souls$ cd aider
++(venv) ubuntu@ip-172-31-7-182:/var/www/html/synthetic-souls/aider$ aider
++Traceback (most recent call last):
++  File "/var/www/html/synthetic-souls/venv/bin/aider", line 5, in <module>
++    from aider.main import main
++ModuleNotFoundError: No module named 'aider.main'
++(venv) ubuntu@ip-172-31-7-182:/var/www/html/synthetic-souls/aider$ 
+
+# 2024-08-30 23:15:08.848758
++ python3 aider --yes --test-cmd "python -m main" --auto-test true --cache-prompts 
++Traceback (most recent call last):
++  File "<frozen runpy>", line 198, in _run_module_as_main
++  File "<frozen runpy>", line 88, in _run_code
++  File "/var/www/html/synthetic-souls/aider/__main__.py", line 1, in <module>
++    from aider.main import main as main_function
++ModuleNotFoundError: No module named 'aider.main'
++(venv) ubuntu@ip-172-31-7-182:/var/www/html/synthetic-souls$ ^C
++(venv) ubuntu@ip-172-31-7-182:/var/www/html/synthetic-souls$ cd aider
++(venv) ubuntu@ip-172-31-7-182:/var/www/html/synthetic-souls/aider$ aider
++Traceback (most recent call last):
++  File "/var/www/html/synthetic-souls/venv/bin/aider", line 5, in <module>
++    from aider.main import main
++ModuleNotFoundError: No module named 'aider.main'
+
+# 2024-08-30 23:16:10.602222
++raceback (most recent call last):
++  File "<frozen runpy>", line 198, in _run_module_as_main
++  File "<frozen runpy>", line 88, in _run_code
++  File "C:\Python312\Scripts\aider.exe\__main__.py", line 7, in <module>
++  File "C:\Python312\Lib\site-packages\aider\main.py", line 640, in main
++    coder.run()
++  File "C:\Python312\Lib\site-packages\aider\coders\base_coder.py", line 727, in run
++    self.run_one(user_message, preproc)
++  File "C:\Python312\Lib\site-packages\aider\coders\base_coder.py", line 770, in run_one
++    list(self.send_message(message))
++  File "C:\Python312\Lib\site-packages\aider\coders\base_coder.py", line 1057, in send_message
++    chunks = self.format_messages()
++             ^^^^^^^^^^^^^^^^^^^^^^
++  File "C:\Python312\Lib\site-packages\aider\coders\base_coder.py", line 995, in format_messages
++    chunks = self.format_chat_chunks()
++             ^^^^^^^^^^^^^^^^^^^^^^^^^
++  File "C:\Python312\Lib\site-packages\aider\coders\base_coder.py", line 900, in format_chat_chunks
++    self.choose_fence()
++  File "C:\Python312\Lib\site-packages\aider\coders\base_coder.py", line 494, in choose_fence
++    for _fname, content in self.get_abs_fnames_content():
++  File "C:\Python312\Lib\site-packages\aider\coders\base_coder.py", line 483, in get_abs_fnames_content
++    content = self.io.read_text(fname)
++              ^^^^^^^^^^^^^^^^^^^^^^^^
++  File "C:\Python312\Lib\site-packages\aider\io.py", line 236, in read_text
++    with open(str(filename), "r", encoding=self.encoding) as f:
++         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
++PermissionError: [Errno 13] Permission denied: 'C:\\Users\\conta\\Synthetic Souls\\aider\\aider'
