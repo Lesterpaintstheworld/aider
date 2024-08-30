@@ -28,8 +28,6 @@ from aider.io import InputOutput
 from .llm import litellm  # noqa: F401; properly init litellm on launch
 from .repo import GitRepo
 from .versioncheck import check_version
-from .file_utils import safe_read_files
-
 from .dump import dump  # noqa: F401
 
 
