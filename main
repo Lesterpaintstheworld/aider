@@ -1,3 +1,4 @@
-from . import aider, __version__, models, utils
-from .file_selector import select_relevant_files
 import os
+import aider
+from aider import __version__, models, utils
+from aider.file_selector import select_relevant_files
