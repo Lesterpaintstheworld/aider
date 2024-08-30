@@ -1,2 +1,2 @@
 from . import __version__, models, utils
-from .file_selector import select_relevant_files
+from . import file_selector
