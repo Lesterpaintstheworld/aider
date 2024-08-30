@@ -3,8 +3,22 @@ from aider.file_selector import select_relevant_files
 from aider.utils import safe_read_files
 
 def main():
-    # Ajoutez ici la logique principale de votre application
-    pass
+    coder = Coder.create(**kwargs)  # Assurez-vous que les kwargs appropriés sont passés
+    
+    while True:
+        io.tool_output("Appuyez sur Entrée pour continuer ou tapez 'exit' pour quitter.")
+        try:
+            user_input = io.user_input("")
+            if user_input.lower() == 'exit':
+                break
+            coder.run(with_message="Continue to work on what you think should be done. Use your todolist, switch up things regularly")
+            
+            # Vérifier les nouveaux fichiers périodiquement
+            if coder.check_for_new_files():
+                io.tool_output("Les nouveaux fichiers ont été ajoutés au chat.")
+        except Exception as e:
+            io.tool_error(f"Une erreur s'est produite : {str(e)}")
+            break
 
 if __name__ == "__main__":
     main()
