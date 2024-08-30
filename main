@@ -1,4 +1,9 @@
 import os
+import sys
+
+# Ajout du répertoire parent au chemin de recherche des modules
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
 import aider
 from aider import __version__, models, utils
 from aider.file_selector import select_relevant_files
