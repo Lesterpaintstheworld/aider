@@ -1249,3 +1249,167 @@
 
 # 2024-08-30 23:18:41.962501
 +/run python -m aider
+
+# 2024-08-30 23:21:53.468566
++PS C:\Users\conta\Synthetic Souls> python -m aider --yes --test-cmd "python -m main"  --cache-prompts --gui
++Traceback (most recent call last):
++  File "<frozen runpy>", line 189, in _run_module_as_main
++  File "<frozen runpy>", line 148, in _get_module_details
++  File "<frozen runpy>", line 112, in _get_module_details
++  File "C:\Users\conta\Synthetic Souls\aider\__init__.py", line 3, in <module>
++    from . import main
++  File "C:\Users\conta\Synthetic Souls\aider\main.py", line 24, in <module>
++    from aider.coders import Coder
++  File "C:\Users\conta\Synthetic Souls\aider\coders\__init__.py", line 1, in <module>
++    from .ask_coder import AskCoder
++  File "C:\Users\conta\Synthetic Souls\aider\coders\ask_coder.py", line 2, in <module>
++    from .base_coder import Coder
++  File "C:\Users\conta\Synthetic Souls\aider\coders\base_coder.py", line 40, in <module>
++    from ..main import safe_read_files
++ImportError: cannot import name 'safe_read_files' from partially initialized module 'aider.main' (most likely due to a circular import) (C:\Users\conta\Synthetic Souls\aider\main.py)
+
+# 2024-08-30 23:22:28.344637
++Traceback (most recent call last):
++  File "<frozen runpy>", line 189, in _run_module_as_main
++  File "<frozen runpy>", line 148, in _get_module_details
++  File "<frozen runpy>", line 112, in _get_module_details
++  File "C:\Users\conta\Synthetic Souls\aider\__init__.py", line 3, in <module>
++    from . import main
++  File "C:\Users\conta\Synthetic Souls\aider\main.py", line 24, in <module>
++    from aider.coders import Coder
++  File "C:\Users\conta\Synthetic Souls\aider\coders\__init__.py", line 1, in <module>
++    from .ask_coder import AskCoder
++  File "C:\Users\conta\Synthetic Souls\aider\coders\ask_coder.py", line 2, in <module>
++    from .base_coder import Coder
++  File "C:\Users\conta\Synthetic Souls\aider\coders\base_coder.py", line 40, in <module>
++    from ..main import safe_read_files
++ImportError: cannot import name 'safe_read_files' from partially initialized module 'aider.main' (most likely due to a circular import) (C:\Users\conta\Synthetic Souls\aider\main.py)
+
+# 2024-08-30 23:22:44.852342
++/run echo. > file_utils.py
+
+# 2024-08-30 23:23:19.454944
++/add __init__.py
+
+# 2024-08-30 23:23:28.822268
++/add __main__.py
+
+# 2024-08-30 23:23:41.897960
++Traceback (most recent call last):
++  File "<frozen runpy>", line 189, in _run_module_as_main
++  File "<frozen runpy>", line 148, in _get_module_details
++  File "<frozen runpy>", line 112, in _get_module_details
++  File "C:\Users\conta\Synthetic Souls\aider\__init__.py", line 3, in <module>
++    from . import main
++  File "C:\Users\conta\Synthetic Souls\aider\main.py", line 24, in <module>
++    from aider.coders import Coder
++  File "C:\Users\conta\Synthetic Souls\aider\coders\__init__.py", line 1, in <module>
++    from .ask_coder import AskCoder
++  File "C:\Users\conta\Synthetic Souls\aider\coders\ask_coder.py", line 2, in <module>
++    from .base_coder import Coder
++  File "C:\Users\conta\Synthetic Souls\aider\coders\base_coder.py", line 40, in <module>
++    from ..main import safe_read_files
++ImportError: cannot import name 'safe_read_files' from partially initialized module 'aider.main' (most likely due to a circular import) (C:\Users\conta\Synthetic Souls\aider\main.py)
+
+# 2024-08-30 23:24:22.073721
++Traceback (most recent call last):
++  File "<frozen runpy>", line 189, in _run_module_as_main
++  File "<frozen runpy>", line 148, in _get_module_details
++  File "<frozen runpy>", line 112, in _get_module_details
++  File "C:\Users\conta\Synthetic Souls\aider\__init__.py", line 3, in <module>
++    from . import main
++  File "C:\Users\conta\Synthetic Souls\aider\main.py", line 24, in <module>
++    from aider.coders import Coder
++  File "C:\Users\conta\Synthetic Souls\aider\coders\__init__.py", line 1, in <module>
++    from .ask_coder import AskCoder
++  File "C:\Users\conta\Synthetic Souls\aider\coders\ask_coder.py", line 2, in <module>
++    from .base_coder import Coder
++  File "C:\Users\conta\Synthetic Souls\aider\coders\base_coder.py", line 40, in <module>
++    from ..main import safe_read_files
++ImportError: cannot import name 'safe_read_files' from partially initialized module 'aider.main' (most likely due to a circular import) (C:\Users\conta\Synthetic Souls\aider\main.py)
++PS C:\Users\conta\Synthetic Souls>
+
+# 2024-08-30 23:25:19.174020
++/run echo. > file_utils.py
+
+# 2024-08-30 23:26:38.243032
++Traceback (most recent call last):
++  File "<frozen runpy>", line 189, in _run_module_as_main
++  File "<frozen runpy>", line 148, in _get_module_details
++  File "<frozen runpy>", line 112, in _get_module_details
++  File "C:\Users\conta\Synthetic Souls\aider\__init__.py", line 3, in <module>
++    from . import main
++  File "C:\Users\conta\Synthetic Souls\aider\main.py", line 24, in <module>
++    from aider.coders import Coder
++  File "C:\Users\conta\Synthetic Souls\aider\coders\__init__.py", line 1, in <module>
++    from .ask_coder import AskCoder
++  File "C:\Users\conta\Synthetic Souls\aider\coders\ask_coder.py", line 2, in <module>
++    from .base_coder import Coder
++  File "C:\Users\conta\Synthetic Souls\aider\coders\base_coder.py", line 40, in <module>
++    from ..main import safe_read_files
++ImportError: cannot import name 'safe_read_files' from partially initialized module 'aider.main' (most likely due to a circular import) (C:\Users\conta\Synthetic Souls\aider\main.py)
+
+# 2024-08-30 23:27:51.166458
++/run python main.py
+
+# 2024-08-30 23:32:38.903576
++when I launch aider, i have Traceback (most recent call last):
++  File "<frozen runpy>", line 189, in _run_module_as_main
++  File "<frozen runpy>", line 148, in _get_module_details
++  File "<frozen runpy>", line 112, in _get_module_details
++  File "C:\Users\conta\Synthetic Souls\aider\__init__.py", line 3, in <module>
++    from . import main
++  File "C:\Users\conta\Synthetic Souls\aider\main.py", line 24, in <module>
++    from aider.coders import Coder
++  File "C:\Users\conta\Synthetic Souls\aider\coders\__init__.py", line 1, in <module>
++    from .ask_coder import AskCoder
++  File "C:\Users\conta\Synthetic Souls\aider\coders\ask_coder.py", line 2, in <module>
++    from .base_coder import Coder
++  File "C:\Users\conta\Synthetic Souls\aider\coders\base_coder.py", line 40, in <module>
++    from ..main import safe_read_files
++ImportError: cannot import name 'safe_read_files' from partially initialized module 'aider.main' (most likely due to a circular import) (C:\Users\conta\Synthetic Souls\aider\main.py)
+
+# 2024-08-30 23:33:24.890456
++Traceback (most recent call last):
++  File "<frozen runpy>", line 189, in _run_module_as_main
++  File "<frozen runpy>", line 148, in _get_module_details
++  File "<frozen runpy>", line 112, in _get_module_details
++  File "C:\Users\conta\Synthetic Souls\aider\__init__.py", line 3, in <module>
++    from . import main
++  File "C:\Users\conta\Synthetic Souls\aider\main.py", line 24, in <module>
++    from aider.coders import Coder
++  File "C:\Users\conta\Synthetic Souls\aider\coders\__init__.py", line 1, in <module>
++    from .ask_coder import AskCoder
++  File "C:\Users\conta\Synthetic Souls\aider\coders\ask_coder.py", line 2, in <module>
++    from .base_coder import Coder
++  File "C:\Users\conta\Synthetic Souls\aider\coders\base_coder.py", line 40, in <module>
++    from ..main import safe_read_files
++ImportError: cannot import name 'safe_read_files' from partially initialized module 'aider.main' (most likely due to a circular import) (C:\Users\conta\Synthetic Souls\aider\main.py)
+
+# 2024-08-30 23:34:19.171683
++/run echo. > file_utils.py
+
+# 2024-08-30 23:34:42.046929
++Traceback (most recent call last):
++  File "<frozen runpy>", line 189, in _run_module_as_main
++  File "<frozen runpy>", line 148, in _get_module_details
++  File "<frozen runpy>", line 112, in _get_module_details
++  File "C:\Users\conta\Synthetic Souls\aider\__init__.py", line 3, in <module>
++    from . import main
++  File "C:\Users\conta\Synthetic Souls\aider\main.py", line 24, in <module>
++    from aider.coders import Coder
++  File "C:\Users\conta\Synthetic Souls\aider\coders\__init__.py", line 1, in <module>
++    from .ask_coder import AskCoder
++  File "C:\Users\conta\Synthetic Souls\aider\coders\ask_coder.py", line 2, in <module>
++    from .base_coder import Coder
++  File "C:\Users\conta\Synthetic Souls\aider\coders\base_coder.py", line 40, in <module>
++    from ..file_utils import safe_read_files
++ImportError: cannot import name 'safe_read_files' from 'aider.file_utils' (C:\Users\conta\Synthetic Souls\aider\file_utils.py)
+
+# 2024-08-30 23:35:15.903227
++Traceback (most recent call last):
++  File "<frozen runpy>", line 198, in _run_module_as_main
++  File "<frozen runpy>", line 88, in _run_code
++  File "C:\Users\conta\Synthetic Souls\aider\__main__.py", line 4, in <module>
++    main_function()
++TypeError: 'module' object is not callable

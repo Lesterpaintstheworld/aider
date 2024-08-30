@@ -1,7 +1,7 @@
 Metadata-Version: 2.1
-Name: aider_chat
-Version: 0.51.1.dev0
-Summary: Aider is AI pair programming in your terminal
+Name: aider-chat
+Version: 0.1.0
+Summary: aider is AI pair programming in your terminal
 Project-URL: Homepage, https://github.com/paul-gauthier/aider
 Classifier: Development Status :: 4 - Beta
 Classifier: Environment :: Console
@@ -77,7 +77,7 @@ Requires-Dist: python-dotenv==1.0.1
 Requires-Dist: pyyaml==6.0.2
 Requires-Dist: referencing==0.35.1
 Requires-Dist: regex==2024.7.24
-Requires-Dist: requests==2.32.3
+Requires-Dist: requests<2.33.0,>=2.32.0
 Requires-Dist: rich==13.7.1
 Requires-Dist: rpds-py==0.20.0
 Requires-Dist: scipy==1.13.1
@@ -92,7 +92,7 @@ Requires-Dist: tqdm==4.66.5
 Requires-Dist: tree-sitter==0.21.3
 Requires-Dist: tree-sitter-languages==1.10.2
 Requires-Dist: typing-extensions==4.12.2
-Requires-Dist: urllib3==2.2.2
+Requires-Dist: urllib3<3.0.0,>=2.0.0
 Requires-Dist: wcwidth==0.2.13
 Requires-Dist: yarl==1.9.4
 Requires-Dist: zipp==3.20.0
@@ -286,13 +286,21 @@ Requires-Dist: typing-extensions==4.12.2; extra == "playwright"
 
 <!-- Edit README.md, not index.md -->
 
-# Aider is AI pair programming in your terminal
+# aider is AI pair programming in your terminal
 
-Aider lets you pair program with LLMs,
+aider lets you pair program with LLMs,
 to edit code in your local git repository.
 Start a new project or work with an existing git repo.
-Aider works best with GPT-4o & Claude 3.5 Sonnet and can 
+aider works best with GPT-4o & Claude 3.5 Sonnet and can 
 [connect to almost any LLM](https://aider.chat/docs/llms.html).
+
+aider operates autonomously in a continuous loop, allowing it to:
+
+1. Analyze ongoing tasks
+2. Edit code as needed
+3. Dynamically add files to the conversation as the project evolves
+
+This approach enables aider to adapt in real-time to project changes and maintain an up-to-date understanding of the entire codebase.
 
 <p align="center">
   <img
@@ -320,7 +328,7 @@ cog.out(open("aider/website/_includes/get-started.md").read())
 You can get started quickly like this:
 
 ```
-python -m pip install aider_chat
+python -m pip install aider-chat
 
 # Change directory into a git repo
 cd /to/your/git/repo
@@ -350,12 +358,12 @@ for more details.
   - Paste in an error message or or GitHub issue URL.
   - Refactor code.
   - Update docs.
-- Aider will edit your files to complete your request.
-- Aider [automatically git commits](https://aider.chat/docs/git.html) changes with a sensible commit message.
-- Aider works with [most popular languages](https://aider.chat/docs/languages.html): python, javascript, typescript, php, html, css, and more...
-- Aider works best with GPT-4o & Claude 3.5 Sonnet and can [connect to almost any LLM](https://aider.chat/docs/llms.html).
-- Aider can edit multiple files at once for complex requests.
-- Aider uses a [map of your entire git repo](https://aider.chat/docs/repomap.html), which helps it work well in larger codebases.
+- aider will edit your files to complete your request.
+- aider [automatically git commits](https://aider.chat/docs/git.html) changes with a sensible commit message.
+- aider works with [most popular languages](https://aider.chat/docs/languages.html): python, javascript, typescript, php, html, css, and more...
+- aider works best with GPT-4o & Claude 3.5 Sonnet and can [connect to almost any LLM](https://aider.chat/docs/llms.html).
+- aider can edit multiple files at once for complex requests.
+- aider uses a [map of your entire git repo](https://aider.chat/docs/repomap.html), which helps it work well in larger codebases.
 - Edit files in your editor while chatting with aider,
 and it will always use the latest version.
 Pair program with AI.
@@ -366,7 +374,7 @@ Pair program with AI.
 
 ## Top tier performance
 
-[Aider has one of the top scores on SWE Bench](https://aider.chat/2024/06/02/main-swe-bench.html).
+[aider has one of the top scores on SWE Bench](https://aider.chat/2024/06/02/main-swe-bench.html).
 SWE Bench is a challenging software engineering benchmark where aider
 solved *real* GitHub issues from popular open source
 projects like django, scikitlearn, matplotlib, etc.
@@ -390,21 +398,21 @@ projects like django, scikitlearn, matplotlib, etc.
 
 - *The best free open source AI coding assistant.* -- [IndyDevDan](https://youtu.be/YALpX8oOn78)
 - *The best AI coding assistant so far.* -- [Matthew Berman](https://www.youtube.com/watch?v=df8afeb1FY8)
-- *Aider ... has easily quadrupled my coding productivity.* -- [SOLAR_FIELDS](https://news.ycombinator.com/item?id=36212100)
-- *It's a cool workflow... Aider's ergonomics are perfect for me.* -- [qup](https://news.ycombinator.com/item?id=38185326)
+- *aider ... has easily quadrupled my coding productivity.* -- [SOLAR_FIELDS](https://news.ycombinator.com/item?id=36212100)
+- *It's a cool workflow... aider's ergonomics are perfect for me.* -- [qup](https://news.ycombinator.com/item?id=38185326)
 - *It's really like having your senior developer live right in your Git repo - truly amazing!* -- [rappster](https://github.com/paul-gauthier/aider/issues/124)
 - *What an amazing tool. It's incredible.* -- [valyagolev](https://github.com/paul-gauthier/aider/issues/6#issue-1722897858)
-- *Aider is such an astounding thing!* -- [cgrothaus](https://github.com/paul-gauthier/aider/issues/82#issuecomment-1631876700)
+- *aider is such an astounding thing!* -- [cgrothaus](https://github.com/paul-gauthier/aider/issues/82#issuecomment-1631876700)
 - *It was WAY faster than I would be getting off the ground and making the first few working versions.* -- [Daniel Feldman](https://twitter.com/d_feldman/status/1662295077387923456)
-- *THANK YOU for Aider! It really feels like a glimpse into the future of coding.* -- [derwiki](https://news.ycombinator.com/item?id=38205643)
+- *THANK YOU for aider! It really feels like a glimpse into the future of coding.* -- [derwiki](https://news.ycombinator.com/item?id=38205643)
 - *It's just amazing.  It is freeing me to do things I felt were out my comfort zone before.* -- [Dougie](https://discord.com/channels/1131200896827654144/1174002618058678323/1174084556257775656)
 - *This project is stellar.* -- [funkytaco](https://github.com/paul-gauthier/aider/issues/112#issuecomment-1637429008)
 - *Amazing project, definitely the best AI coding assistant I've used.* -- [joshuavial](https://github.com/paul-gauthier/aider/issues/84)
-- *I absolutely love using Aider ... It makes software development feel so much lighter as an experience.* -- [principalideal0](https://discord.com/channels/1131200896827654144/1133421607499595858/1229689636012691468)
+- *I absolutely love using aider ... It makes software development feel so much lighter as an experience.* -- [principalideal0](https://discord.com/channels/1131200896827654144/1133421607499595858/1229689636012691468)
 - *I have been recovering from multiple shoulder surgeries ... and have used aider extensively. It has allowed me to continue productivity.* -- [codeninja](https://www.reddit.com/r/OpenAI/s/nmNwkHy1zG)
 - *I am an aider addict. I'm getting so much more work done, but in less time.* -- [dandandan](https://discord.com/channels/1131200896827654144/1131200896827654149/1135913253483069470)
 - *After wasting $100 on tokens trying to find something better, I'm back to aider. It blows everything else out of the water hands down, there's no competition whatsoever.* -- [SystemSculpt](https://discord.com/channels/1131200896827654144/1131200896827654149/1178736602797846548)
-- *Aider is amazing, coupled with Sonnet 3.5 it’s quite mind blowing.* -- [Josh Dingus](https://discord.com/channels/1131200896827654144/1133060684540813372/1262374225298198548)
+- *aider is amazing, coupled with Sonnet 3.5 it’s quite mind blowing.* -- [Josh Dingus](https://discord.com/channels/1131200896827654144/1133060684540813372/1262374225298198548)
 - *Hands down, this is the best AI coding assistant tool so far.* -- [IndyDevDan](https://www.youtube.com/watch?v=MPYFPvxfGZs)
-- *[Aider] changed my daily coding workflows. It's mind-blowing how a single Python application can change your life.* -- [maledorak](https://discord.com/channels/1131200896827654144/1131200896827654149/1258453375620747264)
+- *[aider] changed my daily coding workflows. It's mind-blowing how a single Python application can change your life.* -- [maledorak](https://discord.com/channels/1131200896827654144/1131200896827654149/1258453375620747264)
 - *Best agent for actual dev work in existing codebases.* -- [Nick Dobos](https://twitter.com/NickADobos/status/1690408967963652097?s=20)
