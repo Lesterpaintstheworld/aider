@@ -1,4 +1,2 @@
-import __version__
-import models
-import utils
-import file_selector
+from aider import __version__, models, utils
+from aider import file_selector
