@@ -37,6 +37,7 @@ from aider.repomap import RepoMap
 from aider.sendchat import retry_exceptions, send_completion
 from aider.utils import format_content, format_messages, is_image_file
 from ..file_selector import select_relevant_files
+from ..main import safe_read_files
 
 from ..dump import dump  # noqa: F401
 
@@ -528,9 +529,7 @@ class Coder:
         return True
 
     def get_abs_fnames_content(self):
-        for fname in list(self.abs_fnames):
-            content = self.io.read_text(fname)
-
+        for fname, content in safe_read_files(list(self.abs_fnames)):
             if content is None:
                 relative_fname = self.get_rel_fname(fname)
                 self.io.tool_error(f"Dropping {relative_fname} from the chat.")
