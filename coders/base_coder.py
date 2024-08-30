@@ -1619,9 +1619,19 @@ class Coder:
                 selected_files = select_relevant_files(list(new_files))
                 selected_files = selected_files[:20]  # Limite à 20 fichiers
                 self.io.tool_output(f"Fichiers sélectionnés : {', '.join(selected_files)}")
-                self.io.tool_output("Ajout des fichiers sélectionnés au chat...")
-                self.abs_fnames.update(selected_files)
-                return True
+                return self.add_files_to_chat(selected_files)
+        return False
+
+    def add_files_to_chat(self, files):
+        added_files = []
+        for file in files:
+            if self.io.confirm_ask(f"Voulez-vous ajouter {file} au chat ?"):
+                self.abs_fnames.add(self.abs_root_path(file))
+                added_files.append(file)
+        
+        if added_files:
+            self.io.tool_output(f"Fichiers ajoutés au chat : {', '.join(added_files)}")
+            return True
         return False
 
     def is_file_safe(self, fname):
