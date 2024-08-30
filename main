@@ -1,7 +1,5 @@
 from aider import __version__, models, utils
 from aider.file_selector import select_relevant_files
-from aider.file_utils import safe_read_files
-from aider.coders import Coder
 
 def main():
     # Ajoutez ici la logique principale de votre application
