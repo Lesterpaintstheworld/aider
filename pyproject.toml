@@ -21,7 +21,8 @@ classifiers = [
     "Topic :: Software Development",
 ]
 requires-python = ">=3.9,<3.13"
-dynamic = ["dependencies", "optional-dependencies", "version"]
+dynamic = ["dependencies", "optional-dependencies"]
+version = "0.1.0"
 
 [project.urls]
 Homepage = "https://github.com/paul-gauthier/aider"
@@ -30,7 +31,6 @@ Homepage = "https://github.com/paul-gauthier/aider"
 aider = "aider.main:main"
 
 [tool.setuptools.dynamic]
-version = { attr = "aider.__init__.__version__" }
 dependencies = { file = "requirements.txt" }
 
 [tool.setuptools.dynamic.optional-dependencies]
