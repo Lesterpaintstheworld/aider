@@ -26,6 +26,7 @@ version = "0.1.0"
 
 [tool.setuptools]
 packages = ["aider"]
+package-dir = {"aider" = "aider"}
 
 [project.urls]
 Homepage = "https://github.com/paul-gauthier/aider"
