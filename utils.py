@@ -320,3 +320,16 @@ def is_ignored_file(file_path):
         return False
 
     return check_ignore_file('.gitignore') or check_ignore_file('.aiderignore')
+def safe_read_files(fnames):
+    """
+    Lit en toute sécurité le contenu des fichiers spécifiés.
+    Retourne un dictionnaire avec les noms de fichiers comme clés et leur contenu comme valeurs.
+    """
+    contents = {}
+    for fname in fnames:
+        try:
+            with open(fname, 'r', encoding='utf-8') as f:
+                contents[fname] = f.read()
+        except Exception as e:
+            print(f"Erreur lors de la lecture du fichier {fname}: {e}")
+    return contents
