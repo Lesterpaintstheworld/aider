@@ -24,10 +24,6 @@ requires-python = ">=3.9,<3.13"
 dynamic = ["dependencies", "optional-dependencies"]
 version = "0.1.0"
 
-[tool.setuptools]
-packages = ["aider"]
-package-dir = {"aider" = "aider"}
-
 [project.urls]
 Homepage = "https://github.com/paul-gauthier/aider"
 
