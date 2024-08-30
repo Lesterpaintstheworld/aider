@@ -1413,3 +1413,12 @@
 +  File "C:\Users\conta\Synthetic Souls\aider\__main__.py", line 4, in <module>
 +    main_function()
 +TypeError: 'module' object is not callable
+
+# 2024-08-30 23:38:13.261119
++python3 aider --yes --test-cmd "python -m main" --auto-test true --cache-prompts 
++Traceback (most recent call last):
++  File "<frozen runpy>", line 198, in _run_module_as_main
++  File "<frozen runpy>", line 88, in _run_code
++  File "/var/www/html/synthetic-souls/aider/__main__.py", line 1, in <module>
++    from . import main as main_function
++ImportError: attempted relative import with no known parent package
