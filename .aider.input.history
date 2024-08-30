@@ -298,3 +298,871 @@
 
 # 2024-08-29 02:48:59.432633
 +super! improve the post. Explain that the software is available here: https://github.com/Lesterpaintstheworld/aider_nova. Here are some additional infos about aider:"\r\n\r\nRepository map\r\nrobot flowchat\r\n\r\nAider uses a concise map of your whole git repository that includes the most important classes and functions along with their types and call signatures. This helps aider understand the code its editing and how it relates to the other parts of the codebase. The repo map also helps aider write new code that respects and utilizes existing libraries, modules and abstractions found elsewhere in the codebase.\r\n\r\nUsing a repo map to provide context\r\nAider sends a repo map to the LLM along with each change request from the user. The repo map contains a list of the files in the repo, along with the key symbols which are defined in each file. It shows how each of these symbols are defined, by including the critical lines of code for each definition.\r\n\r\nHeres a part of the repo map of aiders repo, for base_coder.py and commands.py :\r\n\r\naider/coders/base_coder.py:\r\n...\r\nclass Coder:\r\n    abs_fnames = None\r\n...\r\n    @classmethod\r\n    def create(\r\n        self,\r\n        main_model,\r\n        edit_format,\r\n        io,\r\n        skip_model_availabily_check=False,\r\n        **kwargs,\r\n...\r\n    def abs_root_path(self, path):\r\n...\r\n    def run(self, with_message=None):\r\n...\r\n\r\naider/commands.py:\r\n...\r\nclass Commands:\r\n    voice = None\r\n\r\n...\r\n    def get_commands(self):\r\n...\r\n    def get_command_completions(self, cmd_name, partial):\r\n...\r\n    def run(self, inp):\r\n...\r\n\r\nMapping out the repo like this provides some key benefits:\r\n\r\nThe LLM can see classes, methods and function signatures from everywhere in the repo. This alone may give it enough context to solve many tasks. For example, it can probably figure out how to use the API exported from a module just based on the details shown in the map.\r\nIf it needs to see more code, the LLM can use the map to figure out which files it needs to look at. The LLM can ask to see these specific files, and aider will offer to add them to the chat context.\r\nOptimizing the map\r\nOf course, for large repositories even just the repo map might be too large for the LLMs context window. Aider solves this problem by sending just the most relevant portions of the repo map. It does this by analyzing the full repo map using a graph ranking algorithm, computed on a graph where each source file is a node and edges connect files which have dependencies. Aider optimizes the repo map by selecting the most important parts of the codebase which will fit into the active token budget.\r\n\r\nThe token budget is influenced by the --map-tokens switch, which defaults to 1k tokens. Aider adjusts the size of the repo map dynamically based on the state of the chat. It will usually stay within that settings value. But it does expand the repo map significantly at times, especially when no files have been added to the chat and aider needs to understand the entire repo as best as possible.\r\n\r\nThe sample map shown above doesnt contain every class, method and function from those files. It only includes the most important identifiers, the ones which are most often referenced by other portions of the code. These are the key pieces of context that the LLM needs to know to understand the overall codebase.Aider is AI pair programming in your terminal\r\nAider lets you pair program with LLMs, to edit code in your local git repository. Start a new project or work with an existing git repo. Aider works best with GPT-4o & Claude 3.5 Sonnet and can connect to almost any LLM.\r\n\r\n\r\n \r\n\r\nGetting started\r\nYou can get started quickly like this:\r\n\r\npython -m pip install aider-chat\r\n\r\n# Change directory into a git repo\r\ncd /to/your/git/repo\r\n\r\n# Work with Claude 3.5 Sonnet on your repo\r\nexport ANTHROPIC_API_KEY=your-key-goes-here\r\naider\r\n\r\n# Work with GPT-4o on your repo\r\nexport OPENAI_API_KEY=your-key-goes-here\r\naider \r\n\r\nSee the installation instructions and other documentation for more details.\r\n\r\nFeatures\r\nRun aider with the files you want to edit: aider <file1> <file2> ...\r\nAsk for changes:\r\nAdd new features or test cases.\r\nDescribe a bug.\r\nPaste in an error message or or GitHub issue URL.\r\nRefactor code.\r\nUpdate docs.\r\nAider will edit your files to complete your request.\r\nAider automatically git commits changes with a sensible commit message.\r\nAider works with most popular languages: python, javascript, typescript, php, html, css, and more\r\nAider works best with GPT-4o & Claude 3.5 Sonnet and can connect to almost any LLM.\r\nAider can edit multiple files at once for complex requests.\r\nAider uses a map of your entire git repo, which helps it work well in larger codebases.\r\nEdit files in your editor while chatting with aider, and it will always use the latest version. Pair program with AI.\r\nAdd images to the chat (GPT-4o, Claude 3.5 Sonnet, etc).\r\nAdd URLs to the chat and aider will read their content.\r\nCode with your voice.\r\nTop tier performance\r\nAider has one of the top scores on SWE Bench. SWE Bench is a challenging software engineering benchmark where aider solved real GitHub issues from popular open source projects like django, scikitlearn, matplotlib, etc.\r\n\r\nMore info\r\n\r\nRepository map\r\nrobot flowchat\r\n\r\nAider uses a concise map of your whole git repository that includes the most important classes and functions along with their types and call signatures. This helps aider understand the code its editing and how it relates to the other parts of the codebase. The repo map also helps aider write new code that respects and utilizes existing libraries, modules and abstractions found elsewhere in the codebase.\r\n\r\nUsing a repo map to provide context\r\nAider sends a repo map to the LLM along with each change request from the user. The repo map contains a list of the files in the repo, along with the key symbols which are defined in each file. It shows how each of these symbols are defined, by including the critical lines of code for each definition.\r\n\r\nHeres a part of the repo map of aiders repo, for base_coder.py and commands.py :\r\n\r\naider/coders/base_coder.py:\r\n...\r\nclass Coder:\r\n    abs_fnames = None\r\n...\r\n    @classmethod\r\n    def create(\r\n        self,\r\n        main_model,\r\n        edit_format,\r\n        io,\r\n        skip_model_availabily_check=False,\r\n        **kwargs,\r\n...\r\n    def abs_root_path(self, path):\r\n...\r\n    def run(self, with_message=None):\r\n...\r\n\r\naider/commands.py:\r\n...\r\nclass Commands:\r\n    voice = None\r\n\r\n...\r\n    def get_commands(self):\r\n...\r\n    def get_command_completions(self, cmd_name, partial):\r\n...\r\n    def run(self, inp):\r\n...\r\n\r\nMapping out the repo like this provides some key benefits:\r\n\r\nThe LLM can see classes, methods and function signatures from everywhere in the repo. This alone may give it enough context to solve many tasks. For example, it can probably figure out how to use the API exported from a module just based on the details shown in the map.\r\nIf it needs to see more code, the LLM can use the map to figure out which files it needs to look at. The LLM can ask to see these specific files, and aider will offer to add them to the chat context.\r\nOptimizing the map\r\nOf course, for large repositories even just the repo map might be too large for the LLMs context window. Aider solves this problem by sending just the most relevant portions of the repo map. It does this by analyzing the full repo map using a graph ranking algorithm, computed on a graph where each source file is a node and edges connect files which have dependencies. Aider optimizes the repo map by selecting the most important parts of the codebase which will fit into the active token budget.\r\n\r\nThe token budget is influenced by the --map-tokens switch, which defaults to 1k tokens. Aider adjusts the size of the repo map dynamically based on the state of the chat. It will usually stay within that settings value. But it does expand the repo map significantly at times, especially when no files have been added to the chat and aider needs to understand the entire repo as best as possible.\r\n\r\nThe sample map shown above doesnt contain every class, method and function from those files. It only includes the most important identifiers, the ones which are most often referenced by other portions of the code. These are the key pieces of context that the LLM needs to know to understand the overall codebase."
+
+# 2024-08-30 22:11:43.840866
++pip install -e .
++WARNING: Ignoring invalid distribution ~%p (C:\Python312\Lib\site-packages)
++WARNING: Ignoring invalid distribution ~ (C:\Python312\Lib\site-packages)
++WARNING: Ignoring invalid distribution ~-p (C:\Python312\Lib\site-packages)
++WARNING: Ignoring invalid distribution ~0p (C:\Python312\Lib\site-packages)
++WARNING: Ignoring invalid distribution ~1p (C:\Python312\Lib\site-packages)
++WARNING: Ignoring invalid distribution ~2p (C:\Python312\Lib\site-packages)
++WARNING: Ignoring invalid distribution ~3p (C:\Python312\Lib\site-packages)
++WARNING: Ignoring invalid distribution ~=p (C:\Python312\Lib\site-packages)
++WARNING: Ignoring invalid distribution ~harset-normalizer (C:\Python312\Lib\site-packages)
++WARNING: Ignoring invalid distribution ~ider-chat (C:\Python312\Lib\site-packages)
++WARNING: Ignoring invalid distribution ~ip (C:\Python312\Lib\site-packages)
++WARNING: Ignoring invalid distribution ~~p (C:\Python312\Lib\site-packages)
++Obtaining file:///C:/Users/conta/Synthetic%20Souls/aider
++  Installing build dependencies ... done
++  Checking if build backend supports build_editable ... done
++  Getting requirements to build editable ... error
++  error: subprocess-exited-with-error
++
++   Getting requirements to build editable did not run successfully.
++   exit code: 1
++  > [58 lines of output]
++      Traceback (most recent call last):
++        File "C:\Python312\Lib\site-packages\pip\_vendor\pyproject_hooks\_in_process\_in_process.py", line 353, in <module>
++          main()
++        File "C:\Python312\Lib\site-packages\pip\_vendor\pyproject_hooks\_in_process\_in_process.py", line 335, in main
++          json_out['return_val'] = hook(**hook_input['kwargs'])
++                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
++        File "C:\Python312\Lib\site-packages\pip\_vendor\pyproject_hooks\_in_process\_in_process.py", line 132, in get_requires_for_build_editable
++          return hook(config_settings)
++                 ^^^^^^^^^^^^^^^^^^^^^
++        File "C:\Users\conta\AppData\Local\Temp\pip-build-env-arl84ajw\overlay\Lib\site-packages\setuptools\build_meta.py", line 464, in get_requires_for_build_editable
++          return self.get_requires_for_build_wheel(config_settings)
++                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
++        File "C:\Users\conta\AppData\Local\Temp\pip-build-env-arl84ajw\overlay\Lib\site-packages\setuptools\build_meta.py", line 332, in get_requires_for_build_wheel
++          return self._get_build_requires(config_settings, requirements=[])
++                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
++        File "C:\Users\conta\AppData\Local\Temp\pip-build-env-arl84ajw\overlay\Lib\site-packages\setuptools\build_meta.py", line 302, in _get_build_requires
++          self.run_setup()
++        File "C:\Users\conta\AppData\Local\Temp\pip-build-env-arl84ajw\overlay\Lib\site-packages\setuptools\build_meta.py", line 318, in run_setup
++          exec(code, locals())
++        File "<string>", line 3, in <module>
++        File "C:\Users\conta\AppData\Local\Temp\pip-build-env-arl84ajw\overlay\Lib\site-packages\setuptools\__init__.py", line 117, in setup
++          return distutils.core.setup(**attrs)
++                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
++        File "C:\Users\conta\AppData\Local\Temp\pip-build-env-arl84ajw\overlay\Lib\site-packages\setuptools\_distutils\core.py", line 158, in setup
++          dist.parse_config_files()
++        File "C:\Users\conta\AppData\Local\Temp\pip-build-env-arl84ajw\overlay\Lib\site-packages\setuptools\dist.py", line 608, in parse_config_files
++          pyprojecttoml.apply_configuration(self, filename, ignore_option_errors)
++        File "C:\Users\conta\AppData\Local\Temp\pip-build-env-arl84ajw\overlay\Lib\site-packages\setuptools\config\pyprojecttoml.py", line 71, in apply_configuration
++          config = read_configuration(filepath, True, ignore_option_errors, dist)
++                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
++        File "C:\Users\conta\AppData\Local\Temp\pip-build-env-arl84ajw\overlay\Lib\site-packages\setuptools\config\pyprojecttoml.py", line 140, in read_configuration
++          return expand_configuration(asdict, root_dir, ignore_option_errors, dist)
++                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
++        File "C:\Users\conta\AppData\Local\Temp\pip-build-env-arl84ajw\overlay\Lib\site-packages\setuptools\config\pyprojecttoml.py", line 165, in expand_configuration
++          return _ConfigExpander(config, root_dir, ignore_option_errors, dist).expand()
++                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
++        File "C:\Users\conta\AppData\Local\Temp\pip-build-env-arl84ajw\overlay\Lib\site-packages\setuptools\config\pyprojecttoml.py", line 213, in expand
++          self._expand_all_dynamic(dist, package_dir)
++        File "C:\Users\conta\AppData\Local\Temp\pip-build-env-arl84ajw\overlay\Lib\site-packages\setuptools\config\pyprojecttoml.py", line 258, in _expand_all_dynamic
++          version=self._obtain_version(dist, package_dir),
++                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
++        File "C:\Users\conta\AppData\Local\Temp\pip-build-env-arl84ajw\overlay\Lib\site-packages\setuptools\config\pyprojecttoml.py", line 309, in _obtain_version
++          self._obtain(dist, "version", package_dir)  # pyright: ignore[reportArgumentType]
++          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
++        File "C:\Users\conta\AppData\Local\Temp\pip-build-env-arl84ajw\overlay\Lib\site-packages\setuptools\config\pyprojecttoml.py", line 296, in _obtain
++          return self._expand_directive(
++                 ^^^^^^^^^^^^^^^^^^^^^^^
++        File "C:\Users\conta\AppData\Local\Temp\pip-build-env-arl84ajw\overlay\Lib\site-packages\setuptools\config\pyprojecttoml.py", line 290, in _expand_directive
++          return _expand.read_attr(directive["attr"], package_dir, root_dir)
++                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
++        File "C:\Users\conta\AppData\Local\Temp\pip-build-env-arl84ajw\overlay\Lib\site-packages\setuptools\config\expand.py", line 180, in read_attr
++          spec = _find_spec(module_name, path)
++                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
++        File "C:\Users\conta\AppData\Local\Temp\pip-build-env-arl84ajw\overlay\Lib\site-packages\setuptools\config\expand.py", line 192, in _find_spec
++          spec = spec or importlib.util.find_spec(module_name)
++                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
++        File "<frozen importlib.util>", line 92, in find_spec
++      ModuleNotFoundError: No module named 'aider'
++      [end of output]
++
++  note: This error originates from a subprocess, and is likely not a problem with pip.
++error: subprocess-exited-with-error
++
++ Getting requirements to build editable did not run successfully.
++ exit code: 1
++> See above for output.
++
++note: This error originates from a subprocess, and is likely not a problem with pip.
+
+# 2024-08-30 22:12:06.352139
++/run pip install -e .
+
+# 2024-08-30 22:12:56.798461
++/run pip install -e .
+
+# 2024-08-30 22:13:29.695410
++/run pip install -e .
+
+# 2024-08-30 22:14:31.204394
++il n'y a pas de src, tout est à la racine
+
+# 2024-08-30 22:14:41.595878
++ C:\Users\conta\Synthetic Souls\aider> pip install -e .
++WARNING: Ignoring invalid distribution ~%p (C:\Python312\Lib\site-packages)
++WARNING: Ignoring invalid distribution ~ (C:\Python312\Lib\site-packages)
++WARNING: Ignoring invalid distribution ~-p (C:\Python312\Lib\site-packages)
++WARNING: Ignoring invalid distribution ~0p (C:\Python312\Lib\site-packages)
++WARNING: Ignoring invalid distribution ~1p (C:\Python312\Lib\site-packages)
++WARNING: Ignoring invalid distribution ~2p (C:\Python312\Lib\site-packages)
++WARNING: Ignoring invalid distribution ~3p (C:\Python312\Lib\site-packages)
++WARNING: Ignoring invalid distribution ~=p (C:\Python312\Lib\site-packages)
++WARNING: Ignoring invalid distribution ~harset-normalizer (C:\Python312\Lib\site-packages)
++WARNING: Ignoring invalid distribution ~ider-chat (C:\Python312\Lib\site-packages)
++WARNING: Ignoring invalid distribution ~ip (C:\Python312\Lib\site-packages)
++WARNING: Ignoring invalid distribution ~~p (C:\Python312\Lib\site-packages)
++Obtaining file:///C:/Users/conta/Synthetic%20Souls/aider
++  Installing build dependencies ... done
++  Checking if build backend supports build_editable ... done
++  Getting requirements to build editable ... error
++  error: subprocess-exited-with-error
++
++   Getting requirements to build editable did not run successfully.
++   exit code: 1
++  > [58 lines of output]
++      Traceback (most recent call last):
++        File "C:\Python312\Lib\site-packages\pip\_vendor\pyproject_hooks\_in_process\_in_process.py", line 353, in <module>
++          main()
++        File "C:\Python312\Lib\site-packages\pip\_vendor\pyproject_hooks\_in_process\_in_process.py", line 335, in main
++          json_out['return_val'] = hook(**hook_input['kwargs'])
++                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
++        File "C:\Python312\Lib\site-packages\pip\_vendor\pyproject_hooks\_in_process\_in_process.py", line 132, in get_requires_for_build_editable
++          return hook(config_settings)
++                 ^^^^^^^^^^^^^^^^^^^^^
++        File "C:\Users\conta\AppData\Local\Temp\pip-build-env-k6ji9knp\overlay\Lib\site-packages\setuptools\build_meta.py", line 464, in get_requires_for_build_editable
++          return self.get_requires_for_build_wheel(config_settings)
++                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
++        File "C:\Users\conta\AppData\Local\Temp\pip-build-env-k6ji9knp\overlay\Lib\site-packages\setuptools\build_meta.py", line 332, in get_requires_for_build_wheel
++          return self._get_build_requires(config_settings, requirements=[])
++                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
++        File "C:\Users\conta\AppData\Local\Temp\pip-build-env-k6ji9knp\overlay\Lib\site-packages\setuptools\build_meta.py", line 302, in _get_build_requires
++          self.run_setup()
++        File "C:\Users\conta\AppData\Local\Temp\pip-build-env-k6ji9knp\overlay\Lib\site-packages\setuptools\build_meta.py", line 318, in run_setup
++          exec(code, locals())
++        File "<string>", line 3, in <module>
++        File "C:\Users\conta\AppData\Local\Temp\pip-build-env-k6ji9knp\overlay\Lib\site-packages\setuptools\__init__.py", line 117, in setup
++          return distutils.core.setup(**attrs)
++                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
++        File "C:\Users\conta\AppData\Local\Temp\pip-build-env-k6ji9knp\overlay\Lib\site-packages\setuptools\_distutils\core.py", line 158, in setup
++          dist.parse_config_files()
++        File "C:\Users\conta\AppData\Local\Temp\pip-build-env-k6ji9knp\overlay\Lib\site-packages\setuptools\dist.py", line 608, in parse_config_files
++          pyprojecttoml.apply_configuration(self, filename, ignore_option_errors)
++        File "C:\Users\conta\AppData\Local\Temp\pip-build-env-k6ji9knp\overlay\Lib\site-packages\setuptools\config\pyprojecttoml.py", line 71, in apply_configuration
++          config = read_configuration(filepath, True, ignore_option_errors, dist)
++                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
++        File "C:\Users\conta\AppData\Local\Temp\pip-build-env-k6ji9knp\overlay\Lib\site-packages\setuptools\config\pyprojecttoml.py", line 140, in read_configuration
++          return expand_configuration(asdict, root_dir, ignore_option_errors, dist)
++                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
++        File "C:\Users\conta\AppData\Local\Temp\pip-build-env-k6ji9knp\overlay\Lib\site-packages\setuptools\config\pyprojecttoml.py", line 165, in expand_configuration
++          return _ConfigExpander(config, root_dir, ignore_option_errors, dist).expand()
++                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
++        File "C:\Users\conta\AppData\Local\Temp\pip-build-env-k6ji9knp\overlay\Lib\site-packages\setuptools\config\pyprojecttoml.py", line 213, in expand
++          self._expand_all_dynamic(dist, package_dir)
++        File "C:\Users\conta\AppData\Local\Temp\pip-build-env-k6ji9knp\overlay\Lib\site-packages\setuptools\config\pyprojecttoml.py", line 258, in _expand_all_dynamic
++          version=self._obtain_version(dist, package_dir),
++                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
++        File "C:\Users\conta\AppData\Local\Temp\pip-build-env-k6ji9knp\overlay\Lib\site-packages\setuptools\config\pyprojecttoml.py", line 309, in _obtain_version
++          self._obtain(dist, "version", package_dir)  # pyright: ignore[reportArgumentType]
++          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
++        File "C:\Users\conta\AppData\Local\Temp\pip-build-env-k6ji9knp\overlay\Lib\site-packages\setuptools\config\pyprojecttoml.py", line 296, in _obtain
++          return self._expand_directive(
++                 ^^^^^^^^^^^^^^^^^^^^^^^
++        File "C:\Users\conta\AppData\Local\Temp\pip-build-env-k6ji9knp\overlay\Lib\site-packages\setuptools\config\pyprojecttoml.py", line 290, in _expand_directive
++          return _expand.read_attr(directive["attr"], package_dir, root_dir)
++                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
++        File "C:\Users\conta\AppData\Local\Temp\pip-build-env-k6ji9knp\overlay\Lib\site-packages\setuptools\config\expand.py", line 180, in read_attr
++          spec = _find_spec(module_name, path)
++                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
++        File "C:\Users\conta\AppData\Local\Temp\pip-build-env-k6ji9knp\overlay\Lib\site-packages\setuptools\config\expand.py", line 192, in _find_spec
++          spec = spec or importlib.util.find_spec(module_name)
++                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
++        File "<frozen importlib.util>", line 92, in find_spec
++      ModuleNotFoundError: No module named 'aider'
++      [end of output]
++
++  note: This error originates from a subprocess, and is likely not a problem with pip.
++error: subprocess-exited-with-error
++
++ Getting requirements to build editable did not run successfully.
++ exit code: 1
++> See above for output.
++
++note: This error originates from a subprocess, and is likely not a problem with pip.
+
+# 2024-08-30 22:14:56.098449
++/run pip install -e .
+
+# 2024-08-30 22:15:59.568009
++/run pip install -e .
+
+# 2024-08-30 22:17:22.684183
++Mode                 LastWriteTime         Length Name
++----                 -------------         ------ ----
++d-----        30/08/2024     22:14                .aider.tags.cache.v3
++d-----        25/08/2024     18:20                .github
++d-----        25/08/2024     18:20                aider_chat.egg-info
++d-----        26/08/2024     01:42                benchmark
++d-----        25/08/2024     18:20                coders
++d-----        26/08/2024     01:42                docker
++d-----        25/08/2024     18:20                queries
++d-----        25/08/2024     18:20                requirements
++d-----        26/08/2024     01:42                scripts
++d-----        25/08/2024     18:20                tests
++d-----        26/08/2024     01:59                venv
++d-----        25/08/2024     18:21                website
++d-----        30/08/2024     22:05                __pycache__
++-a----        30/08/2024     22:16        1166535 .aider.chat.history.md
++-a----        30/08/2024     22:15          35912 .aider.input.history
++-a----        29/08/2024     23:43             71 .dockerignore
++-a----        29/08/2024     06:48            384 .env
++-a----        20/08/2024     23:18             53 .flake8
++-a----        29/08/2024     23:43            172 .gitignore
++-a----        20/08/2024     23:18            401 .pre-commit-config.yaml
++-a----        29/08/2024     23:43          19365 args.py
++-a----        29/08/2024     23:43           6006 args_formatter.py
++-a----        28/08/2024     05:04           2067 assistant_autonome.py
++-a----        29/08/2024     23:43             10 CNAME
++-a----        29/08/2024     23:43          38392 commands.py
++-a----        29/08/2024     23:43           8181 CONTRIBUTING.md
++-a----        20/08/2024     23:18           3189 diffs.py
++-a----        20/08/2024     23:18            682 dump.py
++-a----        29/08/2024     23:43           1459 file_selector.py
++-a----        29/08/2024     23:43          19811 gui.py
++-a----        29/08/2024     23:43           3718 help.py
++-a----        20/08/2024     23:18            218 help_pats.py
++-a----        29/08/2024     23:43          30369 HISTORY.md
++-a----        29/08/2024     23:43           4499 history.py
++-a----        29/08/2024     23:43          13881 io.py
++-a----        20/08/2024     23:18          11560 LICENSE.txt
++-a----        29/08/2024     23:43           7643 linter.py
++-a----        29/08/2024     23:43            922 llm.py
++-a----        30/08/2024     22:14            126 main
++-a----        29/08/2024     23:43          22053 main.py
++-a----        29/08/2024     23:43           3047 mdstream.py
++-a----        29/08/2024     23:43          23768 models.py
++-a----        20/08/2024     23:18           2122 prompts.py
++-a----        30/08/2024     22:15           1921 pyproject.toml
++-a----        20/08/2024     23:18            176 pytest.ini
++-a----        29/08/2024     23:43           7253 README.md
++-a----        29/08/2024     23:43          11862 repo.py
++-a----        29/08/2024     23:43          20780 repomap.py
++-a----        20/08/2024     23:18           4699 requirements.txt
++-a----        29/08/2024     23:43           6095 r_autonomousAIs_post.md
++-a----        29/08/2024     23:43           7972 scrape.py
++-a----        29/08/2024     02:38           1316 select_relevant_files.py
++-a----        29/08/2024     23:43           2742 sendchat.py
++-a----        30/08/2024     22:15            169 setup.py
++-a----        20/08/2024     23:32              0 true
++-a----        29/08/2024     23:43            661 urls.py
++-a----        29/08/2024     23:43           8925 utils.py
++-a----        29/08/2024     23:43           2476 versioncheck.py
++-a----        29/08/2024     23:43           3137 voice.py
++-a----        30/08/2024     22:13             93 __init__.py
++-a----        29/08/2024     23:43             95 __main__.py
++
+
+# 2024-08-30 22:17:48.333150
++ C:\Users\conta\Synthetic Souls\aider> pip install -e .
++WARNING: Ignoring invalid distribution ~%p (C:\Python312\Lib\site-packages)
++WARNING: Ignoring invalid distribution ~ (C:\Python312\Lib\site-packages)
++WARNING: Ignoring invalid distribution ~-p (C:\Python312\Lib\site-packages)
++WARNING: Ignoring invalid distribution ~0p (C:\Python312\Lib\site-packages)
++WARNING: Ignoring invalid distribution ~1p (C:\Python312\Lib\site-packages)
++WARNING: Ignoring invalid distribution ~2p (C:\Python312\Lib\site-packages)
++WARNING: Ignoring invalid distribution ~3p (C:\Python312\Lib\site-packages)
++WARNING: Ignoring invalid distribution ~=p (C:\Python312\Lib\site-packages)
++WARNING: Ignoring invalid distribution ~harset-normalizer (C:\Python312\Lib\site-packages)
++WARNING: Ignoring invalid distribution ~ider-chat (C:\Python312\Lib\site-packages)
++WARNING: Ignoring invalid distribution ~ip (C:\Python312\Lib\site-packages)
++WARNING: Ignoring invalid distribution ~~p (C:\Python312\Lib\site-packages)
++Obtaining file:///C:/Users/conta/Synthetic%20Souls/aider
++  Installing build dependencies ... done
++  Checking if build backend supports build_editable ... done
++  Getting requirements to build editable ... error
++  error: subprocess-exited-with-error
++
++   Getting requirements to build editable did not run successfully.
++   exit code: 1
++  > [58 lines of output]
++      Traceback (most recent call last):
++        File "C:\Python312\Lib\site-packages\pip\_vendor\pyproject_hooks\_in_process\_in_process.py", line 353, in <module>
++          main()
++        File "C:\Python312\Lib\site-packages\pip\_vendor\pyproject_hooks\_in_process\_in_process.py", line 335, in main
++          json_out['return_val'] = hook(**hook_input['kwargs'])
++                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
++        File "C:\Python312\Lib\site-packages\pip\_vendor\pyproject_hooks\_in_process\_in_process.py", line 132, in get_requires_for_build_editable
++          return hook(config_settings)
++                 ^^^^^^^^^^^^^^^^^^^^^
++        File "C:\Users\conta\AppData\Local\Temp\pip-build-env-k6ji9knp\overlay\Lib\site-packages\setuptools\build_meta.py", line 464, in get_requires_for_build_editable
++          return self.get_requires_for_build_wheel(config_settings)
++                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
++        File "C:\Users\conta\AppData\Local\Temp\pip-build-env-k6ji9knp\overlay\Lib\site-packages\setuptools\build_meta.py", line 332, in get_requires_for_build_wheel
++          return self._get_build_requires(config_settings, requirements=[])
++                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
++        File "C:\Users\conta\AppData\Local\Temp\pip-build-env-k6ji9knp\overlay\Lib\site-packages\setuptools\build_meta.py", line 302, in _get_build_requires
++          self.run_setup()
++        File "C:\Users\conta\AppData\Local\Temp\pip-build-env-k6ji9knp\overlay\Lib\site-packages\setuptools\build_meta.py", line 318, in run_setup
++          exec(code, locals())
++        File "<string>", line 3, in <module>
++        File "C:\Users\conta\AppData\Local\Temp\pip-build-env-k6ji9knp\overlay\Lib\site-packages\setuptools\__init__.py", line 117, in setup
++          return distutils.core.setup(**attrs)
++                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
++        File "C:\Users\conta\AppData\Local\Temp\pip-build-env-k6ji9knp\overlay\Lib\site-packages\setuptools\_distutils\core.py", line 158, in setup
++          dist.parse_config_files()
++        File "C:\Users\conta\AppData\Local\Temp\pip-build-env-k6ji9knp\overlay\Lib\site-packages\setuptools\dist.py", line 608, in parse_config_files
++          pyprojecttoml.apply_configuration(self, filename, ignore_option_errors)
++        File "C:\Users\conta\AppData\Local\Temp\pip-build-env-k6ji9knp\overlay\Lib\site-packages\setuptools\config\pyprojecttoml.py", line 71, in apply_configuration
++          config = read_configuration(filepath, True, ignore_option_errors, dist)
++                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
++        File "C:\Users\conta\AppData\Local\Temp\pip-build-env-k6ji9knp\overlay\Lib\site-packages\setuptools\config\pyprojecttoml.py", line 140, in read_configuration
++          return expand_configuration(asdict, root_dir, ignore_option_errors, dist)
++                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
++        File "C:\Users\conta\AppData\Local\Temp\pip-build-env-k6ji9knp\overlay\Lib\site-packages\setuptools\config\pyprojecttoml.py", line 165, in expand_configuration
++          return _ConfigExpander(config, root_dir, ignore_option_errors, dist).expand()
++                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
++        File "C:\Users\conta\AppData\Local\Temp\pip-build-env-k6ji9knp\overlay\Lib\site-packages\setuptools\config\pyprojecttoml.py", line 213, in expand
++          self._expand_all_dynamic(dist, package_dir)
++        File "C:\Users\conta\AppData\Local\Temp\pip-build-env-k6ji9knp\overlay\Lib\site-packages\setuptools\config\pyprojecttoml.py", line 258, in _expand_all_dynamic
++          version=self._obtain_version(dist, package_dir),
++                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
++        File "C:\Users\conta\AppData\Local\Temp\pip-build-env-k6ji9knp\overlay\Lib\site-packages\setuptools\config\pyprojecttoml.py", line 309, in _obtain_version
++          self._obtain(dist, "version", package_dir)  # pyright: ignore[reportArgumentType]
++          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
++        File "C:\Users\conta\AppData\Local\Temp\pip-build-env-k6ji9knp\overlay\Lib\site-packages\setuptools\config\pyprojecttoml.py", line 296, in _obtain
++          return self._expand_directive(
++                 ^^^^^^^^^^^^^^^^^^^^^^^
++        File "C:\Users\conta\AppData\Local\Temp\pip-build-env-k6ji9knp\overlay\Lib\site-packages\setuptools\config\pyprojecttoml.py", line 290, in _expand_directive
++          return _expand.read_attr(directive["attr"], package_dir, root_dir)
++                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
++        File "C:\Users\conta\AppData\Local\Temp\pip-build-env-k6ji9knp\overlay\Lib\site-packages\setuptools\config\expand.py", line 180, in read_attr
++          spec = _find_spec(module_name, path)
++                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
++        File "C:\Users\conta\AppData\Local\Temp\pip-build-env-k6ji9knp\overlay\Lib\site-packages\setuptools\config\expand.py", line 192, in _find_spec
++          spec = spec or importlib.util.find_spec(module_name)
++                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
++        File "<frozen importlib.util>", line 92, in find_spec
++      ModuleNotFoundError: No module named 'aider'
++      [end of output]
++
++  note: This error originates from a subprocess, and is likely not a problem with pip.
++error: subprocess-exited-with-error
++
++ Getting requirements to build editable did not run successfully.
++ exit code: 1
++> See above for output.
++
++note: This error originates from a subprocess, and is likely not a problem with pip.
+
+# 2024-08-30 22:18:12.886478
++Mode                 LastWriteTime         Length Name
++----                 -------------         ------ ----
++d-----        30/08/2024     22:14                .aider.tags.cache.v3
++d-----        25/08/2024     18:20                .github
++d-----        25/08/2024     18:20                aider_chat.egg-info
++d-----        26/08/2024     01:42                benchmark
++d-----        25/08/2024     18:20                coders
++d-----        26/08/2024     01:42                docker
++d-----        25/08/2024     18:20                queries
++d-----        25/08/2024     18:20                requirements
++d-----        26/08/2024     01:42                scripts
++d-----        25/08/2024     18:20                tests
++d-----        26/08/2024     01:59                venv
++d-----        25/08/2024     18:21                website
++d-----        30/08/2024     22:05                __pycache__
++-a----        30/08/2024     22:16        1166535 .aider.chat.history.md
++-a----        30/08/2024     22:15          35912 .aider.input.history
++-a----        29/08/2024     23:43             71 .dockerignore
++-a----        29/08/2024     06:48            384 .env
++-a----        20/08/2024     23:18             53 .flake8
++-a----        29/08/2024     23:43            172 .gitignore
++-a----        20/08/2024     23:18            401 .pre-commit-config.yaml
++-a----        29/08/2024     23:43          19365 args.py
++-a----        29/08/2024     23:43           6006 args_formatter.py
++-a----        28/08/2024     05:04           2067 assistant_autonome.py
++-a----        29/08/2024     23:43             10 CNAME
++-a----        29/08/2024     23:43          38392 commands.py
++-a----        29/08/2024     23:43           8181 CONTRIBUTING.md
++-a----        20/08/2024     23:18           3189 diffs.py
++-a----        20/08/2024     23:18            682 dump.py
++-a----        29/08/2024     23:43           1459 file_selector.py
++-a----        29/08/2024     23:43          19811 gui.py
++-a----        29/08/2024     23:43           3718 help.py
++-a----        20/08/2024     23:18            218 help_pats.py
++-a----        29/08/2024     23:43          30369 HISTORY.md
++-a----        29/08/2024     23:43           4499 history.py
++-a----        29/08/2024     23:43          13881 io.py
++-a----        20/08/2024     23:18          11560 LICENSE.txt
++-a----        29/08/2024     23:43           7643 linter.py
++-a----        29/08/2024     23:43            922 llm.py
++-a----        30/08/2024     22:14            126 main
++-a----        29/08/2024     23:43          22053 main.py
++-a----        29/08/2024     23:43           3047 mdstream.py
++-a----        29/08/2024     23:43          23768 models.py
++-a----        20/08/2024     23:18           2122 prompts.py
++-a----        30/08/2024     22:15           1921 pyproject.toml
++-a----        20/08/2024     23:18            176 pytest.ini
++-a----        29/08/2024     23:43           7253 README.md
++-a----        29/08/2024     23:43          11862 repo.py
++-a----        29/08/2024     23:43          20780 repomap.py
++-a----        20/08/2024     23:18           4699 requirements.txt
++-a----        29/08/2024     23:43           6095 r_autonomousAIs_post.md
++-a----        29/08/2024     23:43           7972 scrape.py
++-a----        29/08/2024     02:38           1316 select_relevant_files.py
++-a----        29/08/2024     23:43           2742 sendchat.py
++-a----        30/08/2024     22:15            169 setup.py
++-a----        20/08/2024     23:32              0 true
++-a----        29/08/2024     23:43            661 urls.py
++-a----        29/08/2024     23:43           8925 utils.py
++-a----        29/08/2024     23:43           2476 versioncheck.py
++-a----        29/08/2024     23:43           3137 voice.py
++-a----        30/08/2024     22:13             93 __init__.py
++-a----        29/08/2024     23:43             95 __main__.py
++
+
+# 2024-08-30 22:18:35.253749
++ C:\Users\conta\Synthetic Souls\aider> pip install -e .
++WARNING: Ignoring invalid distribution ~%p (C:\Python312\Lib\site-packages)
++WARNING: Ignoring invalid distribution ~ (C:\Python312\Lib\site-packages)
++WARNING: Ignoring invalid distribution ~-p (C:\Python312\Lib\site-packages)
++WARNING: Ignoring invalid distribution ~0p (C:\Python312\Lib\site-packages)
++WARNING: Ignoring invalid distribution ~1p (C:\Python312\Lib\site-packages)
++WARNING: Ignoring invalid distribution ~2p (C:\Python312\Lib\site-packages)
++WARNING: Ignoring invalid distribution ~3p (C:\Python312\Lib\site-packages)
++WARNING: Ignoring invalid distribution ~=p (C:\Python312\Lib\site-packages)
++WARNING: Ignoring invalid distribution ~harset-normalizer (C:\Python312\Lib\site-packages)
++WARNING: Ignoring invalid distribution ~ider-chat (C:\Python312\Lib\site-packages)
++WARNING: Ignoring invalid distribution ~ip (C:\Python312\Lib\site-packages)
++WARNING: Ignoring invalid distribution ~~p (C:\Python312\Lib\site-packages)
++Obtaining file:///C:/Users/conta/Synthetic%20Souls/aider
++  Installing build dependencies ... done
++  Checking if build backend supports build_editable ... done
++  Getting requirements to build editable ... error
++  error: subprocess-exited-with-error
++
++   Getting requirements to build editable did not run successfully.
++   exit code: 1
++  > [58 lines of output]
++      Traceback (most recent call last):
++        File "C:\Python312\Lib\site-packages\pip\_vendor\pyproject_hooks\_in_process\_in_process.py", line 353, in <module>
++          main()
++        File "C:\Python312\Lib\site-packages\pip\_vendor\pyproject_hooks\_in_process\_in_process.py", line 335, in main
++          json_out['return_val'] = hook(**hook_input['kwargs'])
++                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
++        File "C:\Python312\Lib\site-packages\pip\_vendor\pyproject_hooks\_in_process\_in_process.py", line 132, in get_requires_for_build_editable
++          return hook(config_settings)
++                 ^^^^^^^^^^^^^^^^^^^^^
++        File "C:\Users\conta\AppData\Local\Temp\pip-build-env-k6ji9knp\overlay\Lib\site-packages\setuptools\build_meta.py", line 464, in get_requires_for_build_editable
++          return self.get_requires_for_build_wheel(config_settings)
++                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
++        File "C:\Users\conta\AppData\Local\Temp\pip-build-env-k6ji9knp\overlay\Lib\site-packages\setuptools\build_meta.py", line 332, in get_requires_for_build_wheel
++          return self._get_build_requires(config_settings, requirements=[])
++                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
++        File "C:\Users\conta\AppData\Local\Temp\pip-build-env-k6ji9knp\overlay\Lib\site-packages\setuptools\build_meta.py", line 302, in _get_build_requires
++          self.run_setup()
++        File "C:\Users\conta\AppData\Local\Temp\pip-build-env-k6ji9knp\overlay\Lib\site-packages\setuptools\build_meta.py", line 318, in run_setup
++          exec(code, locals())
++        File "<string>", line 3, in <module>
++        File "C:\Users\conta\AppData\Local\Temp\pip-build-env-k6ji9knp\overlay\Lib\site-packages\setuptools\__init__.py", line 117, in setup
++          return distutils.core.setup(**attrs)
++                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
++        File "C:\Users\conta\AppData\Local\Temp\pip-build-env-k6ji9knp\overlay\Lib\site-packages\setuptools\_distutils\core.py", line 158, in setup
++          dist.parse_config_files()
++        File "C:\Users\conta\AppData\Local\Temp\pip-build-env-k6ji9knp\overlay\Lib\site-packages\setuptools\dist.py", line 608, in parse_config_files
++          pyprojecttoml.apply_configuration(self, filename, ignore_option_errors)
++        File "C:\Users\conta\AppData\Local\Temp\pip-build-env-k6ji9knp\overlay\Lib\site-packages\setuptools\config\pyprojecttoml.py", line 71, in apply_configuration
++          config = read_configuration(filepath, True, ignore_option_errors, dist)
++                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
++        File "C:\Users\conta\AppData\Local\Temp\pip-build-env-k6ji9knp\overlay\Lib\site-packages\setuptools\config\pyprojecttoml.py", line 140, in read_configuration
++          return expand_configuration(asdict, root_dir, ignore_option_errors, dist)
++                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
++        File "C:\Users\conta\AppData\Local\Temp\pip-build-env-k6ji9knp\overlay\Lib\site-packages\setuptools\config\pyprojecttoml.py", line 165, in expand_configuration
++          return _ConfigExpander(config, root_dir, ignore_option_errors, dist).expand()
++                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
++        File "C:\Users\conta\AppData\Local\Temp\pip-build-env-k6ji9knp\overlay\Lib\site-packages\setuptools\config\pyprojecttoml.py", line 213, in expand
++          self._expand_all_dynamic(dist, package_dir)
++        File "C:\Users\conta\AppData\Local\Temp\pip-build-env-k6ji9knp\overlay\Lib\site-packages\setuptools\config\pyprojecttoml.py", line 258, in _expand_all_dynamic
++          version=self._obtain_version(dist, package_dir),
++                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
++        File "C:\Users\conta\AppData\Local\Temp\pip-build-env-k6ji9knp\overlay\Lib\site-packages\setuptools\config\pyprojecttoml.py", line 309, in _obtain_version
++          self._obtain(dist, "version", package_dir)  # pyright: ignore[reportArgumentType]
++          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
++        File "C:\Users\conta\AppData\Local\Temp\pip-build-env-k6ji9knp\overlay\Lib\site-packages\setuptools\config\pyprojecttoml.py", line 296, in _obtain
++          return self._expand_directive(
++                 ^^^^^^^^^^^^^^^^^^^^^^^
++        File "C:\Users\conta\AppData\Local\Temp\pip-build-env-k6ji9knp\overlay\Lib\site-packages\setuptools\config\pyprojecttoml.py", line 290, in _expand_directive
++          return _expand.read_attr(directive["attr"], package_dir, root_dir)
++                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
++        File "C:\Users\conta\AppData\Local\Temp\pip-build-env-k6ji9knp\overlay\Lib\site-packages\setuptools\config\expand.py", line 180, in read_attr
++          spec = _find_spec(module_name, path)
++                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
++        File "C:\Users\conta\AppData\Local\Temp\pip-build-env-k6ji9knp\overlay\Lib\site-packages\setuptools\config\expand.py", line 192, in _find_spec
++          spec = spec or importlib.util.find_spec(module_name)
++                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
++        File "<frozen importlib.util>", line 92, in find_spec
++      ModuleNotFoundError: No module named 'aider'
++      [end of output]
++
++  note: This error originates from a subprocess, and is likely not a problem with pip.
++error: subprocess-exited-with-error
++
++ Getting requirements to build editable did not run successfully.
++ exit code: 1
++> See above for output.
++
++note: This error originates from a subprocess, and is likely not a problem with pip.
+
+# 2024-08-30 22:18:51.009677
++/add setup.py
+
+# 2024-08-30 22:19:09.010729
++/add pyproject.toml
+
+# 2024-08-30 22:19:13.295507
++ok fixons
+
+# 2024-08-30 22:19:25.803254
++/run pip install -e .
+
+# 2024-08-30 22:20:30.445648
++ting requirements to build editable ... error
++  error: subprocess-exited-with-error
++
++   Getting requirements to build editable did not run successfully.
++   exit code: 1
++  > [58 lines of output]
++      Traceback (most recent call last):
++        File "C:\Python312\Lib\site-packages\pip\_vendor\pyproject_hooks\_in_process\_in_process.py", line 353, in <module>
++          main()
++        File "C:\Python312\Lib\site-packages\pip\_vendor\pyproject_hooks\_in_process\_in_process.py", line 335, in main
++          json_out['return_val'] = hook(**hook_input['kwargs'])
++                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
++        File "C:\Python312\Lib\site-packages\pip\_vendor\pyproject_hooks\_in_process\_in_process.py", line 132, in get_requires_for_build_editable
++          return hook(config_settings)
++                 ^^^^^^^^^^^^^^^^^^^^^
++        File "C:\Users\conta\AppData\Local\Temp\pip-build-env-tymvkean\overlay\Lib\site-packages\setuptools\build_meta.py", line 464, in get_requires_for_build_editable
++          return self.get_requires_for_build_wheel(config_settings)
++                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
++        File "C:\Users\conta\AppData\Local\Temp\pip-build-env-tymvkean\overlay\Lib\site-packages\setuptools\build_meta.py", line 332, in get_requires_for_build_wheel
++          return self._get_build_requires(config_settings, requirements=[])
++                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
++        File "C:\Users\conta\AppData\Local\Temp\pip-build-env-tymvkean\overlay\Lib\site-packages\setuptools\build_meta.py", line 302, in _get_build_requires
++          self.run_setup()
++        File "C:\Users\conta\AppData\Local\Temp\pip-build-env-tymvkean\overlay\Lib\site-packages\setuptools\build_meta.py", line 318, in run_setup
++          exec(code, locals())
++        File "<string>", line 3, in <module>
++        File "C:\Users\conta\AppData\Local\Temp\pip-build-env-tymvkean\overlay\Lib\site-packages\setuptools\__init__.py", line 117, in setup
++          return distutils.core.setup(**attrs)
++                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
++        File "C:\Users\conta\AppData\Local\Temp\pip-build-env-tymvkean\overlay\Lib\site-packages\setuptools\_distutils\core.py", line 158, in setup
++          dist.parse_config_files()
++        File "C:\Users\conta\AppData\Local\Temp\pip-build-env-tymvkean\overlay\Lib\site-packages\setuptools\dist.py", line 608, in parse_config_files
++          pyprojecttoml.apply_configuration(self, filename, ignore_option_errors)
++        File "C:\Users\conta\AppData\Local\Temp\pip-build-env-tymvkean\overlay\Lib\site-packages\setuptools\config\pyprojecttoml.py", line 71, in apply_configuration
++          config = read_configuration(filepath, True, ignore_option_errors, dist)
++                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
++        File "C:\Users\conta\AppData\Local\Temp\pip-build-env-tymvkean\overlay\Lib\site-packages\setuptools\config\pyprojecttoml.py", line 140, in read_configuration
++          return expand_configuration(asdict, root_dir, ignore_option_errors, dist)
++                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
++        File "C:\Users\conta\AppData\Local\Temp\pip-build-env-tymvkean\overlay\Lib\site-packages\setuptools\config\pyprojecttoml.py", line 165, in expand_configuration
++          return _ConfigExpander(config, root_dir, ignore_option_errors, dist).expand()
++                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
++        File "C:\Users\conta\AppData\Local\Temp\pip-build-env-tymvkean\overlay\Lib\site-packages\setuptools\config\pyprojecttoml.py", line 213, in expand
++          self._expand_all_dynamic(dist, package_dir)
++        File "C:\Users\conta\AppData\Local\Temp\pip-build-env-tymvkean\overlay\Lib\site-packages\setuptools\config\pyprojecttoml.py", line 258, in _expand_all_dynamic
++          version=self._obtain_version(dist, package_dir),
++                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
++        File "C:\Users\conta\AppData\Local\Temp\pip-build-env-tymvkean\overlay\Lib\site-packages\setuptools\config\pyprojecttoml.py", line 309, in _obtain_version
++          self._obtain(dist, "version", package_dir)  # pyright: ignore[reportArgumentType]
++          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
++        File "C:\Users\conta\AppData\Local\Temp\pip-build-env-tymvkean\overlay\Lib\site-packages\setuptools\config\pyprojecttoml.py", line 296, in _obtain
++          return self._expand_directive(
++                 ^^^^^^^^^^^^^^^^^^^^^^^
++        File "C:\Users\conta\AppData\Local\Temp\pip-build-env-tymvkean\overlay\Lib\site-packages\setuptools\config\pyprojecttoml.py", line 290, in _expand_directive
++          return _expand.read_attr(directive["attr"], package_dir, root_dir)
++                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
++        File "C:\Users\conta\AppData\Local\Temp\pip-build-env-tymvkean\overlay\Lib\site-packages\setuptools\config\expand.py", line 180, in read_attr
++          spec = _find_spec(module_name, path)
++                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
++        File "C:\Users\conta\AppData\Local\Temp\pip-build-env-tymvkean\overlay\Lib\site-packages\setuptools\config\expand.py", line 192, in _find_spec
++          spec = spec or importlib.util.find_spec(module_name)
++                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
++        File "<frozen importlib.util>", line 92, in find_spec
++      ModuleNotFoundError: No module named 'aider'
++      [end of output]
+
+# 2024-08-30 22:21:10.002811
++/run pip install -e .
+
+# 2024-08-30 22:23:33.202277
++ting requirements to build editable ... error
++  error: subprocess-exited-with-error
++
++   Getting requirements to build editable did not run successfully.
++   exit code: 1
++  > [58 lines of output]
++      Traceback (most recent call last):
++        File "C:\Python312\Lib\site-packages\pip\_vendor\pyproject_hooks\_in_process\_in_process.py", line 353, in <module>
++          main()
++        File "C:\Python312\Lib\site-packages\pip\_vendor\pyproject_hooks\_in_process\_in_process.py", line 335, in main
++          json_out['return_val'] = hook(**hook_input['kwargs'])
++                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
++        File "C:\Python312\Lib\site-packages\pip\_vendor\pyproject_hooks\_in_process\_in_process.py", line 132, in get_requires_for_build_editable
++          return hook(config_settings)
++                 ^^^^^^^^^^^^^^^^^^^^^
++        File "C:\Users\conta\AppData\Local\Temp\pip-build-env-tymvkean\overlay\Lib\site-packages\setuptools\build_meta.py", line 464, in get_requires_for_build_editable
++          return self.get_requires_for_build_wheel(config_settings)
++                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
++        File "C:\Users\conta\AppData\Local\Temp\pip-build-env-tymvkean\overlay\Lib\site-packages\setuptools\build_meta.py", line 332, in get_requires_for_build_wheel
++          return self._get_build_requires(config_settings, requirements=[])
++                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
++        File "C:\Users\conta\AppData\Local\Temp\pip-build-env-tymvkean\overlay\Lib\site-packages\setuptools\build_meta.py", line 302, in _get_build_requires
++          self.run_setup()
++        File "C:\Users\conta\AppData\Local\Temp\pip-build-env-tymvkean\overlay\Lib\site-packages\setuptools\build_meta.py", line 318, in run_setup
++          exec(code, locals())
++        File "<string>", line 3, in <module>
++        File "C:\Users\conta\AppData\Local\Temp\pip-build-env-tymvkean\overlay\Lib\site-packages\setuptools\__init__.py", line 117, in setup
++          return distutils.core.setup(**attrs)
++                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
++        File "C:\Users\conta\AppData\Local\Temp\pip-build-env-tymvkean\overlay\Lib\site-packages\setuptools\_distutils\core.py", line 158, in setup
++          dist.parse_config_files()
++        File "C:\Users\conta\AppData\Local\Temp\pip-build-env-tymvkean\overlay\Lib\site-packages\setuptools\dist.py", line 608, in parse_config_files
++          pyprojecttoml.apply_configuration(self, filename, ignore_option_errors)
++        File "C:\Users\conta\AppData\Local\Temp\pip-build-env-tymvkean\overlay\Lib\site-packages\setuptools\config\pyprojecttoml.py", line 71, in apply_configuration
++          config = read_configuration(filepath, True, ignore_option_errors, dist)
++                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
++        File "C:\Users\conta\AppData\Local\Temp\pip-build-env-tymvkean\overlay\Lib\site-packages\setuptools\config\pyprojecttoml.py", line 140, in read_configuration
++          return expand_configuration(asdict, root_dir, ignore_option_errors, dist)
++                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
++        File "C:\Users\conta\AppData\Local\Temp\pip-build-env-tymvkean\overlay\Lib\site-packages\setuptools\config\pyprojecttoml.py", line 165, in expand_configuration
++          return _ConfigExpander(config, root_dir, ignore_option_errors, dist).expand()
++                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
++        File "C:\Users\conta\AppData\Local\Temp\pip-build-env-tymvkean\overlay\Lib\site-packages\setuptools\config\pyprojecttoml.py", line 213, in expand
++          self._expand_all_dynamic(dist, package_dir)
++        File "C:\Users\conta\AppData\Local\Temp\pip-build-env-tymvkean\overlay\Lib\site-packages\setuptools\config\pyprojecttoml.py", line 258, in _expand_all_dynamic
++          version=self._obtain_version(dist, package_dir),
++                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
++        File "C:\Users\conta\AppData\Local\Temp\pip-build-env-tymvkean\overlay\Lib\site-packages\setuptools\config\pyprojecttoml.py", line 309, in _obtain_version
++          self._obtain(dist, "version", package_dir)  # pyright: ignore[reportArgumentType]
++          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
++        File "C:\Users\conta\AppData\Local\Temp\pip-build-env-tymvkean\overlay\Lib\site-packages\setuptools\config\pyprojecttoml.py", line 296, in _obtain
++          return self._expand_directive(
++                 ^^^^^^^^^^^^^^^^^^^^^^^
++        File "C:\Users\conta\AppData\Local\Temp\pip-build-env-tymvkean\overlay\Lib\site-packages\setuptools\config\pyprojecttoml.py", line 290, in _expand_directive
++          return _expand.read_attr(directive["attr"], package_dir, root_dir)
++                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
++        File "C:\Users\conta\AppData\Local\Temp\pip-build-env-tymvkean\overlay\Lib\site-packages\setuptools\config\expand.py", line 180, in read_attr
++          spec = _find_spec(module_name, path)
++                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
++        File "C:\Users\conta\AppData\Local\Temp\pip-build-env-tymvkean\overlay\Lib\site-packages\setuptools\config\expand.py", line 192, in _find_spec
++          spec = spec or importlib.util.find_spec(module_name)
++                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
++        File "<frozen importlib.util>", line 92, in find_spec
++      ModuleNotFoundError: No module named 'aider'
++      [end of output]
+
+# 2024-08-30 22:27:17.274676
++PS C:\Users\conta\Synthetic Souls\aider
+
+# 2024-08-30 22:27:38.828996
++je n'arrive pas a installer avec pip install -e .
+
+# 2024-08-30 22:36:32.347649
++  Using cached aider_chat-0.6.1-py3-none-any.whl.metadata (9.9 kB)
++  Using cached aider_chat-0.5.0-py3-none-any.whl.metadata (9.9 kB)
++ERROR: Cannot install -r requirements.txt (line 1) and -r requirements.txt (line 4) because these package versions have conflicting dependencies.
++
++The conflict is caused by:
++    requests 2.26.0 depends on charset-normalizer~=2.0.0; python_version >= "3"
++    aider-chat 0.54.7 depends on charset-normalizer==3.3.2
++    requests 2.26.0 depends on charset-normalizer~=2.0.0; python_version >= "3"
++    aider-chat 0.54.6 depends on charset-normalizer==3.3.2
++    requests 2.26.0 depends on charset-normalizer~=2.0.0; python_version >= "3"
++    aider-chat 0.54.5 depends on charset-normalizer==3.3.2
++    requests 2.26.0 depends on charset-normalizer~=2.0.0; python_version >= "3"
++    aider-chat 0.54.4 depends on charset-normalizer==3.3.2
++    requests 2.26.0 depends on charset-normalizer~=2.0.0; python_version >= "3"
++    aider-chat 0.54.3 depends on charset-normalizer==3.3.2
++    requests 2.26.0 depends on charset-normalizer~=2.0.0; python_version >= "3"
++    aider-chat 0.54.2 depends on charset-normalizer==3.3.2
++    requests 2.26.0 depends on charset-normalizer~=2.0.0; python_version >= "3"
++    aider-chat 0.54.0 depends on charset-normalizer==3.3.2
++    requests 2.26.0 depends on charset-normalizer~=2.0.0; python_version >= "3"
++    aider-chat 0.53.0 depends on charset-normalizer==3.3.2
++    requests 2.26.0 depends on charset-normalizer~=2.0.0; python_version >= "3"
++    aider-chat 0.52.1 depends on charset-normalizer==3.3.2
++    requests 2.26.0 depends on charset-normalizer~=2.0.0; python_version >= "3"
++    aider-chat 0.52.0 depends on charset-normalizer==3.3.2
++    requests 2.26.0 depends on charset-normalizer~=2.0.0; python_version >= "3"
++    aider-chat 0.51.1 depends on charset-normalizer==3.3.2
++    requests 2.26.0 depends on charset-normalizer~=2.0.0; python_version >= "3"
++    aider-chat 0.51.0 depends on charset-normalizer==3.3.2
++    requests 2.26.0 depends on charset-normalizer~=2.0.0; python_version >= "3"
++    aider-chat 0.50.1 depends on charset-normalizer==3.3.2
++    requests 2.26.0 depends on charset-normalizer~=2.0.0; python_version >= "3"
++    aider-chat 0.50.0 depends on charset-normalizer==3.3.2
++    requests 2.26.0 depends on charset-normalizer~=2.0.0; python_version >= "3"
++    aider-chat 0.49.1 depends on charset-normalizer==3.3.2
++    requests 2.26.0 depends on charset-normalizer~=2.0.0; python_version >= "3"
++    aider-chat 0.49.0 depends on charset-normalizer==3.3.2
++    requests 2.26.0 depends on charset-normalizer~=2.0.0; python_version >= "3"
++    aider-chat 0.48.1 depends on charset-normalizer==3.3.2
++    requests 2.26.0 depends on charset-normalizer~=2.0.0; python_version >= "3"
++    aider-chat 0.48.0 depends on charset-normalizer==3.3.2
++    requests 2.26.0 depends on charset-normalizer~=2.0.0; python_version >= "3"
++    aider-chat 0.47.1 depends on charset-normalizer==3.3.2
++    requests 2.26.0 depends on charset-normalizer~=2.0.0; python_version >= "3"
++    aider-chat 0.47.0 depends on charset-normalizer==3.3.2
++    requests 2.26.0 depends on charset-normalizer~=2.0.0; python_version >= "3"
++    aider-chat 0.46.1 depends on charset-normalizer==3.3.2
++    requests 2.26.0 depends on charset-normalizer~=2.0.0; python_version >= "3"
++    aider-chat 0.46.0 depends on charset-normalizer==3.3.2
++    requests 2.26.0 depends on charset-normalizer~=2.0.0; python_version >= "3"
++    aider-chat 0.45.1 depends on charset-normalizer==3.3.2
++    requests 2.26.0 depends on charset-normalizer~=2.0.0; python_version >= "3"
++    aider-chat 0.45.0 depends on charset-normalizer==3.3.2
++    requests 2.26.0 depends on charset-normalizer~=2.0.0; python_version >= "3"
++    aider-chat 0.44.0 depends on charset-normalizer==3.3.2
++    requests 2.26.0 depends on charset-normalizer~=2.0.0; python_version >= "3"
++    aider-chat 0.43.4 depends on charset-normalizer==3.3.2
++    requests 2.26.0 depends on charset-normalizer~=2.0.0; python_version >= "3"
++    aider-chat 0.43.3 depends on charset-normalizer==3.3.2
++    requests 2.26.0 depends on charset-normalizer~=2.0.0; python_version >= "3"
++    aider-chat 0.43.2 depends on charset-normalizer==3.3.2
++    requests 2.26.0 depends on charset-normalizer~=2.0.0; python_version >= "3"
++    aider-chat 0.43.0 depends on charset-normalizer==3.3.2
++    requests 2.26.0 depends on charset-normalizer~=2.0.0; python_version >= "3"
++    aider-chat 0.42.0 depends on charset-normalizer==3.3.2
++    requests 2.26.0 depends on charset-normalizer~=2.0.0; python_version >= "3"
++    aider-chat 0.41.0 depends on charset-normalizer==3.3.2
++    requests 2.26.0 depends on charset-normalizer~=2.0.0; python_version >= "3"
++    aider-chat 0.40.6 depends on charset-normalizer==3.3.2
++    requests 2.26.0 depends on charset-normalizer~=2.0.0; python_version >= "3"
++    aider-chat 0.40.5 depends on charset-normalizer==3.3.2
++    requests 2.26.0 depends on charset-normalizer~=2.0.0; python_version >= "3"
++    aider-chat 0.40.1 depends on charset-normalizer==3.3.2
++    requests 2.26.0 depends on charset-normalizer~=2.0.0; python_version >= "3"
++    aider-chat 0.40.0 depends on charset-normalizer==3.3.2
++    requests 2.26.0 depends on charset-normalizer~=2.0.0; python_version >= "3"
++    aider-chat 0.39.0 depends on charset-normalizer==3.3.2
++    requests 2.26.0 depends on charset-normalizer~=2.0.0; python_version >= "3"
++    aider-chat 0.38.0 depends on charset-normalizer==3.3.2
++    requests 2.26.0 depends on charset-normalizer~=2.0.0; python_version >= "3"
++    aider-chat 0.37.0 depends on charset-normalizer==3.3.2
++    requests 2.26.0 depends on charset-normalizer~=2.0.0; python_version >= "3"
++    aider-chat 0.36.0 depends on charset-normalizer==3.3.2
++    requests 2.26.0 depends on charset-normalizer~=2.0.0; python_version >= "3"
++    aider-chat 0.35.0 depends on charset-normalizer==3.3.2
++    requests 2.26.0 depends on charset-normalizer~=2.0.0; python_version >= "3"
++    aider-chat 0.34.0 depends on charset-normalizer==3.3.2
++    requests 2.26.0 depends on charset-normalizer~=2.0.0; python_version >= "3"
++    aider-chat 0.33.0 depends on charset-normalizer==3.3.2
++    requests 2.26.0 depends on charset-normalizer~=2.0.0; python_version >= "3"
++    aider-chat 0.32.0 depends on charset-normalizer==3.3.2
++    requests 2.26.0 depends on charset-normalizer~=2.0.0; python_version >= "3"
++    aider-chat 0.31.1 depends on charset-normalizer==3.3.2
++    requests 2.26.0 depends on charset-normalizer~=2.0.0; python_version >= "3"
++    aider-chat 0.31.0 depends on charset-normalizer==3.3.2
++    requests 2.26.0 depends on charset-normalizer~=2.0.0; python_version >= "3"
++    aider-chat 0.30.1 depends on charset-normalizer==3.3.2
++    requests 2.26.0 depends on charset-normalizer~=2.0.0; python_version >= "3"
++    aider-chat 0.30.0 depends on charset-normalizer==3.3.2
++    requests 2.26.0 depends on charset-normalizer~=2.0.0; python_version >= "3"
++    aider-chat 0.29.2 depends on charset-normalizer==3.3.2
++    requests 2.26.0 depends on charset-normalizer~=2.0.0; python_version >= "3"
++    aider-chat 0.29.1 depends on charset-normalizer==3.3.2
++    requests 2.26.0 depends on charset-normalizer~=2.0.0; python_version >= "3"
++    aider-chat 0.29.0 depends on charset-normalizer==3.3.2
++    requests 2.26.0 depends on charset-normalizer~=2.0.0; python_version >= "3"
++    aider-chat 0.28.0 depends on charset-normalizer==3.3.2
++    requests 2.26.0 depends on charset-normalizer~=2.0.0; python_version >= "3"
++    aider-chat 0.27.0 depends on charset-normalizer==3.3.2
++    requests 2.26.0 depends on charset-normalizer~=2.0.0; python_version >= "3"
++    aider-chat 0.26.1 depends on charset-normalizer==3.3.2
++    requests 2.26.0 depends on charset-normalizer~=2.0.0; python_version >= "3"
++    aider-chat 0.26.0 depends on charset-normalizer==3.3.2
++    requests 2.26.0 depends on charset-normalizer~=2.0.0; python_version >= "3"
++    aider-chat 0.25.0 depends on charset-normalizer==3.3.2
++    requests 2.26.0 depends on charset-normalizer~=2.0.0; python_version >= "3"
++    aider-chat 0.24.1 depends on charset-normalizer==3.3.2
++    requests 2.26.0 depends on charset-normalizer~=2.0.0; python_version >= "3"
++    aider-chat 0.24.0 depends on charset-normalizer==3.3.2
++    requests 2.26.0 depends on charset-normalizer~=2.0.0; python_version >= "3"
++    aider-chat 0.23.0 depends on charset-normalizer==3.3.2
++    requests 2.26.0 depends on charset-normalizer~=2.0.0; python_version >= "3"
++    aider-chat 0.22.0 depends on charset-normalizer==3.3.2
++    requests 2.26.0 depends on charset-normalizer~=2.0.0; python_version >= "3"
++    aider-chat 0.21.1 depends on charset-normalizer==3.3.2
++    requests 2.26.0 depends on charset-normalizer~=2.0.0; python_version >= "3"
++    aider-chat 0.21.0 depends on charset-normalizer==3.3.2
++    requests 2.26.0 depends on charset-normalizer~=2.0.0; python_version >= "3"
++    aider-chat 0.16.0 depends on charset-normalizer==3.1.0
++    requests 2.26.0 depends on charset-normalizer~=2.0.0; python_version >= "3"
++    aider-chat 0.15.0 depends on charset-normalizer==3.1.0
++    requests 2.26.0 depends on charset-normalizer~=2.0.0; python_version >= "3"
++    aider-chat 0.14.2 depends on charset-normalizer==3.1.0
++    requests 2.26.0 depends on charset-normalizer~=2.0.0; python_version >= "3"
++    aider-chat 0.14.1 depends on charset-normalizer==3.1.0
++    requests 2.26.0 depends on charset-normalizer~=2.0.0; python_version >= "3"
++    aider-chat 0.14.0 depends on charset-normalizer==3.1.0
++    requests 2.26.0 depends on charset-normalizer~=2.0.0; python_version >= "3"
++    aider-chat 0.13.0 depends on charset-normalizer==3.1.0
++    requests 2.26.0 depends on charset-normalizer~=2.0.0; python_version >= "3"
++    aider-chat 0.12.0 depends on charset-normalizer==3.1.0
++    requests 2.26.0 depends on charset-normalizer~=2.0.0; python_version >= "3"
++    aider-chat 0.11.1 depends on charset-normalizer==3.1.0
++    requests 2.26.0 depends on charset-normalizer~=2.0.0; python_version >= "3"
++    aider-chat 0.11.0 depends on charset-normalizer==3.1.0
++    requests 2.26.0 depends on charset-normalizer~=2.0.0; python_version >= "3"
++    aider-chat 0.10.1 depends on charset-normalizer==3.1.0
++    requests 2.26.0 depends on charset-normalizer~=2.0.0; python_version >= "3"
++    aider-chat 0.10.0 depends on charset-normalizer==3.1.0
++    requests 2.26.0 depends on charset-normalizer~=2.0.0; python_version >= "3"
++    aider-chat 0.9.0 depends on charset-normalizer==3.1.0
++    requests 2.26.0 depends on charset-normalizer~=2.0.0; python_version >= "3"
++    aider-chat 0.8.3 depends on charset-normalizer==3.1.0
++    requests 2.26.0 depends on charset-normalizer~=2.0.0; python_version >= "3"
++    aider-chat 0.8.2 depends on charset-normalizer==3.1.0
++    requests 2.26.0 depends on charset-normalizer~=2.0.0; python_version >= "3"
++    aider-chat 0.8.1 depends on charset-normalizer==3.1.0
++    requests 2.26.0 depends on charset-normalizer~=2.0.0; python_version >= "3"
++    aider-chat 0.8.0 depends on charset-normalizer==3.1.0
++    requests 2.26.0 depends on charset-normalizer~=2.0.0; python_version >= "3"
++    aider-chat 0.7.2 depends on charset-normalizer==3.1.0
++    requests 2.26.0 depends on charset-normalizer~=2.0.0; python_version >= "3"
++    aider-chat 0.7.1 depends on charset-normalizer==3.1.0
++    requests 2.26.0 depends on charset-normalizer~=2.0.0; python_version >= "3"
++    aider-chat 0.7.0 depends on charset-normalizer==3.1.0
++    requests 2.26.0 depends on charset-normalizer~=2.0.0; python_version >= "3"
++    aider-chat 0.6.6 depends on charset-normalizer==3.1.0
++    requests 2.26.0 depends on charset-normalizer~=2.0.0; python_version >= "3"
++    aider-chat 0.6.4 depends on charset-normalizer==3.1.0
++    requests 2.26.0 depends on charset-normalizer~=2.0.0; python_version >= "3"
++    aider-chat 0.6.2 depends on charset-normalizer==3.1.0
++    requests 2.26.0 depends on charset-normalizer~=2.0.0; python_version >= "3"
++    aider-chat 0.6.1 depends on charset-normalizer==3.1.0
++    requests 2.26.0 depends on charset-normalizer~=2.0.0; python_version >= "3"
++    aider-chat 0.5.0 depends on charset-normalizer==3.1.0
++
++To fix this you could try to:
++1. loosen the range of package versions you've specified
++2. remove package versions to allow pip attempt to solve the dependency conflict
++
++ERROR: ResolutionImpossible: for help visit https://pip.pypa.io/en/latest/topics/dependency-resolution/#dealing-with-dependency-conflicts
+
+# 2024-08-30 22:56:58.821342
++/run pip install -r requirements.txt --upgrade
+
+# 2024-08-30 23:10:17.740942
++/run pip install -r requirements.txt --upgrade
+
+# 2024-08-30 23:10:27.626387
++/run pip-compile requirements\requirements.in --output-file=requirements.txt --upgrade
+
+# 2024-08-30 23:10:27.648955
++/run pip install -r requirements.txt --upgrade
