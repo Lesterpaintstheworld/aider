@@ -1,6 +1,7 @@
 from aider import __version__, models
 from aider.file_selector import select_relevant_files
-from aider.utils import safe_read_files
+from aider.file_utils import safe_read_files
+from aider.coders import Coder
 
 def main():
     coder = Coder.create(**kwargs)  # Assurez-vous que les kwargs appropriés sont passés
