@@ -40,7 +40,7 @@ browser = { file = "requirements/requirements-browser.txt" }
 playwright = { file = "requirements/requirements-playwright.txt" }
 
 [tool.setuptools.packages.find]
-where = ["src"]
+where = ["."]
 include = ["aider*"]
 
 [tool.setuptools.package-data]
