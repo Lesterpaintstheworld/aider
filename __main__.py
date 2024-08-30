@@ -1,4 +1,7 @@
 from . import main as main_function
 
 if __name__ == "__main__":
-    main_function()
+    from aider.main import main
+
+    if __name__ == "__main__":
+        main()
