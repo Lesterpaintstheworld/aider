@@ -1,5 +1,5 @@
-from . import __version__, models, utils
-from .file_selector import select_relevant_files
+from aider import __version__, models, utils
+from aider.file_selector import select_relevant_files
 import os
 
 def safe_read_files(file_paths):
@@ -9,3 +9,10 @@ def safe_read_files(file_paths):
                 yield file_path, file.read()
         else:
             print(f"Impossible d'accéder au fichier : {file_path}")
+
+def main():
+    # Ajoutez ici la logique principale de votre application
+    pass
+
+if __name__ == "__main__":
+    main()
