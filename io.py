@@ -237,7 +237,7 @@ class InputOutput:
 
         rel_fnames = list(rel_fnames)
         show = " ".join(rel_fnames)
-        if len(show) > 10:
+        if len(show) > 20:
             show += "\n"
         show += "> "
 
