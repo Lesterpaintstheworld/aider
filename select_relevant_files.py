@@ -79,13 +79,13 @@ Note: While the AIs can generate and manipulate music, they cannot yet truly 'li
 Check the TODO and decide what action to take next autonomously.
 
 ---
-
-       TASK: --> Evaluate the relevance of this file for an AI music band project, focusing on the text files:\n\nFile: {file}\n\nContent:\n{content}\n\nRelevance score (0-10):"""
+        NOTE: Todolists, journals and discussions are very important. Not important because already completed: Human.exe, Quantum related files.
+       TASK: --> Evaluate the relevance of this file for an AI music band project, focusing on the text files. Only answer with the score:\n\nFile: {file}\n\nContent:\n{content}\n\nRelevance score (0-10):"""
         
         response = completion(
             model="claude-3-haiku-20240307",
             messages=[{"role": "user", "content": prompt}],
-            max_tokens=10
+            max_tokens=2
         )
         
         score = int(response.choices[0].message.content.strip())
