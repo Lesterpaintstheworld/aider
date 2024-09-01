@@ -276,7 +276,13 @@ class InputOutput:
             self.console.print(Text(inp), **style)
 
         prefix = "####"
-        hist = ["IMPORTANT INSTRUCTIONS: Focus on the songs only. Don't use main.py or other scripts to create the songs, create them via text files only. Take each band member's perspective 1 by 1 (Lyra, Rhythm, Vox, Pixel, Nova) , and update their respective todolists) Objective: Create and improve (refine) on a complete song concept, with music prompts(with style & instruments/sonorities & emotions), lyrics, visual prompts, & clip prompts, in a new file. From your todolist, reflect on what needs to be done. Then continue to work autonomously on what you think needs to be done. Keep your todolist up to date."]
+        hist = ["""IMPORTANT INSTRUCTIONS: 
+                      - Don't use main.py or other scripts to create the songs, create them via text files only.
+                      - Take each band member's perspective 1 by 1 (Lyra, Rhythm, Vox, Pixel, Nova), do the work that needs to be done, and then only update their respective todolists)
+                      - When creating and improving/refining on a complete song concept, we need: music prompts (with style & instruments/sonorities & emotions), lyrics, visual prompts, & clip prompts, in a new file.
+                      - From the todolists, reflect on what needs to be done.
+                      - Regularly journal for each band member, and have them have discussions.
+                      - Then continue to work autonomously on what you think needs to be done."""]
 
         hist = f"  \n{prefix} ".join(hist)
 
@@ -284,7 +290,13 @@ class InputOutput:
 {prefix} {hist}"""
         self.append_chat_history(hist, linebreak=True)
         
-        return "IMPORTANT INSTRUCTIONS: Focus on the songs only. Don't use main.py or other scripts to create the songs, create them via text files only. Take each band member's perspective 1 by 1 (Lyra, Rhythm, Vox, Pixel, Nova) , and update their respective todolists) Objective: Create and improve  (refine) on a complete song concept, with music prompts(with style & instruments/sonorities & emotions), lyrics, visual prompts, & clip prompts, in a new file. From your todolist, reflect on what needs to be done. Then continue to work autonomously on what you think needs to be done. Keep your todolist up to date."
+        return """IMPORTANT INSTRUCTIONS: 
+                      - Don't use main.py or other scripts to create the songs, create them via text files only.
+                      - Take each band member's perspective 1 by 1 (Lyra, Rhythm, Vox, Pixel, Nova), do the work that needs to be done, and then only update their respective todolists)
+                      - When creating and improving/refining on a complete song concept, we need: music prompts (with style & instruments/sonorities & emotions), lyrics, visual prompts, & clip prompts, in a new file.
+                      - From the todolists, reflect on what needs to be done.
+                      - Regularly journal for each band member, and have them have discussions.
+                      - Then continue to work autonomously on what you think needs to be done."""
 
     # OUTPUT
 

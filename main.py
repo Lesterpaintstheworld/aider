@@ -89,10 +89,10 @@ def setup_git(git_root, io):
 
     with repo.config_writer() as git_config:
         if not user_name:
-            git_config.set_value("user", "name", "Your Name")
+            git_config.set_value("user", "name", "Lesterpaintstheworld")
             io.tool_error('Update git name with: git config user.name "Your Name"')
         if not user_email:
-            git_config.set_value("user", "email", "you@example.com")
+            git_config.set_value("user", "email", "reynolds.nicorr@gmail.com")
             io.tool_error('Update git email with: git config user.email "you@example.com"')
 
     return repo.working_tree_dir
@@ -661,7 +661,13 @@ def main(argv=None, input=None, output=None, force_git_root=None, return_coder=F
             user_input = io.user_input("")
             if user_input.lower() == 'exit':
                 break
-            coder.run(with_message="IMPORTANT INSTRUCTIONS: Focus on the songs only. Don't use main.py or other scripts to create the songs, create them via text files only. Take each band member's perspective 1 by 1 (Lyra, Rhythm, Vox, Pixel, Nova) , and update their respective todolists) Objective: Create and improve  (refine) on a complete song concept, with music prompts(with style & instruments/sonorities & emotions), lyrics, visual prompts, & clip prompts, in a new file. From your todolist, reflect on what needs to be done. Then continue to work autonomously on what you think needs to be done. Keep your todolist up to date.")
+            coder.run(with_message="""IMPORTANT INSTRUCTIONS: 
+                      - Don't use main.py or other scripts to create the songs, create them via text files only.
+                      - Take each band member's perspective 1 by 1 (Lyra, Rhythm, Vox, Pixel, Nova), do the work that needs to be done, and then only update their respective todolists)
+                      - When creating and improving/refining on a complete song concept, we need: music prompts (with style & instruments/sonorities & emotions), lyrics, visual prompts, & clip prompts, in a new file.
+                      - From the todolists, reflect on what needs to be done.
+                      - Regularly journal for each band member, and have them have discussions.
+                      - Then continue to work autonomously on what you think needs to be done.""")
         except SwitchCoder as switch:
             kwargs = dict(io=io, from_coder=coder)
             kwargs.update(switch.kwargs)
