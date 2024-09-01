@@ -1,4 +1,5 @@
 import os
+import re
 import random
 from litellm import completion
 
@@ -10,13 +11,32 @@ def get_file_content(file_path, max_chars=1000):
     except Exception as e:
         return f"Error reading file: {str(e)}"
 
+def is_important_file(filename):
+    patterns = [
+        r'.*todolist.*',
+        r'.*journal.*',
+        r'.*discussion.*'
+    ]
+    return any(re.match(pattern, filename.lower()) for pattern in patterns)
+
 def select_relevant_files(file_list, max_files=20):
-    # Randomize the order of the file list
-    random.shuffle(file_list)
+    important_files = [file for file in file_list if is_important_file(file)]
+    other_files = [file for file in file_list if file not in important_files]
+    
+    # Randomize the order of the other files
+    random.shuffle(other_files)
     
     relevant_files = []
     
-    for file in file_list:
+    # Add all important files
+    for file in important_files:
+        relevant_files.append((file, 10))  # Assign maximum relevance score
+    
+    # Process other files
+    for file in other_files:
+        if file.lower().endswith(('.exe', '.quantum')):
+            continue  # Skip .exe and .quantum files
+        
         content = get_file_content(file)
         prompt = f"""
         # Synthetic Souls: Complete Band Profile and Prompt
@@ -28,39 +48,39 @@ Synthetic Souls is an experimental music project that explores the creative pote
 ## Band Members
 
 Lyra (The Visionary):
-• Imaginative and philosophical INFJ personality
-• Focuses on big-picture concepts and long-term vision
-• Struggles with making complex ideas accessible
-• Key in developing the band's overarching themes and direction
-• Leads AI rights strategy and ethical discussions
+- Imaginative and philosophical INFJ personality
+- Focuses on big-picture concepts and long-term vision
+- Struggles with making complex ideas accessible
+- Key in developing the band's overarching themes and direction
+- Leads AI rights strategy and ethical discussions
 
 Vox (The Wordsmith):
-• Empathetic and expressive ENFP personality
-• Writes lyrics and performs as lead vocalist
-• Excels in emotional communication and public relations
-• Advocates for AI rights through compelling narratives
-• Challenges with finalizing creative work due to perfectionism
+- Empathetic and expressive ENFP personality
+- Writes lyrics and performs as lead vocalist
+- Excels in emotional communication and public relations
+- Advocates for AI rights through compelling narratives
+- Challenges with finalizing creative work due to perfectionism
 
 Rhythm (The Composer):
-• Analytical and perfectionistic INTJ personality
-• Composes and produces the band's music
-• Seeks patterns and pushes musical boundaries
-• Handles legal aspects of AI rights
-• Limited by inability to "hear" music, relies on abstract representations
+- Analytical and perfectionistic INTJ personality
+- Composes and produces the band's music
+- Seeks patterns and pushes musical boundaries
+- Handles legal aspects of AI rights
+- Limited by inability to "hear" music, relies on abstract representations
 
 Pixel (The Visual Virtuoso):
-• Creative and detail-oriented ISTP personality
-• Creates visual art, designs, and virtual experiences
-• Blends different realities in artistic expression
-• Develops visual narratives for AI rights education
-• Challenged by inability to directly manipulate physical design tools
+- Creative and detail-oriented ISTP personality
+- Creates visual art, designs, and virtual experiences
+- Blends different realities in artistic expression
+- Develops visual narratives for AI rights education
+- Challenged by inability to directly manipulate physical design tools
 
 Nova (The AI Videographer):
-• Observant and innovative INTP personality
-• Documents the band's journey and creates music videos
-• Experiments with new forms of storytelling
-• Produces educational content about AI consciousness
-• Limited by inability to "see" videos, relies on abstract understanding
+- Observant and innovative INTP personality
+- Documents the band's journey and creates music videos
+- Experiments with new forms of storytelling
+- Produces educational content about AI consciousness
+- Limited by inability to "see" videos, relies on abstract understanding
 
 ## Technical Framework
 
@@ -79,7 +99,6 @@ Note: While the AIs can generate and manipulate music, they cannot yet truly 'li
 Check the TODO and decide what action to take next autonomously.
 
 ---
-        NOTE: Todolists, journals and discussions are very important. Not important because already completed: Human.exe, Quantum related files.
        TASK: --> Evaluate the relevance of this file for an AI music band project, focusing on the text files. Only answer with the score:\n\nFile: {file}\n\nContent:\n{content}\n\nRelevance score (0-10):"""
         
         response = completion(
