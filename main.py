@@ -646,7 +646,7 @@ def main(argv=None, input=None, output=None, force_git_root=None, return_coder=F
     # Select relevant files
     all_files = [f for f in os.listdir() if os.path.isfile(f)]
     selected_files = select_relevant_files(all_files)
-    
+
     io.tool_output("Selected relevant files:")
     for file in selected_files:
         io.tool_output(file)
@@ -654,7 +654,7 @@ def main(argv=None, input=None, output=None, force_git_root=None, return_coder=F
     # Add selected files to the chat
     for file in selected_files:
         coder.add_file(file)
-
+        
     while True:
         io.tool_output("Appuyez sur Entrée pour continuer ou tapez 'exit' pour quitter.")
         try:
