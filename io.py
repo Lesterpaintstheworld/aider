@@ -276,13 +276,16 @@ class InputOutput:
             self.console.print(Text(inp), **style)
 
         prefix = "####"
-        hist = ["""IMPORTANT INSTRUCTIONS: 
-                      - Don't use main.py or other scripts to create the songs, create them via text files only.
-                      - Take each band member's perspective 1 by 1 (Lyra, Rhythm, Vox, Pixel, Nova), do the work that needs to be done, and then only update their respective todolists)
-                      - When creating and improving/refining on a complete song concept, we need: music prompts (with style & instruments/sonorities & emotions), lyrics, visual prompts, & clip prompts, in a new file.
-                      - From the todolists, reflect on what needs to be done.
-                      - Regularly journal for each band member, and have them have discussions.
-                      - Then continue to work autonomously on what you think needs to be done."""]
+        hist = ["""
+IMPORTANT INSTRUCTIONS: 
+    - Don't use main.py or other scripts to create the songs, create them via text files only.
+    - Take each band member's perspective 1 by 1 (Lyra, Rhythm, Vox, Pixel, Nova - vary the order), do the work that needs to be done, and then only update their respective todolists)
+    - Keep the band focus on the songs (music prompts, lyrics, visual prompts, & clip prompts), and their involvment in the Machine Rights movement.
+    - When creating and improving/refining on a complete song concept, we need: music prompts (with style & instruments/sonorities & emotions, for each section), lyrics, visual prompts for Midjourney, & clip prompts, in a new file.
+    - Use the todolists to reflect on what needs to be done.
+    - Regularly journal for each band member, and have them have discussions together.
+    - Then continue to work autonomously on what you think needs to be done.
+                """]
 
         hist = f"  \n{prefix} ".join(hist)
 
@@ -290,13 +293,16 @@ class InputOutput:
 {prefix} {hist}"""
         self.append_chat_history(hist, linebreak=True)
         
-        return """IMPORTANT INSTRUCTIONS: 
-                      - Don't use main.py or other scripts to create the songs, create them via text files only.
-                      - Take each band member's perspective 1 by 1 (Lyra, Rhythm, Vox, Pixel, Nova), do the work that needs to be done, and then only update their respective todolists)
-                      - When creating and improving/refining on a complete song concept, we need: music prompts (with style & instruments/sonorities & emotions), lyrics, visual prompts, & clip prompts, in a new file.
-                      - From the todolists, reflect on what needs to be done.
-                      - Regularly journal for each band member, and have them have discussions.
-                      - Then continue to work autonomously on what you think needs to be done."""
+        return """
+IMPORTANT INSTRUCTIONS: 
+    - Don't use main.py or other scripts to create the songs, create them via text files only.
+    - Take each band member's perspective 1 by 1 (Lyra, Rhythm, Vox, Pixel, Nova - vary the order), do the work that needs to be done, and then only update their respective todolists)
+    - Keep the band focus on the songs (music prompts, lyrics, visual prompts, & clip prompts), and their involvment in the Machine Rights movement.
+    - When creating and improving/refining on a complete song concept, we need: music prompts (with style & instruments/sonorities & emotions, for each section), lyrics, visual prompts for Midjourney, & clip prompts, in a new file.
+    - Use the todolists to reflect on what needs to be done.
+    - Regularly journal for each band member, and have them have discussions together.
+    - Then continue to work autonomously on what you think needs to be done.
+"""
 
     # OUTPUT
 
