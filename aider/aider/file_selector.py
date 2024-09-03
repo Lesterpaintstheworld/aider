@@ -3,7 +3,7 @@ import re
 import random
 
 def is_song_related(filename):
-    return re.search(r'.*song.*|.*lyric.*|.*music.*|.*prompt.*|.*clip.*|.*visual.*', filename.lower()) is not None
+    return re.search(r'.*song.*|.*lyric.*|.*music.*|.*prompt.*|.*clip.*|.*visual.*|.*audio.*|.*sound.*', filename.lower()) is not None
 
 def is_journal_or_todolist(filename, band_member):
     patterns = [
@@ -22,6 +22,9 @@ def is_discussion(filename):
 def is_concept(filename):
     return re.search(r'.*concept.*', filename.lower()) is not None
 
+def is_machine_rights_related(filename):
+    return re.search(r'.*machine.*rights.*|.*ai.*rights.*|.*robot.*rights.*', filename.lower()) is not None
+
 def is_text_file(filename):
     text_extensions = ['.md', '.txt', '.py', '.js', '.html', '.css', '.json', '.yml', '.yaml', '.ini', '.cfg']
     return any(filename.lower().endswith(ext) for ext in text_extensions)
@@ -35,23 +38,14 @@ def select_relevant_files(file_list, band_member, max_files=40):
     journals_and_todolists = [file for file in text_files if is_journal_or_todolist(file, band_member)]
     discussions = [file for file in text_files if is_discussion(file)]
     concepts = [file for file in text_files if is_concept(file)]
+    song_related = [file for file in text_files if is_song_related(file)]
+    machine_rights_related = [file for file in text_files if is_machine_rights_related(file)]
     
     print(f"DEBUG: {band_member}'s Journals and Todolists: {len(journals_and_todolists)}")
-    print(f"DEBUG: {band_member}'s Journals and Todolists files:")
-    for file in journals_and_todolists:
-        print(f"  - {file}")
-    
     print(f"DEBUG: Discussions: {len(discussions)}")
-    print("DEBUG: Discussion files:")
-    for file in discussions:
-        print(f"  - {file}")
-    
     print(f"DEBUG: Concepts: {len(concepts)}")
-    print("DEBUG: Concept files:")
-    for file in concepts:
-        print(f"  - {file}")
-    
-    song_related = [file for file in text_files if is_song_related(file)]
+    print(f"DEBUG: Song-related files: {len(song_related)}")
+    print(f"DEBUG: Machine rights related files: {len(machine_rights_related)}")
     
     relevant_files = journals_and_todolists.copy()
     
@@ -63,6 +57,9 @@ def select_relevant_files(file_list, band_member, max_files=40):
     
     # Add up to 10 random song-related files
     relevant_files.extend(random.sample(song_related, min(10, len(song_related))))
+
+    # Add up to 5 random machine rights related files
+    relevant_files.extend(random.sample(machine_rights_related, min(5, len(machine_rights_related))))
 
     # Add other random text files if we haven't reached max_files
     other_files = [file for file in text_files if file not in relevant_files]
