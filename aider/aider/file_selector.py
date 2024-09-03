@@ -1,6 +1,7 @@
 import os
 import re
 import random
+from pathlib import Path
 
 def is_song_related(filename):
     keywords = ['song', 'lyric', 'music', 'prompt', 'clip', 'visual', 'audio', 'sound', 'melody', 'rhythm', 'harmony', 'instrument', 'composition', 'arrangement', 'production', 'mix', 'master']
@@ -51,23 +52,28 @@ def select_relevant_files(file_list, band_member, max_files=40):
     
     relevant_files = journals_and_todolists.copy()
     
-    # Add up to 7 random discussion files
-    relevant_files.extend(random.sample(discussions, min(7, len(discussions))))
+    # Prioritize the most recent files
+    for file_list in [discussions, concepts, song_related, machine_rights_related]:
+        file_list.sort(key=lambda f: os.path.getmtime(f), reverse=True)
     
-    # Add up to 7 random concept files
-    relevant_files.extend(random.sample(concepts, min(7, len(concepts))))
+    # Add up to 7 most recent discussion files
+    relevant_files.extend(discussions[:7])
     
-    # Add up to 10 random song-related files
-    relevant_files.extend(random.sample(song_related, min(10, len(song_related))))
+    # Add up to 7 most recent concept files
+    relevant_files.extend(concepts[:7])
+    
+    # Add up to 10 most recent song-related files
+    relevant_files.extend(song_related[:10])
 
-    # Add up to 5 random machine rights related files
-    relevant_files.extend(random.sample(machine_rights_related, min(5, len(machine_rights_related))))
+    # Add up to 5 most recent machine rights related files
+    relevant_files.extend(machine_rights_related[:5])
 
-    # Add other random text files if we haven't reached max_files
+    # Add other recent text files if we haven't reached max_files
     other_files = [file for file in text_files if file not in relevant_files]
+    other_files.sort(key=lambda f: os.path.getmtime(f), reverse=True)
     remaining_slots = max_files - len(relevant_files)
     if remaining_slots > 0:
-        relevant_files.extend(random.sample(other_files, min(remaining_slots, len(other_files))))
+        relevant_files.extend(other_files[:remaining_slots])
     
     # Ensure we don't exceed max_files
     relevant_files = relevant_files[:max_files]
@@ -77,3 +83,13 @@ def select_relevant_files(file_list, band_member, max_files=40):
         print(f"  - {file}")
     
     return relevant_files
+
+def get_most_recent_file(file_list):
+    return max(file_list, key=os.path.getmtime) if file_list else None
+
+def get_band_member_latest_files(file_list, band_member):
+    member_files = [f for f in file_list if band_member.lower() in f.lower()]
+    return {
+        'journal': get_most_recent_file([f for f in member_files if 'journal' in f.lower()]),
+        'todolist': get_most_recent_file([f for f in member_files if 'todolist' in f.lower() or 'todo' in f.lower()]),
+    }

@@ -12,3 +12,16 @@ venv*
 .env
 .aider*
 aider/
+
+# Project specific
+*.mp3
+*.wav
+*.midi
+*.mid
+*.aup
+*.aup3
+*.flp
+*.als
+*.logicx
+*.band
+*.ptb
