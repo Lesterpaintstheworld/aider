@@ -4,8 +4,8 @@ import random
 
 def is_journal_or_todolist(filename):
     patterns = [
-        r'.*journal.*',
-        r'.*todolist.*'
+        r'.*journal.*', #todo :need to have band member name
+        r'.*todolist.*' #todo :need to have band member name
     ]
     return any(re.search(pattern, filename.lower()) for pattern in patterns)
 
@@ -19,7 +19,7 @@ def is_text_file(filename):
     text_extensions = ['.md', '.txt', '.py', '.js', '.html', '.css', '.json', '.yml', '.yaml', '.ini', '.cfg']
     return any(filename.lower().endswith(ext) for ext in text_extensions)
 
-def select_relevant_files(file_list, max_files=20):
+def select_relevant_files(file_list, max_files=20): # take into account band member
     print("DEBUG: select_relevant_files function called")
     print(f"DEBUG: Total files found: {len(file_list)}")
     
@@ -51,6 +51,8 @@ def select_relevant_files(file_list, max_files=20):
     
     # Add up to 3 random concept files
     relevant_files.extend(random.sample(concepts, min(3, len(concepts))))
+
+    # TODO: add 5 other random files
     
     # Ensure we don't exceed max_files
     relevant_files = relevant_files[:max_files]
