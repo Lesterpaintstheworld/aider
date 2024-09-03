@@ -647,7 +647,10 @@ def main(argv=None, input=None, output=None, force_git_root=None, return_coder=F
     # MAIN LOOP
     while True:
         # Remove all files from the chat
-        coder.remove_all_files()
+        if hasattr(coder, 'remove_all_files'):
+            coder.remove_all_files()
+        else:
+            io.tool_output("Warning: remove_all_files() method not available for this coder.")
 
         # CHOOSE BAND MEMBER
         band_members = ["Lyra", "Rhythm", "Vox", "Pixel", "Nova"]
