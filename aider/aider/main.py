@@ -697,16 +697,23 @@ def main(argv=None, input=None, output=None, force_git_root=None, return_coder=F
         io.tool_output(f"Band member selected: {current_member}")
 
         # Select relevant files
-        all_files = [f for f in os.listdir() if os.path.isfile(f)]
+        all_files = []
+        for root, dirs, files in os.walk('.'):
+            for file in files:
+                all_files.append(os.path.join(root, file))
+        
         selected_files = select_relevant_files(all_files, current_member, max_files=30)
 
-        io.tool_output("Selected relevant files:")
+        io.tool_output(f"Selected relevant files for {current_member}:")
         for file in selected_files:
             io.tool_output(file)
 
         # Add selected files to the chat
         for file in selected_files:
-            coder.add_file(file)
+            try:
+                coder.add_file(file)
+            except Exception as e:
+                io.tool_error(f"Error adding file {file}: {str(e)}")
 
         try:
             coder.run(with_message=f"""
