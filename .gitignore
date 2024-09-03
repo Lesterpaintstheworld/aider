@@ -11,4 +11,4 @@ _site
 venv*
 .env
 .aider*
-.aiderignore
+aider/
