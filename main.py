@@ -706,19 +706,6 @@ MAIN INSTRUCTIONS:
         user_input = io.user_input("Press Enter to continue with the next iteration, or type 'exit' to quit: ")
         if user_input.lower() == 'exit':
             break
-        except SwitchCoder as switch:
-            kwargs = dict(io=io, from_coder=coder)
-            kwargs.update(switch.kwargs)
-            if "show_announcements" in kwargs:
-                del kwargs["show_announcements"]
-
-            coder = Coder.create(**kwargs)
-
-            if switch.kwargs.get("show_announcements") is not False:
-                coder.show_announcements()
-        except Exception as e:
-            io.tool_error(f"Une erreur s'est produite : {str(e)}")
-            break
 
 
 def load_slow_imports():
