@@ -21,7 +21,7 @@ def is_text_file(filename):
     text_extensions = ['.md', '.txt', '.py', '.js', '.html', '.css', '.json', '.yml', '.yaml', '.ini', '.cfg']
     return any(filename.lower().endswith(ext) for ext in text_extensions)
 
-def select_relevant_files(file_list, band_member, max_files=20):
+def select_relevant_files(file_list, band_member, max_files=30):
     print(f"DEBUG: select_relevant_files function called for {band_member}")
     print(f"DEBUG: Total files found: {len(file_list)}")
     
