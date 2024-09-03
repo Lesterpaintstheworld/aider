@@ -12,7 +12,7 @@ def load_ignore_patterns(ignore_file):
 
 def is_ignored(file_path, ignore_patterns):
     for pattern in ignore_patterns:
-        if fnmatch(file_path, pattern):
+        if fnmatch(file_path, pattern) or fnmatch(os.path.basename(file_path), pattern):
             return True
     return False
 
@@ -49,6 +49,8 @@ def select_relevant_files(file_list, band_member, max_files=20):
     ignore_patterns = gitignore_patterns + aiderignore_patterns
     
     text_files = [file for file in file_list if is_text_file(file) and not is_ignored(file, ignore_patterns)]
+    
+    print(f"DEBUG: Text files after applying ignore patterns: {len(text_files)}")
     
     journals_and_todolists = [file for file in text_files if is_journal_or_todolist(file, band_member)]
     discussions = [file for file in text_files if is_discussion(file)]
