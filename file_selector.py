@@ -1,6 +1,20 @@
 import os
 import re
 import random
+from pathlib import Path
+from fnmatch import fnmatch
+
+def load_ignore_patterns(ignore_file):
+    if os.path.exists(ignore_file):
+        with open(ignore_file, 'r') as f:
+            return [line.strip() for line in f if line.strip() and not line.startswith('#')]
+    return []
+
+def is_ignored(file_path, ignore_patterns):
+    for pattern in ignore_patterns:
+        if fnmatch(file_path, pattern):
+            return True
+    return False
 
 def is_song_related(filename):
     return re.search(r'.*song.*', filename.lower()) is not None
@@ -30,7 +44,11 @@ def select_relevant_files(file_list, band_member, max_files=20):
     print(f"DEBUG: select_relevant_files function called for {band_member}")
     print(f"DEBUG: Total files found: {len(file_list)}")
     
-    text_files = [file for file in file_list if is_text_file(file)]
+    gitignore_patterns = load_ignore_patterns('.gitignore')
+    aiderignore_patterns = load_ignore_patterns('.aiderignore')
+    ignore_patterns = gitignore_patterns + aiderignore_patterns
+    
+    text_files = [file for file in file_list if is_text_file(file) and not is_ignored(file, ignore_patterns)]
     
     journals_and_todolists = [file for file in text_files if is_journal_or_todolist(file, band_member)]
     discussions = [file for file in text_files if is_discussion(file)]
