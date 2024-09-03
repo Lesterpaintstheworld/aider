@@ -8,6 +8,7 @@ import math
 import mimetypes
 import os
 import platform
+import random
 import re
 import sys
 import threading
@@ -27,6 +28,7 @@ from aider.history import ChatSummary
 from aider.io import ConfirmGroup, InputOutput
 from aider.linter import Linter
 from aider.llm import litellm
+from aider.file_selector import select_relevant_files
 from aider.mdstream import MarkdownStream
 from aider.repo import ANY_GIT_ERROR, GitRepo
 from aider.repomap import RepoMap
@@ -726,7 +728,26 @@ class Coder:
 
             while True:
                 try:
+                    # Remove all files from the chat
+                    self.remove_all_files()
+
+                    # Choose a random band member
+                    band_members = ["Lyra", "Rhythm", "Vox", "Pixel", "Nova"]
+                    current_member = random.choice(band_members)
+                    self.io.tool_output(f"Band member selected: {current_member}")
+
+                    # Select relevant files
+                    all_files = [f for f in os.listdir() if os.path.isfile(f)]
+                    selected_files = select_relevant_files(all_files, current_member, max_files=30)
+
+                    self.io.tool_output("Selected relevant files:")
+                    for file in selected_files:
+                        self.io.tool_output(file)
+                        self.add_file(file)
+
                     user_message = self.get_input()
+                    if user_message.lower() == 'exit':
+                        break
                     self.run_one(user_message, preproc)
                     self.show_undo_hint()
                 except KeyboardInterrupt:
@@ -1652,11 +1673,23 @@ class Coder:
         files = [self.abs_root_path(path) for path in files]
         return files
 
+    def remove_all_files(self):
+        self.abs_fnames = set()
+        self.abs_read_only_fnames = set()
+
     def get_addable_relative_files(self):
         all_files = set(self.get_all_relative_files())
         inchat_files = set(self.get_inchat_relative_files())
         read_only_files = set(self.get_rel_fname(fname) for fname in self.abs_read_only_fnames)
         return all_files - inchat_files - read_only_files
+
+    def add_file(self, file):
+        abs_path = self.abs_root_path(file)
+        if os.path.isfile(abs_path):
+            self.abs_fnames.add(abs_path)
+            self.check_added_files()
+        else:
+            self.io.tool_error(f"File not found: {file}")
 
     def check_for_dirty_commit(self, path):
         if not self.repo:
