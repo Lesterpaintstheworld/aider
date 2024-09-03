@@ -662,7 +662,10 @@ def main(argv=None, input=None, output=None, force_git_root=None, return_coder=F
                 io.tool_output(f"Current band member: {current_member}")
 
                 # Select relevant files
-                all_files = [f for f in os.listdir() if os.path.isfile(f)]
+                all_files = []
+                for root, _, files in os.walk('.'):
+                    for file in files:
+                        all_files.append(os.path.join(root, file))
                 selected_files = select_relevant_files(all_files, current_member, max_files=20)
 
                 io.tool_output("Selected relevant files:")
