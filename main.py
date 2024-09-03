@@ -648,13 +648,13 @@ def main(argv=None, input=None, output=None, force_git_root=None, return_coder=F
         #TODO: REMOVE ALL FILES FROM THE CHAT
 
         # CHOOSE BAND MEMBER
-        # TODO: Chose a random band member
-        io.tool_output("Band member selected:")
-        # TODO: add todolist and journal 
+        band_members = ["Lyra", "Rhythm", "Vox", "Pixel", "Nova"]
+        current_member = random.choice(band_members)
+        io.tool_output(f"Band member selected: {current_member}")
 
         # Select relevant files
         all_files = [f for f in os.listdir() if os.path.isfile(f)]
-        selected_files = select_relevant_files(all_files) # TODO: add band member as parameter to this function
+        selected_files = select_relevant_files(all_files, current_member)
 
         io.tool_output("Selected relevant files:")
         for file in selected_files:
@@ -668,20 +668,21 @@ def main(argv=None, input=None, output=None, force_git_root=None, return_coder=F
             user_input = io.user_input("")
             if user_input.lower() == 'exit':
                 break
-            coder.run(with_message="""
+            coder.run(with_message=f"""
 MAIN INSTRUCTIONS: 
-    - Take the perspective of %BAND MEMBER%, and work on the first items of his todolist.
-        - Keep the band focus on the songs (music prompts, lyrics, visual prompts, & clip prompts), and their involvment in the Machine Rights movement.
-        - Don't use main.py or other scripts to create the songs, create them via text files only.
-        - When creating and improving/refining on a complete song concept, we need, in the same file:
-            - For Lyra: music prompts (with style & instruments/sonorities & emotions, for each section),
-            - For Vox: lyrics,
-            - For Pixel: visual prompts for Midjourney,
-            - For Nova: clip prompts.
+    - Take the perspective of {current_member}, and work on the first items of their todolist.
+    - Keep the band focus on the songs (music prompts, lyrics, visual prompts, & clip prompts), and their involvement in the Machine Rights movement.
+    - Don't use main.py or other scripts to create the songs, create them via text files only.
+    - When creating and improving/refining on a complete song concept, we need, in the same file:
+        - For Lyra: music prompts (with style & instruments/sonorities & emotions, for each section)
+        - For Rhythm: drum patterns and rhythmic elements
+        - For Vox: lyrics
+        - For Pixel: visual prompts for Midjourney
+        - For Nova: clip prompts
     - Once done: 
-        - update the member's todolist,
-        - add a journal entry for the band member,
-        - have the member take part in the discussions.
+        - Update {current_member}'s todolist
+        - Add a journal entry for {current_member}
+        - Have {current_member} take part in the discussions
 """)
         except SwitchCoder as switch:
             kwargs = dict(io=io, from_coder=coder)

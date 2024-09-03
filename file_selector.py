@@ -2,10 +2,10 @@ import os
 import re
 import random
 
-def is_journal_or_todolist(filename):
+def is_journal_or_todolist(filename, band_member):
     patterns = [
-        r'.*journal.*', #todo :need to have band member name
-        r'.*todolist.*' #todo :need to have band member name
+        rf'.*{band_member.lower()}.*journal.*',
+        rf'.*{band_member.lower()}.*todolist.*'
     ]
     return any(re.search(pattern, filename.lower()) for pattern in patterns)
 
@@ -19,18 +19,18 @@ def is_text_file(filename):
     text_extensions = ['.md', '.txt', '.py', '.js', '.html', '.css', '.json', '.yml', '.yaml', '.ini', '.cfg']
     return any(filename.lower().endswith(ext) for ext in text_extensions)
 
-def select_relevant_files(file_list, max_files=20): # take into account band member
-    print("DEBUG: select_relevant_files function called")
+def select_relevant_files(file_list, band_member, max_files=20):
+    print(f"DEBUG: select_relevant_files function called for {band_member}")
     print(f"DEBUG: Total files found: {len(file_list)}")
     
     text_files = [file for file in file_list if is_text_file(file)]
     
-    journals_and_todolists = [file for file in text_files if is_journal_or_todolist(file)]
+    journals_and_todolists = [file for file in text_files if is_journal_or_todolist(file, band_member)]
     discussions = [file for file in text_files if is_discussion(file)]
     concepts = [file for file in text_files if is_concept(file)]
     
-    print(f"DEBUG: Journals and Todolists: {len(journals_and_todolists)}")
-    print("DEBUG: Journals and Todolists files:")
+    print(f"DEBUG: {band_member}'s Journals and Todolists: {len(journals_and_todolists)}")
+    print(f"DEBUG: {band_member}'s Journals and Todolists files:")
     for file in journals_and_todolists:
         print(f"  - {file}")
     
@@ -52,12 +52,14 @@ def select_relevant_files(file_list, max_files=20): # take into account band mem
     # Add up to 3 random concept files
     relevant_files.extend(random.sample(concepts, min(3, len(concepts))))
 
-    # TODO: add 5 other random files
+    # Add 5 other random text files
+    other_files = [file for file in text_files if file not in relevant_files]
+    relevant_files.extend(random.sample(other_files, min(5, len(other_files))))
     
     # Ensure we don't exceed max_files
     relevant_files = relevant_files[:max_files]
     
-    print("DEBUG: Final selected files:")
+    print(f"DEBUG: Final selected files for {band_member}:")
     for file in relevant_files:
         print(f"  - {file}")
     
