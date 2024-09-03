@@ -16,6 +16,10 @@ def is_ignored(file_path, ignore_patterns):
             # Si le motif se termine par '/', il correspond à un répertoire
             if fnmatch(file_path, f"{pattern}*") or fnmatch(file_path, f"*/{pattern}*"):
                 return True
+        elif '*' in pattern:
+            # Gestion des motifs avec des jokers
+            if fnmatch(file_path, pattern) or fnmatch(file_path, f"*/{pattern}"):
+                return True
         else:
             # Vérifier le chemin complet et le nom du fichier
             if fnmatch(file_path, pattern) or fnmatch(os.path.basename(file_path), pattern):
@@ -54,7 +58,12 @@ def select_relevant_files(file_list, band_member, max_files=20):
     aiderignore_patterns = load_ignore_patterns('.aiderignore')
     ignore_patterns = gitignore_patterns + aiderignore_patterns
     
-    text_files = [file for file in file_list if is_text_file(file) and not is_ignored(file, ignore_patterns)]
+    text_files = [
+        file for file in file_list 
+        if is_text_file(file) 
+        and not is_ignored(file, ignore_patterns)
+        and not file.startswith('aider')  # Exclure les fichiers commençant par 'aider'
+    ]
     
     print(f"DEBUG: Text files after applying ignore patterns: {len(text_files)}")
     
