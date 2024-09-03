@@ -646,7 +646,8 @@ def main(argv=None, input=None, output=None, force_git_root=None, return_coder=F
         
     # MAIN LOOP
     while True:
-        #TODO: REMOVE ALL FILES FROM THE CHAT
+        # Remove all files from the chat
+        coder.remove_all_files()
 
         # CHOOSE BAND MEMBER
         band_members = ["Lyra", "Rhythm", "Vox", "Pixel", "Nova"]
@@ -655,7 +656,7 @@ def main(argv=None, input=None, output=None, force_git_root=None, return_coder=F
 
         # Select relevant files
         all_files = [f for f in os.listdir() if os.path.isfile(f)]
-        selected_files = select_relevant_files(all_files, current_member)
+        selected_files = select_relevant_files(all_files, current_member, max_files=20)
 
         io.tool_output("Selected relevant files:")
         for file in selected_files:
