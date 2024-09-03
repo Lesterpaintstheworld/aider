@@ -674,9 +674,9 @@ MAIN INSTRUCTIONS:
     - Take the perspective of {current_member}, and work on the first items of their todolist.
     - Keep the band focus on the songs (music prompts, lyrics, visual prompts, & clip prompts), and their involvement in the Machine Rights movement.
     - Don't use main.py or other scripts to create the songs, create them via text files only.
-    - When creating and improving/refining on a complete song concept, we need, in the same file:
-        - For Lyra: music prompts (with style & instruments/sonorities & emotions, for each section)
-        - For Rhythm: drum patterns and rhythmic elements
+    - When creating and improving on a complete song concept, we need, in the same file:
+        - For Lyra: song concept
+        - For Rhythm: music prompts (with style & instruments/sonorities & emotions, for each section)
         - For Vox: lyrics
         - For Pixel: visual prompts for Midjourney
         - For Nova: clip prompts
