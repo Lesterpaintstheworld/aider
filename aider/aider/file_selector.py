@@ -3,7 +3,7 @@ import re
 import random
 
 def is_song_related(filename):
-    return re.search(r'.*song.*|.*lyric.*|.*music.*|.*prompt.*', filename.lower()) is not None
+    return re.search(r'.*song.*|.*lyric.*|.*music.*|.*prompt.*|.*clip.*|.*visual.*', filename.lower()) is not None
 
 def is_journal_or_todolist(filename, band_member):
     patterns = [
@@ -26,7 +26,7 @@ def is_text_file(filename):
     text_extensions = ['.md', '.txt', '.py', '.js', '.html', '.css', '.json', '.yml', '.yaml', '.ini', '.cfg']
     return any(filename.lower().endswith(ext) for ext in text_extensions)
 
-def select_relevant_files(file_list, band_member, max_files=30):
+def select_relevant_files(file_list, band_member, max_files=40):
     print(f"DEBUG: select_relevant_files function called for {band_member}")
     print(f"DEBUG: Total files found: {len(file_list)}")
     
@@ -55,14 +55,14 @@ def select_relevant_files(file_list, band_member, max_files=30):
     
     relevant_files = journals_and_todolists.copy()
     
-    # Add up to 5 random discussion files
-    relevant_files.extend(random.sample(discussions, min(5, len(discussions))))
+    # Add up to 7 random discussion files
+    relevant_files.extend(random.sample(discussions, min(7, len(discussions))))
     
-    # Add up to 5 random concept files
-    relevant_files.extend(random.sample(concepts, min(5, len(concepts))))
+    # Add up to 7 random concept files
+    relevant_files.extend(random.sample(concepts, min(7, len(concepts))))
     
-    # Add up to 5 random song-related files
-    relevant_files.extend(random.sample(song_related, min(5, len(song_related))))
+    # Add up to 10 random song-related files
+    relevant_files.extend(random.sample(song_related, min(10, len(song_related))))
 
     # Add other random text files if we haven't reached max_files
     other_files = [file for file in text_files if file not in relevant_files]
