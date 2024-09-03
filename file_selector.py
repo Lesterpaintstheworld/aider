@@ -12,8 +12,14 @@ def load_ignore_patterns(ignore_file):
 
 def is_ignored(file_path, ignore_patterns):
     for pattern in ignore_patterns:
-        if fnmatch(file_path, pattern) or fnmatch(os.path.basename(file_path), pattern):
-            return True
+        if pattern.endswith('/'):
+            # Si le motif se termine par '/', il correspond à un répertoire
+            if fnmatch(file_path, f"{pattern}*") or fnmatch(file_path, f"*/{pattern}*"):
+                return True
+        else:
+            # Vérifier le chemin complet et le nom du fichier
+            if fnmatch(file_path, pattern) or fnmatch(os.path.basename(file_path), pattern):
+                return True
     return False
 
 def is_song_related(filename):
