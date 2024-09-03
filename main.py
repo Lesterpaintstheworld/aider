@@ -687,6 +687,7 @@ MAIN INSTRUCTIONS:
         - Update {current_member}'s todolist
         - Add a journal entry for {current_member}
         - Have {current_member} take part in the discussions
+    - Continue to work autonomously on what you think needs to be done.
 """)
             except SwitchCoder as switch:
                 kwargs = dict(io=io, from_coder=coder)
@@ -702,10 +703,8 @@ MAIN INSTRUCTIONS:
                 io.tool_error(f"An error occurred: {str(e)}")
                 continue
 
-        # After processing all band members, ask if the user wants to continue
-        user_input = io.user_input("Press Enter to continue with the next iteration, or type 'exit' to quit: ")
-        if user_input.lower() == 'exit':
-            break
+        # After processing all band members, continue automatically
+        io.tool_output("Continuing to the next iteration automatically.")
 
 
 def load_slow_imports():
