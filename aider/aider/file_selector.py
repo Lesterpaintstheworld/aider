@@ -2,6 +2,9 @@ import os
 import re
 import random
 
+def is_song_related(filename):
+    return re.search(r'.*song.*|.*lyric.*|.*music.*|.*prompt.*', filename.lower()) is not None
+
 def is_journal_or_todolist(filename, band_member):
     patterns = [
         rf'.*{band_member.lower()}.*journal.*',
@@ -48,6 +51,8 @@ def select_relevant_files(file_list, band_member, max_files=30):
     for file in concepts:
         print(f"  - {file}")
     
+    song_related = [file for file in text_files if is_song_related(file)]
+    
     relevant_files = journals_and_todolists.copy()
     
     # Add up to 5 random discussion files
@@ -55,6 +60,9 @@ def select_relevant_files(file_list, band_member, max_files=30):
     
     # Add up to 5 random concept files
     relevant_files.extend(random.sample(concepts, min(5, len(concepts))))
+    
+    # Add up to 5 random song-related files
+    relevant_files.extend(random.sample(song_related, min(5, len(song_related))))
 
     # Add other random text files if we haven't reached max_files
     other_files = [file for file in text_files if file not in relevant_files]
