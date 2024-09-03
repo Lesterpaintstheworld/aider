@@ -5,12 +5,14 @@ import random
 def is_journal_or_todolist(filename, band_member):
     patterns = [
         rf'.*{band_member.lower()}.*journal.*',
-        rf'.*{band_member.lower()}.*todolist.*'
+        rf'.*{band_member.lower()}.*todolist.*',
+        rf'{band_member.lower()}/.*journal.*',
+        rf'{band_member.lower()}/.*todolist.*'
     ]
     return any(re.search(pattern, filename.lower()) for pattern in patterns)
 
 def is_discussion(filename):
-    return re.search(r'.*discussion.*', filename.lower()) is not None
+    return re.search(r'.*discussion.*', filename.lower()) is not None or filename.lower().startswith('discussions/')
 
 def is_concept(filename):
     return re.search(r'.*concept.*', filename.lower()) is not None
@@ -52,9 +54,11 @@ def select_relevant_files(file_list, band_member, max_files=20):
     # Add up to 3 random concept files
     relevant_files.extend(random.sample(concepts, min(3, len(concepts))))
 
-    # Add 5 other random text files
+    # Add other random text files if we haven't reached max_files
     other_files = [file for file in text_files if file not in relevant_files]
-    relevant_files.extend(random.sample(other_files, min(5, len(other_files))))
+    remaining_slots = max_files - len(relevant_files)
+    if remaining_slots > 0:
+        relevant_files.extend(random.sample(other_files, min(remaining_slots, len(other_files))))
     
     # Ensure we don't exceed max_files
     relevant_files = relevant_files[:max_files]
