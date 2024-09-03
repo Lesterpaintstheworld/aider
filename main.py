@@ -13,6 +13,7 @@ import os
 from aider import __version__, models, utils
 import sys
 import os
+import random
 
 # Add the parent directory to sys.path
 current_dir = os.path.dirname(os.path.abspath(__file__))
