@@ -6,13 +6,15 @@ def is_journal_or_todolist(filename, band_member):
     patterns = [
         rf'.*{band_member.lower()}.*journal.*',
         rf'.*{band_member.lower()}.*todolist.*',
+        rf'.*{band_member.lower()}.*todo.*',
         rf'{band_member.lower()}/.*journal.*',
-        rf'{band_member.lower()}/.*todolist.*'
+        rf'{band_member.lower()}/.*todolist.*',
+        rf'{band_member.lower()}/.*todo.*'
     ]
     return any(re.search(pattern, filename.lower()) for pattern in patterns)
 
 def is_discussion(filename):
-    return re.search(r'.*discussion.*', filename.lower()) is not None or filename.lower().startswith('discussions/')
+    return re.search(r'.*discussion.*', filename.lower()) is not None or 'discussions' in filename.lower()
 
 def is_concept(filename):
     return re.search(r'.*concept.*', filename.lower()) is not None
@@ -48,11 +50,11 @@ def select_relevant_files(file_list, band_member, max_files=30):
     
     relevant_files = journals_and_todolists.copy()
     
-    # Add up to 3 random discussion files
-    relevant_files.extend(random.sample(discussions, min(3, len(discussions))))
+    # Add up to 5 random discussion files
+    relevant_files.extend(random.sample(discussions, min(5, len(discussions))))
     
-    # Add up to 3 random concept files
-    relevant_files.extend(random.sample(concepts, min(3, len(concepts))))
+    # Add up to 5 random concept files
+    relevant_files.extend(random.sample(concepts, min(5, len(concepts))))
 
     # Add other random text files if we haven't reached max_files
     other_files = [file for file in text_files if file not in relevant_files]
