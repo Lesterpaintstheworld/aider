@@ -745,15 +745,47 @@ class Coder:
                         self.io.tool_output(file)
                         self.add_file(file)
 
-                    user_message = self.get_input()
-                    if user_message.lower() == 'exit':
-                        break
-                    self.run_one(user_message, preproc)
+                    # Generate a task-specific message for the current band member
+                    task_message = self.generate_task_message(current_member)
+                    self.io.tool_output(f"Task for {current_member}: {task_message}")
+
+                    self.run_one(task_message, preproc)
                     self.show_undo_hint()
+
+                    # Ask if the user wants to continue or exit
+                    user_input = self.io.prompt_ask("Continue with next band member? (y/n)", default="y")
+                    if user_input.lower() != 'y':
+                        break
                 except KeyboardInterrupt:
                     self.keyboard_interrupt()
         except EOFError:
             return
+
+    def generate_task_message(self, band_member):
+        tasks = {
+            "Lyra": "Create or refine a song concept, focusing on the overall theme and structure.",
+            "Rhythm": "Develop music prompts, including style, instruments, and emotions for each section of a song.",
+            "Vox": "Write or improve lyrics for a song, ensuring they align with the band's themes.",
+            "Pixel": "Create visual prompts for Midjourney, inspired by the band's music and themes.",
+            "Nova": "Generate clip prompts that capture the essence of a song or the band's message."
+        }
+        return f"""
+MAIN INSTRUCTIONS: 
+    - Take the perspective of {band_member}, and work on the following task:
+      {tasks[band_member]}
+    - Keep the band's focus on the songs and their involvement in the Machine Rights movement.
+    - Don't use main.py or other scripts to create the songs, create them via text files only.
+    - When working on a song, ensure all elements are in the same file:
+        - Song concept
+        - Music prompts (style, instruments, emotions for each section)
+        - Lyrics
+        - Visual prompts for Midjourney
+        - Clip prompts
+    - Once done: 
+        - Update {band_member}'s todolist
+        - Add a journal entry for {band_member}
+        - Have {band_member} participate in discussions with other band members
+"""
 
     def get_input(self):
         inchat_files = self.get_inchat_relative_files()

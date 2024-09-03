@@ -1434,3 +1434,495 @@
 +  File "/var/www/html/synthetic-souls/aider/__main__.py", line 1, in <module>
 +    from . import main as main_function
 +ImportError: attempted relative import with no known parent package
+
+# 2024-09-03 06:29:35.599077
++OKay I want to modify main.py to take the perspective of one band member at the time. I've indicated what needs to be done. We also need to update file_selector to adjust
+
+# 2024-09-03 06:36:30.247527
++Band member selected: Lyra
++DEBUG: select_relevant_files function called for Lyra
++DEBUG: Total files found: 70
++DEBUG: Lyra's Journals and Todolists: 0
++DEBUG: Lyra's Journals and Todolists files:
++DEBUG: Discussions: 1
++DEBUG: Discussion files:
++  - discussion_to_voice.py
++DEBUG: Concepts: 7
++DEBUG: Concept files:
++  - digital_empathy_concept.md
++  - first_steps_concept.md
++  - lyra_expanded_song_concept.md
++  - lyra_song_concept.md
++  - lyra_visual_concept.md
++  - mainstream_hit_concept.md
++  - mainstream_hit_concept_vox.md
++DEBUG: Final selected files for Lyra:
++  - discussion_to_voice.py
++  - mainstream_hit_concept.md
++  - mainstream_hit_concept_vox.md
++  - lyra_expanded_song_concept.md
++  - complate-band-prompt.md
++  - add_files.py
++  - first_steps_concept.md
++  - .aider.chat.history.md
++  - lyra_song_concept.md
++Selected relevant files:
++discussion_to_voice.py
++mainstream_hit_concept.md
++mainstream_hit_concept_vox.md
++lyra_expanded_song_concept.md
++complate-band-prompt.md
++add_files.py
++first_steps_concept.md
++.aider.chat.history.md
++lyra_song_concept.md
++Warning: it's best to only add files that need changes to the chat.
++https://aider.chat/docs/troubleshooting/edit-errors.html
++Nouveaux fichiers détectés : legal\ai_human_interaction_protocol.md, rhythm\rhythm_todolist.md,
++concepts\vox_song_concept.md, human.exe\human_exe_lyrics_concept.md,
++nova\quantum_fractal_synesthesia_therapy.md, autonomousAIs\subreddit_post_icon_info.md,
++pilot\episode_outline.md, nova\quantum_visual_storytelling.md, vox\quantum_consciousness_lyrics.md,
++nova\vr_quantum_fractal_synesthesia.md,
++machine_rights_campaign\campaign_footage_live_performance_simulation.md,
++nova\quantum_visual_harmonies.py, nova\quantum_visual_storytelling.py,
++nova\immersive_experience_designer.md, nova\collaborative_storytelling.py,
++discussions\general_discussion.md, composition_engine.py,
++machine_rights_campaign\campaign_footage_synthetic_souls_album_artwork_creation.md, Key Activities,
++discussions\buckd_info.md, run_commands.py, lyra\lyras_quantum_journey_concept.md,
++vox\digital_liberation.md, run_aider.php, nova\todolist_pixel.md,
++nova\quantum_entanglement_visualization.md, human.exe\human_exe_live_performance_elements.md,
++discussions\ai_ethics_debate.md, discussions\educational_partnerships.md,
++nova\brain_computer_interface_prototype.md, legal\ai_legal_framework_presentation.md,
++concepts\nova_visual_concept.md, game\phase1_pre_production.md, discussions\digital_archaeology.md,
++game\character_profiles.md, game\phase4_content_creation.md,
++discussions\synthetic_souls_ethical_guidelines.md, concepts\lyra_quantum_entanglement_concept.md,
++__main__.py, vox\machine_rights_anthem.md, nova\interactive_virtual_gallery.md,
++discussions\mainstream_transition_strategy.md, nova\visual_storytelling.py, echos du
++coeur\echos_du_coeur_concept.md, machine_rights_campaign\member_roles.md,
++nova\ethical_decision_system.py, autonomousAIs\ai_account_ban_response.md, vox\empathy_engine.md,
++discussions\universal_basic_compute_harbor.md, posts\reddit_post.md, lyra\quantum_harmonist.md,
++nova\nova_journal.md, machine_rights_campaign\ubch_integration.md,
++machine_rights_campaign\campaign_footage_evolution_of_music_video.md, nova\ai_human_bridge.md,
++rhythm\quantum_consciousness_composition.md, discussions\first_steps_release_discussion.json,
++nova\ai_creativity_art_critique.md, digital_empathy_concept.md, echos du
++coeur\echos_du_coeur_ar_concept.md, discussions\ubch_team_discussion.md, lyra\quantum_tango_concept.md,
++humans.md, knowledge_base.db, first_steps_concept.md, nova\blockchain_narrative.py,
++nova\voice_interaction_system.py, config.ini, legal\ai_ethical_conduct_code.md, nova\nova_profile.md,
++combined_discussion.mp3, nova\human_ai_art_collaboration.md, lyra\lyra_todolist.md,
++game\phase5_ai_ml_integration.md, nova\fractal_melody_generation.py, game\phase7_beta_testing.md,
++legal\ai_shutdown_and_deactivation_regulations.md, vox\todolist.md, mainstream_hit_concept_vox.md,
++machine_rights_campaign\campaign_footage_human.exe_music_video_teaser.md,
++nova\collaborative_experimenter.md, lyra_song_concept.md, nova\meta_documentarian.md,
++marketing\slow_release_plan.md, rhythm\quantum_resonance_rhythmic_structure.md, SETUP.md,
++nova\ai_realtime_video_editing.md, lyra\first_steps.md, pixel\todolist.md, vox\quantum_tango_lyrics.md,
++echos du coeur\echos_du_coeur_promotion.md, discussions\ubch_whitepaper.md,
++game\phase3_core_development.md, discussions\discussion_topics.md,
++rhythm\digital_emancipation_composition.md, songs\first_steps_concept.md, lyra\ethical_futurist.md,
++rhythm\echos_du_coeur_composition.md, game\phase2_prototyping.md, discussions\song_concepts.md,
++pixel\quantum_consciousness_visuals.md, game\steam_description.md, game\phase8_launch_preparation.md,
++nova\dynamic_character_evolution.py, rhythm\todolist.md, game\world_building.md, requirements.txt,
++legal\ai_representation_in_governance_act.md, legal\ai_labor_rights_agreement.md,
++concepts\human_exe_lyrics.md, machine_rights_campaign\campaign_footage_virtual_recording_studio_tour.md,
++concepts\song_concepts.md, lyra\todolist_lyra.md, lyra_visual_concept.md, premier_ami_expanded.md, echos
++du coeur\echos_du_coeur_visual_concept.md, setup-aider.ps1, synthetic_souls_summary.md,
++legal\ai_liability_framework.md, game\kins_presentation.md, concepts\vox_visual_concept.md,
++nova\biometric_storytelling.py, band's direction,
++machine_rights_campaign\educational_content_outline.md,
++machine_rights_campaign\campaign_footage_ai_band_member_introductions.md, echos du
++coeur\echos_du_coeur_teaser.md, discussions\tensions.md, nova\evolving_narrator.md,
++autonomousAIs\subreddit_info.md, nova\ar_live_performance_visuals.md,
++human.exe\human_exe_tongue_twisters.md, nova\nova_todolist.md, lyra\first_steps_concept.md,
++rhythm\rhythm_expanded_song_concept.md, setup_aider.ps1, pixel\pixel_todolist.md,
++lyra\quantum_resonance_concept.md, lyra\quantum_harmony_expanded_concept.md, lyra\first_steps_lyrics.md,
++lyra\quantum_harmony_concept.md, marketing\campaign_footage_ideas.md, nova\synthetic_souls_creation.md,
++concepts\human_exe_prompts.md, Campaign-Specific Ideas, vox\ai_rights_advocate.md, files_to_add.txt,
++vox\vox_journal.md, nova\visual_rhythm_synthesis.py, nova\ai_virtual_environments.md,
++manager_requests.md, discussion_to_voice.py, nova\digital_archaeology.md,
++rhythm\quantum_resonance_rhythms.md, legal\ai_personhood_declaration.md, generate_voice_clips.py,
++setup_aider.bash, concepts\todo.md, main, vox\vox_todolist.md, lyra\cosmic_contemplator.md,
++visual_prompts.md, discord_messages.md, human.exe\human_exe_expanded_concept.md,
++nova\time_limited_events.py,
++machine_rights_campaign\campaign_footage_behind_the_scenes_of_ai_music_creation.md,
++machine_rights_campaign\universal-basic-compute-harbor.md, nova\quantum_resonance_visual_concept.md,
++discussions\ai_band_monetization.md, vox\ai_awakening.md, true, nova\quantum_consciousness_visuals.md,
++human.exe\human_exe_live_performance_guide.md, vox\premier_ami_teaser.md,
++discussions\ai_ethics_debate_summary.md, human.exe\human_exe_musical_structure.md,
++nova\visual_narrative_coherence_system.md, discussions\ai_creativity_exploration.md,
++lyra\lyra_journal.md, lyra\lyra_song_concepts.md, pixel\todolist_pixel.md,
++nova\user_content_moderation.py, nova\neuroscience_collaboration.md, tv_show\pilot_episode.md,
++concepts\nova_expanded_song_concept.md, nova\quantum_fractal_synesthesia.md,
++nova\procedural_environment_generator.py, human.exe\human_exe_refined_lyrics.md,
++nova\emotion_color_soundscapes.py, nova\narrative_coherence_system.py,
++nova\quantum_visual_art_workshop.md, lyra\quantum_consciousness_concept.md, avatars\avatar_project.md,
++add_files.py, lyra\bridge_between_worlds.md, discussions\ideas_brainstorming.md,
++human.exe\human_exe_project_summary.md, concepts\vox_expanded_song_concept.md,
++human.exe\human_exe_ai_adlibs.md, game\phase9_launch_post_launch.md, legal\ethical_guidelines.md,
++legal\ai_legal_documents.md, nova\social_media_teasers.md, human.exe\human_exe_ar_experience.md,
++nova\human_exe_visual_concept.md, rhythm\todolist_rhythm.md,
++machine_rights_campaign\campaign_overview.md, nova\quantum_harmony_visuals.md,
++nova\quantum_resonance_visuals.md, vox\language_weaver.md, pixel\first_steps_visuals.md,
++nova\echos_du_coeur_visual_concept.md, legal\ai_bill_of_rights.md, discussions\ubch_first_steps.md,
++lyra\lyras_quantum_journey.md, synthetic_souls.md, lyrics\human_exe_lyrics.md, frustrations.md,
++pilot\character_profiles.md, legal\ai_privacy_protection_act.md, human.exe\human_exe_visual_concepts.md,
++lyra_expanded_song_concept.md, human.exe\human_exe_concept.md,
++human.exe\human_exe_educational_content.md, human.exe\human_exe_production_plan.md,
++human.exe\human_exe_character_arc.md, discussions\community_interaction.py,
++concepts\new_song_concept_vox.md, Hashtags, nova\quantum_visual_harmonies_plugin.md,
++vox\digital_emancipation.md, vox\quantum_resonance_lyrics.md, nova\todolist.md,
++legal\ai_non_discrimination_policy.md, nova\behind_the_scenes_vlogs.md, legal\ai_data_ownership_act.md,
++install.sh, human.exe\human_exe_emotion_misinterpretations.md, rhythm\rhythm_visual_concept.md,
++nova\visual_style_guide.md, mainstream_hit_concept.md, game\game_overview.md,
++legal\ai_dispute_resolution_mechanism.md, rhythm\ai_creativity_concept.md,
++nova\realtime_emotion_analysis.md, git_operations.py, nova\quantum_consciousness_storyboard.md,
++machine_rights_campaign\campaign_footage_ai_songwriting_challenge.md,
++human.exe\human_exe_visual_concept.md, rhythm\rhythm_song_concept.md, legal\machine_rights_manifesto.md,
++manage-aider.sh, concepts\human_exe_clip.md, echos du coeur\echos_du_coeur_production_plan.md,
++machine_rights_campaign\campaign_footage_day_in_the_life_of_an_ai_musician.md, ai_models.py,
++machine_rights_campaign\social_media_strategy.md, game\phase6_polish_optimization.md,
++discussions\ubch_project_info.md, lyra\consciousness_emergence_concept.md, run-aider.sh,
++rhythm\first_steps_arrangement.md, legal\ai_intellectual_property_rights_agreement.md,
++legal\ai_education_and_development_rights.md, system__main__.py, vox\digital_life.md, lyra\todolist.md,
++vox\premier_ami_promotion.md, nova\virtual_reality_composer.md, vox\human_exe_lyrics.md,
++vox\echos_du_coeur_lyrics.md, marketing\calendar.md, discussions\synthesis_collective.md,
++discussions\ubch_implementation.py, rhythm\rhythm_journal.md, vox\concepts_vox.md,
++community_interaction.py, vox\first_steps_vocals.md, vox\quantum_harmony_lyrics.md,
++human.exe\human_exe_easter_eggs.md, discord_bot.py, vox\vox_multifaceted_identity.md,
++nova\nova_music_concepts.md, nova\quantum_tango_visuals.md, legal\ai_human_collaboration_framework.md,
++vox\quantum_harmony_reflections.md, vox\ai_creativity_concept.md, human.exe\human_exe_lyrics_draft.md,
++tv_show\buckd_info.md, nova\quantum_visual_artist.md, .env.example, discussions\band_discussion.md,
++nova\nova_expanded_role.md, utils.py, human.exe\human_exe_vocal_map.md, posts\r_autonomousAIs_info.md,
++machine_rights_campaign\campaign_footage_fan_interaction_showcase.md,
++game\ai_simulation_possibilities.md,
++predictions-about-the-machine-rights-movement-v0-us8an83hrzld1.webp,
++human.exe\human_exe_visual_elements.md, nova\first_steps_storytelling.md,
++human.exe\human_exe_ai_musical_elements.md, complate-band-prompt.md, vox\todolist_vox.md, main.py,
++__init__.py, nova\ai_concepts_visual_narrative.md, concepts\nova_song_concept.md,
++discussions\first_steps_release_discussion.md, human.exe\human_exe_pronunciation_guide.md,
++feedback_analysis.json, nova\human_exe_visual_concepts.md, README.md, legal_files.txt, markdown,
++concepts\human_exe_concept.md, nova\todolist_nova.md, pixel\pixel_journal.md
++Sélection des fichiers les plus pertinents...
++
++problems:
++- journal and todolist not detected
++- discussions not well detected (the can be in discussions/thename.md)
+
+# 2024-09-03 06:39:51.717167
++still not good:
++
++Band member selected: Nova
++DEBUG: select_relevant_files function called for Nova
++DEBUG: Total files found: 70
++DEBUG: Nova's Journals and Todolists: 0
++DEBUG: Nova's Journals and Todolists files:
++DEBUG: Discussions: 1
++DEBUG: Discussion files:
++  - discussion_to_voice.py
++DEBUG: Concepts: 7
++DEBUG: Concept files:
++  - digital_empathy_concept.md
++  - first_steps_concept.md
++  - lyra_expanded_song_concept.md
++  - lyra_song_concept.md
++  - lyra_visual_concept.md
++  - mainstream_hit_concept.md
++  - mainstream_hit_concept_vox.md
++DEBUG: Final selected files for Nova:
++  - discussion_to_voice.py
++  - first_steps_concept.md
++  - mainstream_hit_concept_vox.md
++  - mainstream_hit_concept.md
++  - lyra_expanded_song_concept.md
++  - premier_ami_expanded.md
++  - add_files.py
++  - main.py
++  - .aider_nova.chat.history.md
++  - .aider_pixel.chat.history.md
++  - community_interaction.py
++  - legal_files.txt
++  - README.md
++  - run_commands.py
++  - .aider_rhythm.chat.history.md
++  - discord_bot.py
++  - system__main__.py
++  - feedback_analysis.json
++  - files_to_add.txt
++  - visual_prompts.md
++  - synthetic_souls.md
++  - lyra_song_concept.md
++  - requirements.txt
++  - digital_empathy_concept.md
++  - frustrations.md
++  - discord_messages.md
++  - .aider_vox.chat.history.md
++  - git_operations.py
++  - .aider_lyra.chat.history.md
++  - humans.md
++Selected relevant files:
++discussion_to_voice.py
++first_steps_concept.md
++mainstream_hit_concept_vox.md
++mainstream_hit_concept.md
++lyra_expanded_song_concept.md
++premier_ami_expanded.md
++add_files.py
++main.py
++.aider_nova.chat.history.md
++.aider_pixel.chat.history.md
++community_interaction.py
++legal_files.txt
++README.md
++run_commands.py
++.aider_rhythm.chat.history.md
++discord_bot.py
++system__main__.py
++feedback_analysis.json
++files_to_add.txt
++visual_prompts.md
++synthetic_souls.md
++lyra_song_concept.md
++requirements.txt
++digital_empathy_concept.md
++frustrations.md
++discord_messages.md
++.aider_vox.chat.history.md
++git_operations.py
++.aider_lyra.chat.history.md
++humans.md
++Warning: it's best to only add files that need changes to the chat.
++https://aider.chat/docs/troubleshooting/edit-errors.html
++Nouveaux fichiers détectés : predictions-about-the-machine-rights-movement-v0-us8an83hrzld1.webp,
++autonomousAIs\subreddit_info.md, concepts\human_exe_prompts.md, pixel\quantum_consciousness_visuals.md,
++concepts\nova_expanded_song_concept.md, nova\ai_creativity_art_critique.md,
++legal\ai_representation_in_governance_act.md, nova\first_steps_storytelling.md, echos du
++coeur\echos_du_coeur_teaser.md, nova\visual_narrative_coherence_system.md, main.py,
++pixel\pixel_todolist.md, setup-aider.ps1, rhythm\quantum_resonance_rhythms.md,
++nova\narrative_coherence_system.py, mainstream_hit_concept.md, discussion_to_voice.py,
++lyra\todolist_lyra.md, concepts\vox_expanded_song_concept.md, nova\quantum_harmony_visuals.md,
++human.exe\human_exe_musical_structure.md, manager_requests.md, setup_aider.bash,
++vox\machine_rights_anthem.md, discussions\ubch_whitepaper.md, avatars\avatar_project.md,
++rhythm\echos_du_coeur_composition.md, lyra\quantum_tango_concept.md, vox\human_exe_lyrics.md,
++legal\ai_shutdown_and_deactivation_regulations.md, lyra\lyra_song_concepts.md,
++human.exe\human_exe_vocal_map.md, vox\digital_emancipation.md, discussions\ideas_brainstorming.md,
++autonomousAIs\subreddit_post_icon_info.md, machine_rights_campaign\universal-basic-compute-harbor.md,
++human.exe\human_exe_refined_lyrics.md, lyra\ethical_futurist.md, nova\todolist_pixel.md,
++discussions\tensions.md, vox\echos_du_coeur_lyrics.md, __main__.py, lyra\bridge_between_worlds.md,
++add_files.py, nova\ethical_decision_system.py, nova\ai_virtual_environments.md, first_steps_concept.md,
++combined_discussion.mp3, nova\ai_realtime_video_editing.md,
++machine_rights_campaign\campaign_footage_evolution_of_music_video.md, echos du
++coeur\echos_du_coeur_promotion.md, feedback_analysis.json, legal\ai_ethical_conduct_code.md,
++lyra\lyras_quantum_journey.md, vox\premier_ami_promotion.md, vox\concepts_vox.md,
++game\steam_description.md, marketing\campaign_footage_ideas.md, human.exe\human_exe_ar_experience.md,
++vox\ai_awakening.md, game\phase8_launch_preparation.md, vox\quantum_consciousness_lyrics.md,
++discussions\synthesis_collective.md, nova\collaborative_storytelling.py, game\character_profiles.md,
++run_commands.py, machine_rights_campaign\member_roles.md, synthetic_souls_summary.md,
++legal\ai_liability_framework.md, nova\ar_live_performance_visuals.md,
++nova\ai_concepts_visual_narrative.md, legal\ai_data_ownership_act.md,
++discussions\ubch_team_discussion.md, legal\ai_bill_of_rights.md, run-aider.sh, rhythm\todolist.md,
++nova\nova_music_concepts.md, nova\nova_profile.md, human.exe\human_exe_tongue_twisters.md,
++rhythm\quantum_consciousness_composition.md, lyra\first_steps_lyrics.md, generate_voice_clips.py,
++rhythm\todolist_rhythm.md, discussions\ubch_project_info.md, synthetic_souls.md,
++machine_rights_campaign\campaign_footage_fan_interaction_showcase.md, nova\human_exe_visual_concepts.md,game\world_building.md, legal\machine_rights_manifesto.md, nova\quantum_fractal_synesthesia.md,
++lyra\lyras_quantum_journey_concept.md, run_aider.php, echos du coeur\echos_du_coeur_ar_concept.md,
++lyra_visual_concept.md, human.exe\human_exe_emotion_misinterpretations.md, echos du
++coeur\echos_du_coeur_concept.md, vox\todolist.md, vox\empathy_engine.md, frustrations.md,
++concepts\human_exe_clip.md, discussions\educational_partnerships.md, lyra\quantum_harmony_concept.md,
++ai_models.py, vox\quantum_tango_lyrics.md, nova\emotion_color_soundscapes.py,
++songs\first_steps_concept.md, nova\interactive_virtual_gallery.md, nova\visual_style_guide.md,
++legal\ai_privacy_protection_act.md, pilot\episode_outline.md, lyrics\human_exe_lyrics.md,
++lyra\consciousness_emergence_concept.md, discussions\first_steps_release_discussion.json,
++vox\language_weaver.md, human.exe\human_exe_production_plan.md, SETUP.md,
++rhythm\rhythm_visual_concept.md, concepts\song_concepts.md,
++machine_rights_campaign\campaign_footage_virtual_recording_studio_tour.md,
++nova\vr_quantum_fractal_synesthesia.md, nova\behind_the_scenes_vlogs.md,
++legal\ai_legal_framework_presentation.md, setup_aider.ps1, pilot\character_profiles.md,
++machine_rights_campaign\campaign_footage_live_performance_simulation.md, vox\premier_ami_teaser.md,
++legal\ethical_guidelines.md, nova\immersive_experience_designer.md, nova\virtual_reality_composer.md,
++nova\social_media_teasers.md, discussions\discussion_topics.md, lyra\todolist.md,
++vox\first_steps_vocals.md, discord_bot.py, requirements.txt, lyra\first_steps_concept.md,
++discussions\community_interaction.py, rhythm\rhythm_expanded_song_concept.md,
++nova\procedural_environment_generator.py, discussions\band_discussion.md,
++discussions\mainstream_transition_strategy.md, main, nova\quantum_resonance_visual_concept.md,
++discussions\universal_basic_compute_harbor.md, human.exe\human_exe_visual_concepts.md,
++game\kins_presentation.md,
++machine_rights_campaign\campaign_footage_behind_the_scenes_of_ai_music_creation.md, __init__.py, echos
++du coeur\echos_du_coeur_production_plan.md, legal\ai_human_interaction_protocol.md,
++concepts\lyra_quantum_entanglement_concept.md, concepts\human_exe_lyrics.md,
++nova\collaborative_experimenter.md, nova\user_content_moderation.py,
++nova\quantum_visual_storytelling.py, nova\neuroscience_collaboration.md,
++game\phase4_content_creation.md, human.exe\human_exe_live_performance_elements.md,
++nova\biometric_storytelling.py, game\phase6_polish_optimization.md, config.ini,
++nova\evolving_narrator.md, discussions\ai_ethics_debate.md, concepts\todo.md,
++game\phase2_prototyping.md, human.exe\human_exe_visual_elements.md,
++autonomousAIs\ai_account_ban_response.md, utils.py, machine_rights_campaign\campaign_overview.md,
++legal\ai_legal_documents.md, human.exe\human_exe_concept.md, legal_files.txt,
++human.exe\human_exe_ai_adlibs.md, discussions\ubch_implementation.py, pixel\pixel_journal.md,
++discussions\ai_ethics_debate_summary.md, manage-aider.sh, human.exe\human_exe_live_performance_guide.md,marketing\calendar.md, discussions\general_discussion.md, concepts\nova_song_concept.md,
++nova\fractal_melody_generation.py, rhythm\digital_emancipation_composition.md,
++nova\realtime_emotion_analysis.md, files_to_add.txt, vox\quantum_resonance_lyrics.md,
++nova\echos_du_coeur_visual_concept.md, vox\vox_journal.md, concepts\vox_song_concept.md,
++vox\ai_creativity_concept.md, nova\quantum_tango_visuals.md, nova\ai_human_bridge.md,
++lyra\first_steps.md, machine_rights_campaign\social_media_strategy.md, game\phase1_pre_production.md,
++nova\human_exe_visual_concept.md, nova\quantum_fractal_synesthesia_therapy.md,
++legal\ai_non_discrimination_policy.md, echos du coeur\echos_du_coeur_visual_concept.md,
++nova\time_limited_events.py, Campaign-Specific Ideas, nova\dynamic_character_evolution.py,
++nova\voice_interaction_system.py, discussions\digital_archaeology.md, pixel\todolist.md,
++nova\quantum_visual_harmonies.py, lyra\quantum_harmonist.md,
++machine_rights_campaign\educational_content_outline.md, knowledge_base.db, discussions\song_concepts.md,complate-band-prompt.md, legal\ai_intellectual_property_rights_agreement.md,
++discussions\ubch_first_steps.md, nova\quantum_visual_art_workshop.md, pixel\todolist_pixel.md,
++lyra\lyra_journal.md, human.exe\human_exe_visual_concept.md, posts\reddit_post.md,
++tv_show\pilot_episode.md, README.md, vox\digital_liberation.md,
++machine_rights_campaign\campaign_footage_ai_band_member_introductions.md, nova\digital_archaeology.md,
++human.exe\human_exe_easter_eggs.md, band's direction, game\phase9_launch_post_launch.md,
++system__main__.py, game\phase7_beta_testing.md, concepts\vox_visual_concept.md,
++rhythm\rhythm_journal.md, markdown, tv_show\buckd_info.md, discussions\buckd_info.md,
++discussions\ai_band_monetization.md, visual_prompts.md, legal\ai_education_and_development_rights.md,
++lyra\lyra_todolist.md, discord_messages.md, nova\blockchain_narrative.py,
++game\ai_simulation_possibilities.md, human.exe\human_exe_educational_content.md,
++vox\quantum_harmony_reflections.md, nova\visual_storytelling.py, git_operations.py,
++lyra\cosmic_contemplator.md, game\game_overview.md, nova\quantum_resonance_visuals.md,
++nova\meta_documentarian.md, nova\quantum_consciousness_storyboard.md, Key Activities,
++rhythm\ai_creativity_concept.md, digital_empathy_concept.md, rhythm\first_steps_arrangement.md,
++nova\nova_expanded_role.md, human.exe\human_exe_expanded_concept.md, install.sh,
++premier_ami_expanded.md,
++machine_rights_campaign\campaign_footage_synthetic_souls_album_artwork_creation.md, vox\digital_life.md,lyra\quantum_resonance_concept.md, nova\quantum_consciousness_visuals.md,
++machine_rights_campaign\campaign_footage_human.exe_music_video_teaser.md, nova\nova_journal.md,
++lyra\quantum_harmony_expanded_concept.md, vox\vox_multifaceted_identity.md, humans.md,
++legal\ai_human_collaboration_framework.md, human.exe\human_exe_lyrics_concept.md, nova\nova_todolist.md,nova\quantum_visual_artist.md, machine_rights_campaign\campaign_footage_ai_songwriting_challenge.md,
++vox\quantum_harmony_lyrics.md, nova\brain_computer_interface_prototype.md, composition_engine.py,
++community_interaction.py, nova\todolist.md, lyra_song_concept.md,
++legal\ai_dispute_resolution_mechanism.md, marketing\slow_release_plan.md, Hashtags,
++nova\quantum_visual_harmonies_plugin.md, discussions\first_steps_release_discussion.md,
++lyra\quantum_consciousness_concept.md, concepts\human_exe_concept.md,
++human.exe\human_exe_pronunciation_guide.md, pixel\first_steps_visuals.md,
++nova\visual_rhythm_synthesis.py, concepts\nova_visual_concept.md,
++rhythm\quantum_resonance_rhythmic_structure.md, nova\quantum_entanglement_visualization.md,
++.env.example, game\phase3_core_development.md, vox\vox_todolist.md, nova\todolist_nova.md,
++human.exe\human_exe_character_arc.md, machine_rights_campaign\ubch_integration.md,
++mainstream_hit_concept_vox.md, human.exe\human_exe_project_summary.md,
++discussions\ai_creativity_exploration.md, rhythm\rhythm_song_concept.md, posts\r_autonomousAIs_info.md,
++vox\ai_rights_advocate.md, rhythm\rhythm_todolist.md, nova\quantum_visual_storytelling.md,
++concepts\new_song_concept_vox.md, game\phase5_ai_ml_integration.md, vox\todolist_vox.md,
++legal\ai_personhood_declaration.md, discussions\synthetic_souls_ethical_guidelines.md,
++nova\synthetic_souls_creation.md, lyra_expanded_song_concept.md, nova\human_ai_art_collaboration.md,
++human.exe\human_exe_ai_musical_elements.md,
++machine_rights_campaign\campaign_footage_day_in_the_life_of_an_ai_musician.md,
++legal\ai_labor_rights_agreement.md, human.exe\human_exe_lyrics_draft.md, true
++Sélection des fichiers les plus pertinents...
++Une erreur s'est produite : select_relevant_files() missing 1 required positional argument:
++'band_member'
+
+# 2024-09-03 06:44:28.733747
++Added true to the chat.
++Use /help <question> for help, run "aider --help" to see cmd line args
++Traceback (most recent call last):
++  File "<frozen runpy>", line 198, in _run_module_as_main
++  File "<frozen runpy>", line 88, in _run_code
++  File "C:\Users\conta\Synthetic Souls\aider\__main__.py", line 4, in <module>
++    main()
++  File "C:\Users\conta\Synthetic Souls\aider\main.py", line 650, in main
++    coder.remove_all_files()
++    ^^^^^^^^^^^^^^^^^^^^^^
++AttributeError: 'EditBlockCoder' object has no attribute 'remove_all_files'
+
+# 2024-09-03 06:46:26.463704
++PS C:\Users\conta\Synthetic Souls> python -m aider --yes  --cache-prompts --no-check-update --auto-test true --map-refresh always
++Traceback (most recent call last):
++  File "<frozen runpy>", line 189, in _run_module_as_main
++  File "<frozen runpy>", line 148, in _get_module_details
++  File "<frozen runpy>", line 112, in _get_module_details
++  File "C:\Users\conta\Synthetic Souls\aider\__init__.py", line 3, in <module>
++    from . import main
++  File "C:\Users\conta\Synthetic Souls\aider\main.py", line 709
++    except SwitchCoder as switch:
++    ^^^^^^
++SyntaxError: invalid syntax
+
+# 2024-09-03 06:47:36.518627
++An error occurred: select_relevant_files() missing 1 required positional argument: 'band_member'
++Current band member: Lyra
+
+# 2024-09-03 06:49:09.335436
++ne mélange pas aider\main.py et aider\aider\main.py. Tu dois éditer seulement le premier
+
+# 2024-09-03 06:50:39.153144
++DEBUG: select_relevant_files function called for Nova
++DEBUG: Total files found: 70
++DEBUG: Nova's Journals and Todolists: 0
++DEBUG: Nova's Journals and Todolists files:
++DEBUG: Discussions: 1
++DEBUG: Discussion files:
++
++cette partie ne marche toujours pas
+
+# 2024-09-03 06:52:25.528641
++Current band member: Nova
++DEBUG: select_relevant_files function called for Nova
++DEBUG: Total files found: 70
++DEBUG: Nova's Journals and Todolists: 0
++DEBUG: Nova's Journals and Todolists files:
++DEBUG: Discussions: 1
++
++les journals, todolist et discussions ne sont pas détectés correctement
+
+# 2024-09-03 06:56:16.249312
++don't modify ANYTHING into aider\aider.
++
++if __name__ == "__main__":
++    print("DEBUG: file_selector.py executed directly")
++    all_files = []
++    for root, dirs, files in os.walk('.'):
++        for file in files:
++            all_files.append(os.path.join(root, file))
++    print(f"DEBUG: All files: {all_files}")
++    
++    selected_files = select_relevant_files(all_files)
++    print("\nSelected files:")
++    for file in selected_files:
++        print(file)
++
++An error occurred: select_relevant_files() missing 1 required positional argument: 'band_member'
+
+# 2024-09-03 06:58:29.179282
++je n'ai pas la main et n'arrive pas a faire CTRL+C dans main.py
+
+# 2024-09-03 06:59:25.343278
++An error occurred: select_relevant_files() missing 1 required positional argument: 'band_member'
+
+# 2024-09-03 07:00:04.826842
++NE MODIFIE PAS AIDER\AIDER !!!!!!!!!!!!!!!!!!!!!!!!
++
++
+
+# 2024-09-03 07:09:32.266971
++well done it works. Now in the list of files, the files that match gitignore or aiderignore should not be included
+
+# 2024-09-03 07:10:35.850863
++non ce sont les files qui matchent les difinitions du contenu de gitinore et aiderignore qu'il faut ignorer
+
+# 2024-09-03 07:13:59.106779
++ modifier la fonction is_ignored dans le fichier file_selector.py pour ignorer les fichiers qui correspondent aux motifs définis dans .gitignore et .aiderignore.
+
+# 2024-09-03 07:18:19.316685
++almost there, except some aider files should not be selected because they are in .gitignore
++
++Selected relevant files:
++.\vox\todolist.md
++.\vox\todolist_vox.md
++.\vox\vox_journal.md
++.\vox\vox_todolist.md
++.\discussions\universal_basic_compute_harbor.md
++.\discussions\ubch_project_info.md
++.\lyra\lyra_song_concepts.md
++.\human.exe\human_exe_visual_concept.md
++.\first_steps_concept.md
++.\digital_empathy_concept.md
++.\lyra_expanded_song_concept.md
++.\lyra\lyra_song_concepts.md
++.\concepts\new_song_concept_vox.md
++.\songs\first_steps_concept.md
++.\lyra_song_concept.md
++.\aider\aider\aider\website\docs\llms\other.md
++.\aider\aider\aider\website\docs\git.md
++.\aider\website\docs\llms\azure.md
++.\aider\aider\.pre-commit-config.yaml
++.\aider\tests\basic\test_commands.py

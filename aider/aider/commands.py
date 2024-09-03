@@ -6,7 +6,6 @@ import tempfile
 from collections import OrderedDict
 from pathlib import Path
 
-import git
 import pyperclip
 from PIL import Image, ImageGrab
 
@@ -14,6 +13,7 @@ from aider import models, prompts, voice
 from aider.format_settings import format_settings
 from aider.help import Help, install_help_extra
 from aider.llm import litellm
+from aider.repo import ANY_GIT_ERROR
 from aider.run_cmd import run_cmd
 from aider.scrape import Scraper, install_playwright
 from aider.utils import is_image_file
@@ -40,11 +40,14 @@ class Commands:
             parser=self.parser,
         )
 
-    def __init__(self, io, coder, voice_language=None, verify_ssl=True, args=None, parser=None):
+    def __init__(
+        self, io, coder, voice_language=None, verify_ssl=True, args=None, parser=None, verbose=False
+    ):
         self.io = io
         self.coder = coder
         self.parser = parser
         self.args = args
+        self.verbose = verbose
 
         self.verify_ssl = verify_ssl
         if voice_language == "auto":
@@ -185,10 +188,14 @@ class Commands:
         cmd_name = cmd_name.replace("-", "_")
         cmd_method_name = f"cmd_{cmd_name}"
         cmd_method = getattr(self, cmd_method_name, None)
-        if cmd_method:
-            return cmd_method(args)
-        else:
+        if not cmd_method:
             self.io.tool_output(f"Error: Command {cmd_name} not found.")
+            return
+
+        try:
+            return cmd_method(args)
+        except ANY_GIT_ERROR as err:
+            self.io.tool_error(f"Unable to complete {cmd_name}: {err}")
 
     def matching_commands(self, inp):
         words = inp.strip().split()
@@ -196,7 +203,7 @@ class Commands:
             return
 
         first_word = words[0]
-        rest_inp = inp[len(words[0]) :]
+        rest_inp = inp[len(words[0]) :].strip()
 
         all_commands = self.get_commands()
         matching_commands = [cmd for cmd in all_commands if cmd.startswith(first_word)]
@@ -420,9 +427,25 @@ class Commands:
             self.io.tool_error("No git repository found.")
             return
 
-        last_commit = self.coder.repo.repo.head.commit
-        if not last_commit.parents:
+        last_commit = self.coder.repo.get_head_commit()
+        if not last_commit or not last_commit.parents:
             self.io.tool_error("This is the first commit in the repository. Cannot undo.")
+            return
+
+        last_commit_hash = self.coder.repo.get_head_commit_sha(short=True)
+        last_commit_message = self.coder.repo.get_head_commit_message("(unknown)").strip()
+        if last_commit_hash not in self.coder.aider_commit_hashes:
+            self.io.tool_error("The last commit was not made by aider in this chat session.")
+            self.io.tool_error(
+                "You could try `/git reset --hard HEAD^` but be aware that this is a destructive"
+                " command!"
+            )
+            return
+
+        if len(last_commit.parents) > 1:
+            self.io.tool_error(
+                f"The last commit {last_commit.hexsha} has more than 1 parent, can't undo."
+            )
             return
 
         prev_commit = last_commit.parents[0]
@@ -450,7 +473,7 @@ class Commands:
         try:
             remote_head = self.coder.repo.repo.git.rev_parse(f"origin/{current_branch}")
             has_origin = True
-        except git.exc.GitCommandError:
+        except ANY_GIT_ERROR:
             has_origin = False
 
         if has_origin:
@@ -461,19 +484,25 @@ class Commands:
                 )
                 return
 
-        last_commit_hash = self.coder.repo.repo.head.commit.hexsha[:7]
-        last_commit_message = self.coder.repo.repo.head.commit.message.strip()
-        if last_commit_hash not in self.coder.aider_commit_hashes:
-            self.io.tool_error("The last commit was not made by aider in this chat session.")
-            self.io.tool_error(
-                "You could try `/git reset --hard HEAD^` but be aware that this is a destructive"
-                " command!"
-            )
-            return
-
         # Reset only the files which are part of `last_commit`
+        restored = set()
+        unrestored = set()
         for file_path in changed_files_last_commit:
-            self.coder.repo.repo.git.checkout("HEAD~1", file_path)
+            try:
+                self.coder.repo.repo.git.checkout("HEAD~1", file_path)
+                restored.add(file_path)
+            except ANY_GIT_ERROR:
+                unrestored.add(file_path)
+
+        if unrestored:
+            self.io.tool_error(f"Error restoring {file_path}, aborting undo.")
+            self.io.tool_error("Restored files:")
+            for file in restored:
+                self.io.tool_error(f"  {file}")
+            self.io.tool_error("Unable to restore files:")
+            for file in unrestored:
+                self.io.tool_error(f"  {file}")
+            return
 
         # Move the HEAD back before the latest commit
         self.coder.repo.repo.git.reset("--soft", "HEAD~1")
@@ -481,8 +510,8 @@ class Commands:
         self.io.tool_output(f"Removed: {last_commit_hash} {last_commit_message}")
 
         # Get the current HEAD after undo
-        current_head_hash = self.coder.repo.repo.head.commit.hexsha[:7]
-        current_head_message = self.coder.repo.repo.head.commit.message.strip()
+        current_head_hash = self.coder.repo.get_head_commit_sha(short=True)
+        current_head_message = self.coder.repo.get_head_commit_message("(unknown)").strip()
         self.io.tool_output(f"Now at:  {current_head_hash} {current_head_message}")
 
         if self.coder.main_model.send_undo_reply:
@@ -494,7 +523,7 @@ class Commands:
             self.io.tool_error("No git repository found.")
             return
 
-        current_head = self.coder.repo.get_head()
+        current_head = self.coder.repo.get_head_commit_sha()
         if current_head is None:
             self.io.tool_error("Unable to get current commit. The repository might be empty.")
             return
@@ -534,14 +563,17 @@ class Commands:
         return files
 
     def glob_filtered_to_repo(self, pattern):
-        if not pattern:
+        if not pattern.strip():
             return []
         try:
             if os.path.isabs(pattern):
                 # Handle absolute paths
                 raw_matched_files = [Path(pattern)]
             else:
-                raw_matched_files = list(Path(self.coder.root).glob(pattern))
+                try:
+                    raw_matched_files = list(Path(self.coder.root).glob(pattern))
+                except IndexError:
+                    raw_matched_files = []
         except ValueError as err:
             self.io.tool_error(f"Error matching {pattern}: {err}")
             raw_matched_files = []
@@ -729,7 +761,7 @@ class Commands:
 
     def cmd_run(self, args, add_on_nonzero_exit=False):
         "Run a shell command and optionally add the output to the chat (alias: !)"
-        exit_status, combined_output = run_cmd(args)
+        exit_status, combined_output = run_cmd(args, verbose=self.verbose)
         instructions = None
 
         if combined_output is None:

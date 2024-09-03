@@ -95,15 +95,15 @@ def main():
         f"{new_version.major}.{new_version.minor}.{new_version.micro + 1}"
     )
 
-    with open("aider/__init__.py", "r") as f:
-        content = f.read()
+    from aider import __version__ as current_version
 
-    current_version = re.search(r'__version__ = "(.+?)"', content).group(1)
     if new_version <= version.parse(current_version):
         raise ValueError(
             f"New version {new_version} must be greater than the current version {current_version}"
         )
 
+    with open("aider/__init__.py", "r") as f:
+        content = f.read()
     updated_content = re.sub(r'__version__ = ".+?"', f'__version__ = "{new_version}"', content)
 
     print("Updating aider/__init__.py with new version:")
@@ -125,8 +125,9 @@ def main():
         if not dry_run:
             subprocess.run(cmd, check=True)
 
+    new_dev_version = f"{incremented_version}.dev"
     updated_dev_content = re.sub(
-        r'__version__ = ".+?"', f'__version__ = "{incremented_version}-dev"', content
+        r'__version__ = ".+?"', f'__version__ = "{new_dev_version}"', content
     )
 
     print()
@@ -138,7 +139,10 @@ def main():
 
     git_commands_dev = [
         ["git", "add", "aider/__init__.py"],
-        ["git", "commit", "-m", f"set version to {incremented_version}-dev"],
+        ["git", "commit", "-m", f"set version to {new_dev_version}"],
+        ["git", "tag", f"v{new_dev_version}"],
+        ["git", "push", "origin", "--no-verify"],
+        ["git", "push", "origin", f"v{new_dev_version}", "--no-verify"],
     ]
 
     for cmd in git_commands_dev:
