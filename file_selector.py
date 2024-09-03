@@ -79,7 +79,10 @@ if __name__ == "__main__":
             all_files.append(os.path.join(root, file))
     print(f"DEBUG: All files: {all_files}")
     
-    selected_files = select_relevant_files(all_files)
-    print("\nSelected files:")
-    for file in selected_files:
-        print(file)
+    band_members = ["Lyra", "Rhythm", "Vox", "Pixel", "Nova"]
+    for member in band_members:
+        print(f"\nSelecting files for {member}:")
+        selected_files = select_relevant_files(all_files, member)
+        print(f"Selected files for {member}:")
+        for file in selected_files:
+            print(f"  - {file}")
