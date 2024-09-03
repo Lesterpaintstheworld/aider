@@ -48,11 +48,11 @@ def select_relevant_files(file_list, band_member, max_files=20):
     
     relevant_files = journals_and_todolists.copy()
     
-    # Add up to 3 random discussion files
-    relevant_files.extend(random.sample(discussions, min(3, len(discussions))))
+    # Add up to 2 random discussion files
+    relevant_files.extend(random.sample(discussions, min(2, len(discussions))))
     
-    # Add up to 3 random concept files
-    relevant_files.extend(random.sample(concepts, min(3, len(concepts))))
+    # Add up to 4 random concept files
+    relevant_files.extend(random.sample(concepts, min(4, len(concepts))))
 
     # Add other random text files if we haven't reached max_files
     other_files = [file for file in text_files if file not in relevant_files]
