@@ -18,7 +18,6 @@ from datetime import datetime
 from json.decoder import JSONDecodeError
 from pathlib import Path
 
-import git
 from rich.console import Console, Text
 from rich.markdown import Markdown
 
@@ -29,7 +28,7 @@ from aider.io import ConfirmGroup, InputOutput
 from aider.linter import Linter
 from aider.llm import litellm
 from aider.mdstream import MarkdownStream
-from aider.repo import GitRepo
+from aider.repo import ANY_GIT_ERROR, GitRepo
 from aider.repomap import RepoMap
 from aider.run_cmd import run_cmd
 from aider.sendchat import retry_exceptions, send_completion
@@ -349,19 +348,22 @@ class Coder:
 
         for fname in fnames:
             fname = Path(fname)
-            if not fname.exists():
-                self.io.tool_output(f"Creating empty file {fname}")
-                fname.parent.mkdir(parents=True, exist_ok=True)
-                fname.touch()
-
-            if not fname.is_file():
-                raise ValueError(f"{fname} is not a file")
-
-            fname = str(fname.resolve())
-
             if self.repo and self.repo.ignored_file(fname):
                 self.io.tool_error(f"Skipping {fname} that matches aiderignore spec.")
                 continue
+
+            if not fname.exists():
+                if utils.touch_file(fname):
+                    self.io.tool_output(f"Creating empty file {fname}")
+                else:
+                    self.io.tool_error(f"Can not create {fname}, skipping.")
+                    continue
+
+            if not fname.is_file():
+                self.io.tool_error(f"Skipping {fname} that is not a normal file.")
+                continue
+
+            fname = str(fname.resolve())
 
             self.abs_fnames.add(fname)
             self.check_added_files()
@@ -419,7 +421,7 @@ class Coder:
         self.linter = Linter(root=self.root, encoding=io.encoding)
         self.auto_lint = auto_lint
         self.setup_lint_cmds(lint_cmds)
-
+        self.lint_cmds = lint_cmds
         self.auto_test = auto_test
         self.test_cmd = test_cmd
 
@@ -713,7 +715,7 @@ class Coder:
         self.shell_commands = []
 
         if self.repo:
-            self.commit_before_message.append(self.repo.get_head())
+            self.commit_before_message.append(self.repo.get_head_commit_sha())
 
     def run(self, with_message=None, preproc=True):
         try:
@@ -868,17 +870,11 @@ class Coder:
 
         return None
 
-    def fmt_system_prompt(self, prompt):
-        lazy_prompt = self.gpt_prompts.lazy_prompt if self.main_model.lazy else ""
-
+    def get_platform_info(self):
         platform_text = f"- Platform: {platform.platform()}\n"
-        if os.name == "nt":
-            var = "COMSPEC"
-        else:
-            var = "SHELL"
-
-        val = os.getenv(var)
-        platform_text += f"- Shell: {var}={val}\n"
+        shell_var = "COMSPEC" if os.name == "nt" else "SHELL"
+        shell_val = os.getenv(shell_var)
+        platform_text += f"- Shell: {shell_var}={shell_val}\n"
 
         user_lang = self.get_user_language()
         if user_lang:
@@ -889,6 +885,35 @@ class Coder:
 
         if self.repo:
             platform_text += "- The user is operating inside a git repository\n"
+
+        if self.lint_cmds:
+            if self.auto_lint:
+                platform_text += (
+                    "- The user's pre-commit runs these lint commands, don't suggest running"
+                    " them:\n"
+                )
+            else:
+                platform_text += "- The user prefers these lint commands:\n"
+            for lang, cmd in self.lint_cmds.items():
+                if lang is None:
+                    platform_text += f"  - {cmd}\n"
+                else:
+                    platform_text += f"  - {lang}: {cmd}\n"
+
+        if self.test_cmd:
+            if self.auto_test:
+                platform_text += (
+                    "- The user's pre-commit runs this test command, don't suggest running them: "
+                )
+            else:
+                platform_text += "- The user prefers this test command: "
+            platform_text += self.test_cmd + "\n"
+
+        return platform_text
+
+    def fmt_system_prompt(self, prompt):
+        lazy_prompt = self.gpt_prompts.lazy_prompt if self.main_model.lazy else ""
+        platform_text = self.get_platform_info()
 
         prompt = prompt.format(
             fence=self.fence,
@@ -1666,8 +1691,9 @@ class Coder:
                 return
 
             if not self.dry_run:
-                Path(full_path).parent.mkdir(parents=True, exist_ok=True)
-                Path(full_path).touch()
+                if not utils.touch_file(full_path):
+                    self.io.tool_error(f"Unable to create {path}, skipping edits.")
+                    return
 
                 # Seems unlikely that we needed to create the file, but it was
                 # actually already part of the repo.
@@ -1769,7 +1795,7 @@ class Coder:
             self.reflected_message = str(err)
             return edited
 
-        except git.exc.GitCommandError as err:
+        except ANY_GIT_ERROR as err:
             self.io.tool_error(str(err))
             return edited
         except Exception as err:
@@ -1856,7 +1882,7 @@ class Coder:
     def show_undo_hint(self):
         if not self.commit_before_message:
             return
-        if self.commit_before_message[-1] != self.repo.get_head():
+        if self.commit_before_message[-1] != self.repo.get_head_commit_sha():
             self.io.tool_output("You can use /undo to undo and discard each aider commit.")
 
     def dirty_commit(self):
