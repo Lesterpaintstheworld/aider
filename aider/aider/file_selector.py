@@ -3,7 +3,9 @@ import re
 import random
 
 def is_song_related(filename):
-    return re.search(r'.*song.*|.*lyric.*|.*music.*|.*prompt.*|.*clip.*|.*visual.*|.*audio.*|.*sound.*', filename.lower()) is not None
+    keywords = ['song', 'lyric', 'music', 'prompt', 'clip', 'visual', 'audio', 'sound', 'melody', 'rhythm', 'harmony', 'instrument', 'composition', 'arrangement', 'production', 'mix', 'master']
+    pattern = '|'.join(f'.*{keyword}.*' for keyword in keywords)
+    return re.search(pattern, filename.lower()) is not None
 
 def is_journal_or_todolist(filename, band_member):
     patterns = [
