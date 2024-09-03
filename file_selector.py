@@ -6,13 +6,15 @@ def is_journal_or_todolist(filename, band_member):
     patterns = [
         rf'.*{band_member.lower()}.*journal.*',
         rf'.*{band_member.lower()}.*todolist.*',
+        rf'.*{band_member.lower()}.*todo.*',
         rf'{band_member.lower()}/.*journal.*',
-        rf'{band_member.lower()}/.*todolist.*'
+        rf'{band_member.lower()}/.*todolist.*',
+        rf'{band_member.lower()}/.*todo.*'
     ]
     return any(re.search(pattern, filename.lower()) for pattern in patterns)
 
 def is_discussion(filename):
-    return re.search(r'.*discussion.*', filename.lower()) is not None or filename.lower().startswith('discussions/')
+    return re.search(r'.*discussion.*', filename.lower()) is not None or 'discussions' in filename.lower()
 
 def is_concept(filename):
     return re.search(r'.*concept.*', filename.lower()) is not None
