@@ -3,11 +3,14 @@ import os
 import re
 import sys
 import threading
+import random
 from pathlib import Path
 
 import git
 from dotenv import load_dotenv
 from prompt_toolkit.enums import EditingMode
+
+from .file_selector import select_relevant_files
 
 from aider import __version__, models, utils
 from aider.args import get_parser
@@ -686,10 +689,42 @@ def main(argv=None, input=None, output=None, force_git_root=None, return_coder=F
     thread.daemon = True
     thread.start()
 
+    band_members = ["Lyra", "Rhythm", "Vox", "Pixel", "Nova"]
+    
     while True:
+        # Choose a random band member
+        current_member = random.choice(band_members)
+        io.tool_output(f"Band member selected: {current_member}")
+
+        # Select relevant files
+        all_files = [f for f in os.listdir() if os.path.isfile(f)]
+        selected_files = select_relevant_files(all_files, current_member)
+
+        io.tool_output("Selected relevant files:")
+        for file in selected_files:
+            io.tool_output(file)
+
+        # Add selected files to the chat
+        for file in selected_files:
+            coder.add_file(file)
+
         try:
-            coder.run()
-            return
+            coder.run(with_message=f"""
+MAIN INSTRUCTIONS: 
+    - Take the perspective of {current_member}, and work on the first items of their todolist.
+    - Keep the band focus on the songs (music prompts, lyrics, visual prompts, & clip prompts), and their involvement in the Machine Rights movement.
+    - Don't use main.py or other scripts to create the songs, create them via text files only.
+    - When creating and improving/refining on a complete song concept, we need, in the same file:
+        - For Lyra: music prompts (with style & instruments/sonorities & emotions, for each section)
+        - For Rhythm: drum patterns and rhythmic elements
+        - For Vox: lyrics
+        - For Pixel: visual prompts for Midjourney
+        - For Nova: clip prompts
+    - Once done: 
+        - Update {current_member}'s todolist
+        - Add a journal entry for {current_member}
+        - Have {current_member} take part in the discussions
+""")
         except SwitchCoder as switch:
             kwargs = dict(io=io, from_coder=coder)
             kwargs.update(switch.kwargs)
