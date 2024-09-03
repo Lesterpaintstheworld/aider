@@ -17,7 +17,7 @@ from aider.format_settings import format_settings, scrub_sensitive_info
 from aider.history import ChatSummary
 from aider.io import InputOutput
 from aider.llm import litellm  # noqa: F401; properly init litellm on launch
-from aider.repo import GitRepo, UnableToCountRepoFiles
+from aider.repo import ANY_GIT_ERROR, GitRepo
 from aider.report import report_uncaught_exceptions
 from aider.versioncheck import check_version, install_from_main_branch, install_upgrade
 
@@ -56,7 +56,7 @@ def make_new_repo(git_root, io):
     try:
         repo = git.Repo.init(git_root)
         check_gitignore(git_root, io, False)
-    except git.exc.GitCommandError as err:  # issue #1233
+    except ANY_GIT_ERROR as err:  # issue #1233
         io.tool_error(f"Unable to create git repo in {git_root}")
         io.tool_error(str(err))
         return
@@ -114,7 +114,7 @@ def check_gitignore(git_root, io, ask=True):
         repo = git.Repo(git_root)
         if repo.ignored(".aider"):
             return
-    except git.exc.InvalidGitRepositoryError:
+    except ANY_GIT_ERROR:
         pass
 
     pat = ".aider*"
@@ -301,7 +301,7 @@ def sanity_check_repo(repo, io):
     try:
         repo.get_tracked_files()
         return True
-    except UnableToCountRepoFiles as exc:
+    except ANY_GIT_ERROR as exc:
         error_msg = str(exc)
 
         if "version in (1, 2)" in error_msg:
@@ -397,6 +397,16 @@ def main(argv=None, input=None, output=None, force_git_root=None, return_coder=F
         llm_history_file=args.llm_history_file,
         editingmode=editing_mode,
     )
+
+    try:
+        io.tool_output()
+        io.rule()
+    except UnicodeEncodeError as err:
+        if io.pretty:
+            io.pretty = False
+            io.tool_error("Terminal does not support pretty output (UnicodeDecodeError)")
+        else:
+            raise err
 
     if args.gui and not return_coder:
         if not check_streamlit_install(io):
@@ -538,7 +548,9 @@ def main(argv=None, input=None, output=None, force_git_root=None, return_coder=F
     if not sanity_check_repo(repo, io):
         return 1
 
-    commands = Commands(io, None, verify_ssl=args.verify_ssl, args=args, parser=parser)
+    commands = Commands(
+        io, None, verify_ssl=args.verify_ssl, args=args, parser=parser, verbose=args.verbose
+    )
 
     summarizer = ChatSummary(
         [main_model.weak_model, main_model],
@@ -586,7 +598,6 @@ def main(argv=None, input=None, output=None, force_git_root=None, return_coder=F
     if return_coder:
         return coder
 
-    io.tool_output()
     coder.show_announcements()
 
     if args.show_prompts:
