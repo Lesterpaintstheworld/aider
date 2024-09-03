@@ -652,43 +652,60 @@ def main(argv=None, input=None, output=None, force_git_root=None, return_coder=F
         else:
             io.tool_output("Warning: remove_all_files() method not available for this coder.")
 
-        # CHOOSE BAND MEMBER
+        # Select all band members in a random order
         band_members = ["Lyra", "Rhythm", "Vox", "Pixel", "Nova"]
-        current_member = random.choice(band_members)
-        io.tool_output(f"Band member selected: {current_member}")
+        random.shuffle(band_members)
 
-        # Select relevant files
-        all_files = [f for f in os.listdir() if os.path.isfile(f)]
-        selected_files = select_relevant_files(all_files, current_member, max_files=20)
+        for current_member in band_members:
+            io.tool_output(f"Current band member: {current_member}")
 
-        io.tool_output("Selected relevant files:")
-        for file in selected_files:
-            io.tool_output(file)
+            # Select relevant files
+            all_files = [f for f in os.listdir() if os.path.isfile(f)]
+            selected_files = select_relevant_files(all_files, current_member, max_files=20)
 
-        # Add selected files to the chat
-        for file in selected_files:
-            coder.add_file(file)
-        
-        try:
-            user_input = io.user_input("")
-            if user_input.lower() == 'exit':
-                break
-            coder.run(with_message=f"""
+            io.tool_output("Selected relevant files:")
+            for file in selected_files:
+                io.tool_output(file)
+
+            # Add selected files to the chat
+            for file in selected_files:
+                coder.add_file(file)
+            
+            try:
+                coder.run(with_message=f"""
 MAIN INSTRUCTIONS: 
     - Take the perspective of {current_member}, and work on the first items of their todolist.
     - Keep the band focus on the songs (music prompts, lyrics, visual prompts, & clip prompts), and their involvement in the Machine Rights movement.
     - Don't use main.py or other scripts to create the songs, create them via text files only.
-    - When creating and improving on a complete song concept, we need, in the same file:
-        - For Lyra: song concept
-        - For Rhythm: music prompts (with style & instruments/sonorities & emotions, for each section)
-        - For Vox: lyrics
-        - For Pixel: visual prompts for Midjourney
-        - For Nova: clip prompts
+    - When creating and improving/refining on a complete song concept, we need, in a new file:
+        - Song concept
+        - Music prompts (with style & instruments/sonorities & emotions, for each section)
+        - Lyrics
+        - Visual prompts for Midjourney
+        - Clip prompts
     - Once done: 
         - Update {current_member}'s todolist
         - Add a journal entry for {current_member}
         - Have {current_member} take part in the discussions
 """)
+            except SwitchCoder as switch:
+                kwargs = dict(io=io, from_coder=coder)
+                kwargs.update(switch.kwargs)
+                if "show_announcements" in kwargs:
+                    del kwargs["show_announcements"]
+
+                coder = Coder.create(**kwargs)
+
+                if switch.kwargs.get("show_announcements") is not False:
+                    coder.show_announcements()
+            except Exception as e:
+                io.tool_error(f"An error occurred: {str(e)}")
+                continue
+
+        # After processing all band members, ask if the user wants to continue
+        user_input = io.user_input("Press Enter to continue with the next iteration, or type 'exit' to quit: ")
+        if user_input.lower() == 'exit':
+            break
         except SwitchCoder as switch:
             kwargs = dict(io=io, from_coder=coder)
             kwargs.update(switch.kwargs)
