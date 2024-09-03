@@ -10,3 +10,4 @@ _site
 .jekyll-metadata
 venv*
 .env
+.aider*
