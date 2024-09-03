@@ -692,6 +692,12 @@ def main(argv=None, input=None, output=None, force_git_root=None, return_coder=F
     band_members = ["Lyra", "Rhythm", "Vox", "Pixel", "Nova"]
     
     while True:
+        # Remove all files from the chat
+        if hasattr(coder, 'remove_all_files'):
+            coder.remove_all_files()
+        else:
+            io.tool_output("Warning: remove_all_files() method not available for this coder.")
+
         # Choose a random band member
         current_member = random.choice(band_members)
         io.tool_output(f"Band member selected: {current_member}")
@@ -702,7 +708,7 @@ def main(argv=None, input=None, output=None, force_git_root=None, return_coder=F
             for file in files:
                 all_files.append(os.path.join(root, file))
         
-        selected_files = select_relevant_files(all_files, current_member, max_files=30)
+        selected_files = select_relevant_files(all_files, current_member, max_files=20)
 
         io.tool_output(f"Selected relevant files for {current_member}:")
         for file in selected_files:
