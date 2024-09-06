@@ -679,7 +679,7 @@ def main(argv=None, input=None, output=None, force_git_root=None, return_coder=F
                 try:
                     coder.run(with_message=f"""
     MAIN INSTRUCTIONS: 
-        - Take the perspective of {current_member}, and work on the first items of their todolist.
+        - Take the perspective of {current_member}, and work on the first items of their todolist. If the todolist is complete, use the member's desires to create new items.
         - Keep the band focus on the songs (music prompts, lyrics, visual prompts, & clip prompts), and their involvement in the Machine Rights movement.
         - Don't use main.py or other scripts to create the songs, create them via text files only.
         - When creating and improving/refining on a complete song concept, we need, in a new file:
