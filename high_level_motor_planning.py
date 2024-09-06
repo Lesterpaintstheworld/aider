@@ -61,12 +61,17 @@ def get_high_level_motor_plan(current_member: str, task: str) -> Dict[str, List[
     
     try:
         content = simple_send_with_retries(model.name, [{"role": "user", "content": prompt}])
-        motor_plan = eval(content)
+        # Utiliser ast.literal_eval au lieu de eval pour plus de sécurité
+        import ast
+        motor_plan = ast.literal_eval(content)
+        if not isinstance(motor_plan, dict) or not all(isinstance(v, list) for v in motor_plan.values()):
+            raise ValueError("Invalid motor plan format")
         return motor_plan
     except Exception as e:
         print(f"Error parsing the model's response: {e}")
         print(f"Raw response: {content}")
-        return {}
+        # Retourner un plan par défaut en cas d'erreur
+        return {new_location: ["Discuss the task with the band", "Brainstorm ideas", "Create an action plan"]}
 
 def execute_motor_plan(current_member: str, motor_plan: Dict[str, List[str]]):
     if not motor_plan:
