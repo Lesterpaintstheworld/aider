@@ -452,7 +452,7 @@ def get_high_level_motor_plan(current_member: str, task: str) -> Dict[str, List[
     }}
     """
     
-    response = model.chat_completion([{"role": "user", "content": prompt}])
+    response = model.complete([{"role": "user", "content": prompt}])
     
     try:
         content = response['choices'][0]['message']['content']
