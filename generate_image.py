@@ -71,9 +71,19 @@ import sys
 from pathlib import Path
 from openai import OpenAI
 from dotenv import load_dotenv
+import asyncio
+import discord
 
 # Charger les variables d'environnement depuis le fichier .env
 load_dotenv()
+
+# Initialize Discord client
+intents = discord.Intents.default()
+intents.message_content = True
+discord_client = discord.Client(intents=intents)
+
+DISCORD_BOT_TOKEN = os.getenv('DISCORD_BOT_TOKEN')
+DISCORD_CHANNEL_ID = int(os.getenv('DISCORD_CHANNEL_ID', 1279332180077842495))
 
 def generate_image(prompt, output_path):
     client = OpenAI()
@@ -93,6 +103,17 @@ def generate_image(prompt, output_path):
     img_data = requests.get(image_url).content
     with open(output_path, 'wb') as handler:
         handler.write(img_data)
+
+async def send_discord_message(message, image_path=None):
+    await discord_client.wait_until_ready()
+    channel = discord_client.get_channel(DISCORD_CHANNEL_ID)
+    if channel:
+        if image_path:
+            await channel.send(message, file=discord.File(image_path))
+        else:
+            await channel.send(message)
+    else:
+        print(f"Error: Channel with ID {DISCORD_CHANNEL_ID} not found.")
 
 def process_file(file_path):
     base_name = os.path.splitext(os.path.basename(file_path))[0]
@@ -114,12 +135,11 @@ def process_file(file_path):
                     else:
                         generate_image(prompt, output_path)
                         print(f"Image générée : {output_path}")
+                        
+                        # Send the image to Discord
+                        asyncio.run(send_discord_message(f"New image generated for {base_name}:", output_path))
                     
                     image_count += 1
-    except FileNotFoundError:
-        print(f"Erreur : Le fichier '{file_path}' n'a pas été trouvé.")
-    except Exception as e:
-        print(f"Une erreur s'est produite : {e}")
     except FileNotFoundError:
         print(f"Erreur : Le fichier '{file_path}' n'a pas été trouvé.")
     except Exception as e:
@@ -135,5 +155,8 @@ if __name__ == "__main__":
     # Créer le dossier 'images' dans le répertoire courant s'il n'existe pas
     images_dir = Path.cwd() / "images"
     images_dir.mkdir(exist_ok=True)
+    
+    # Start the Discord client
+    discord_client.run(DISCORD_BOT_TOKEN)
     
     process_file(input_file)
