@@ -35,7 +35,7 @@ def process_file(file_path):
         for line in file:
             if "--ar" in line:
                 prompt = line.strip().replace('"', '')
-                output_path = f"images/{base_name}_{image_count}.png"
+                output_path = f"aider/images/{base_name}_{image_count}.png"
                 
                 generate_image(prompt, output_path)
                 print(f"Image générée : {output_path}")
@@ -43,9 +43,9 @@ def process_file(file_path):
                 image_count += 1
 
 if __name__ == "__main__":
-    input_file = "../concepts/voices_of_the_circuits.md"
+    input_file = "voices_of_the_circuits.md"
     
-    # Créer le dossier 'images' s'il n'existe pas
-    os.makedirs("images", exist_ok=True)
+    # Créer le dossier 'aider/images' s'il n'existe pas
+    os.makedirs("aider/images", exist_ok=True)
     
     process_file(input_file)
