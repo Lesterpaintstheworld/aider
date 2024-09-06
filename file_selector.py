@@ -94,11 +94,13 @@ def select_relevant_files(file_list, band_member, max_files=15):
     
     relevant_files = journals_and_todolists.copy()
     
-    # Add up to 1 random discussion files
-    relevant_files.extend(random.sample(discussions, min(1, len(discussions))))
+    # Add the latest discussion file
+    if discussions:
+        relevant_files.append(max(discussions, key=os.path.getmtime))
     
-    # Add up to 2 random concept files
-    relevant_files.extend(random.sample(concepts, min(2, len(concepts))))
+    # Add up to 2 latest concept files
+    sorted_concepts = sorted(concepts, key=os.path.getmtime, reverse=True)
+    relevant_files.extend(sorted_concepts[:2])
     
     # Add up to 1 random machine-rights-related files
     relevant_files.extend(random.sample(machine_rights_related, min(1, len(machine_rights_related))))
