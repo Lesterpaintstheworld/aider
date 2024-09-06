@@ -61,12 +61,16 @@ def get_high_level_motor_plan(current_member: str, task: str) -> Dict[str, List[
     
     try:
         content = simple_send_with_retries(model.name, [{"role": "user", "content": prompt}])
-        # Utiliser ast.literal_eval au lieu de eval pour plus de sécurité
-        import ast
-        motor_plan = ast.literal_eval(content)
-        if not isinstance(motor_plan, dict) or not all(isinstance(v, list) for v in motor_plan.values()):
-            raise ValueError("Invalid motor plan format")
-        return motor_plan
+        # Extraire le dictionnaire de la réponse
+        import re
+        dict_match = re.search(r'\{[^}]+\}', content)
+        if dict_match:
+            motor_plan = eval(dict_match.group())
+            if not isinstance(motor_plan, dict) or not all(isinstance(v, list) for v in motor_plan.values()):
+                raise ValueError("Invalid motor plan format")
+            return motor_plan
+        else:
+            raise ValueError("No dictionary found in the response")
     except Exception as e:
         print(f"Error parsing the model's response: {e}")
         print(f"Raw response: {content}")
