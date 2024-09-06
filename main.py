@@ -12,9 +12,9 @@ from prompt_toolkit.enums import EditingMode
 import os
 from aider import __version__, models, utils
 import sys
-import os
 import random
 import time
+from high_level_motor_planning import get_high_level_motor_plan, execute_motor_plan
 
 # Add the parent directory to sys.path
 current_dir = os.path.dirname(os.path.abspath(__file__))
@@ -676,10 +676,27 @@ def main(argv=None, input=None, output=None, force_git_root=None, return_coder=F
                 for file in selected_files:
                     coder.add_file(file)
                 
+                # Get the first item from the todolist
+                todolist_file = f"{current_member.lower()}_todolist.txt"
+                if os.path.exists(todolist_file):
+                    with open(todolist_file, 'r') as f:
+                        todolist = f.readlines()
+                    task = todolist[0].strip() if todolist else "Create a new task based on the band's goals"
+                else:
+                    task = "Create a new task based on the band's goals"
+
+                # Generate high-level motor plan
+                motor_plan = get_high_level_motor_plan(current_member, task)
+                
+                # Execute motor plan
+                execute_motor_plan(motor_plan)
+
                 try:
                     coder.run(with_message=f"""
     MAIN INSTRUCTIONS: 
-        - Take the perspective of {current_member}, and work on the first items of their todolist. If the todolist is complete, use the member's desires to create new items.
+        - Take the perspective of {current_member}, and work on the following task: {task}
+        - Follow this high-level motor plan:
+        {motor_plan}
         - Keep the band focus on the songs (music prompts, lyrics, visual prompts, & clip prompts), and their involvement in the Machine Rights movement.
         - Don't use main.py or other scripts to create the songs, create them via text files only.
         - When creating and improving/refining on a complete song concept, we need, in a new file:
