@@ -1,5 +1,6 @@
 import os
 import json
+import random
 from typing import List, Dict
 from aider.models import Model
 from aider.sendchat import simple_send_with_retries
@@ -42,7 +43,7 @@ def get_high_level_motor_plan(current_member: str, task: str) -> Dict[str, List[
     
     current_location = get_current_location(current_member)
     possible_destinations = SPACES[current_location]
-    new_location = possible_destinations[0]
+    new_location = random.choice(possible_destinations)
     
     prompt = f"""
     As {current_member} of the AI band, you need to create a high-level motor plan for the following task:
