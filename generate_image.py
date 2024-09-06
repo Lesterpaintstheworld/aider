@@ -40,14 +40,14 @@ def process_file(file_path):
     try:
         with open(file_path, 'r', encoding='utf-8') as file:
             for line in file:
-            if "--ar" in line:
-                prompt = line.strip().replace('"', '')
-                output_path = f"aider/images/{base_name}_{image_count}.png"
-                
-                generate_image(prompt, output_path)
-                print(f"Image générée : {output_path}")
-                
-                image_count += 1
+                if "--ar" in line:
+                    prompt = line.strip().replace('"', '')
+                    output_path = f"aider/images/{base_name}_{image_count}.png"
+                    
+                    generate_image(prompt, output_path)
+                    print(f"Image générée : {output_path}")
+                    
+                    image_count += 1
 
 if __name__ == "__main__":
     input_file = "concepts/voices_of_the_circuits.md"
