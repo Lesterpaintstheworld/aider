@@ -10,10 +10,10 @@ load_dotenv()
 # Obtenir le chemin du répertoire racine du projet
 root_dir = Path(__file__).resolve().parent.parent
 
-print(f"Chemin Python : {sys.executable}")
-print(f"Répertoire de travail actuel : {os.getcwd()}")
-print(f"Répertoire racine du projet : {root_dir}")
-print(f"Contenu du répertoire racine : {os.listdir(root_dir)}")
+#print(f"Chemin Python : {sys.executable}")
+#print(f"Répertoire de travail actuel : {os.getcwd()}")
+#print(f"Répertoire racine du projet : {root_dir}")
+#print(f"Contenu du répertoire racine : {os.listdir(root_dir)}")
 
 def generate_image(prompt, output_path):
     client = OpenAI()
