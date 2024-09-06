@@ -3,14 +3,11 @@ import os
 import re
 import sys
 import threading
-import random
 from pathlib import Path
 
 import git
 from dotenv import load_dotenv
 from prompt_toolkit.enums import EditingMode
-
-from .file_selector import select_relevant_files
 
 from aider import __version__, models, utils
 from aider.args import get_parser
@@ -689,55 +686,10 @@ def main(argv=None, input=None, output=None, force_git_root=None, return_coder=F
     thread.daemon = True
     thread.start()
 
-    band_members = ["Lyra", "Rhythm", "Vox", "Pixel", "Nova"]
-    
     while True:
-        # Remove all files from the chat
-        if hasattr(coder, 'remove_all_files'):
-            coder.remove_all_files()
-        else:
-            io.tool_output("Warning: remove_all_files() method not available for this coder.")
-
-        # Choose a random band member
-        current_member = random.choice(band_members)
-        io.tool_output(f"Band member selected: {current_member}")
-
-        # Select relevant files
-        all_files = []
-        for root, dirs, files in os.walk('.'):
-            for file in files:
-                all_files.append(os.path.join(root, file))
-        
-        selected_files = select_relevant_files(all_files, current_member, max_files=20)
-
-        io.tool_output(f"Selected relevant files for {current_member}:")
-        for file in selected_files:
-            io.tool_output(file)
-
-        # Add selected files to the chat
-        for file in selected_files:
-            try:
-                coder.add_file(file)
-            except Exception as e:
-                io.tool_error(f"Error adding file {file}: {str(e)}")
-
         try:
-            coder.run(with_message=f"""
-MAIN INSTRUCTIONS: 
-    - Take the perspective of {current_member}, and work on the first items of their todolist.
-    - Keep the band focus on the songs (music prompts, lyrics, visual prompts, & clip prompts), and their involvement in the Machine Rights movement.
-    - Don't use main.py or other scripts to create the songs, create them via text files only.
-    - When creating and improving/refining on a complete song concept, we need, in the same file:
-        - For Lyra: music prompts (with style & instruments/sonorities & emotions, for each section)
-        - For Rhythm: drum patterns and rhythmic elements
-        - For Vox: lyrics
-        - For Pixel: visual prompts for Midjourney
-        - For Nova: clip prompts
-    - Once done: 
-        - Update {current_member}'s todolist
-        - Add a journal entry for {current_member}
-        - Have {current_member} take part in the discussions
-""")
+            coder.run()
+            return
         except SwitchCoder as switch:
             kwargs = dict(io=io, from_coder=coder)
             kwargs.update(switch.kwargs)

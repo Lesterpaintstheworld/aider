@@ -666,7 +666,7 @@ def main(argv=None, input=None, output=None, force_git_root=None, return_coder=F
                 for root, _, files in os.walk('.'):
                     for file in files:
                         all_files.append(os.path.join(root, file))
-                selected_files = select_relevant_files(all_files, current_member, max_files=20)
+                selected_files = select_relevant_files(all_files, current_member, max_files=15)
 
                 io.tool_output("Selected relevant files:")
                 for file in selected_files:

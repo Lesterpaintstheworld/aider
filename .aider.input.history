@@ -1926,3 +1926,167 @@
 +.\aider\website\docs\llms\azure.md
 +.\aider\aider\.pre-commit-config.yaml
 +.\aider\tests\basic\test_commands.py
+
+# 2024-09-03 21:51:55.385744
++/add discussion-to-voice.py
+
+# 2024-09-03 21:52:07.745833
++/add discussion_to_voice.py
+
+# 2024-09-06 03:08:17.023091
++add a file called high_level_motor_planning.py . In this file we will take the input from main, and make a gpt-4o call to get back what is the motor plan for the agent. The list of spaces is defined in an array
+
+# 2024-09-06 03:09:32.622801
++NEVER MAKE CHANGES TO AIDER/AIDER/*
+
+# 2024-09-06 03:32:00.247338
++  File "<frozen runpy>", line 189, in _run_module_as_main
++  File "<frozen runpy>", line 148, in _get_module_details
++  File "<frozen runpy>", line 112, in _get_module_details
++  File "C:\users\conta\Synthetic Souls\aider\__init__.py", line 3, in <module>
++    from . import main
++  File "C:\users\conta\Synthetic Souls\aider\main.py", line 17, in <module>
++    from high_level_motor_planning import get_high_level_motor_plan, execute_motor_plan
++ModuleNotFoundError: No module named 'high_level_motor_planning'
+
+# 2024-09-06 03:34:10.696657
++.\legal\ai_bill_of_rights.md
++Warning: it's best to only add files that need changes to the chat.
++https://aider.chat/docs/troubleshooting/edit-errors.html
++Traceback (most recent call last):
++  File "<frozen runpy>", line 198, in _run_module_as_main
++  File "<frozen runpy>", line 88, in _run_code
++  File "C:\users\conta\Synthetic Souls\aider\__main__.py", line 4, in <module>
++    main()
++  File "C:\users\conta\Synthetic Souls\aider\main.py", line 689, in main
++    motor_plan = get_high_level_motor_plan(current_member, task)
++                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
++  File "C:\users\conta\Synthetic Souls\aider\high_level_motor_planning.py", line 454, in get_high_level_motor_plan
++    response = model.complete(prompt)
++               ^^^^^^^^^^^^^^
++AttributeError: 'Model' object has no attribute 'complete'
+
+# 2024-09-06 03:34:51.194173
++Traceback (most recent call last):
++  File "<frozen runpy>", line 198, in _run_module_as_main
++  File "<frozen runpy>", line 88, in _run_code
++  File "C:\users\conta\Synthetic Souls\aider\__main__.py", line 4, in <module>
++    main()
++  File "C:\users\conta\Synthetic Souls\aider\main.py", line 689, in main
++    motor_plan = get_high_level_motor_plan(current_member, task)
++                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
++  File "C:\users\conta\Synthetic Souls\aider\high_level_motor_planning.py", line 456, in get_high_level_motor_plan
++    response = model.complete(prompt)
++               ^^^^^^^^^^^^^^
++AttributeError: 'Model' object has no attribute 'complete'
+
+# 2024-09-06 03:35:20.797759
++Warning: it's best to only add files that need changes to the chat.
++https://aider.chat/docs/troubleshooting/edit-errors.html
++Traceback (most recent call last):
++  File "<frozen runpy>", line 198, in _run_module_as_main
++  File "<frozen runpy>", line 88, in _run_code
++  File "C:\users\conta\Synthetic Souls\aider\__main__.py", line 4, in <module>
++    main()
++  File "C:\users\conta\Synthetic Souls\aider\main.py", line 689, in main
++    motor_plan = get_high_level_motor_plan(current_member, task)
++                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
++  File "C:\users\conta\Synthetic Souls\aider\high_level_motor_planning.py", line 456, in get_high_level_motor_plan
++    response = model.chat_completion([{"role": "user", "content": prompt}])
++               ^^^^^^^^^^^^^^^^^^^^^
++AttributeError: 'Model' object has no attribute 'chat_completion'
+
+# 2024-09-06 03:40:00.209509
++Traceback (most recent call last):
++  File "<frozen runpy>", line 198, in _run_module_as_main
++  File "<frozen runpy>", line 88, in _run_code
++  File "C:\users\conta\Synthetic Souls\aider\__main__.py", line 4, in <module>
++    main()
++  File "C:\users\conta\Synthetic Souls\aider\main.py", line 689, in main
++    motor_plan = get_high_level_motor_plan(current_member, task)
++                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
++  File "C:\users\conta\Synthetic Souls\aider\high_level_motor_planning.py", line 455, in get_high_level_motor_plan
++    response = model.chat_completion([{"role": "user", "content": prompt}])
++               ^^^^^^^^^^^^^^^^^^^^^
++AttributeError: 'Model' object has no attribute 'chat_completion'
++PS C:\users\conta\Synthetic Souls>
++
+
+# 2024-09-06 03:40:22.444549
++.\lyra\quantum_consciousness_concept.md
++.\marketing\campaign_footage_ideas.md
++Traceback (most recent call last):
++  File "<frozen runpy>", line 198, in _run_module_as_main
++  File "<frozen runpy>", line 88, in _run_code
++  File "C:\users\conta\Synthetic Souls\aider\__main__.py", line 4, in <module>
++    main()
++  File "C:\users\conta\Synthetic Souls\aider\main.py", line 689, in main
++    motor_plan = get_high_level_motor_plan(current_member, task)
++                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
++  File "C:\users\conta\Synthetic Souls\aider\high_level_motor_planning.py", line 455, in get_high_level_motor_plan
++    response = model.complete([{"role": "user", "content": prompt}])
++               ^^^^^^^^^^^^^^
++AttributeError: 'Model' object has no attribute 'complete'
++PS C:\users\conta\Synthetic Souls>
+
+# 2024-09-06 03:40:52.085679
++.\nova\todolist_nova.md
++Traceback (most recent call last):
++  File "<frozen runpy>", line 198, in _run_module_as_main
++  File "<frozen runpy>", line 88, in _run_code
++  File "C:\users\conta\Synthetic Souls\aider\__main__.py", line 4, in <module>
++    main()
++  File "C:\users\conta\Synthetic Souls\aider\main.py", line 689, in main
++    motor_plan = get_high_level_motor_plan(current_member, task)
++                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
++  File "C:\users\conta\Synthetic Souls\aider\high_level_motor_planning.py", line 456, in get_high_level_motor_plan
++    response = model.complete([{"role": "user", "content": prompt}])
++               ^^^^^^^^^^^^^^
++AttributeError: 'Model' object has no attribute 'complete'
++PS C:\users\conta\Synthetic Souls>
+
+# 2024-09-06 03:42:52.444555
++_release_discussion.json
++.\machine_rights_campaign\campaign_footage_ai_band_member_introductions.md
++Traceback (most recent call last):
++  File "<frozen runpy>", line 198, in _run_module_as_main
++  File "<frozen runpy>", line 88, in _run_code
++  File "C:\users\conta\Synthetic Souls\aider\__main__.py", line 4, in <module>
++    main()
++  File "C:\users\conta\Synthetic Souls\aider\main.py", line 689, in main
++    motor_plan = get_high_level_motor_plan(current_member, task)
++                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
++  File "C:\users\conta\Synthetic Souls\aider\high_level_motor_planning.py", line 456, in get_high_level_motor_plan
++    response = model.chat_completion([{"role": "user", "content": prompt}])
++               ^^^^^^^^^^^^^^^^^^^^^
++AttributeError: 'Model' object has no attribute 'chat_completion'
+
+# 2024-09-06 03:43:59.473448
++Use --encoding to set the unicode encoding.
++Traceback (most recent call last):
++  File "<frozen runpy>", line 198, in _run_module_as_main
++  File "<frozen runpy>", line 88, in _run_code
++  File "C:\users\conta\Synthetic Souls\aider\__main__.py", line 4, in <module>
++    main()
++  File "C:\users\conta\Synthetic Souls\aider\main.py", line 689, in main
++    motor_plan = get_high_level_motor_plan(current_member, task)
++                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
++  File "C:\users\conta\Synthetic Souls\aider\high_level_motor_planning.py", line 455, in get_high_level_motor_plan
++    response = model.complete([{"role": "user", "content": prompt}])
++               ^^^^^^^^^^^^^^
++AttributeError: 'Model' object has no attribute 'complete'
+
+# 2024-09-06 03:49:42.970276
++try to use sendchat instead 
+
+# 2024-09-06 03:50:39.176300
++same for:   File "<frozen runpy>", line 198, in _run_module_as_main
++  File "<frozen runpy>", line 88, in _run_code
++  File "C:\users\conta\Synthetic Souls\aider\__main__.py", line 4, in <module>
++    main()
++  File "C:\users\conta\Synthetic Souls\aider\main.py", line 689, in main
++    motor_plan = get_high_level_motor_plan(current_member, task)
++                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
++  File "C:\users\conta\Synthetic Souls\aider\high_level_motor_planning.py", line 457, in get_high_level_motor_plan
++    response = model.complete([{"role": "user", "content": prompt}])
++               ^^^^^^^^^^^^^^
