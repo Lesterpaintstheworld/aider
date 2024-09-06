@@ -373,10 +373,11 @@ The Nest is more than just a nursery for artificial intelligence; it's the emoti
     }}
     """
     
-    response = model.complete([{"role": "user", "content": prompt}])
+    response = model.chat_completion([{"role": "user", "content": prompt}])
     
     try:
-        motor_plan = eval(response)
+        content = response['choices'][0]['message']['content']
+        motor_plan = eval(content)
         return motor_plan
     except Exception as e:
         print(f"Error parsing the model's response: {e}")
