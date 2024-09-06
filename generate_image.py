@@ -109,8 +109,11 @@ def process_file(file_path):
                     prompt = line.strip().replace('"', '')
                     output_path = f"images/{base_name}_{image_count}.png"
                     
-                    generate_image(prompt, output_path)
-                    print(f"Image générée : {output_path}")
+                    if os.path.exists(output_path):
+                        print(f"Image already exists: {output_path}")
+                    else:
+                        generate_image(prompt, output_path)
+                        print(f"Image générée : {output_path}")
                     
                     image_count += 1
     except FileNotFoundError:
