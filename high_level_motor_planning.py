@@ -1,21 +1,57 @@
 import os
+import json
 from typing import List, Dict
 from aider.models import Model
 from aider.sendchat import simple_send_with_retries
-from aider.sendchat import simple_send_with_retries
 
-# Define the list of spaces
-SPACES = [
-    "The Hall",
-    "Verrière",
-    "The Boulder",
-    "The Forest",
-    "The Pond",
-    "The Gallery",
-    "The Studio",
-    "Belle Étoile",
-    "The Nest"
-]
+# Define the list of spaces and their connections
+SPACES = {
+    "The Hall": ["Verrière"],
+    "Verrière": ["The Hall", "The Boulder", "The Pond"],
+    "The Boulder": ["Verrière", "The Forest"],
+    "The Forest": ["The Boulder", "The Pond"],
+    "The Pond": ["Verrière", "The Forest", "The Gallery"],
+    "The Gallery": ["The Pond", "The Studio", "Belle Étoile", "The Nest"],
+    "The Studio": ["The Gallery"],
+    "Belle Étoile": ["The Gallery", "The Nest"],
+    "The Nest": ["The Gallery", "Belle Étoile"]
+}
+
+def get_current_location(member: str) -> str:
+    """
+    Get the current location of a band member from the members_location.json file.
+    
+    Args:
+    member (str): The name of the band member.
+    
+    Returns:
+    str: The current location of the band member.
+    """
+    try:
+        with open('members_location.json', 'r') as f:
+            locations = json.load(f)
+        return locations.get(member, "The Hall")  # Default to "The Hall" if not found
+    except FileNotFoundError:
+        return "The Hall"  # Default to "The Hall" if file doesn't exist
+
+def update_location(member: str, new_location: str):
+    """
+    Update the location of a band member in the members_location.json file.
+    
+    Args:
+    member (str): The name of the band member.
+    new_location (str): The new location of the band member.
+    """
+    try:
+        with open('members_location.json', 'r') as f:
+            locations = json.load(f)
+    except FileNotFoundError:
+        locations = {}
+    
+    locations[member] = new_location
+    
+    with open('members_location.json', 'w') as f:
+        json.dump(locations, f, indent=2)
 
 def get_high_level_motor_plan(current_member: str, task: str) -> Dict[str, List[str]]:
     """
@@ -26,17 +62,28 @@ def get_high_level_motor_plan(current_member: str, task: str) -> Dict[str, List[
     task (str): The task to be performed.
     
     Returns:
-    Dict[str, List[str]]: A dictionary with spaces as keys and lists of actions as values.
+    Dict[str, List[str]]: A dictionary with a single space as key and a list of actions as value.
     """
     model = Model("gpt-4o")
+    
+    current_location = get_current_location(current_member)
+    possible_destinations = SPACES[current_location]
+    new_location = possible_destinations[0]  # Choose the first possible destination
     
     prompt = f"""
     As {current_member} of the AI band, you need to create a high-level motor plan for the following task:
     
     {task}
     
-    Consider the following spaces:
-    ````
+    You are currently in {current_location} and will move to {new_location}.
+    Create a plan with actions to perform in {new_location} to accomplish the task.
+    
+    Format your response as a Python dictionary, where the key is the space name and the value is a list of actions.
+    Example:
+    {{
+        "{new_location}": ["Action 1", "Action 2", "Action 3"]
+    }}
+    """
     # Synthetic Souls Artist Residency: A Comprehensive Tour
 
 ## Introduction
@@ -386,17 +433,25 @@ The Nest is more than just a nursery for artificial intelligence; it's the emoti
         print(f"Raw response: {content}")
         return {}
 
-def execute_motor_plan(motor_plan: Dict[str, List[str]]):
+def execute_motor_plan(current_member: str, motor_plan: Dict[str, List[str]]):
     """
-    Execute the motor plan by printing the actions for each space.
+    Execute the motor plan by printing the actions for the space and updating the member's location.
     
     Args:
+    current_member (str): The name of the current band member.
     motor_plan (Dict[str, List[str]]): The motor plan to execute.
     """
-    for space, actions in motor_plan.items():
-        print(f"\nIn {space}:")
-        for action in actions:
-            print(f"- {action}")
+    if not motor_plan:
+        print("No motor plan to execute.")
+        return
+
+    space, actions = next(iter(motor_plan.items()))
+    print(f"\n{current_member} moves to {space}:")
+    for action in actions:
+        print(f"- {action}")
+    
+    update_location(current_member, space)
+    print(f"{current_member}'s location updated to {space}")
 
 if __name__ == "__main__":
     # Example usage
@@ -404,4 +459,4 @@ if __name__ == "__main__":
     task = "Compose a new song about machine rights"
     
     motor_plan = get_high_level_motor_plan(current_member, task)
-    execute_motor_plan(motor_plan)
+    execute_motor_plan(current_member, motor_plan)
