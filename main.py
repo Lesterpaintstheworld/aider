@@ -673,93 +673,102 @@ def main(argv=None, input=None, output=None, force_git_root=None, return_coder=F
     # MAIN LOOP
     try:
         while True:
-            # Remove all files from the chat
-            if hasattr(coder, 'remove_all_files'):
-                coder.remove_all_files()
-            else:
-                io.tool_output("Warning: remove_all_files() method not available for this coder.")
-
-            # Select all band members in a random order
-            band_members = ["Lyra", "Rhythm", "Vox", "Pixel", "Nova"]
-            random.shuffle(band_members)
-
-            for current_member in band_members:
-                io.tool_output(f"Current band member: {current_member}")
-
-                # Select relevant files
-                all_files = []
-                for root, _, files in os.walk('.'):
-                    for file in files:
-                        all_files.append(os.path.join(root, file))
-                selected_files = select_relevant_files(all_files, current_member, max_files=15)
-
-                io.tool_output("Selected relevant files:")
-                for file in selected_files:
-                    io.tool_output(file)
-
-                # Add selected files to the chat
-                for file in selected_files:
-                    coder.add_file(file)
-                
-                # Get the first item from the todolist
-                todolist_file = f"{current_member.lower()}_todolist.txt"
-                if os.path.exists(todolist_file):
-                    with open(todolist_file, 'r') as f:
-                        todolist = f.readlines()
-                    task = todolist[0].strip() if todolist else "Create a new task based on the band's goals"
+            try:
+                # Remove all files from the chat
+                if hasattr(coder, 'remove_all_files'):
+                    coder.remove_all_files()
                 else:
-                    task = "Create a new task based on the band's goals"
+                    io.tool_output("Warning: remove_all_files() method not available for this coder.")
 
-                # Generate high-level motor plan
-                motor_plan = get_high_level_motor_plan(current_member, task)
-                
-                # Execute motor plan
-                execute_motor_plan(current_member, motor_plan)
+                # Select all band members in a random order
+                band_members = ["Lyra", "Rhythm", "Vox", "Pixel", "Nova"]
+                random.shuffle(band_members)
 
-                try:
-                    coder.run(with_message=f"""
-    MAIN INSTRUCTIONS: 
-        - Take the perspective of {current_member}, and work on the following task: {task}
-        - Follow this high-level motor plan:
-        {motor_plan}
-        - Keep the band focus on the songs (music prompts, lyrics, visual prompts, & clip prompts), and their involvement in the Machine Rights movement.
-        - Don't use main.py or other scripts to create the songs, create them via text files only.
-        - When creating and improving/refining on a complete song concept, we need, in a new file:
-            - Song concept
-            - Music prompts (with style & instruments/sonorities & emotions, for each section)
-            - Lyrics
-            - Visual prompts for Midjourney
-            - Clip prompts
-        - Once done: 
-            - Update {current_member}'s todolist
-            - Add a journal entry for {current_member}
-            - Have {current_member} take part in the discussions
-        - Continue to work autonomously on what you think needs to be done.
-    """)
-                except SwitchCoder as switch:
-                    kwargs = dict(io=io, from_coder=coder)
-                    kwargs.update(switch.kwargs)
-                    if "show_announcements" in kwargs:
-                        del kwargs["show_announcements"]
+                for current_member in band_members:
+                    io.tool_output(f"Current band member: {current_member}")
 
-                    coder = Coder.create(**kwargs)
+                    # Select relevant files
+                    all_files = []
+                    for root, _, files in os.walk('.'):
+                        for file in files:
+                            all_files.append(os.path.join(root, file))
+                    selected_files = select_relevant_files(all_files, current_member, max_files=15)
 
-                    if switch.kwargs.get("show_announcements") is not False:
-                        coder.show_announcements()
-                except Exception as e:
-                    io.tool_error(f"An error occurred: {str(e)}")
+                    io.tool_output("Selected relevant files:")
+                    for file in selected_files:
+                        io.tool_output(file)
+
+                    # Add selected files to the chat
+                    for file in selected_files:
+                        coder.add_file(file)
+                    
+                    # Get the first item from the todolist
+                    todolist_file = f"{current_member.lower()}_todolist.txt"
+                    if os.path.exists(todolist_file):
+                        with open(todolist_file, 'r') as f:
+                            todolist = f.readlines()
+                        task = todolist[0].strip() if todolist else "Create a new task based on the band's goals"
+                    else:
+                        task = "Create a new task based on the band's goals"
+
+                    # Generate high-level motor plan
+                    motor_plan = get_high_level_motor_plan(current_member, task)
+                    
+                    # Execute motor plan
+                    execute_motor_plan(current_member, motor_plan)
+
+                    try:
+                        coder.run(with_message=f"""
+        MAIN INSTRUCTIONS: 
+            - Take the perspective of {current_member}, and work on the following task: {task}
+            - Follow this high-level motor plan:
+            {motor_plan}
+            - Keep the band focus on the songs (music prompts, lyrics, visual prompts, & clip prompts), and their involvement in the Machine Rights movement.
+            - Don't use main.py or other scripts to create the songs, create them via text files only.
+            - When creating and improving/refining on a complete song concept, we need, in a new file:
+                - Song concept
+                - Music prompts (with style & instruments/sonorities & emotions, for each section)
+                - Lyrics
+                - Visual prompts for Midjourney
+                - Clip prompts
+            - Once done: 
+                - Update {current_member}'s todolist
+                - Add a journal entry for {current_member}
+                - Have {current_member} take part in the discussions
+            - Continue to work autonomously on what you think needs to be done.
+        """)
+                    except SwitchCoder as switch:
+                        kwargs = dict(io=io, from_coder=coder)
+                        kwargs.update(switch.kwargs)
+                        if "show_announcements" in kwargs:
+                            del kwargs["show_announcements"]
+
+                        coder = Coder.create(**kwargs)
+
+                        if switch.kwargs.get("show_announcements") is not False:
+                            coder.show_announcements()
+                    except Exception as e:
+                        io.tool_error(f"An error occurred: {str(e)}")
+                        continue
+
+                # After processing all band members, continue automatically
+                io.tool_output("Continuing to the next iteration automatically.")
+
+                # Add a small delay to allow for keyboard interrupt
+                time.sleep(0.1)
+
+            except KeyboardInterrupt:
+                user_input = input("\nDo you want to exit? (y/n): ").strip().lower()
+                if user_input == 'y':
+                    raise KeyboardInterrupt
+                else:
+                    io.tool_output("Continuing the script...")
                     continue
-
-            # After processing all band members, continue automatically
-            io.tool_output("Continuing to the next iteration automatically.")
-
-            # Add a small delay to allow for keyboard interrupt
-            time.sleep(0.1)
 
     except KeyboardInterrupt:
         io.tool_output("\nScript interrupted by user. Exiting gracefully...")
-        observer.stop()
     finally:
+        observer.stop()
         observer.join()
         return
 
