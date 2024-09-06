@@ -14,7 +14,7 @@ from aider import __version__, models, utils
 import sys
 import random
 import time
-from .high_level_motor_planning import get_high_level_motor_plan, execute_motor_plan
+from .high_level_motor_planning import get_high_level_motor_plan, execute_motor_plan, get_current_location, update_location
 
 # Add the parent directory to sys.path
 current_dir = os.path.dirname(os.path.abspath(__file__))
@@ -689,7 +689,7 @@ def main(argv=None, input=None, output=None, force_git_root=None, return_coder=F
                 motor_plan = get_high_level_motor_plan(current_member, task)
                 
                 # Execute motor plan
-                execute_motor_plan(motor_plan)
+                execute_motor_plan(current_member, motor_plan)
 
                 try:
                     coder.run(with_message=f"""
