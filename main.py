@@ -329,7 +329,12 @@ class FileChangeHandler(FileSystemEventHandler):
             self.run_generate_image()
 
     def run_generate_image(self):
-        subprocess.run(["python", "generate_image.py"])
+        script_path = os.path.join(os.path.dirname(__file__), "generate_image.py")
+        for root, _, files in os.walk(os.path.dirname(os.path.dirname(__file__))):
+            for file in files:
+                if file.endswith('.md'):
+                    file_path = os.path.join(root, file)
+                    subprocess.run([sys.executable, script_path, file_path])
 
 def main(argv=None, input=None, output=None, force_git_root=None, return_coder=False):
     # Set up the file observer
