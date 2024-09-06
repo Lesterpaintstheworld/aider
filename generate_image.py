@@ -1,9 +1,14 @@
 import os
+import sys
 from openai import OpenAI
 from dotenv import load_dotenv
 
 # Charger les variables d'environnement depuis le fichier .env
 load_dotenv()
+
+print(f"Chemin Python : {sys.executable}")
+print(f"Répertoire de travail actuel : {os.getcwd()}")
+print(f"Contenu du répertoire actuel : {os.listdir()}")
 
 def generate_image(prompt, output_path):
     client = OpenAI()
@@ -28,11 +33,13 @@ def process_file(file_path):
     base_name = os.path.splitext(os.path.basename(file_path))[0]
     image_count = 1
     
-    print(f"Chemin actuel : {os.getcwd()}")
     print(f"Tentative d'ouverture du fichier : {file_path}")
+    print(f"Le fichier existe-t-il ? {os.path.exists(file_path)}")
+    print(f"Chemin absolu du fichier : {os.path.abspath(file_path)}")
     
-    with open(file_path, 'r', encoding='utf-8') as file:
-        for line in file:
+    try:
+        with open(file_path, 'r', encoding='utf-8') as file:
+            for line in file:
             if "--ar" in line:
                 prompt = line.strip().replace('"', '')
                 output_path = f"aider/images/{base_name}_{image_count}.png"
