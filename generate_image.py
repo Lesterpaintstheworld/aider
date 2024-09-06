@@ -40,7 +40,7 @@ def process_file(file_path):
                 image_count += 1
 
 if __name__ == "__main__":
-    input_file = "concepts/voice_of_the_circuits.md"
+    input_file = "../voices_of_the_circuits.md"
     
     # Créer le dossier 'images' s'il n'existe pas
     os.makedirs("images", exist_ok=True)
