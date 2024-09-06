@@ -117,6 +117,10 @@ def process_file(file_path):
         print(f"Erreur : Le fichier '{file_path}' n'a pas été trouvé.")
     except Exception as e:
         print(f"Une erreur s'est produite : {e}")
+    except FileNotFoundError:
+        print(f"Erreur : Le fichier '{file_path}' n'a pas été trouvé.")
+    except Exception as e:
+        print(f"Une erreur s'est produite : {e}")
 
 if __name__ == "__main__":
     if len(sys.argv) < 2:

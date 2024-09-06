@@ -330,11 +330,14 @@ class FileChangeHandler(FileSystemEventHandler):
 
     def run_generate_image(self):
         script_path = os.path.join(os.path.dirname(__file__), "generate_image.py")
-        for root, _, files in os.walk(os.path.dirname(os.path.dirname(__file__))):
+        project_root = os.path.dirname(os.path.dirname(__file__))
+        for root, _, files in os.walk(project_root):
             for file in files:
                 if file.endswith('.md'):
                     file_path = os.path.join(root, file)
-                    subprocess.run([sys.executable, script_path, file_path])
+                    print(f"Processing file: {file_path}")
+                    subprocess.run([sys.executable, script_path, file_path], check=True)
+        print("Finished processing all Markdown files.")
 
 def main(argv=None, input=None, output=None, force_git_root=None, return_coder=False):
     # Set up the file observer
