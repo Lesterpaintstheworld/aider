@@ -453,10 +453,11 @@ def get_high_level_motor_plan(current_member: str, task: str) -> Dict[str, List[
     }}
     """
     
-    response = model.complete([{"role": "user", "content": prompt}])
+    response = model.chat_completion([{"role": "user", "content": prompt}])
     
     try:
-        motor_plan = eval(response)
+        content = response['choices'][0]['message']['content']
+        motor_plan = eval(content)
         return motor_plan
     except Exception as e:
         print(f"Error parsing the model's response: {e}")
