@@ -316,7 +316,24 @@ def register_litellm_models(git_root, model_metadata_fname, io, verbose=False):
         return 1
 
 
+class FileChangeHandler(FileSystemEventHandler):
+    def on_created(self, event):
+        if not event.is_directory:
+            self.run_generate_image()
+
+    def on_modified(self, event):
+        if not event.is_directory:
+            self.run_generate_image()
+
+    def run_generate_image(self):
+        subprocess.run(["python", "generate_image.py"])
+
 def main(argv=None, input=None, output=None, force_git_root=None, return_coder=False):
+    # Set up the file observer
+    event_handler = FileChangeHandler()
+    observer = Observer()
+    observer.schedule(event_handler, path='.', recursive=True)
+    observer.start()
     if argv is None:
         argv = sys.argv[1:]
 
@@ -733,6 +750,9 @@ def main(argv=None, input=None, output=None, force_git_root=None, return_coder=F
 
     except KeyboardInterrupt:
         io.tool_output("\nScript interrupted by user. Exiting gracefully...")
+        observer.stop()
+    finally:
+        observer.join()
         return
 
 
