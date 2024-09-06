@@ -14,7 +14,7 @@ from aider import __version__, models, utils
 import sys
 import random
 import time
-from high_level_motor_planning import get_high_level_motor_plan, execute_motor_plan
+from .high_level_motor_planning import get_high_level_motor_plan, execute_motor_plan
 
 # Add the parent directory to sys.path
 current_dir = os.path.dirname(os.path.abspath(__file__))
