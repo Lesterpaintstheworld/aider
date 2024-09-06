@@ -28,6 +28,9 @@ def process_file(file_path):
     base_name = os.path.splitext(os.path.basename(file_path))[0]
     image_count = 1
     
+    print(f"Chemin actuel : {os.getcwd()}")
+    print(f"Tentative d'ouverture du fichier : {file_path}")
+    
     with open(file_path, 'r', encoding='utf-8') as file:
         for line in file:
             if "--ar" in line:
