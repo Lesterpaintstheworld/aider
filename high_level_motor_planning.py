@@ -39,7 +39,7 @@ def update_location(member: str, new_location: str):
         json.dump(locations, f, indent=2)
 
 def get_high_level_motor_plan(current_member: str, task: str) -> Dict[str, List[str]]:
-    model = Model("gpt-4o")
+    model = Model("gpt-4o-mini")
     
     current_location = get_current_location(current_member)
     possible_destinations = SPACES[current_location]
