@@ -38,9 +38,9 @@ def process_file(file_path):
     base_name = os.path.splitext(os.path.basename(file_path))[0]
     image_count = 1
     
-    print(f"Tentative d'ouverture du fichier : {file_path}")
-    print(f"Le fichier existe-t-il ? {os.path.exists(file_path)}")
-    print(f"Chemin absolu du fichier : {os.path.abspath(file_path)}")
+    #print(f"Tentative d'ouverture du fichier : {file_path}")
+    #print(f"Le fichier existe-t-il ? {os.path.exists(file_path)}")
+    #print(f"Chemin absolu du fichier : {os.path.abspath(file_path)}")
     
     try:
         with open(file_path, 'r', encoding='utf-8') as file:
@@ -59,7 +59,7 @@ def process_file(file_path):
         print(f"Une erreur s'est produite : {e}")
 
 if __name__ == "__main__":
-    input_file = root_dir / "concepts" / "voices_of_the_circuits.md"
+    input_file = root_dir / "concepts" / "voices_of_the_circuit.md"
     
     # Créer le dossier 'images' dans le répertoire racine s'il n'existe pas
     images_dir = root_dir / "images"
