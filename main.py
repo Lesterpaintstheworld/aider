@@ -14,6 +14,9 @@ from aider import __version__, models, utils
 import sys
 import random
 import time
+from watchdog.observers import Observer
+from watchdog.events import FileSystemEventHandler
+import subprocess
 from .high_level_motor_planning import get_high_level_motor_plan, execute_motor_plan, get_current_location, update_location
 
 # Add the parent directory to sys.path
