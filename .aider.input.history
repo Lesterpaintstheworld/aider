@@ -2090,3 +2090,93 @@
 +  File "C:\users\conta\Synthetic Souls\aider\high_level_motor_planning.py", line 457, in get_high_level_motor_plan
 +    response = model.complete([{"role": "user", "content": prompt}])
 +               ^^^^^^^^^^^^^^
+
+# 2024-09-06 03:57:54.874161
++let's update the discussion and concepts to not be random, but to be the latest ones
+
+# 2024-09-06 04:00:41.814019
++An error occurred: select_relevant_files() missing 1 required positional argument: 'band_member'
+
+# 2024-09-06 04:03:40.510196
++The motor plan should move the member only once (according to the map), and give only one room, and to a room that is next to the current room.
++
++The new location of the member should be save in members_location.json
+
+# 2024-09-06 04:04:50.920939
++only change the relevant lines to implement the changes
+
+# 2024-09-06 04:07:06.294251
++tout est bon, ou as-tu encore besoin d'effectuer des changements pour cette fonctionnalité?
+
+# 2024-09-06 04:07:42.841485
++PS C:\users\conta\Synthetic Souls> python -m aider --cache-prompts --no-check-update
++Traceback (most recent call last):
++  File "<frozen runpy>", line 189, in _run_module_as_main
++  File "<frozen runpy>", line 148, in _get_module_details
++  File "<frozen runpy>", line 112, in _get_module_details
++  File "C:\users\conta\Synthetic Souls\aider\__init__.py", line 3, in <module>
++    from . import main
++  File "C:\users\conta\Synthetic Souls\aider\main.py", line 17, in <module>
++    from .high_level_motor_planning import get_high_level_motor_plan, execute_motor_plan, get_current_location, update_location
++  File "C:\users\conta\Synthetic Souls\aider\high_level_motor_planning.py", line 91
++    The Synthetic Souls artist residency is a unique and inspiring space designed to nurture the creativity of this groundbreaking AI band. The residency comprises various interconnected spaces, each with its own distinct character and purpose. This tour will guide you through these spaces, showcasing the thoughtful design that supports the band's artistic endeavors.
++                                                                                                                                                                                                                                                                                                                                                           ^
++SyntaxError: unterminated string literal (detected at line 91)
+
+# 2024-09-06 04:10:58.856274
++Error parsing the model's response: unterminated string literal (detected at line 19) (<string>, line 19)
++Raw response: Sure, here's a high-level motor plan for creating a new task based on the band's goals:
++
++```python
++{
++    "Verrière": [
++        "Gather the band members for a brainstorming session",
++        "Discuss and outline the band's current goals and objectives",
++        "Identify potential new tasks that align with these goals",
++        "Prioritize the tasks based on impact and feasibility",
++        "Assign specific roles and responsibilities for each task",
++        "Set deadlines and milestones for task completion",
++        "Document the new task and the plan in a shared digital space",
++        "Review and finalize the plan with the band members",
++        "Communicate the new task and plan to all relevant parties"
++    ]
++}
++```
++
++This plan ensures that the new task is well-aligned with the band's goals and that everyone is on the same page regarding its execution.
++No motor plan to execute.
++main.py
+
+# 2024-09-06 04:15:32.561503
++Sélection des fichiers les plus pertinents...
++An error occurred: select_relevant_files() missing 1 required positional argument: 'band_member'
+
+# 2024-09-06 04:17:30.623213
++Error parsing the model's response: invalid syntax (<unknown>, line 1)
++Raw response: Sure, here's a high-level motor plan for creating a new task based on the band's goals, with actions to perform in Verrière:
++
++```python
++{
++    "Verrière": [
++        "Set up instruments and sound equipment",
++        "Conduct a brainstorming session to identify the band's goals",
++        "List potential new tasks that align with the identified goals",
++        "Prioritize the tasks based on impact and feasibility",
++        "Assign roles and responsibilities for each task",
++        "Create a timeline and milestones for task completion",
++        "Document the new task and the plan in a shared digital space",
++        "Hold a brief rehearsal to test any new musical ideas",
++        "Gather feedback from all band members",
++        "Finalize the new task and ensure everyone is aligned"
++    ]
++}
++```
++
++Rhythm moves to Verrière:
++- Discuss the task with the band
++- Brainstorm ideas
++- Create an action plan
++Rhythm's location upda
+
+# 2024-09-06 04:48:32.269280
++/add discussion_to_voice.py

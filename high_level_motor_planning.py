@@ -52,7 +52,7 @@ def get_high_level_motor_plan(current_member: str, task: str) -> Dict[str, List[
     You are currently in {current_location} and will move to {new_location}.
     Create a plan with actions to perform in {new_location} to accomplish the task.
     
-    Format your response as a Python dictionary, where the key is the space name and the value is a list of actions.
+    Format your response as a Python dictionary, where the key is the space name and the value is a list of actions. Describe which features of the space you will be using.
     Example:
     {{
         "{new_location}": ["Action 1", "Action 2", "Action 3"]
