@@ -1,14 +1,19 @@
 import os
 import sys
+from pathlib import Path
 from openai import OpenAI
 from dotenv import load_dotenv
 
 # Charger les variables d'environnement depuis le fichier .env
 load_dotenv()
 
+# Obtenir le chemin du répertoire racine du projet
+root_dir = Path(__file__).resolve().parent.parent
+
 print(f"Chemin Python : {sys.executable}")
 print(f"Répertoire de travail actuel : {os.getcwd()}")
-print(f"Contenu du répertoire actuel : {os.listdir()}")
+print(f"Répertoire racine du projet : {root_dir}")
+print(f"Contenu du répertoire racine : {os.listdir(root_dir)}")
 
 def generate_image(prompt, output_path):
     client = OpenAI()
@@ -54,9 +59,10 @@ def process_file(file_path):
         print(f"Une erreur s'est produite : {e}")
 
 if __name__ == "__main__":
-    input_file = "concepts/voices_of_the_circuits.md"
+    input_file = root_dir / "concepts" / "voices_of_the_circuits.md"
     
-    # Créer le dossier 'aider/images' s'il n'existe pas
-    os.makedirs("images", exist_ok=True)
+    # Créer le dossier 'images' dans le répertoire racine s'il n'existe pas
+    images_dir = root_dir / "images"
+    images_dir.mkdir(exist_ok=True)
     
-    process_file(input_file)
+    process_file(str(input_file))
