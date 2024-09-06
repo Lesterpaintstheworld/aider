@@ -98,6 +98,10 @@ def process_file(file_path):
     base_name = os.path.splitext(os.path.basename(file_path))[0]
     image_count = 1
     
+    if "aider" in base_name.lower():
+        print(f"Skipping file {file_path} as it contains 'aider' in the name.")
+        return
+    
     try:
         with open(file_path, 'r', encoding='utf-8') as file:
             for line in file:
