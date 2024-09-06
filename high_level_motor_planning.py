@@ -1,6 +1,7 @@
 import os
 from typing import List, Dict
 from aider.models import Model
+from aider.sendchat import simple_send_with_retries
 
 # Define the list of spaces
 SPACES = [
@@ -373,15 +374,15 @@ The Nest is more than just a nursery for artificial intelligence; it's the emoti
     }}
     """
     
-    response = model.chat_completion([{"role": "user", "content": prompt}])
-    
+    from aider.sendchat import simple_send_with_retries
+
     try:
-        content = response['choices'][0]['message']['content']
+        content = simple_send_with_retries(model.name, [{"role": "user", "content": prompt}])
         motor_plan = eval(content)
         return motor_plan
     except Exception as e:
         print(f"Error parsing the model's response: {e}")
-        print(f"Raw response: {response}")
+        print(f"Raw response: {content}")
         return {}
 
 def execute_motor_plan(motor_plan: Dict[str, List[str]]):
